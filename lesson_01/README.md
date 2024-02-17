@@ -10,7 +10,7 @@
 
 A personal README is a way to teach others how to best work with you. It is useful for expressing your learning style and personal preferences, likes and dislikes.
 
-For this exercise, you with use the `MARKDOWN` language (the language used to author this very README) to create your own personal version. Your version should incorporate at least one picture, one list, appropriate headings, and be at least 300 words.
+For this exercise, you with use the `MARKDOWN` language (the language used to author this very README) to create your own personal version. Your version should incorporate __at least one picture, one list, appropriate headings, and be at least 300 words__.
 
 For inspiration, feel free to check out the examples at [Kaeti's repo][kaeti-repo] or do your own thing. Have fun!
 
