@@ -33,7 +33,7 @@ Software engineering continues to be one of the hottest careers in tech. Even wi
 * Learn how to write software using multiple programming languages
 * Understand the principles of good code design
 * Understand the basic principles of system design
-* Develop competency across all layers of a distributed software system
+* Develop competency in working across all layers of a distributed software system
 * Learn the essential elements of the software development lifecycle (SDLC)
 * Become familiar with software development tools
 * Develop analytical and problem solving skills
@@ -67,7 +67,7 @@ Throughout the course, we will use the following tools for most assignments unle
 
 ## Activities
 
-Regular course work and homework assignments will be provided throughout lessons. Though varied, the assignments will generall consist of:
+Regular course work and homework assignments will be provided throughout lessons. Though varied, the assignments will generally consist of:
 
 1. Reading assigned chapters from course books.
 2. Submitting reading notes for assigned online articles and videos
