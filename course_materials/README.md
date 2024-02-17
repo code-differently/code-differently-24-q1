@@ -46,11 +46,11 @@ The course will feature required reading from the following selection of books. 
 
 | Abbreviation | Title                                                                                      |
 | ------------ | ------------------------------------------------------------------------------------------ |
-| SEG          | The Software Engineer's Guidebook                                                          |
-| CODE         | Code: The Hidden Language of Computer Hardward and Software (2nd Edition, Microsoft Press) |
 | CC           | Code Complete (2nd Edition, Microsoft Press)                                               |
+| CODE         | Code: The Hidden Language of Computer Hardward and Software (2nd Edition, Microsoft Press) |
 | HF           | Head First Design Patterns (2nd Edition, O'Reilly)                                         |
 | PIE          | Programming Interviews Exposed (4th Edition, Wrox)                                         |
+| SEG          | The Software Engineer's Guidebook                                                          |
 | TPP          | The Pragmatic Programmer (20th Anniversary Edition, Pearson Addison-Wesley)                |
 
 ## Prerequisites
