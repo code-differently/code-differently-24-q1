@@ -3,6 +3,7 @@
 ## Instructor
 
 * Anthony D. Mays (@anthonydmays)
+* https://github.com/anthonydmays
 * https://linkedin.com/in/anthonydmays
 * https://twitter.com/anthonydmays
 
