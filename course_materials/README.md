@@ -22,7 +22,7 @@ Anthony is a software engineer with over 23 years of experience across finance, 
 [instructor-github]: https://github.com/anthonydmays
 [instructor-li]:  https://linkedin.com/in/anthonydmays
 [instructor-twitter]:  https://twitter.com/anthonydmays
-[instructor-youtube]:  https://twitter.com/youtube
+[instructor-youtube]:  https://youtube.com/@anthonydmays
 
 ## Course Description
 
