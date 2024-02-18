@@ -1,24 +1,37 @@
 package com.codedifferently.lesson3;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 
-public class Lesson3 {
+@Configuration
+@SpringBootApplication
+public class Lesson3 implements CommandLineRunner {
 
   public static void main(String[] args) {
-    QuizQuestion[] quizQuestions = makeQuizQuestions();
+    SpringApplication application = new SpringApplication(Lesson3.class);
+    application.run(args);
+  }
+
+  public void run(String... args) {
+    List<QuizQuestion> quizQuestions = makeQuizQuestions();
+    Objects.requireNonNull(quizQuestions);
     var printer = new QuizPrinter();
     printer.printQuiz(quizQuestions);
   }
 
-  public static QuizQuestion[] makeQuizQuestions() {
-    return new QuizQuestion[] {
-      makeQuestion0(),
-      makeQuestion1(),
-      makeQuestion2(),
-      makeQuestion3(),
-      makeQuestion4(),
-      makeQuestion5()
-    };
+  public static List<QuizQuestion> makeQuizQuestions() {
+    return List.of(
+        makeQuestion0(),
+        makeQuestion1(),
+        makeQuestion2(),
+        makeQuestion3(),
+        makeQuestion4(),
+        makeQuestion5());
   }
 
   private static QuizQuestion makeQuestion0() {

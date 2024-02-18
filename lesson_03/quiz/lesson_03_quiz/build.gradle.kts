@@ -18,14 +18,17 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.assertj:assertj-core:3.25.1")
+    testImplementation("at.favre.lib:bcrypt:0.10.2")
 
     // This dependency is used by the application.
     implementation("com.google.guava:guava:31.1-jre")
+    implementation("org.projectlombok:lombok:1.18.30")
+    implementation("org.springframework.boot:spring-boot-starter")
 }
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.codedifferently.lesson4.Lesson4")
+    mainClass.set("com.codedifferently.lesson3.Lesson3")
 }
 
 tasks.named<Test>("test") {

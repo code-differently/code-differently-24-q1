@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 public class QuizPrinter {
 
-  public void printQuiz(@Nonnull QuizQuestion[] quizQuestions) {
+  public void printQuiz(@Nonnull Iterable<QuizQuestion> quizQuestions) {
     System.out.println();
 
     for (QuizQuestion question : quizQuestions) {
