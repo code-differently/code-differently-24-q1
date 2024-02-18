@@ -1,4 +1,4 @@
-package com.codedifferently.lesson4;
+package com.codedifferently.lesson3;
 
 import javax.annotation.Nonnull;
 
@@ -13,7 +13,8 @@ public class QuizPrinter {
   }
 
   private void printQuizQuestion(QuizQuestion question) {
-    System.out.println("Question " + question.getQuestionNumber() + ": " + question.getQuestion());
+    System.out.println(
+        "Question " + question.getQuestionNumber() + ": " + question.getQuestionPrompt());
 
     printPossibleAnswers(question);
 

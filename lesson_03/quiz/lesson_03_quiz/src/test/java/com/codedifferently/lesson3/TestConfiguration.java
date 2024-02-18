@@ -1,4 +1,4 @@
-package com.codedifferently.lesson4;
+package com.codedifferently.lesson3;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;

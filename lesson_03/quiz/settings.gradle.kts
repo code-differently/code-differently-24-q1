@@ -7,5 +7,5 @@
  * in the user manual at https://docs.gradle.org/8.0.2/userguide/multi_project_builds.html
  */
 
-rootProject.name = "lesson_04"
-include("lesson_04_quiz")
+rootProject.name = "lesson_03"
+include("lesson_03_quiz")

@@ -1,8 +1,8 @@
-package com.codedifferently.lesson4;
+package com.codedifferently.lesson3;
 
 import java.util.Map;
 
-public class Lesson4 {
+public class Lesson3 {
 
   public static void main(String[] args) {
     QuizQuestion[] quizQuestions = makeQuizQuestions();

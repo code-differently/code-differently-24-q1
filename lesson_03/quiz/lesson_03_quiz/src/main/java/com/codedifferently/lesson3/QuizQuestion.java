@@ -1,4 +1,4 @@
-package com.codedifferently.lesson4;
+package com.codedifferently.lesson3;
 
 import java.util.Map;
 
@@ -27,7 +27,7 @@ public class QuizQuestion {
     return questionNumber;
   }
 
-  public String getQuestion() {
+  public String getQuestionPrompt() {
     return question;
   }
 
