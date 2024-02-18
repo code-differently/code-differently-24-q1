@@ -6,14 +6,13 @@ package com.codedifferently.lesson4;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-
 import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 
 @SpringBootTest
 @ContextConfiguration(classes = TestConfiguration.class)
@@ -47,9 +46,10 @@ class Lesson4Test {
     for (QuizQuestion question : quizQuestions) {
       AnswerOption correctAnswer = quizAnswers.get(question.getQuestionNumber());
       AnswerOption actualAnswer = question.getAnswer();
-      softly.assertThat(actualAnswer)
-        .as("Check question " + question.getQuestionNumber() + " is answered correctly")
-        .isEqualTo(correctAnswer);
+      softly
+          .assertThat(actualAnswer)
+          .as("Check question " + question.getQuestionNumber() + " is answered correctly")
+          .isEqualTo(correctAnswer);
     }
     softly.assertAll();
   }

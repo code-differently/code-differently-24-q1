@@ -1,6 +1,11 @@
 # Custom ignore
 answers.properties
 
+# Gradle files
+.gradle
+build/
+bin/
+
 # Logs
 logs
 *.log
