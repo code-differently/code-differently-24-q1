@@ -1,0 +1,12 @@
+# Code Differently 2024 Q1 Cohort
+
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/code-differently/code-differently-24-q1)
+
+### Purpose
+Main project repo for the Code Differently 2024 Q1 cohort. Read the [syllabus](/syllabus/) for more information about the class. Use the lesson folders to find and submit homework assignments.
+
+### Installation
+1. Install VS Code and Docker. You can references the [instructions here][dev-container-instructions], if needed.
+1. Click the `Dev Containers` button above to automatically clone and open the project in a new dev container.
+   
+[dev-container-instructions]: https://aka.ms/vscode-remote/containers/getting-started
