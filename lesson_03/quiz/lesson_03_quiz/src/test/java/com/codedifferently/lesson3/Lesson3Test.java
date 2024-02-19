@@ -70,11 +70,7 @@ class Lesson3Test {
       // Check that the answer is correct
       softly
           .assertThat(quizAnswers.checkAnswer(question.getQuestionNumber(), actualAnswer))
-          .as(
-              "Checking question "
-                  + question.getQuestionNumber()
-                  + ": "
-                  + question.getQuestionPrompt())
+          .as("Checking answer matches correct answer: " + question.getQuestionPrompt())
           .isTrue();
     }
   }
