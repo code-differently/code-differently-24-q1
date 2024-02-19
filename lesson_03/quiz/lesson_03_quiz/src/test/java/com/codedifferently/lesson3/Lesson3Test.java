@@ -61,13 +61,13 @@ class Lesson3Test {
     for (QuizQuestion question : quizQuestions) {
       AnswerOption actualAnswer = question.getAnswer();
 
-      // Check that the question was answered
+      // Check that the question was answered.
       softly
           .assertThat(actualAnswer)
           .as("Question " + question.getQuestionNumber() + " must be answered")
           .isNotEqualTo(AnswerOption.UNANSWERED);
 
-      // Check that the answer is correct
+      // Check that the answer is correct.
       softly
           .assertThat(quizAnswers.checkAnswer(question.getQuestionNumber(), actualAnswer))
           .as("Checking answer matches correct answer: " + question.getQuestionPrompt())
