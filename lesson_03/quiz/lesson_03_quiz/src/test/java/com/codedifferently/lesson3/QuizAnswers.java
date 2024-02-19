@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/** Loads quiz answers from the config file and uses bcrypt to check provided answers. */
 @Component
 @ConfigurationProperties(prefix = "quiz")
 public class QuizAnswers {
