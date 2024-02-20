@@ -33,7 +33,8 @@ public class Lesson3 implements CommandLineRunner {
         makeQuestion4(),
         makeQuestion5(),
         makeQuestion6(),
-        makeQuestion7());
+        makeQuestion7(),
+        makeQuestion8());
   }
 
   private static QuizQuestion makeQuestion0() {
@@ -117,8 +118,15 @@ public class Lesson3 implements CommandLineRunner {
 
   private static QuizQuestion makeQuestion7() {
     return new QuizQuestion(
-        6,
+        7,
         "What is the decimal number 34 in hex?",
         "0x00"); // Replace the correct digits in the answer
+  }
+
+  private static QuizQuestion makeQuestion8() {
+    return new QuizQuestion(
+        8,
+        "What is binary number 0b01100101 in decimal?",
+        "0"); // Replace the correct digits in the answer
   }
 }

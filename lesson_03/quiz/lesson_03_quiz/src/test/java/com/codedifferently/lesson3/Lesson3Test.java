@@ -3,6 +3,8 @@ package com.codedifferently.lesson3;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -23,13 +25,22 @@ class Lesson3Test {
 
   @Autowired private QuizAnswers quizAnswers;
 
-  private List<QuizQuestion> quizQuestions = Lesson3.makeQuizQuestions();
+  private List<QuizQuestion> quizQuestions;
 
   private SoftAssertions softly;
 
+  private final int EXPECTED_NUMBER_OF_QUESTIONS = 9;
+
   @BeforeEach
   void setUp() {
+    getQuestions();
     softly = new SoftAssertions();
+  }
+
+  private void getQuestions() {
+    var questions = new ArrayList<QuizQuestion>(Lesson3.makeQuizQuestions());
+    questions.sort(Comparator.comparingInt(QuizQuestion::getQuestionNumber));
+    quizQuestions = questions;
   }
 
   @AfterEach
@@ -39,7 +50,12 @@ class Lesson3Test {
 
   @Test
   void checkQuizQuestions_areAssembledCorrectly() {
-    assertThat(quizQuestions.size()).as("Check # of questions").isEqualTo(6);
+    // Expect the right number of questions.
+    assertThat(quizQuestions.size())
+        .as("Check # of questions")
+        .isEqualTo(EXPECTED_NUMBER_OF_QUESTIONS);
+
+    // Expect questions to be numbered correctly.
     for (int i = 0; i < quizQuestions.size(); i++) {
       assertThat(quizQuestions.get(i).getQuestionNumber())
           .as("Check question number is correct")
@@ -47,11 +63,17 @@ class Lesson3Test {
     }
   }
 
-  void checkQuizQuestions_areUnique() {
+  @Test
+  void checkQuizQuestions_promptsAreUnique() {
     Set<String> questionPrompts =
         quizQuestions.stream().map(QuizQuestion::getQuestionPrompt).collect(Collectors.toSet());
     assertEquals(
-        6, questionPrompts.size(), "Expected 6 unique questions but got " + questionPrompts.size());
+        EXPECTED_NUMBER_OF_QUESTIONS,
+        questionPrompts.size(),
+        "Expected "
+            + EXPECTED_NUMBER_OF_QUESTIONS
+            + " unique questions but got "
+            + questionPrompts.size());
   }
 
   @Test

@@ -8,10 +8,7 @@ public class QuizQuestion {
 
   private String correctAnswer;
 
-  public QuizQuestion(
-      int questionNumber,
-      String question,
-      String correctAnswer) {
+  public QuizQuestion(int questionNumber, String question, String correctAnswer) {
     this.questionNumber = questionNumber;
     this.question = question;
     this.correctAnswer = correctAnswer;
