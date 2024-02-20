@@ -16,9 +16,9 @@ public class QuizAnswers {
     this.answers = answers;
   }
 
-  public boolean checkAnswer(int questionNumber, AnswerOption option) {
+  public boolean checkAnswer(int questionNumber, String actualAnswer) {
     return BCrypt.verifyer()
-        .verify(option.getOption().toCharArray(), answers.get(questionNumber))
+        .verify(actualAnswer.toCharArray(), answers.get(questionNumber))
         .verified;
   }
 

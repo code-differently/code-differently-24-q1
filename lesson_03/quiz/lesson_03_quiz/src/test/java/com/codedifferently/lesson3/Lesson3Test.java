@@ -59,13 +59,13 @@ class Lesson3Test {
     assertThat(quizAnswers.size()).as("Check # of answers").isEqualTo(quizQuestions.size());
 
     for (QuizQuestion question : quizQuestions) {
-      AnswerOption actualAnswer = question.getAnswer();
+      String actualAnswer = question.getAnswer();
 
       // Check that the question was answered.
       softly
           .assertThat(actualAnswer)
           .as("Question " + question.getQuestionNumber() + " must be answered")
-          .isNotEqualTo(AnswerOption.UNANSWERED);
+          .isNotEqualTo(AnswerChoice.UNANSWERED);
 
       // Check that the answer is correct.
       softly

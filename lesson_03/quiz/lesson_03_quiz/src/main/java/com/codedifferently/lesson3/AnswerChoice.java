@@ -1,6 +1,6 @@
 package com.codedifferently.lesson3;
 
-public enum AnswerOption {
+public enum AnswerChoice {
   UNANSWERED("UNANSWERED"),
   A("A"),
   B("B"),
@@ -9,7 +9,7 @@ public enum AnswerOption {
 
   private String option;
 
-  AnswerOption(String option) {
+  AnswerChoice(String option) {
     this.option = option;
   }
 

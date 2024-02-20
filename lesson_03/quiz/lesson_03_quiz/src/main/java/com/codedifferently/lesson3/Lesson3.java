@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class Lesson3 implements CommandLineRunner {
 
   public static void main(String[] args) {
-    SpringApplication application = new SpringApplication(Lesson3.class);
+    var application = new SpringApplication(Lesson3.class);
     application.run(args);
   }
 
@@ -31,78 +31,94 @@ public class Lesson3 implements CommandLineRunner {
         makeQuestion2(),
         makeQuestion3(),
         makeQuestion4(),
-        makeQuestion5());
+        makeQuestion5(),
+        makeQuestion6(),
+        makeQuestion7());
   }
 
   private static QuizQuestion makeQuestion0() {
-    return new QuizQuestion(
+    return new MultipleChoiceQuizQuestion(
         0,
         "If your computer doesn't turn on, what is the first thing you should check?",
         Map.of(
-            AnswerOption.A, "The power supply",
-            AnswerOption.B, "The monitor",
-            AnswerOption.C, "The keyboard",
-            AnswerOption.D, "The mouse"),
-        AnswerOption.UNANSWERED); // Replace `UNANSWERED` with the correct answer
+            AnswerChoice.A, "The power supply",
+            AnswerChoice.B, "The monitor",
+            AnswerChoice.C, "The keyboard",
+            AnswerChoice.D, "The mouse"),
+        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer
   }
 
   private static QuizQuestion makeQuestion1() {
-    return new QuizQuestion(
+    return new MultipleChoiceQuizQuestion(
         1,
         "Which part of the computer is responsible for processing data?",
         Map.of(
-            AnswerOption.A, "The power supply",
-            AnswerOption.B, "The keyboard",
-            AnswerOption.C, "The CPU",
-            AnswerOption.D, "RAM"),
-        AnswerOption.UNANSWERED); // Replace `UNANSWERED` with the correct answer
+            AnswerChoice.A, "The power supply",
+            AnswerChoice.B, "The keyboard",
+            AnswerChoice.C, "The CPU",
+            AnswerChoice.D, "RAM"),
+        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer
   }
 
   private static QuizQuestion makeQuestion2() {
-    return new QuizQuestion(
+    return new MultipleChoiceQuizQuestion(
         2,
         "This part of the computer is like the CPU, but handles graphics computations.",
         Map.of(
-            AnswerOption.A, "The monitor",
-            AnswerOption.B, "The GPU",
-            AnswerOption.C, "RAM",
-            AnswerOption.D, "The motherboard"),
-        AnswerOption.UNANSWERED); // Replace `UNANSWERED` with the correct answer
+            AnswerChoice.A, "The monitor",
+            AnswerChoice.B, "The GPU",
+            AnswerChoice.C, "RAM",
+            AnswerChoice.D, "The motherboard"),
+        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer
   }
 
   private static QuizQuestion makeQuestion3() {
-    return new QuizQuestion(
+    return new MultipleChoiceQuizQuestion(
         3,
         "The CPU uses what part of the computer to store and execute instructions?",
         Map.of(
-            AnswerOption.A, "The power supply",
-            AnswerOption.B, "The keyboard",
-            AnswerOption.C, "RAM",
-            AnswerOption.D, "The GPU"),
-        AnswerOption.UNANSWERED); // Replace `UNANSWERED` with the correct answer
+            AnswerChoice.A, "The power supply",
+            AnswerChoice.B, "The keyboard",
+            AnswerChoice.C, "RAM",
+            AnswerChoice.D, "The GPU"),
+        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer
   }
 
   private static QuizQuestion makeQuestion4() {
-    return new QuizQuestion(
+    return new MultipleChoiceQuizQuestion(
         4,
         "What components are hard drives and solid state drives (SSD) classified as?",
         Map.of(
-            AnswerOption.A, "Motherboards",
-            AnswerOption.B, "Storage devices",
-            AnswerOption.C, "RAM",
-            AnswerOption.D, "CPU"),
-        AnswerOption.UNANSWERED); // Replace `UNANSWERED` with the correct answer
+            AnswerChoice.A, "Motherboards",
+            AnswerChoice.B, "Storage devices",
+            AnswerChoice.C, "RAM",
+            AnswerChoice.D, "CPU"),
+        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer
   }
 
   private static QuizQuestion makeQuestion5() {
-    return new QuizQuestion(
+    return new MultipleChoiceQuizQuestion(
         5,
         "This part of the computer is like the human body's central nervous system:",
         Map.of(
-            AnswerOption.A, "Motherboard",
-            AnswerOption.B, "Storage",
-            AnswerOption.C, "RAM",
-            AnswerOption.D, "CPU"),
-        AnswerOption.UNANSWERED); // Replace `UNANSWERED` with the correct answer
+            AnswerChoice.A, "Motherboard",
+            AnswerChoice.B, "Storage",
+            AnswerChoice.C, "RAM",
+            AnswerChoice.D, "CPU"),
+        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer
+  }
+
+  private static QuizQuestion makeQuestion6() {
+    return new QuizQuestion(
+        6,
+        "What is the decimal number 34 in binary?",
+        "0b00000000"); // Replace the correct digits in the answer
+  }
+
+  private static QuizQuestion makeQuestion7() {
+    return new QuizQuestion(
+        6,
+        "What is the decimal number 34 in hex?",
+        "0x00"); // Replace the correct digits in the answer
   }
 }

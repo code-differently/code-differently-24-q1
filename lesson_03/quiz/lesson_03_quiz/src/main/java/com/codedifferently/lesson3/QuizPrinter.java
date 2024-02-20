@@ -16,15 +16,17 @@ public class QuizPrinter {
     System.out.println(
         "Question " + question.getQuestionNumber() + ": " + question.getQuestionPrompt());
 
-    printPossibleAnswers(question);
+    if (question instanceof MultipleChoiceQuizQuestion) {
+      printPossibleAnswers((MultipleChoiceQuizQuestion) question);
+    }
 
     System.out.println(">> Your answer: " + question.getAnswer());
     System.out.println();
   }
 
-  private void printPossibleAnswers(QuizQuestion question) {
-    for (AnswerOption option : AnswerOption.values()) {
-      if (option == AnswerOption.UNANSWERED) {
+  private void printPossibleAnswers(MultipleChoiceQuizQuestion question) {
+    for (AnswerChoice option : AnswerChoice.values()) {
+      if (option == AnswerChoice.UNANSWERED) {
         continue;
       }
       System.out.println(option + ": " + question.getAnswerForOption(option));
