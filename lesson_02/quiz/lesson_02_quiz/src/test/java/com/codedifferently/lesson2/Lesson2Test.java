@@ -1,4 +1,4 @@
-package com.codedifferently.lesson3;
+package com.codedifferently.lesson2;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,9 +20,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
 @SpringBootTest
-@ContextConfiguration(classes = Lesson3.class)
+@ContextConfiguration(classes = Lesson2.class)
 @ExtendWith(SoftAssertionsExtension.class)
-class Lesson3Test {
+class Lesson2Test {
 
   @Autowired private QuizAnswers quizAnswers;
 
@@ -39,7 +39,7 @@ class Lesson3Test {
   }
 
   private void getQuestions() {
-    var questions = new ArrayList<QuizQuestion>(Lesson3.makeQuizQuestions());
+    var questions = new ArrayList<QuizQuestion>(Lesson2.makeQuizQuestions());
     questions.sort(Comparator.comparingInt(QuizQuestion::getQuestionNumber));
     quizQuestions = questions;
   }

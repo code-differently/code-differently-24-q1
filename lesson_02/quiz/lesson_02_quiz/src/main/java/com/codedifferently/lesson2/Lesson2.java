@@ -1,4 +1,4 @@
-package com.codedifferently.lesson3;
+package com.codedifferently.lesson2;
 
 import com.codedifferently.instructional.quiz.*;
 import java.util.List;
@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @SpringBootApplication(scanBasePackages = "com.codedifferently")
-public class Lesson3 implements CommandLineRunner {
+public class Lesson2 implements CommandLineRunner {
 
   public static void main(String[] args) {
-    var application = new SpringApplication(Lesson3.class);
+    var application = new SpringApplication(Lesson2.class);
     application.run(args);
   }
 

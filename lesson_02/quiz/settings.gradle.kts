@@ -9,5 +9,5 @@
 
 includeBuild("../../lib/java/codedifferently-instructional")
 
-rootProject.name = "lesson_03"
-include("lesson_03_quiz")
+rootProject.name = "lesson_02"
+include("lesson_02_quiz")
