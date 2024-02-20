@@ -3,6 +3,7 @@ package com.codedifferently.lesson3;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.codedifferently.instructional.quiz.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

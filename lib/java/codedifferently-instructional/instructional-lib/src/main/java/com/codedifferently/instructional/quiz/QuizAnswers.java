@@ -1,4 +1,4 @@
-package com.codedifferently.lesson3;
+package com.codedifferently.instructional.quiz;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import java.util.List;

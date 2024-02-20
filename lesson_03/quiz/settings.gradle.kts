@@ -7,5 +7,7 @@
  * in the user manual at https://docs.gradle.org/8.0.2/userguide/multi_project_builds.html
  */
 
+includeBuild("../../lib/java/codedifferently-instructional")
+
 rootProject.name = "lesson_03"
 include("lesson_03_quiz")

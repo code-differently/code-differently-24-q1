@@ -1,5 +1,6 @@
 package com.codedifferently.lesson3;
 
+import com.codedifferently.instructional.quiz.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -9,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.codedifferently")
 public class Lesson3 implements CommandLineRunner {
 
   public static void main(String[] args) {

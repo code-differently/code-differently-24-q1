@@ -1,4 +1,4 @@
-package com.codedifferently.lesson3;
+package com.codedifferently.instructional.quiz;
 
 public class QuizQuestion {
 
