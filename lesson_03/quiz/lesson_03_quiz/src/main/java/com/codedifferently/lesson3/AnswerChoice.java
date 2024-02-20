@@ -13,10 +13,6 @@ public enum AnswerChoice {
     this.option = option;
   }
 
-  public String getOption() {
-    return option;
-  }
-
   public String toString() {
     return option;
   }
