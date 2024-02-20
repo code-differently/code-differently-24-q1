@@ -1,4 +1,4 @@
-# Lesson 1
+# Lesson 0
 
 ## Homework
 

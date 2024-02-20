@@ -128,6 +128,6 @@ public class Lesson2 implements CommandLineRunner {
     return new QuizQuestion(
         8,
         "What is binary number 0b01100101 in decimal?",
-        "0"); // Replace the correct digits in the answer (no leading zeros).
+        "0"); // Specify the correct number (no leading zeros).
   }
 }
