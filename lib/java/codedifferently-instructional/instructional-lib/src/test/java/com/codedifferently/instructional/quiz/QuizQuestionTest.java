@@ -1,8 +1,7 @@
-package com.codedifferently.lesson3;
+package com.codedifferently.instructional.quiz;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.codedifferently.instructional.quiz.QuizQuestion;
 import org.junit.jupiter.api.Test;
 
 class QuizQuestionTest {

@@ -1,6 +1,9 @@
 package com.codedifferently.lesson2;
 
-import com.codedifferently.instructional.quiz.*;
+import com.codedifferently.instructional.quiz.AnswerChoice;
+import com.codedifferently.instructional.quiz.MultipleChoiceQuizQuestion;
+import com.codedifferently.instructional.quiz.QuizPrinter;
+import com.codedifferently.instructional.quiz.QuizQuestion;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
