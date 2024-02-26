@@ -4,7 +4,7 @@
 I'm a Delaware and New York based music video director and editor with skills in VFX, videography, photography, lighting and mixed media. This has led me to work and collab with and help develop the visual articulation of many talented artists and other creators either in Delaware or New york.
 
 ## Examples of my work
-![Example 1](<../../../../../Downloads/Marsii - ON CAM Finaender.MOV>)
+![Example 1](https://www.instagram.com/rosevisualss/p/C2-wlqaLkcu/?hl=en)
 
 ![Example 2](https://www.youtube.com/watch?v=814SngdguwQ)
 
