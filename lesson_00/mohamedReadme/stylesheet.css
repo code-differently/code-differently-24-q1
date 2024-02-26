@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(11, 11, 26);
+   } 
+h1{
+    color: rgb(169, 169, 253);
+    background-color: rgb(7, 35, 68);
+    border: 1px solid rgb(255, 255, 255);
+    font-size: 20px;
+}
+h2{
+    color: rgb(169, 169, 253);
+    background-color: rgb(7, 35, 68);
+    border: 1px solid rgb(255, 255, 255);
+    font-size: 20px;
+}
+h3{
+    color: rgb(169, 169, 253);
+    background-color: rgb(7, 35, 68);
+    border: 1px solid rgb(255, 255, 255);
+    font-size: 20px;
+}
+h{
+    color: rgb(212, 169, 253);
+    font-size: 30px;
+}
