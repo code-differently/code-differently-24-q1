@@ -4,10 +4,10 @@
 I'm a Delaware and New York based music video director and editor with skills in VFX, videography, photography, lighting and mixed media. This has led me to work and collab with and help develop the visual articulation of many talented artists and other creators either in Delaware or New york.
 
 ## Examples of my work
-![Example 1](https://www.instagram.com/rosevisualss/p/C2-wlqaLkcu/?hl=en)
+![EX1 Medium](https://github.com/KRose77/code-differently-24-q1/assets/160963028/17c4fb8d-bc5d-4d6f-81ea-7b39a3e51d88)
 
-![Example 2](https://www.youtube.com/watch?v=814SngdguwQ)
 
+[![](https://markdown-videos-api.jorgenkh.no/youtube/814SngdguwQ)](https://youtu.be/814SngdguwQ)
 ### Where im from
 I'm from Hempstead, New York.
 
