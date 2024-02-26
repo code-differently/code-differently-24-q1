@@ -35,10 +35,10 @@ Here are some of the things I need to be a productive citizen and engineer.
 
 ## Photo Gallery
 
-[![Anthony D. Mays and Spike Lee][spike-lee-pic]](https://twitter.com/anthonydmays/status/1665044329528975363)
+<a href="https://twitter.com/anthonydmays/status/1665044329528975363"><img src="images/anthony-d-mays-spike-lee.jpeg" height=400 /></a>
+<a href="https://www.linkedin.com/posts/anthonydmays_practicelikeachampion-techinterview-straightouttacompton-activity-6922630732154642432-Yrwr?utm_source=share&utm_medium=member_desktop"><img src="images/serena-williams.png" height=400 /></a>
+<a href="https://www.linkedin.com/posts/anthonydmays_blacklinkedin-inspiration-tech-activity-6934921947973656576-M-um?utm_source=share&utm_medium=member_desktop"><img src="images/times-square.gif" height=400 /></a>
 
-
-[spike-lee-pic]: images/anthony-d-mays-spike-lee.jpg
 [buzzfeed-link]: https://amays.me/buzzfeed
 [kiefer-link]: https://music.youtube.com/channel/UCK4EdR3o8NrJBhUjy7SXURw?si=a2w82sB5EGXsWAGP
 [glimlip-link]: https://music.youtube.com/channel/UCdPgDItWooZYAcmdZ33_jEg
