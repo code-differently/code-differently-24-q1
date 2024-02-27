@@ -43,8 +43,10 @@ Their music resonates with me on different levels.
 
 ![J. Cole](https://upload.wikimedia.org/wikipedia/en/2/2a/2014ForestHillsDrive.jpg)
 
-## Learning Style
-When it comes to learning, I prefer a hands-on approach combined with visual aids. I find that watching instructional videos and engaging in practical, hands-on activities help me grasp concepts more effectively. This approach allows me to visualize complex ideas and immediately apply them in real-world scenarios, enhancing my understanding and retention of the material.
+## Advice for Working with Me
+Learning Style: I excel when I can immerse myself in hands-on experiences while delving into new subjects. Engaging practically and experimenting serve as my primary strategies for assimilating knowledge.
+
+Feedback: I value direct and constructive feedback. If there are areas where I can enhance my skills or performance, I prefer to receive feedback via a phone call. This mode of communication enables a more nuanced and immediate exchange. Nevertheless, I am also open to discussing feedback via email.
 
 ## LinkedIn 
 [Connect with me on LinkedIn](https://www.linkedin.com/in/chukwumaibezim/)
