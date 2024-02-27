@@ -38,7 +38,11 @@ I've been to Aruba, Curacao, and the Dominican Republic, enjoying their awesome 
 - "Knowledge speaks Wisdom Listens." Jimi Hendrix
 - "God Puts you Through Troubled waters that he knows you're strong enough to swim through but your enemies cannot"
 
+## Contact and Communication Preferences.
+For efficient communication, please feel free to reach out to me via email at my  I typically respond to emails within 24 hours during regular work hours, which are Monday through Friday, 9:00 AM to 5:00 PM, Eastern Standard Time. For urgent matters or time-sensitive issues, you can also reach me by phone . Thank you for respecting these preferences, as they help maintain effective communication channels.
+
 ## Thanks for your Time ⏰
 
 
 Thank you for taking the time to read through this README. Your attention was greatly appreciated.
+
