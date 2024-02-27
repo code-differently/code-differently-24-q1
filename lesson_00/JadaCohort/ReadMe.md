@@ -37,7 +37,7 @@ If I don’t respond, I'm ignoring you.. **LOL JK**, Try again during my work ho
 
 - **Anime:** I'm a big anime enthusiast! Whether it's action-packed shonen series or heartwarming slice-of-life stories, I enjoy immersing myself in the captivating worlds of anime.
 
-![Alt text](image-5.png)
+![anime](anime.jpeg)
 
 Feel free to reach out if you share any of these interests or if you have any recommendations for must-visit travel destinations or top-notch VR games to try out!
 
