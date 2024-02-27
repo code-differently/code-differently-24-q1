@@ -20,7 +20,6 @@ I am a morning person, whether it is working, studying, exercising, or doing an 
 
 Regardless of my schedule, if somebody reaches out to me with a reasonable inquiry. I will undoubtedly help them with a sense of urgency. I am always available to help others. 
 
- 
 
 ## Best Way to Communicate with Me 
 
@@ -28,21 +27,29 @@ It really depends. If it is about a critical part of a project, information abou
 
 However, in the practical sense, Microsoft Teams is a great tool to stay connected easily. I can instantly send and respond to messages without the formality and time-consuming effort of emails.  
 
- 
+![duck dancing](https://media.tenor.com/XclFYuGpS5UAAAAM/dancing-duck.gif)
+
 
 ## How Do I Give Feedback 
 
 Preferably in person; if not, through Zoom. I firmly believe that feedback is most effective when conveyed through an active conversation. This approach allows room for clarification in case of misunderstandings and serves to broaden the conversation, facilitating the development of a growth-oriented plan. 
 
- 
 
 ## Goals and Interests 
 
-I have always been intrigued by the future—where our society is heading, the wellbeing of our planet’s ecosystem, and space. I think technology will undeniably play a big role in the development of the human race. One of my goals is to have informed opinions on these topics, share my vision, and show leadership.  
+I have always been intrigued by the future—where our society is heading, the wellbeing of our planet’s ecosystem, and space. I think technology will undeniably play a big role in the development of the human race. One of my goals is to have informed opinions on these topics, share my vision, and show leadership. While this may seem open-ended, here are some things I will do to quantify my goals:
 
-While this may seem open-ended, in quantifiable terms, completing this software development program will represent a significant milestone, marking the beginning of my career in technology. 
+1. Completing this software development program will represent a significant milestone, marking the beginning of my career in technology 
+
+1. Applying for an entry job as a software developer (Or as I call it, "software engineer") and start developing my career.
+
+1. Continuing my education in College to earn a bachelor's degree in Computer Science.
 
 
-![duck dancing](https://media.tenor.com/XclFYuGpS5UAAAAM/dancing-duck.gif)
+
+
+
+
+
 
 
