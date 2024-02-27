@@ -1,11 +1,3 @@
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 20px;
-    background: linear-gradient(135deg, #FFA500, #007BFF);
-    color: #fff;
-    padding: 20px;
-  }
-  
   h1, h2, h3 {
     color: #fff;
   }

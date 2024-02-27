@@ -1,12 +1,5 @@
 # Personal README - [Aaron Santiago]
 
-<style>
-  body {
-    background: linear-gradient(135deg, #FFA500, #007BFF);
-    color: #fff;
-  }
-</style>
-
 ## Introduction
 Hey there! I'm Aaron Santiago, and this is my personal README. Whether you're a colleague, collaborator, or just a curious soul, welcome! This document is a glimpse into what makes working with me a breeze. So, let's dive in!
 
