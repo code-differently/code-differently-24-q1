@@ -30,6 +30,7 @@ As a child I've always been interested in technology. From video games to comput
 
 Beyond gaming, my engagement with technology extends to diverse media forms, as I explore the latest innovations in digital entertainment, from virtual reality experiences to cutting-edge streaming platforms. However, my commitment to technology doesn't stop at consumption; it flourishes in the hands-on realm of building and understanding computer hardware and software. The thrill of assembling components, troubleshooting, and continually expanding my knowledge in this ever-evolving field fuels my drive.
 
+
 ## My Favorite Things
 
 
@@ -45,6 +46,13 @@ Beyond gaming, my engagement with technology extends to diverse media forms, as 
 
 
 In short, my general life philosophy is live and let live. I am a fairly individualistic person, and I kinda just wanna do my own thing and vibe out. Very laid back and chill to talk to. However, I'm very organized and goal-oriented. If I'm not getting things done or learning something, I feel like I wasted the day. But I also make time for fun and leisure. I'm a bit reserved in nature, but once you get to know me, I can say and do some pretty crazy things.
+
+## My Communication Style 
+
+
+
+When in the working environment, engaging effectively with coworkers is a two-way street. When coworkers engage with me, some of the best actions and communication styles you can adopt include direct communication, being respectful, displaying a positive attitude, and having a team-oriented mindset. Possessing these behaviors will improve communication with me in the workplace. 
+
 
 ## Goals for the year
 
