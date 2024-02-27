@@ -14,11 +14,11 @@
 - Warframe
 > [<img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Warframe_Cover_Art.png" alt="Warframe Cover Art" width="200" hight="300"/>](https://en.wikipedia.org/wiki/Warframe)
 - Honaki Star Rail
-> [<img src="Pictures/HonkaiStarrail.png" alt="Honkai Starrail Cover Art" width="200" hight="300"/>](https://en.wikipedia.org/wiki/Honkai:_Star_Rail)
+> [<img src="https://upload.wikimedia.org/wikipedia/en/b/b1/Honkai-Star-Rail.png" alt="Honkai Starrail Cover Art" width="200" hight="300"/>](https://en.wikipedia.org/wiki/Honkai:_Star_Rail)
 - and all the Soulsborne games(my favorite of them all is Bloodborne).
 > [<img src="Pictures/NVmnBXze9ElHzU6SmykrJLIV.jpeg" alt="Bloodborne Cover Art" width="200" hight="300"/>](https://en.wikipedia.org/wiki/Bloodborne)
 - Some of the other things that I like is voice acting (I am just starting out). Another thing that I really like are cats(if you couldn't already tell)
-> <img src="Pictures/happy-cat-happy-happy-cat.gif" alt="Happy Cat" width="200" hight="300"/> <img src="Pictures/happy-cat-happy-happy-cat.gif" alt="Happy Cat" width="200" hight="300"/> <img src="Pictures/cat-cat-meme.gif" alt="Sus Cat" width="200" hight="300"/> <img src="Pictures/happy-cat-happy-happy-cat.gif" alt="Happy Cat" width="200" hight="300"/> <img src="Pictures/happy-cat-happy-happy-cat.gif" alt="Happy Cat" width="200" hight="300"/> 
+> <img src="https://aboutmoib.netlify.app/Pictures/happy-cat-happy-happy-cat.gif" alt="Happy Cat" width="200" hight="300"/> <img src="Pictures/happy-cat-happy-happy-cat.gif" alt="Happy Cat" width="200" hight="300"/> <img src="Pictures/cat-cat-meme.gif" alt="Sus Cat" width="200" hight="300"/> <img src="Pictures/happy-cat-happy-happy-cat.gif" alt="Happy Cat" width="200" hight="300"/> <img src="Pictures/happy-cat-happy-happy-cat.gif" alt="Happy Cat" width="200" hight="300"/> 
 # **Extra Facts**
 - I’m currently learning on how to become a Software Engineer.
 - Pronouns: He/him
