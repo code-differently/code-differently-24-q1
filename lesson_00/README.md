@@ -1,22 +1,20 @@
 # Lesson 00
 
-## What can you find me doing? ⭐
-I’m a visual artist and a creative concepts director and producer, a visionary who thrives on turning ideas into reality. Apart from creating beautiful nail sculptures and mastering the art of nail design, I've even ventured into the world of publishing with my own photo book. I also find joy in the simple things, like sitting down to reflect and letting my thoughts wander. Whenever I tackle a project, my motto is to do it 10 times better than before—I thrive on continuous improvement. I love learning and discovering new things every day. I believe in soaking up every bit of knowledge and enjoying every moment. I'm all about challenges, be it in my work or personal growth. The beauty of collaboration and forming connections organically is what keeps my creative juices flowing. 
+## Homework
 
-## My Work Hours 💻
-I tend to favor mornings. I like to get my day started early. 
+1. Read CODE chpts 6, 9–10.
+1. Create a personal README.
+1. Submit your README via a pull request (PR).
 
-## Things I Enjoy 💌
-A lover of self-care rituals—indulging in skincare, haircare, and nails. Thriving on the satisfaction of meticulous projects like intricate nail designs, hairstyling, and sewing. Embracing the warmth of summer, reveling in the joy of research, and finding solace in nature. Balancing everything while spending quality time with family and friends. 
+## Personal README
 
-## One of My Goals 🌐
-This year, my goal is to travel abroad, and one destination that I have in mind is St. Lucia. Exploring new countries has always intrigued me, and I'm particularly excited about the prospect of visiting the beautiful landscapes and vibrant culture of St. Lucia.
+A personal README is a way to teach others how to best work with you. It is useful for expressing your learning style and personal preferences, likes and dislikes.
 
+For this exercise, you with use the `MARKDOWN` language (the language used to author this very README) to create your own personal version. Your version should incorporate __at least one picture, one list, appropriate headings, and be at least 300 words__.
 
-## Favorite Book Genres ⭐
-A passionate reader, I explore diverse genres, from science fiction and Afro-futurism to mystery and period pieces. My reading journey is a continuous exploration. Currently immersed in Octavia Butler's "Lilith's Brood."
+For inspiration, feel free to check out the examples at [Kaeti's repo][kaeti-repo] or do your own thing. Have fun!
 
-![My Photo](assets/Photo1.png)
+[kaeti-repo]: https://github.com/kaeti/personal-readme
 
 ## Submitting your assignment
 
