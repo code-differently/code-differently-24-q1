@@ -22,7 +22,7 @@ My goal is to successfully complete this program and secure a fulfilling career 
 ## Family and Pets
  In my household it is just my wife and our cat name Nori
 
-![alt text](../IMG_0786.jpg)
+![Image Description](https://github.com/RandyCastr0/pics/raw/main/IMG_0786.jpg)
 
 
 ## What I like to do in my free time?
