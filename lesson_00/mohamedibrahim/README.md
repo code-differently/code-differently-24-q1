@@ -12,7 +12,7 @@
 - Destiny 2
 > [<img src="https://upload.wikimedia.org/wikipedia/en/0/05/Destiny_2_%28artwork%29.jpg" alt="Destiny 2 cover art" width="200" hight="300"/>](https://en.wikipedia.org/wiki/Destiny_2)
 - Warframe
-> [<img src="Pictures/Warframe_Cover_Art.png" alt="Warframe Cover Art" width="200" hight="300"/>](https://en.wikipedia.org/wiki/Warframe)
+> [<img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Warframe_Cover_Art.png" alt="Warframe Cover Art" width="200" hight="300"/>](https://en.wikipedia.org/wiki/Warframe)
 - Honaki Star Rail
 > [<img src="Pictures/HonkaiStarrail.png" alt="Honkai Starrail Cover Art" width="200" hight="300"/>](https://en.wikipedia.org/wiki/Honkai:_Star_Rail)
 - and all the Soulsborne games(my favorite of them all is Bloodborne).
