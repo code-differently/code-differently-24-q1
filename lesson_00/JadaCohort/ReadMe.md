@@ -30,14 +30,14 @@ If I don’t respond, I'm ignoring you.. **LOL JK**, Try again during my work ho
 
 - **Virtual Reality Gaming:** I'm a huge fan of VR gaming! Whether it's exploring immersive worlds or battling foes in virtual reality, I love diving into the exciting realm of mixed reality gaming.
 
-![Vr](Assests/VR.jpeg)
+![Vr](https://www.technology-innovators.com/wp-content/uploads/2023/05/Virtual-Reality-Gaming-The-Evolution-of-Immersive-Entertainment-min.jpg)
 
 - **Travel:** Exploring new places and experiencing different cultures is a true joy for me. From backpacking adventures to city escapes, I'm always eager to embark on new travel adventures.
 
 
 - **Anime:** I'm a big anime enthusiast! Whether it's action-packed shonen series or heartwarming slice-of-life stories, I enjoy immersing myself in the captivating worlds of anime.
 
-![anime](Assets/anime.jpeg)
+![anime](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6cc57686-5c3b-4158-b341-1ca16d48c82d/dcj8ncn-c33edf0f-eb4d-41e7-b291-276d5b047e52.jpg/v1/fill/w_1024,h_576,q_75,strp/anime_character_collage_by_diamondj3474_dcj8ncn-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvNmNjNTc2ODYtNWMzYi00MTU4LWIzNDEtMWNhMTZkNDhjODJkXC9kY2o4bmNuLWMzM2VkZjBmLWViNGQtNDFlNy1iMjkxLTI3NmQ1YjA0N2U1Mi5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.2IO4ZLwR5faiZZ0U7OCB_WHmLmVh2kcObgHCv4275uEs)
 
 Feel free to reach out if you share any of these interests or if you have any recommendations for must-visit travel destinations or top-notch VR games to try out!
 
