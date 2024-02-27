@@ -21,7 +21,7 @@ This year, my goal is to travel abroad, and one destination that I have in mind 
 ## Favorite Book Genres ⭐
 A passionate reader, I explore diverse genres, from science fiction and Afro-futurism to mystery and period pieces. My reading journey is a continuous exploration. Currently immersed in Octavia Butler's "Lilith's Brood."
 
-![My Photo](lesson_00/Nataya/assets/Photo1.png)
+![My Photo](natayaprice/Photo1.png)
 
 *NatayaP/NatayaP* is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
