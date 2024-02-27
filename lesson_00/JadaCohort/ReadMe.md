@@ -30,7 +30,7 @@ If I don’t respond, I'm ignoring you.. **LOL JK**, Try again during my work ho
 
 - **Virtual Reality Gaming:** I'm a huge fan of VR gaming! Whether it's exploring immersive worlds or battling foes in virtual reality, I love diving into the exciting realm of mixed reality gaming.
 
-![Vr](Assest/)
+![Vr](Assest/Vr.jpeg)
 
 - **Travel:** Exploring new places and experiencing different cultures is a true joy for me. From backpacking adventures to city escapes, I'm always eager to embark on new travel adventures.
 
