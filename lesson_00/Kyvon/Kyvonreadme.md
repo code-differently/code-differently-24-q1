@@ -28,4 +28,4 @@ I am a visual and hands-on learner meaning I'm better at learning when I'm shown
 6. Chicken Rasta Pasta
 
 #### How you can reach me or see more of my work
-You can reach me primarily by email or linkedIn @KyvonThompson and Rosevisualsss52@gmail.com and you can see more of my work on Instagram @rosevisualsss
+You can reach me primarily by email or LinkedIn @KyvonThompson and Rosevisualsss52@gmail.com and you can see more of my work on Instagram @rosevisualsss
