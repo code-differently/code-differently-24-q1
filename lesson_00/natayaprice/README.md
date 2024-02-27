@@ -7,11 +7,16 @@ I’m a visual artist and a creative concepts director and producer, a visionary
 I tend to favor mornings. I like to get my day started early. 
 
 ## Things I Enjoy 💌
-A lover of self-care rituals—indulging in skincare, haircare, and nails. Thriving on the satisfaction of meticulous projects like intricate nail designs, hairstyling, and sewing. Embracing the warmth of summer, reveling in the joy of research, and finding solace in nature. Balancing everything while spending quality time with family and friends. 
+* Self-care rituals—indulging in skincare, haircare, and nails. 
+* Working on meticulous projects like intricate nail designs, hairstyling, and sewing 
+* Summer time/warm weather
+* Reveling in the joy of research 
+* Being out in nature 
+* Spending quality time with family and friends 
 
 ## One of My Goals 🌐
-This year, my goal is to travel abroad, and one destination that I have in mind is St. Lucia. Exploring new countries has always intrigued me, and I'm particularly excited about the prospect of visiting the beautiful landscapes and vibrant culture of St. Lucia.
 
+This year, my goal is to travel abroad, and one destination that I have in mind is St. Lucia. Exploring new countries has always intrigued me, and I'm particularly excited about the prospect of visiting the beautiful landscapes and vibrant culture of St. Lucia.
 
 ## Favorite Book Genres ⭐
 A passionate reader, I explore diverse genres, from science fiction and Afro-futurism to mystery and period pieces. My reading journey is a continuous exploration. Currently immersed in Octavia Butler's "Lilith's Brood."
@@ -20,3 +25,7 @@ A passionate reader, I explore diverse genres, from science fiction and Afro-fut
 
 *NatayaP/NatayaP* is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
+
+
+
+
