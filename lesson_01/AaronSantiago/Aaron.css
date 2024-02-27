@@ -1,14 +1,13 @@
-  h1, h2, h3 {
-    color: #fff;
-  }
-  
-  ul, p {
-    color: #fff;
-  }
-  
-  img {
-    max-width: 50%;
-    height: auto;
-    border-radius: 8px;
-  }
-  
+h1, h2, h3 {
+  color: black; 
+}
+
+ul, p {
+  color: black; 
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 8px;
+}
