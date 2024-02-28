@@ -39,7 +39,7 @@ Beyond gaming, my engagement with technology extends to diverse media forms, as 
 - Favorite Movies: Interstellar or Wreck it Ralph
 - Favorite Cereals: Fruit pebbles, Honey Nut Cheerios, or Cinnamon Toast Crunch
 
-<img src="img/CoolTerrariaPics.jpeg" alt="Cool Terraria Pics" width="200" height="200">
+<img src="https://pbs.twimg.com/media/D5BYO_4XsAELYFO?format=jpg&name=medium" alt="Cool Terraria Pics" width="200" height="200">
 
 ## My Attitude towards life
 
