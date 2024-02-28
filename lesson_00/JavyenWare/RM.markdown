@@ -20,7 +20,7 @@ My name is Javyen Ware but you can just call me Javy for short. Overall I'm a pr
 - I have been to the Bahamas
 - I was born in Delaware
 
-<img src="img/bahamasPic.webp" alt="Bahamas Picture" width="200" height="200">
+<img src="https://raw.githubusercontent.com/javyW/code-differently-24-q1/jware/lesson_00/JavyenWare/img/bahamasPic.webp" width="200" height="200">
 
 ## My technology journey
 
