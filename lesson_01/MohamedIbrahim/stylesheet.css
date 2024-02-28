@@ -1,0 +1,34 @@
+body {
+    background-color: rgb(14, 17, 22);
+    font-family: sans-serif;
+    align-self: center;
+    color: rgb(231, 237, 242);
+    padding-left: 10%;
+    padding-right: 10%;
+} 
+li{
+    text-indent: -23px;
+    padding-left: 23px;
+    margin-left: 10px;
+    padding-top: 5px;
+    line-height: 25px;
+
+}
+.image{
+    border-left: 4px solid rgb(49, 54, 60);
+    padding-left: 20px;
+    align-items: left;
+}
+p{
+    font-size: 20px;
+}
+h{
+    font-size: 30px;
+    font-weight: bold;
+    border-left: 10;
+
+}
+.line{
+    padding-top: 10px;
+    border-bottom: 2px solid rgb(24, 28, 33);
+}
