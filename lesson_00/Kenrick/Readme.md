@@ -1,4 +1,4 @@
-https://github.com/code-differently/code-differently-24-q1.git## Introduction About Kenrick Sutherland 🖤
+Introduction About Kenrick Sutherland 🖤
 
 Hello everyone, my name is Kenrick Sutherland, and I'm delighted to have this opportunity to share a bit about myself with you. As a day person, I thrive in the vibrant energy of the morning sun, finding inspiration and motivation in the early hours. From the moment dawn breaks, I embrace each new day with enthusiasm and purpose, eager to tackle whatever challenges and adventures lie ahead. Whether it's diving into new projects, connecting with others, or simply relishing in the beauty of the world around me, I approach each day with a sense of optimism and drive. I look forward to the journey ahead and the chance to make meaningful contributions along the way.
 
