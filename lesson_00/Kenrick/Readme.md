@@ -1,6 +1,6 @@
 ## Introduction About Kenrick Sutherland 🖤
 
-Hello everyone, my name is Kenricka Sutherland, and I'm delighted to have this opportunity to share a bit about myself with you. As a day person, I thrive in the vibrant energy of the morning sun, finding inspiration and motivation in the early hours. From the moment dawn breaks, I embrace each new day with enthusiasm and purpose, eager to tackle whatever challenges and adventures lie ahead. Whether it's diving into new projects, connecting with others, or simply relishing in the beauty of the world around me, I approach each day with a sense of optimism and drive. I look forward to the journey ahead and the chance to make meaningful contributions along the way.
+Hello everyone, my name is Kenrick Sutherland, and I'm delighted to have this opportunity to share a bit about myself with you. As a day person, I thrive in the vibrant energy of the morning sun, finding inspiration and motivation in the early hours. From the moment dawn breaks, I embrace each new day with enthusiasm and purpose, eager to tackle whatever challenges and adventures lie ahead. Whether it's diving into new projects, connecting with others, or simply relishing in the beauty of the world around me, I approach each day with a sense of optimism and drive. I look forward to the journey ahead and the chance to make meaningful contributions along the way.
 
 ## My Hobbies 🎮
 
@@ -39,7 +39,7 @@ I've been to Aruba, Curacao, and the Dominican Republic, enjoying their awesome 
 - "God Puts you Through Troubled waters that he knows you're strong enough to swim through but your enemies cannot"
 
 ## Contact and Communication Preferences.
-For efficient communication, please feel free to reach out to me via email at my  I typically respond to emails within 24 hours during regular work hours, which are Monday through Friday, 9:00 AM to 5:00 PM, Eastern Standard Time. For urgent matters or time-sensitive issues, you can also reach me by phone at 302-592-8064. Thank you for respecting these preferences, as they help maintain effective communication channels.
+For efficient communication, please feel free to reach out to me via email at my  I typically respond to emails within 24 hours during regular work hours, which are Monday through Friday, 9:00 AM to 5:00 PM, Eastern Standard Time. For urgent matters or time-sensitive issues, you can also reach me by phone. Thank you for respecting these preferences, as they help maintain effective communication channels.
 
 ## Thanks for your Time ⏰
 
