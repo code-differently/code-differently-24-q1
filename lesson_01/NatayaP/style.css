@@ -1,0 +1,25 @@
+*{
+    font-family: arial, sans-serif;
+    line-height: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+h1, h2, h3 {
+color: #333;
+border-bottom: 1px solid lightgrey;
+padding-bottom: 14px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+li {
+margin-bottom: 0px;
+padding: 0;
+}
+ul {
+    margin: 0;
+    padding-left: 60px;
+}
