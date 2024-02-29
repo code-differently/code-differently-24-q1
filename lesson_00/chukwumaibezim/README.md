@@ -17,6 +17,7 @@ Traveling is another passion of mine. Exploring new places, experiencing differe
 
 ## Dreams and Aspirations
 While my childhood dream of becoming a lawyer ignited a passion for justice and advocacy, my career journey has led me down an exciting path towards the world of technology. Transitioning from the legal realm, I found myself drawn to the dynamic field of software engineering.
+
 ![Suits Harvey](https://sharpmagazine.com/wp-content/uploads/2017/06/suits-video-feat-0617.jpg)
 
 Exploring the realms of coding, I have dabbled in various programming languages and frameworks, including Java, JavaScript, and Spring Boot. The challenge of problem-solving, the thrill of creating innovative solutions, and the ever-evolving nature of technology have captivated my interest and fueled my aspirations in this domain.
