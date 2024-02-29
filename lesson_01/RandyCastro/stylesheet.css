@@ -3,7 +3,7 @@
 /* styles.css */
 
 h1 {
-  border-bottom: 1px solid black; /* Apply a 1px solid black border to the bottom of the h1 element */
+  border-bottom: 1px solid red; /* Apply a 1px solid black border to the bottom of the h1 element */
   padding-bottom: 10px; /* Add some padding to create space between the text and the border */
 }
 
