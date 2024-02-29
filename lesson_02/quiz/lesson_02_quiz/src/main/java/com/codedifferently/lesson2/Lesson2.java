@@ -38,7 +38,9 @@ public class Lesson2 implements CommandLineRunner {
         makeQuestion5(),
         makeQuestion6(),
         makeQuestion7(),
-        makeQuestion8());
+        makeQuestion8(),
+        makeQuestion9(),
+        makeQuestion10());
   }
 
   private static QuizQuestion makeQuestion0() {
@@ -132,5 +134,29 @@ public class Lesson2 implements CommandLineRunner {
         8,
         "What is binary number 0b01100101 in decimal?",
         "0"); // Specify the correct number (no leading zeros).
+  }
+
+  private static QuizQuestion makeQuestion9() {
+    return new MultipleChoiceQuizQuestion(
+        9,
+        "What git command can you use to create a new branch?",
+        Map.of(
+            AnswerChoice.A, "git checkout <branch-name>",
+            AnswerChoice.B, "git pull <branch-name>",
+            AnswerChoice.C, "git checkout -b <branch-name>",
+            AnswerChoice.D, "git push <branch-name>"),
+        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
+  }
+
+  private static QuizQuestion makeQuestion10() {
+    return new MultipleChoiceQuizQuestion(
+        10,
+        "What is the difference between a fork and a branch in git?",
+        Map.of(
+            AnswerChoice.A, "You cannot push changes to a fork",
+            AnswerChoice.B, "There is no difference since everything is a branch to git",
+            AnswerChoice.C, "A fork requires an upstream remote whereas a branch does not",
+            AnswerChoice.D, "You can only make pull requests using a branch"),
+        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
   }
 }
