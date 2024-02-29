@@ -1,5 +1,4 @@
 {
     "java.configuration.updateBuildConfiguration": "automatic",
-    "java.compile.nullAnalysis.mode": "automatic",
-    "livePreview.defaultPreviewPath": "/lesson_01/AaronSantiago/Aaron.html"
+    "java.compile.nullAnalysis.mode": "automatic"
 }
