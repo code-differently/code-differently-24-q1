@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Anthony is a software engineer with over 20 years of industry experience and a former foster kid from Compton. He has worked for companies including City National Bank, Slalom Consulting, and most recently, Google. Currently the full-time founder of Morgan Latimer Consulting, Anthony is dedicated to providing the next generation of technologists with tools that will help them thrive in their career.
+Anthony is a software engineer with over 22 years of industry experience and a former foster kid from Compton. He has worked for companies including City National Bank, Slalom Consulting, and most recently, Google. Currently the full-time founder of Morgan Latimer Consulting, Anthony is dedicated to providing the next generation of technologists with tools that will help them thrive in their career.
 
 ## Prerequisites
 
