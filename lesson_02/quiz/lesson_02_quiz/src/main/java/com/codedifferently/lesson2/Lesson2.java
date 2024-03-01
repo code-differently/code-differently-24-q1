@@ -145,7 +145,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "git pull <branch-name>",
             AnswerChoice.C, "git checkout -b <branch-name>",
             AnswerChoice.D, "git push <branch-name>"),
-        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.C); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion10() {
@@ -157,6 +157,6 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "There is no difference since everything is a branch to git",
             AnswerChoice.C, "A fork requires an upstream remote whereas a branch does not",
             AnswerChoice.D, "You can only make pull requests using a branch"),
-        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.A); // Replace `UNANSWERED` with the correct answer.
   }
 }
