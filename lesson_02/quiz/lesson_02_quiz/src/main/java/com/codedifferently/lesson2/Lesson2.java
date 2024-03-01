@@ -3,7 +3,7 @@ package com.codedifferently.lesson2;
 import com.codedifferently.instructional.quiz.AnswerChoice;
 import com.codedifferently.instructional.quiz.MultipleChoiceQuizQuestion;
 import com.codedifferently.instructional.quiz.QuizPrinter;
-import com.codedifferently.instructional.quiz.QuizQuestion;  
+import com.codedifferently.instructional.quiz.QuizQuestion;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -157,6 +157,6 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "There is no difference since everything is a branch to git",
             AnswerChoice.C, "A fork requires an upstream remote whereas a branch does not",
             AnswerChoice.D, "You can only make pull requests using a branch"),
-        AnswerChoice.A); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.B); // Replace `UNANSWERED` with the correct answer.
   }
 }
