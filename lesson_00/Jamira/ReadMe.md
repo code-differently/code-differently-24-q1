@@ -1,4 +1,4 @@
-# Jamira_README
+# Jamira's README
 
 ## ✨Welcome to a snapshot of Jamira's World✨ 
  I consider myself a well balanced individual that enjoys working hard and unwinding on a carribean island. Traveling is one of my favorite hobbies along with rock climbing and excersing. I'm a firm believer in the importance of family bonds and cherish every moment spent with my loved ones. Whether it's cozy movie nights at home or exciting outdoor adventures, family time is always at the top of my priority list.
