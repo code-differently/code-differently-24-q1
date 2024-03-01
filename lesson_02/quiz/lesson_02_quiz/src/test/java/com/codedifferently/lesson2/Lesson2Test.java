@@ -30,7 +30,7 @@ class Lesson2Test {
 
   private SoftAssertions softly;
 
-  private final int EXPECTED_NUMBER_OF_QUESTIONS = 9;
+  private final int EXPECTED_NUMBER_OF_QUESTIONS = 11;
 
   @BeforeEach
   void setUp() {

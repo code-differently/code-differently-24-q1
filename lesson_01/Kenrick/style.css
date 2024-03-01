@@ -1,0 +1,9 @@
+*{
+    font-family: sans-serif;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+.Line{
+    border-bottom: 1px solid lightgrey;
+}
