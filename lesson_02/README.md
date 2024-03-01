@@ -22,6 +22,6 @@ For this assignment, you will complete a quiz by modifying a Java application. W
 1. Once all tests pass, submit your work by creating a pull request (PR).
 
 
-[lesson-2-quiz]: quiz/lesson_02_quiz/src/main/java/com/codedifferently/lesson_02_quiz/Lesson2.java
-[lesson-2-dir]: quiz/lesson_02_quiz/src/main/java/com/codedifferently/lesson_02_quiz/
-[test-report]: quiz/lesson_02_quiz/src/test/java/com/codedifferently/lesson_02_quiz/Lesson2Test.java
+[lesson-2-quiz]: quiz/lesson_02_quiz/src/main/java/com/codedifferently/lesson2/Lesson2.java
+[lesson-2-dir]: quiz/lesson_02_quiz/src/main/java/com/codedifferently/lesson2/
+[test-report]: quiz/lesson_02_quiz/build/reports/tests/test/index.html
