@@ -20,11 +20,9 @@ For this assignment, you will complete a quiz by modifying a Java application. W
 1. When ready to test, run the following command in the `quiz` sub-directory using the terminal:
 
 ```bash
-./gradlew test -i
+./gradlew test
 ```
-
-6. If you encounter test failures, open the [test report][test-report] for more information on which questions need to be fixed.
-7. Once all tests pass, submit your work by creating a pull request (PR).
+6. Once all tests pass, submit your work by creating a pull request (PR).
 
 
 [dev-containers-link]: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
