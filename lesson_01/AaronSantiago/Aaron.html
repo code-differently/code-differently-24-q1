@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal README - Aaron Santiago</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="Aaron.css"> 
+  <style>
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      background-color: #6272a4; 
+      color: white; 
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    
+    hr {
+      border: 0;
+      height: 1px;
+      background-color: #ccc; 
+      margin-top: -1px; 
+    }
+  </style>
+</head>
+<body data-theme="dark"> 
+
+  <button id="theme-toggle" class="theme-toggle">Light Mode</button>
+
+  <h1 class="animate__animated animate__fadeIn">Personal README - [Aaron Santiago]</h1>
+  <hr>
+
+  <h2 class="animate__animated animate__fadeIn">Introduction</h2>
+  <hr>
+  <p class="animate__animated animate__fadeIn">Hey there! I'm Aaron Santiago, and this is my personal README. Whether you're a colleague, collaborator, or just a curious soul, welcome! This document is a glimpse into what makes working with me a breeze. So, let's dive in!</p>
+
+  <h2 class="animate__animated animate__fadeIn">About Me</h2>
+  <hr>
+  <ul class="animate__animated animate__fadeIn">
+    <li><strong>Background:</strong> I grew up in the charming state of Delaware, surrounded by technology from a young age. Computers have been my companions since childhood, fueling my passion for coding and all things tech-related.</li>
+    <li><strong>Hobbies:</strong> When I'm not immersed in lines of code, you'll find me indulging in my two great loves - gaming and cooking. From conquering virtual worlds to creating culinary delights, I find joy in these diverse yet equally rewarding pursuits.</li>
+  </ul>
+
+  <h2 class="animate__animated animate__fadeIn">Communication Preferences</h2>
+  <hr>
+  <ul class="animate__animated animate__fadeIn">
+    <li><strong>Learning Style:</strong> I thrive on a hands-on approach when tackling new subjects. Practical engagement and experimentation are my go-to methods for absorbing knowledge.</li>
+    <li><strong>Feedback:</strong> I appreciate feedback that is direct and constructive. If there's something I can improve or do better, a phone call is my preferred mode of communication. It allows for a more nuanced and immediate exchange. However, I'm open to email discussions as well.</li>
+  </ul>
+
+  <h2 class="animate__animated animate__fadeIn">Spare Time Rituals</h2>
+  <hr>
+  <p class="animate__animated animate__fadeIn">In my precious moments outside of work, I cherish:</p>
+  <ul class="animate__animated animate__fadeIn">
+    <li><strong>Gaming Escapades:</strong> Whether it's exploring fantastical realms or teaming up for multiplayer adventures, gaming is my ultimate unwind.</li>
+    <li><strong>Culinary Ventures:</strong> The kitchen is my canvas. I enjoy experimenting with flavors and crafting delicious meals. Share your favorite recipes, and we'll swap culinary secrets!</li>
+    <li><strong>Friendship Conversations:</strong> Nothing beats a good conversation with friends. It could be about the latest gaming strategies, cooking tips, or just life in general. Feel free to join in!</li>
+  </ul>
+
+  <img class="animate__animated animate__fadeIn" src="https://remote-tools-images.s3.amazonaws.com/programmer-memes/11.jpg" alt="Programmer Meme">
+
+  <p class="animate__animated animate__fadeIn">This is just a glimpse into who I am. I'm excited to collaborate, learn, and create together. If you ever want to chat about coding, technology, gaming, or share a new recipe, my virtual door is always open!</p>
+
+  <script>
+    const toggleButton = document.getElementById('theme-toggle');
+    let currentTheme = document.body.getAttribute('data-theme'); 
+
+    toggleButton.textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+
+    toggleButton.addEventListener('click', function() {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', currentTheme); 
+      localStorage.setItem('theme', currentTheme); 
+      toggleButton.textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode'; 
+    });
+
+    document.querySelectorAll('.animate__animated').forEach((element, index) => {
+      element.style.animationDelay = `${index * 0.3}s`;
+    });
+  </script>
+</body>
+</html>

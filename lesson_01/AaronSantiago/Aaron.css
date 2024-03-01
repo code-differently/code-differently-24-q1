@@ -1,0 +1,41 @@
+:root {
+  --background-color: #0A192F; 
+  --text-color: #FFFFFF; 
+  --link-color: #FFA500; 
+}
+
+[data-theme="light"] {
+  --background-color: #FFFFFF; 
+  --text-color: #000000; 
+  --link-color: #0000FF; 
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+a {
+  color: var(--link-color);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+h1, h2, h3, ul, p, img {
+  color: var(--text-color); 
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
