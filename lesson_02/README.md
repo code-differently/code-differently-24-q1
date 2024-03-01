@@ -5,6 +5,10 @@
 1. Read CODE 26-27
 1. Complete Lesson 02 quiz
 
+## Prerequisites
+
+To complete this assignment, you must have **Docker** and **VS Code** with the [**Dev Containers**][dev-containers-link] extension installed.
+
 ## Lesson 02 Quiz Instructions
 
 For this assignment, you will complete a quiz by modifying a Java application. Within the quiz project, there are tests that you will need to make pass in order to complete the assignment. Here are the instructions for completing the assignment:
@@ -23,6 +27,7 @@ For this assignment, you will complete a quiz by modifying a Java application. W
 7. Once all tests pass, submit your work by creating a pull request (PR).
 
 
+[dev-containers-link]: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
 [lesson-2-quiz]: quiz/lesson_02_quiz/src/main/java/com/codedifferently/lesson2/Lesson2.java
 [lesson-2-dir]: quiz/lesson_02_quiz/src/main/java/com/codedifferently/lesson2/
 [test-report]: quiz/lesson_02_quiz/build/reports/tests/test/index.html
