@@ -1,8 +1,10 @@
-name: Check Java Build on Push
+name: Check Lesson2 Quiz on Pull Request
 
 on:
-  push:
+  pull_request:
     branches: [ "main" ]
+    paths:
+      - "lesson_02/quiz/**"
 
 jobs:
   build:
@@ -26,4 +28,5 @@ jobs:
 
     - name: Build with Gradle Wrapper
       working-directory: ./lesson_02/quiz
-      run: ./gradlew assemble
+      run: ./gradlew check
+

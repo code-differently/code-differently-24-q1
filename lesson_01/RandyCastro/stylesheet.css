@@ -1,0 +1,38 @@
+/* CSS code */
+
+/* styles.css */
+
+h1 {
+  border-bottom: 1px solid black; /* Apply a 1px solid black border to the bottom of the h1 element */
+  padding-bottom: 10px; /* Add some padding to create space between the text and the border */
+  body
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+
+
+
+h2 {
+  border-bottom: 1px solid black; 
+  padding-bottom: 10px solid black;
+}
+
+
+
+
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+}
+
+@media (max-width: 767px) {
+  .markdown-body {
+      padding: 15px;
+  }
+}
