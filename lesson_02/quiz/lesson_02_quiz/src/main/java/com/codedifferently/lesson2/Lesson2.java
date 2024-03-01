@@ -52,7 +52,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "The monitor",
             AnswerChoice.C, "The keyboard",
             AnswerChoice.D, "The mouse"),
-        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.A); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion1() {
