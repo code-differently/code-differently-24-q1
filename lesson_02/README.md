@@ -11,7 +11,7 @@ To complete this assignment, you must have **Docker** and **VS Code** with the [
 
 ## Lesson 02 Quiz Instructions
 
-For this assignment, you will complete a quiz by modifying a Java application. Within the quiz project, there are tests that you will need to make pass in order to complete the assignment. Here are the instructions for completing the assignment:
+For this assignment, you will complete a quiz by modifying a Java application. Within the quiz project, there are tests that you will need to make pass in order to submit your answers. Here are the instructions for completing the assignment:
 
 1. Make sure to sync your fork to pull in the latest changes.
 1. Open the project in **VS Code** and make sure to select `Reopen in Container` when prompted.
