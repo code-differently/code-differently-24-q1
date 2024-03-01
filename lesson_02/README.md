@@ -20,7 +20,7 @@ For this assignment, you will complete a quiz by modifying a Java application. W
 1. When ready to test, run the following command in the quiz directory using the terminal:
 
 ```bash
-./gradlew test
+./gradlew test -i
 ```
 
 6. If you encounter test failures, open the [test report][test-report] for more information on which questions need to be fixed.
