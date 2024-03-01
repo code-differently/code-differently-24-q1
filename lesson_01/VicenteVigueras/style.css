@@ -1,0 +1,61 @@
+
+
+body {
+    font-family: sans-serif; 
+    line-height: 1.6;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 45px;
+    background-color: #ffffff;  
+    color: #000000;  
+    margin-bottom: 16px
+  }
+
+
+
+  h1, h2 {
+    position: relative;
+
+  }
+
+
+/* underlines titles github style */
+  h1::after, h2::after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #e1e4e8;
+    margin-top: 0.3em;
+  }
+
+
+/* Adjust the margin between list items as needed */
+ol.custom-list li {
+    margin-bottom: 16px; 
+}
+
+
+/* Maintain the aspect ratio of the image */
+img#santiago_chile {
+    
+    max-width: 100%;
+    height: auto; 
+  }
+
+
+  
+/* Supposedly adjusts size for other devices such as smartphones/ipads */
+@media (max-width: 767px) {
+    .body {
+        padding: 15px;
+    }
+}
+
+
+/* Dark mode styles when user prefers dark mode */
+@media (prefers-color-scheme: dark) {
+body {
+  background-color: #333333;  /* Dark background color */
+  color: #ffffff;  /* Light text color */
+}
+}
