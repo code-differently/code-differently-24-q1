@@ -4,6 +4,7 @@ plugins {
     eclipse
     id("com.diffplug.spotless") version "6.25.0"
 	  id("org.springframework.boot") version "3.2.2"
+    id("com.adarshr.test-logger") version "4.0.0"
 }
 
 apply(plugin = "io.spring.dependency-management")
