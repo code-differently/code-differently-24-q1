@@ -3,7 +3,7 @@ package com.codedifferently.lesson2;
 import com.codedifferently.instructional.quiz.AnswerChoice;
 import com.codedifferently.instructional.quiz.MultipleChoiceQuizQuestion;
 import com.codedifferently.instructional.quiz.QuizPrinter;
-import com.codedifferently.instructional.quiz.QuizQuestion;
+import com.codedifferently.instructional.quiz.QuizQuestion;  
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -52,7 +52,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "The monitor",
             AnswerChoice.C, "The keyboard",
             AnswerChoice.D, "The mouse"),
-        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.A); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion1() {
@@ -64,7 +64,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "The keyboard",
             AnswerChoice.C, "The CPU",
             AnswerChoice.D, "RAM"),
-        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer
+        AnswerChoice.C); // Replace `UNANSWERED` with the correct answer
   }
 
   private static QuizQuestion makeQuestion2() {
@@ -76,7 +76,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "The GPU",
             AnswerChoice.C, "RAM",
             AnswerChoice.D, "The motherboard"),
-        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.B); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion3() {
@@ -88,7 +88,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "The keyboard",
             AnswerChoice.C, "RAM",
             AnswerChoice.D, "The GPU"),
-        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.C); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion4() {
@@ -100,7 +100,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "Storage devices",
             AnswerChoice.C, "RAM",
             AnswerChoice.D, "CPU"),
-        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.B); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion5() {
@@ -112,28 +112,28 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "Storage",
             AnswerChoice.C, "RAM",
             AnswerChoice.D, "CPU"),
-        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.A); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion6() {
     return new QuizQuestion(
         6,
         "What is the decimal number 34 in binary?",
-        "0b00000000"); // Replace the correct digits in the answer.
+        "0b00100010"); // Replace the correct digits in the answer.
   }
 
   private static QuizQuestion makeQuestion7() {
     return new QuizQuestion(
         7,
         "What is the decimal number 34 in hex?",
-        "0x00"); // Replace the correct digits in the answer.
+        "0x22"); // Replace the correct digits in the answer.
   }
 
   private static QuizQuestion makeQuestion8() {
     return new QuizQuestion(
         8,
         "What is binary number 0b01100101 in decimal?",
-        "0"); // Specify the correct number (no leading zeros).
+        "101"); // Specify the correct number (no leading zeros).
   }
 
   private static QuizQuestion makeQuestion9() {
