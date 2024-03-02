@@ -5,6 +5,13 @@
 1. Read CC 2,4; SEG 1 
 1. Create three new quiz questions.
 
+## Important reminders
+
+* Make sure to sync your fork before creating a branch in order to pull in the latest changes.
+* Sync your branch often to avoid merge conflicts and execute `git pull` to bring the latest changes to your machine.
+* If your branch is too far behind or you run into too many issues, feel free to delete and re-create your repository. Make sure to review the lesson_01 README for instructions on how to create your fork and branch properly.
+* Remember, you should not reuse a branch you've used to submit a pull request. If you need to make changes, create a new branch and work from there after you've updated your fork to the latest.
+
 ## Creating new quiz questions
 
 In this assignment, you will modify a new project to include three quiz questions based on the content you've learned in this course so far. Feel free to choose any topic for your questions.
@@ -29,7 +36,6 @@ In this assignment, you will modify a new project to include three quiz question
 ```bash
 ./gradlew test -Dprofile=prod
 ```
-
 
 [quizzes-folder]: ./quiz/lesson_03_quiz/src/main/java/com/codedifferently/lesson3/quizzes/
 [quiz-folder]: ./quiz/
