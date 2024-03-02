@@ -4,6 +4,7 @@ on:
   pull_request:
     branches: [ "main" ]
     paths:
+      - "lib/**"
       - "lesson_02/quiz/**"
       - "lesson_03/quiz/**"
 
