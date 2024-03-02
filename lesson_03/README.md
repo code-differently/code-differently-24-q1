@@ -16,16 +16,22 @@ In this assignment, you will modify a new project to include three quiz question
     return "<your unique name goes here>";
   }
 ```
-3. Make at least two questions for your quiz.
+3. Make at least two questions for your quiz and _leave them unanswered_.
 4. To provide answers, you will need to update the [application.yaml][test-config-file] file in the test directory. You can copy the example in the file to get started, but you must provide your own answers. To generate an encrypted answer, use [bcrypt.online](https://bcrypt.online).
-5. Before attempting to submit your quiz, make sure to run the formatter on the code and run the tests to ensure that you've updated things correctly.
+5. Before attempting to submit your quiz, make sure to run the formatter on the code and run the tests to ensure that you've updated things correctly. These commands must be run from the [quiz][quiz-folder] sub-folder just like the previous assignment:
 ```bash
 ./gradlew spotlessApply
 ./gradlew check
 ```
 6. Once everything passes, submit a PR.
 
+**Note: If you want to check that you've encoded your answers correctly, you can update you quiz with the real answers and then run the tests using the command below. 
+```bash
+./gradlew test -Dprofile=prod
+```
+
 
 [quizzes-folder]: ./quiz/lesson_03_quiz/src/main/java/com/codedifferently/lesson3/quizzes/
+[quiz-folder]: ./quiz/
 [quiz-example]: ./quiz/lesson_03_quiz/src/main/java/com/codedifferently/lesson3/quizzes/AnthonyMaysQuiz.java
 [test-config-file]: ./quiz/lesson_03_quiz/src/test/resources/application.yaml
