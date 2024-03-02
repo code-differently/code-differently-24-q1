@@ -1,4 +1,4 @@
-# Lesson 04
+# Lesson 03
 
 ## Homework
 
@@ -18,6 +18,12 @@ In this assignment, you will modify a new project to include three quiz question
 ```
 3. Make at least two questions for your quiz.
 4. To provide answers, you will need to update the [application.yaml][test-config-file] file in the test directory. You can copy the example in the file to get started, but you must provide your own answers. To generate an encrypted answer, use [bcrypt.online](https://bcrypt.online).
+5. Before attempting to submit your quiz, make sure to run the formatter on the code and run the tests to ensure that you've updated things correctly.
+```bash
+./gradlew spotlessApply
+./gradlew check
+```
+6. Once everything passes, submit a PR.
 
 
 [quizzes-folder]: ./quiz/lesson_03_quiz/src/main/java/com/codedifferently/lesson3/quizzes/
