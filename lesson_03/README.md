@@ -9,7 +9,7 @@
 
 * Make sure to sync your fork before creating a branch in order to pull in the latest changes.
 * Sync your branch often to avoid merge conflicts and execute `git pull` to bring the latest changes to your machine.
-* If your branch is too far behind or you run into too many issues, feel free to delete and re-create your repository. Make sure to review the lesson_01 README for instructions on how to create your fork and branch properly.
+* If your branch is too far behind or you run into too many issues, feel free to delete and re-create your repository. Make sure to review the [lesson_00](/lesson_00/README.md) README for instructions on how to create your fork and branch properly.
 * Remember, you should not reuse a branch you've used to submit a pull request. If you need to make changes, create a new branch and work from there after you've updated your fork to the latest.
 
 ## Creating new quiz questions
