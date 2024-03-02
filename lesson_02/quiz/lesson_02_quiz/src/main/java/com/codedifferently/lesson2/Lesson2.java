@@ -52,7 +52,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "The monitor",
             AnswerChoice.C, "The keyboard",
             AnswerChoice.D, "The mouse"),
-        AnswerChoice. A); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.A); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion1() {
@@ -64,7 +64,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "The keyboard",
             AnswerChoice.C, "The CPU",
             AnswerChoice.D, "RAM"),
-        AnswerChoice. C); // Replace `UNANSWERED` with the correct answer
+        AnswerChoice.C); // Replace `UNANSWERED` with the correct answer
   }
 
   private static QuizQuestion makeQuestion2() {
@@ -76,7 +76,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "The GPU",
             AnswerChoice.C, "RAM",
             AnswerChoice.D, "The motherboard"),
-        AnswerChoice. B); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.B); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion3() {
@@ -88,7 +88,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "The keyboard",
             AnswerChoice.C, "RAM",
             AnswerChoice.D, "The GPU"),
-        AnswerChoice. C); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.C); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion4() {
@@ -100,7 +100,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "Storage devices",
             AnswerChoice.C, "RAM",
             AnswerChoice.D, "CPU"),
-        AnswerChoice. B); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.B); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion5() {
@@ -112,7 +112,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "Storage",
             AnswerChoice.C, "RAM",
             AnswerChoice.D, "CPU"),
-        AnswerChoice. A); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.A); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion6() {
@@ -121,7 +121,7 @@ public class Lesson2 implements CommandLineRunner {
         "What is the decimal number 34 in binary?",
         "0b00100010."); // Replace the correct digits in the answer.
   }
-  
+
   private static QuizQuestion makeQuestion7() {
     return new QuizQuestion(
         7,
