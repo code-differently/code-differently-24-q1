@@ -35,7 +35,6 @@ public class AnthonyMaysQuiz implements QuizQuestionProvider {
     return new QuizQuestion(
         1,
         "What is a computer?",
-        "A machine that automatically transforms input into output."); // Replace `UNANSWERED` with
-    // the correct answer
+        "A machine that automatically transforms input into output."); // Provide an answer.
   }
 }
