@@ -1,4 +1,4 @@
-name: Check Lesson2 Quiz on Pull Request
+name: Check Pull Requests
 
 on:
   pull_request:
