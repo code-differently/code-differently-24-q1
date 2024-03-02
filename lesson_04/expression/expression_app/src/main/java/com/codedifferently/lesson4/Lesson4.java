@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class Lesson4 implements CommandLineRunner {
 
   public static void main(String[] args) {
+    // To test, use `./gradlew run --console=plain`
     var application = new SpringApplication(Lesson4.class);
     application.run(args);
   }
