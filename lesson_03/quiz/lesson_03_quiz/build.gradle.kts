@@ -31,14 +31,16 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.codedifferently.lesson2.Lesson2")
+    mainClass.set("com.codedifferently.lesson3.Lesson3")
 }
 
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+    if (System.getProperty("profile") != null) {
+        systemProperty("spring.profiles.active", System.getProperty("profile"))
+    }
 }
-
 
 configure<com.diffplug.gradle.spotless.SpotlessExtension> {
 
