@@ -24,7 +24,7 @@ In this assignment, you will modify a new project to include three quiz question
   }
 ```
 3. Make at least two questions for your quiz and _leave them unanswered_.
-4. To provide answers, you will need to update the [application.yaml][test-config-file] file in the test directory. You can copy the example in the file to get started, but you must provide your own answers. To generate an encrypted answer, use [bcrypt.online](https://bcrypt.online).
+4. To provide answers, you will need to update the [application.yml][test-config-file] file in the test directory. You can copy the example in the file to get started, but you must provide your own answers. To generate an encrypted answer, use [bcrypt.online](https://bcrypt.online).
 5. Before attempting to submit your quiz, make sure to run the formatter on the code and run the tests to ensure that you've updated things correctly. These commands must be run from the [quiz][quiz-folder] sub-folder just like the previous assignment:
 ```bash
 ./gradlew spotlessApply
