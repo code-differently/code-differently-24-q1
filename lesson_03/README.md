@@ -40,4 +40,4 @@ In this assignment, you will modify a new project to include three quiz question
 [quizzes-folder]: ./quiz/lesson_03_quiz/src/main/java/com/codedifferently/lesson3/quizzes/
 [quiz-folder]: ./quiz/
 [quiz-example]: ./quiz/lesson_03_quiz/src/main/java/com/codedifferently/lesson3/quizzes/AnthonyMaysQuiz.java
-[test-config-file]: ./quiz/lesson_03_quiz/src/test/resources/application.yaml
+[test-config-file]: ./quiz/lesson_03_quiz/src/test/resources/application.yml
