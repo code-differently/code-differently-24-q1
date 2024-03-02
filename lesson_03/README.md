@@ -17,7 +17,7 @@
 In this assignment, you will modify a new project to include three quiz questions based on the content you've learned in this course so far. Feel free to choose any topic for your questions.
 
 1. You will create a quiz file in the [quizzes folder][quizzes-folder]. You should model yours after the example provided in [AnthonyMaysQuiz.java][quiz-example]. Note that the name of the file you create should match the name of the class in the file.
-2. Make sure to provide a unique provider name for your questions provider:
+2. Make sure to provide a unique provider name for your questions provider. You'll need this name to provide answers in step 4.
 ```java
   public String getProviderName() {
     return "<your unique name goes here>";
