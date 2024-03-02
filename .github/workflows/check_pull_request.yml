@@ -5,6 +5,7 @@ on:
     branches: [ "main" ]
     paths:
       - "lesson_02/quiz/**"
+      - "lesson_03/quiz/**"
 
 jobs:
   build:
