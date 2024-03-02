@@ -12,4 +12,8 @@ public class ExpressionCalculator {
       // Implement your code here to return the correct value.
     return 0d;
   }
+
+  public double pow(double base, double exponent) {
+    return Math.pow(base, exponent);
+  }
 }
