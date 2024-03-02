@@ -17,7 +17,9 @@ public class Lesson4 implements CommandLineRunner {
   }
 
   public void run(String... args) {
+    // Use Scanner to get input from the user.
     var scanner = new Scanner(System.in);
+
     System.out.print("\nEnter a value for variable 'a': ");
     int a = scanner.nextInt();
 
@@ -33,11 +35,14 @@ public class Lesson4 implements CommandLineRunner {
     System.out.print("Enter a value for variable 'e': ");
     int e = scanner.nextInt();
 
+    // Close the scanner to avoid memory leaks.
+    scanner.close();
+
     System.out.println(
         String.format("\nNow computing the value of ((%s + %s) * %s) / %s^%s", a, b, c, d, e));
 
     var calculator = new ExpressionCalculator();
-    Double result = calculator.calculate(a, b, c, d, e);
+    double result = calculator.calculate(a, b, c, d, e);
 
     System.out.println(String.format("The result is: %s", result));
   }
