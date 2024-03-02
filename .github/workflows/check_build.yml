@@ -28,6 +28,10 @@ jobs:
       working-directory: ./lesson_02/quiz
       run: ./gradlew assemble
 
+    - name: Build Lesson 03 with Gradle Wrapper
+      working-directory: ./lesson_03/quiz
+      run: ./gradlew check
+
     - name: Build Shared Lib with Gradle Wrapper
       working-directory: ./lib/java/codedifferently-instructional
       run: ./gradlew check
