@@ -9,7 +9,7 @@ public class ExpressionCalculator {
    * @return
    */
   public double calculate(double a, double b, double c, double d, double e) {
-      // Implement your code here to return the correct value.
+    // Implement your code here to return the correct value.
     return 0d;
   }
 
