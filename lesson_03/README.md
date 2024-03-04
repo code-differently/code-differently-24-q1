@@ -5,6 +5,7 @@
 1. Read CC 2,4; SEG 1 
 1. Create your Codio account [using this link][codio-link].
 1. Create three new quiz questions.
+1. [Stretch] Write code for 8-bit assembler that implements the substring function. It will take as input a string, a starting index, and an ending index. The function must print the substring portion indicated by the indices. Submit this portion of the assignment as a separate PR for my review for additional credit.
 
 ## Important reminders
 
