@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RichHawkinsQuiz implements QuizQuestionProvider {
 
-  public String getProviderName() {                               
+  public String getProviderName() {
     return "richhawkins";
   }
 
