@@ -22,7 +22,7 @@ public class MohamedIbrahimQuiz implements QuizQuestionProvider {
   private QuizQuestion makeQuestion0() {
     return new MultipleChoiceQuizQuestion(
         0,
-        "What are essential parts to building a computer? (without the inclution of a case)",
+        "What are essential parts to building a computer? (without the inclusion of a case)",
         Map.of(
             AnswerChoice.A, "CPU, RAM, MOTHERBOARD, GPU, CPU COOLER",
             AnswerChoice.B, "RAM, MOTHERBOARD, HARD DRIVE, GPU, CPU COOLER",
