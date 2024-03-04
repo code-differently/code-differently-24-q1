@@ -28,10 +28,10 @@ public class RichHawkinsQuiz implements QuizQuestionProvider {
             AnswerChoice.B, "6",
             AnswerChoice.C, "12",
             AnswerChoice.D, "8"),
-        AnswerChoice.D); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
   }
 
   private QuizQuestion makeQuestion1() {
-    return new QuizQuestion(1, "What is 2A in decimal?", "42"); // Provide an answer.
+    return new QuizQuestion(1, "What is 2A in decimal?", "00"); // Provide an answer.
   }
 }
