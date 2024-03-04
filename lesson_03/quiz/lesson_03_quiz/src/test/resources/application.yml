@@ -3,6 +3,9 @@ spring:
     active: dev
 quiz:
   answers: 
+    brooklyn:
+      - $2y$10$.mMoSMt3GJ8RQUGigwrbfei0r3ax2Gnn3R6TbUNOaGe6L7YBruehO
+      - $2y$10$5PaRHu4pigJBwuinPkwxCOhk/j86xTFlLo8A2HhQZ3sEJoRbVMhdy
     anthonymays:
-     - $2y$10$8eHSzy3aCu4Ry3LzO9nWCeGpofSxsNVbnF.wCfn3ZADwQ6MEtN/KK
-     - $2y$10$55EXRjF26JIgebtoH800ZOJecfefvMgHicuxf/rwTENuxiUaFQcNe
+      - $2y$10$8eHSzy3aCu4Ry3LzO9nWCeGpofSxsNVbnF.wCfn3ZADwQ6MEtN/KK
+      - $2y$10$55EXRjF26JIgebtoH800ZOJecfefvMgHicuxf/rwTENuxiUaFQcNe
