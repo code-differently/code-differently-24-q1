@@ -36,4 +36,3 @@ public class MohamedIbrahimQuiz implements QuizQuestionProvider {
         1, "What is the base 10 equivalant of 547 in base 8?", "0000"); // Provide an answer.
   }
 }
-
