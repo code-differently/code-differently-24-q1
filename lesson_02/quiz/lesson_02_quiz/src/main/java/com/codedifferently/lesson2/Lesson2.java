@@ -1,162 +1,106 @@
-package com.codedifferently.lesson2;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal README: Getting to Know Mekhi</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    p, ul {
+      margin-bottom: 20px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .likes {
+      margin-bottom: 20px;
+    }
+    .likes img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+    }
+    .likes img:last-child {
+      margin-right: 0;
+    }
+    .footer {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Personal README: Getting to Know Mekhi</h1>
 
-import com.codedifferently.instructional.quiz.AnswerChoice;
-import com.codedifferently.instructional.quiz.MultipleChoiceQuizQuestion;
-import com.codedifferently.instructional.quiz.QuizPrinter;
-import com.codedifferently.instructional.quiz.QuizQuestion;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Configuration;
+    <h2>Introduction</h2>
+    <p>Greetings! Welcome to my personal README. I'm Mekhi, and I'm thrilled about the prospect of collaborating with you. This document is designed to offer you insights into my work methods, preferences, and how we can maximize our synergy.</p>
 
-@Configuration
-@SpringBootApplication(scanBasePackages = "com.codedifferently")
-public class Lesson2 implements CommandLineRunner {
+    <h2>About Me</h2>
+    <p>I am an aspiring software engineer deeply passionate about advancing technology. My relentless pursuit of knowledge underscores my commitment not only to the tech realm but also to making a meaningful impact on the world. Apart from coding, I channel my energy into nurturing my music career, embracing travel, recording sessions, and honing my craft every day.</p>
 
-  public static void main(String[] args) {
-    var application = new SpringApplication(Lesson2.class);
-    application.run(args);
-  }
+    <h2>Communication Style</h2>
+    <p>Transparency and openness are the cornerstones of my communication ethos. I lean towards utilizing platforms like Slack and Microsoft Teams for seamless interaction. Expect timely responses from me, usually within an hour.</p>
 
-  public void run(String... args) {
-    List<QuizQuestion> quizQuestions = makeQuizQuestions();
-    Objects.requireNonNull(quizQuestions);
-    var printer = new QuizPrinter();
-    printer.printQuiz(quizQuestions);
-  }
+    <h2>Collaboration Preferences</h2>
+    <ul>
+      <li><strong>Teamwork:</strong> I thrive in collaborative environments, valuing diverse perspectives as catalysts for superior outcomes.</li>
+      <li><strong>Feedback:</strong> Constructive criticism is invaluable to me, serving as a springboard for personal and professional growth.</li>
+      <li><strong>Autonomy:</strong> While I cherish collaboration, I also excel when entrusted with independent tasks, relishing the autonomy to execute them.</li>
+    </ul>
 
-  public static List<QuizQuestion> makeQuizQuestions() {
-    return List.of(
-        makeQuestion0(),
-        makeQuestion1(),
-        makeQuestion2(),
-        makeQuestion3(),
-        makeQuestion4(),
-        makeQuestion5(),
-        makeQuestion6(),
-        makeQuestion7(),
-        makeQuestion8(),
-        makeQuestion9(),
-        makeQuestion10());
-  }
+    <h2>Learning Style</h2>
+    <p>I am a tactile learner, thriving when I can immediately apply new concepts. Video tutorials and hands-on engagement, coupled with real-time feedback, are my preferred modes of learning.</p>
 
-  private static QuizQuestion makeQuestion0() {
-    return new MultipleChoiceQuizQuestion(
-        0,
-        "If your computer doesn't turn on, what is the first thing you should check?",
-        Map.of(
-            AnswerChoice.A, "The power supply",
-            AnswerChoice.B, "The monitor",
-            AnswerChoice.C, "The keyboard",
-            AnswerChoice.D, "The mouse"),
-        AnswerChoice.A); // Replace `UNANSWERED` with the correct answer.
-  }
+    <div class="likes">
+      <h2>Likes</h2>
+      <p>Music, video games, movies, and space exploration captivate my interest.</p>
+      <img src="https://i1.sndcdn.com/avatars-96gqty0EGZSsh4pQ-dJogPg-t240x240.jpg" alt="Music">
+      <img src="https://www.leetdesk.com/_next/image?url=https%3A%2F%2Fimages.prismic.io%2Fleetdesk%2F37888785-fa43-4243-ae48-2a9ca2f35ff0_atmosphaerisches-gamer-zimmer.jpg%3Fauto%3Dcompress%2Cformat&w=3840&q=75" alt="Gaming">
+      <img src="https://cdn.mos.cms.futurecdn.net/9UmWCbyxpKaEGXjwFG7dXo-1200-80.jpg" alt="Space">
+    </div>
 
-  private static QuizQuestion makeQuestion1() {
-    return new MultipleChoiceQuizQuestion(
-        1,
-        "Which part of the computer is responsible for processing data?",
-        Map.of(
-            AnswerChoice.A, "The power supply",
-            AnswerChoice.B, "The keyboard",
-            AnswerChoice.C, "The CPU",
-            AnswerChoice.D, "RAM"),
-        AnswerChoice.C); // Replace `UNANSWERED` with the correct answer
-  }
+    <h2>How to Work with Me</h2>
+    <ul>
+      <li><strong>Schedule:</strong> I prefer meticulous planning and scheduling to ensure deadlines are met punctually.</li>
+      <li><strong>Flexibility:</strong> While I value structure, I understand the necessity of adaptability to accommodate unforeseen circumstances.</li>
+      <li><strong>Respect:</strong> Mutual respect forms the bedrock of successful collaborations. I encourage input from all team members and expect courteous communication at all times.</li>
+    </ul>
 
-  private static QuizQuestion makeQuestion2() {
-    return new MultipleChoiceQuizQuestion(
-        2,
-        "This part of the computer is like the CPU, but handles graphics computations.",
-        Map.of(
-            AnswerChoice.A, "The monitor",
-            AnswerChoice.B, "The GPU",
-            AnswerChoice.C, "RAM",
-            AnswerChoice.D, "The motherboard"),
-        AnswerChoice.B); // Replace `UNANSWERED` with the correct answer.
-  }
-
-  private static QuizQuestion makeQuestion3() {
-    return new MultipleChoiceQuizQuestion(
-        3,
-        "The CPU uses what part of the computer to store and execute instructions?",
-        Map.of(
-            AnswerChoice.A, "The power supply",
-            AnswerChoice.B, "The keyboard",
-            AnswerChoice.C, "RAM",
-            AnswerChoice.D, "The GPU"),
-        AnswerChoice.C); // Replace `UNANSWERED` with the correct answer.
-  }
-
-  private static QuizQuestion makeQuestion4() {
-    return new MultipleChoiceQuizQuestion(
-        4,
-        "What components are hard drives and solid state drives (SSD) classified as?",
-        Map.of(
-            AnswerChoice.A, "Motherboards",
-            AnswerChoice.B, "Storage devices",
-            AnswerChoice.C, "RAM",
-            AnswerChoice.D, "CPU"),
-        AnswerChoice.B); // Replace `UNANSWERED` with the correct answer.
-  }
-
-  private static QuizQuestion makeQuestion5() {
-    return new MultipleChoiceQuizQuestion(
-        5,
-        "This part of the computer is like the human body's central nervous system:",
-        Map.of(
-            AnswerChoice.A, "Motherboard",
-            AnswerChoice.B, "Storage",
-            AnswerChoice.C, "RAM",
-            AnswerChoice.D, "CPU"),
-        AnswerChoice.A); // Replace `UNANSWERED` with the correct answer.
-  }
-
-  private static QuizQuestion makeQuestion6() {
-    return new QuizQuestion(
-        6,
-        "What is the decimal number 34 in binary?",
-        "0b00100010"); // Replace the correct digits in the answer.
-  }
-
-  private static QuizQuestion makeQuestion7() {
-    return new QuizQuestion(
-        7,
-        "What is the decimal number 34 in hex?",
-        "0x22"); // Replace the correct digits in the answer.
-  }
-
-  private static QuizQuestion makeQuestion8() {
-    return new QuizQuestion(
-        8,
-        "What is binary number 0b01100101 in decimal?",
-        "101"); // Specify the correct number (no leading zeros).
-  }
-
-  private static QuizQuestion makeQuestion9() {
-    return new MultipleChoiceQuizQuestion(
-        9,
-        "What git command can you use to create a new branch?",
-        Map.of(
-            AnswerChoice.A, "git checkout <branch-name>",
-            AnswerChoice.B, "git pull <branch-name>",
-            AnswerChoice.C, "git checkout -b <branch-name>",
-            AnswerChoice.D, "git push <branch-name>"),
-        AnswerChoice.C); // Replace `UNANSWERED` with the correct answer.
-  }
-
-  private static QuizQuestion makeQuestion10() {
-    return new MultipleChoiceQuizQuestion(
-        10,
-        "What is the difference between a fork and a branch in git?",
-        Map.of(
-            AnswerChoice.A, "You cannot push changes to a fork",
-            AnswerChoice.B, "There is no difference since everything is a branch to git",
-            AnswerChoice.C, "A fork requires an upstream remote whereas a branch does not",
-            AnswerChoice.D, "You can only make pull requests using a branch"),
-        AnswerChoice.B); // Replace `UNANSWERED` with the correct answer.
-  }
-}
+    <div class="footer">
+      <p>Thank you for delving into my personal README! Understanding each other's working styles fosters more effective collaboration and superior outcomes. Should you have any queries or wish to explore project discussions further, don't hesitate to reach out. Let's embark on this journey of collaboration and innovation together!</p>
+    </div>
+  </div>
+</body>
+</html>
+    
