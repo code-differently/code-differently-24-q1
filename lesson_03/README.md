@@ -3,6 +3,7 @@
 ## Homework
 
 1. Read CC 2,4; SEG 1 
+1. Create your Codio account [using this link][codio-link].
 1. Create three new quiz questions.
 
 ## Important reminders
@@ -37,6 +38,7 @@ Now's your chance to quiz the instructor! In this assignment, you will modify th
 ./gradlew test -Dprofile=prod
 ```
 
+[codio-link]: https://codio.com/p/signup?courseToken=vatican-flood
 [quizzes-folder]: ./quiz/lesson_03_quiz/src/main/java/com/codedifferently/lesson3/quizzes/
 [quiz-folder]: ./quiz/
 [quiz-example]: ./quiz/lesson_03_quiz/src/main/java/com/codedifferently/lesson3/quizzes/AnthonyMaysQuiz.java
