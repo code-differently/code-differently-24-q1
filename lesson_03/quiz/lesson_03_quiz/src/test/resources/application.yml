@@ -3,6 +3,9 @@ spring:
     active: dev
 quiz:
   answers: 
+    sherllint:
+     - $2y$10$t.Bp0AznB1y1OuzyLD5y1eBHI3uGhzDGZAYmGmhQ7KevnafFbzgey
+     - $2y$10$ixh3kgGd8tFk0fBH4sr2JO87LncX88lqJGwVauc182Nug8IeHaJ7i
     anthonymays:
      - $2y$10$8eHSzy3aCu4Ry3LzO9nWCeGpofSxsNVbnF.wCfn3ZADwQ6MEtN/KK
      - $2y$10$55EXRjF26JIgebtoH800ZOJecfefvMgHicuxf/rwTENuxiUaFQcNe
