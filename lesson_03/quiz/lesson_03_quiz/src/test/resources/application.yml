@@ -6,7 +6,6 @@ quiz:
     brooklyn:
      - $2y$10$.mMoSMt3GJ8RQUGigwrbfei0r3ax2Gnn3R6TbUNOaGe6L7YBruehO
      - $2y$10$5PaRHu4pigJBwuinPkwxCOhk/j86xTFlLo8A2HhQZ3sEJoRbVMhdygit rebase origin/Lesson2
-
     richhawkins:
      - $2y$10$RXLPI31gEjCF1tkZ.nS20.sPOb9SFXrPeVZv0Ezg.YD/hlcAVpDoK
      - $2y$10$27WkeXYw4lCbtqCGFh/afeX75BoSTaLVsL6eSKT8CJgcDE.z//mH2
@@ -28,7 +27,7 @@ quiz:
     natayaprice:
       - $2y$10$6w0xRxY6E5rxLdyAMUxx9uPG99NfeO1CvzXYN7lV2byuXZR80IViq
       - $2y$10$CboWGiUM5PlkHOkOL96IGuFhSs4yZweZA.6wVHOCYCX87eGOamq26
-      sherllint:
+    sherllint:
      - $2y$10$t.Bp0AznB1y1OuzyLD5y1eBHI3uGhzDGZAYmGmhQ7KevnafFbzgey
      - $2y$10$ixh3kgGd8tFk0fBH4sr2JO87LncX88lqJGwVauc182Nug8IeHaJ7i
 
