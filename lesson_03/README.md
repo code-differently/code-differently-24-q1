@@ -5,6 +5,7 @@
 1. Read CC 2,4; SEG 1 
 1. Create your Codio account [using this link][codio-link].
 1. Create three new quiz questions.
+1. [Stretch] Write code for [8-bit assembler][assembler-link] that implements the substring function. It will take as input a string, a starting index, and an ending index. The function must print the substring portion indicated by the indices. Submit this portion of the assignment as a separate PR for my review for additional credit (create your file under the `stretch` directory as a `.asm` file).
 
 ## Important reminders
 
@@ -39,6 +40,7 @@ Now's your chance to quiz the instructor! In this assignment, you will modify th
 ```
 
 [codio-link]: https://codio.com/p/signup?courseToken=vatican-flood
+[assembler-link]: https://schweigi.github.io/assembler-simulator/
 [quizzes-folder]: ./quiz/lesson_03_quiz/src/main/java/com/codedifferently/lesson3/quizzes/
 [quiz-folder]: ./quiz/
 [quiz-example]: ./quiz/lesson_03_quiz/src/main/java/com/codedifferently/lesson3/quizzes/AnthonyMaysQuiz.java
