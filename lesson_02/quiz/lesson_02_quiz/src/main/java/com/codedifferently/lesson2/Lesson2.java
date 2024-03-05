@@ -119,7 +119,7 @@ public class Lesson2 implements CommandLineRunner {
     return new QuizQuestion(
         6,
         "What is the decimal number 34 in binary?",
-        "0b00100010"); // Replace the correct digits in the answer.
+        "100010"); // Replace the correct digits in the answer.
   }
 
   private static QuizQuestion makeQuestion7() {
