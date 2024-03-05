@@ -79,7 +79,9 @@ class Lesson2Test {
 
   @Test
   void checkQuestions_answeredCorrectly() {
-    assertThat(quizAnswers.size()).as("Check # of answers").isEqualTo(quizQuestions.size());
+    assertThat(quizAnswers.size("default"))
+        .as("Check # of answers")
+        .isEqualTo(quizQuestions.size());
 
     for (QuizQuestion question : quizQuestions) {
       String actualAnswer = question.getAnswer();
@@ -92,7 +94,8 @@ class Lesson2Test {
 
       // Check that the answer is correct.
       softly
-          .assertThat(quizAnswers.checkAnswer(question.getQuestionNumber(), actualAnswer))
+          .assertThat(
+              quizAnswers.checkAnswer("default", question.getQuestionNumber(), actualAnswer))
           .as("Checking answer matches correct answer: " + question.getQuestionPrompt())
           .isTrue();
     }

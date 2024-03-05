@@ -1,10 +1,12 @@
-# Custom ignore
-answers.properties
-
 # Gradle files
 .gradle
 build/
 bin/
+
+# Java project generated assets
+.classpath
+.project
+.settings/
 
 # Logs
 logs

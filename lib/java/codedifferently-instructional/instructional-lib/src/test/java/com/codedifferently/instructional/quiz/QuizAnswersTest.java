@@ -12,6 +12,7 @@ import static org.mockito.Mockito.mock;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 class QuizAnswersTest {
 
@@ -30,10 +31,10 @@ class QuizAnswersTest {
     String actualAnswer = "Paris";
     List<String> answers = Arrays.asList("$2y$10$dLPdcUrNbecoR1cKO07deet0PrK1ZWsGZYZzsNhFDEYBk/YuGLaPa",
         "$2a$10$A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0U1V2W3X4Y5Z6");
-    quizAnswers.setAnswers(answers);
+    quizAnswers.setAnswers(Map.of("default", answers));
 
     // Act
-    boolean result = quizAnswers.checkAnswer(questionNumber, actualAnswer);
+    boolean result = quizAnswers.checkAnswer("default", questionNumber, actualAnswer);
 
     // Assert
     assertTrue(result);
@@ -46,10 +47,10 @@ class QuizAnswersTest {
     String actualAnswer = "Mars";
     List<String> answers = Arrays.asList("$2a$10$X5Z0yK4p2z6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6",
         "$2a$10$A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0U1V2W3X4Y5Z6");
-    quizAnswers.setAnswers(answers);
+    quizAnswers.setAnswers(Map.of("set1", answers));
 
     // Act
-    boolean result = quizAnswers.checkAnswer(questionNumber, actualAnswer);
+    boolean result = quizAnswers.checkAnswer("set1", questionNumber, actualAnswer);
 
     // Assert
     assertFalse(result);
@@ -60,10 +61,10 @@ class QuizAnswersTest {
     // Arrange
     List<String> answers = Arrays.asList("$2a$10$X5Z0yK4p2z6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6",
         "$2a$10$A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0U1V2W3X4Y5Z6");
-    quizAnswers.setAnswers(answers);
+    quizAnswers.setAnswers(Map.of("default", answers));
 
     // Act
-    int result = quizAnswers.size();
+    int result = quizAnswers.size("default");
 
     // Assert
     assertEquals(2, result);
