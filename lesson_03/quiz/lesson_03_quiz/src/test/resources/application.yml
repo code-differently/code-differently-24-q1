@@ -3,6 +3,9 @@ spring:
     active: dev
 quiz:
   answers:
+    kenricksutherland:
+     - $2y$10$UaUgisFsIHm9WlhdpI1pTuwb7ArlzFDouZb7PbMcgukf66/InLJs.
+     - $2y$10$mmKQ0mNUJ6wfGOgKfJH7a.6vBZon2j3r.cnAaI7lAu8pAIZ7JO3v.
     brooklyn:
      - $2y$10$.mMoSMt3GJ8RQUGigwrbfei0r3ax2Gnn3R6TbUNOaGe6L7YBruehO
      - $2y$10$5PaRHu4pigJBwuinPkwxCOhk/j86xTFlLo8A2HhQZ3sEJoRbVMhdy
@@ -15,6 +18,20 @@ quiz:
     moibrahi7:
      - $2y$10$qMRtpEAfuW9e5WyZv5qzxuTj3JDO4xuOrNwm1FZuQ9uGcm3NHZMC.
      - $2y$10$VOND8Wn7DA7DHPhJWmyMqurfRkjWZv3m3VnG29TfTOTRusxTNKa6q
+    kevinmason:
+    - $2y$10$5IHG1ZkSy1azMHk5kyDJs.hJsFnCIgIjBlO5HHyzO7V/HHRy3Fiom
+    - $2y$10$VXpnjqFukTTi1p4i7KyY3Oyjm1mKYfnzo6VZUZNIyX7J6vNDTLAyy
     javyenware:
      - $2y$10$BeOZiGHEZhPmVsDZctelR.MoJM.d958.kQNXUbU8wv9YJv6y5LCyi
      - $2y$10$7ME1EOl6VP35kEiUc4YFG.ZOgOcfmoOrsvgjsoGY9xoVPdlH3uK8K
+    jordaneldridge:
+     - $2y$10$1.1MtWYxD3gDw6VOmRot6OA.TQcPc1FzenesnN.RJn.6EYD.eG0s6
+     - $2y$10$C39zXtqTtYWE63Xb9av72evDs8U1ErCu30T5a4YGztaCJTbrjL7fC
+    natayaprice:
+      - $2y$10$6w0xRxY6E5rxLdyAMUxx9uPG99NfeO1CvzXYN7lV2byuXZR80IViq
+      - $2y$10$CboWGiUM5PlkHOkOL96IGuFhSs4yZweZA.6wVHOCYCX87eGOamq26
+    vicentevigueras:
+     - $2y$10$ZvHv8epqQTKiHglU62V5YOAT0gMAgzkikkabDH56gY3oqeFpK0uKC
+     - $2y$10$VIQxIQCzXdOYgiYfJ62.luYL5DFu34tU0HbqlawoH2LAOYCbT.Bky
+
+
