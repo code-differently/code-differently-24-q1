@@ -10,6 +10,7 @@ plugins {
     `java-library`
     `eclipse`
     id("com.diffplug.spotless") version "6.25.0"
+    id("com.adarshr.test-logger") version "4.0.0"
 }
 
 group = "com.codedifferently.instructional"
