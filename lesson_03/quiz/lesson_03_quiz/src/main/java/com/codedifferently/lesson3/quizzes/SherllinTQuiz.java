@@ -25,9 +25,8 @@ public class SherllinTQuiz implements QuizQuestionProvider {
         "An algorithm is predictable, deterministic, and not subject to chance",
         Map.of(
             AnswerChoice.A, "True",
-            AnswerChoice.B, "False",
-            AnswerChoice.C, "null",
-            AnswerChoice.D, "null"),
+            AnswerChoice.B, "False"
+            ),
         AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
   }
 
