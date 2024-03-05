@@ -1,23 +1,21 @@
 package com.codedifferently.lesson3.quizzes;
 
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.stereotype.Service;
-
 import com.codedifferently.instructional.quiz.AnswerChoice;
 import com.codedifferently.instructional.quiz.MultipleChoiceQuizQuestion;
 import com.codedifferently.instructional.quiz.QuizQuestion;
 import com.codedifferently.instructional.quiz.QuizQuestionProvider;
+import java.util.List;
+import java.util.Map;
+import org.springframework.stereotype.Service;
 
 @Service
 public class JordanEldridgeQuiz implements QuizQuestionProvider {
 
-      public String getProviderName() {
-    return "JordanEldridge";
+  public String getProviderName() {
+    return "jordaneldridge";
   }
 
-   public List<QuizQuestion> makeQuizQuestions() {
+  public List<QuizQuestion> makeQuizQuestions() {
     return List.of(makeQuestion0(), makeQuestion1());
   }
 
@@ -41,9 +39,15 @@ public class JordanEldridgeQuiz implements QuizQuestionProvider {
     return new MultipleChoiceQuizQuestion(
         1,
         "Arrays in java are-",
-        Map.of(AnswerChoice.A, "Object references", AnswerChoice.B, "objects", AnswerChoice.C, "Primitive data type", AnswerChoice.D, "none"),
+        Map.of(
+            AnswerChoice.A,
+            "Object references",
+            AnswerChoice.B,
+            "objects",
+            AnswerChoice.C,
+            "Primitive data type",
+            AnswerChoice.D,
+            "none"),
         AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
   }
- 
-    
 }
