@@ -35,3 +35,7 @@ public class JadaWhiteQuiz implements QuizQuestionProvider {
     return new QuizQuestion(1, "What is 3B in decimal?", "59"); // Provide an answer.
   }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 652652f (Quiz created)
