@@ -28,7 +28,7 @@ public class RandycastroQuiz implements QuizQuestionProvider {
             AnswerChoice.B, "Computer Power Unit",
             AnswerChoice.C, "Control Processing Unit",
             AnswerChoice.D, "Central Power Unit"),
-        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer. 
+        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
   }
 
   private QuizQuestion makeQuestion1() {
