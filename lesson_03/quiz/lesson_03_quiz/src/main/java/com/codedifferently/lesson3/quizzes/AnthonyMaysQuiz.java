@@ -28,7 +28,7 @@ public class AnthonyMaysQuiz implements QuizQuestionProvider {
             AnswerChoice.B, "The hardest kind of quiz question there is",
             AnswerChoice.C, "A question that can be answered using one or more provided choices",
             AnswerChoice.D, "Whatever you want it to be!"),
-        AnswerChoice.C); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
   }
 
   private QuizQuestion makeQuestion1() {
