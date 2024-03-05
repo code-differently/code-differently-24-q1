@@ -8,3 +8,12 @@ quiz:
      - $2y$10$55EXRjF26JIgebtoH800ZOJecfefvMgHicuxf/rwTENuxiUaFQcNe
 
 
+spring:
+profiles:
+active: dev
+quiz:
+answers:
+randycastro:
+- $2y$10$JDR92zWPkVIhw5.ipD3Tye6rJctiwGiNDL/QV1bZBY9OqH569SUmG
+-$2y$10$Bc8KTSlblvafPd3Jskm4l.g1CAEgG4k5m/LPa99D3U3uHXwiLF1.e
+-$2y$10$bb4Yb5FFTvje/sqz5l53U.KKwgwcA8FOmiCaiIa5O65Oi1WWOJABS
