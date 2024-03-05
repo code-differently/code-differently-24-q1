@@ -28,7 +28,7 @@ public class RandycastroQuiz implements QuizQuestionProvider {
             AnswerChoice.B, "Computer Power Unit",
             AnswerChoice.C, "Control Processing Unit",
             AnswerChoice.D, "Central Power Unit"),
-        AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.A); // Replace `UNANSWERED` with the correct answer.
   }
 
   private QuizQuestion makeQuestion1() {
@@ -40,6 +40,6 @@ public class RandycastroQuiz implements QuizQuestionProvider {
             AnswerChoice.B, "RAM (Random Access Memory)",
             AnswerChoice.C, "HDD (Hard Disk Drive)",
             AnswerChoice.D, "SSD (Solid State Drive)"),
-        AnswerChoice.UNANSWERED); // Replace 'UNANSWERED' with the correct answer.
+        AnswerChoice.D); // Replace 'UNANSWERED' with the correct answer.
   }
 }
