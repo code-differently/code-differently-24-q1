@@ -2,15 +2,6 @@ spring:
   profiles:
     active: dev
 quiz:
-  answers: 
-    randycastro:
-     - $2y$10$JDR92zWPkVIhw5.ipD3Tye6rJctiwGiNDL/QV1bZBY9OqH569SUmG
-     - $2y$10$Bc8KTSlblvafPd3Jskm4l.g1CAEgG4k5m/LPa99D3U3uHXwiLF1.e
-    anthonymays:
-     - $2y$10$8eHSzy3aCu4Ry3LzO9nWCeGpofSxsNVbnF.wCfn3ZADwQ6MEtN/KK
-     - $2y$10$55EXRjF26JIgebtoH800ZOJecfefvMgHicuxf/rwTENuxiUaFQcNe
-
-
   answers:
     kenricksutherland:
      - $2y$10$UaUgisFsIHm9WlhdpI1pTuwb7ArlzFDouZb7PbMcgukf66/InLJs.
@@ -33,7 +24,6 @@ quiz:
     javyenware:
      - $2y$10$BeOZiGHEZhPmVsDZctelR.MoJM.d958.kQNXUbU8wv9YJv6y5LCyi
      - $2y$10$7ME1EOl6VP35kEiUc4YFG.ZOgOcfmoOrsvgjsoGY9xoVPdlH3uK8K
-
     jordaneldridge:
      - $2y$10$1.1MtWYxD3gDw6VOmRot6OA.TQcPc1FzenesnN.RJn.6EYD.eG0s6
      - $2y$10$C39zXtqTtYWE63Xb9av72evDs8U1ErCu30T5a4YGztaCJTbrjL7fC
@@ -43,6 +33,6 @@ quiz:
     vicentevigueras:
      - $2y$10$ZvHv8epqQTKiHglU62V5YOAT0gMAgzkikkabDH56gY3oqeFpK0uKC
      - $2y$10$VIQxIQCzXdOYgiYfJ62.luYL5DFu34tU0HbqlawoH2LAOYCbT.Bky
-
-
-
+    randycastro:
+     - $2y$10$JDR92zWPkVIhw5.ipD3Tye6rJctiwGiNDL/QV1bZBY9OqH569SUmG
+     - $2y$10$Bc8KTSlblvafPd3Jskm4l.g1CAEgG4k5m/LPa99D3U3uHXwiLF1.e
