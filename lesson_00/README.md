@@ -22,7 +22,7 @@ To submit your assignment, please do the following:
 
 1. Fork this repository (repo) under your own Github account.
 1. In your forked repo, create a new branch and give it a name.
-1. Add your `README.md` file to a sub-folder you create under `lesson_1` (see [lesson_1/anthonymays](/lesson_1/anthonymays) for example).
+1. Add your `README.md` file to a sub-folder you create under `lesson_00` (see [lesson_00/anthonymays](/lesson_00/anthonymays) for example).
 1. Commit as many changes as you need to your branch and push to Github.
 1. When ready to merge, visit this repo to create a pull request (PR).
 1. Add details to the PR and create it.
