@@ -119,14 +119,14 @@ public class Lesson2 implements CommandLineRunner {
     return new QuizQuestion(
         6,
         "What is the decimal number 34 in binary?",
-        "100010"); // Replace the correct digits in the answer.
+        "0b00100010"); // Replace the correct digits in the answer.
   }
 
   private static QuizQuestion makeQuestion7() {
     return new QuizQuestion(
         7,
         "What is the decimal number 34 in hex?",
-        "22"); // Replace the correct digits in the answer.
+        "0x22"); // Replace the correct digits in the answer.
   }
 
   private static QuizQuestion makeQuestion8() {
@@ -145,7 +145,7 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "git pull <branch-name>",
             AnswerChoice.C, "git checkout -b <branch-name>",
             AnswerChoice.D, "git push <branch-name>"),
-        AnswerChoice.B); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.C); // Replace `UNANSWERED` with the correct answer.
   }
 
   private static QuizQuestion makeQuestion10() {
@@ -157,6 +157,6 @@ public class Lesson2 implements CommandLineRunner {
             AnswerChoice.B, "There is no difference since everything is a branch to git",
             AnswerChoice.C, "A fork requires an upstream remote whereas a branch does not",
             AnswerChoice.D, "You can only make pull requests using a branch"),
-        AnswerChoice.D); // Replace `UNANSWERED` with the correct answer.
+        AnswerChoice.B); // Replace `UNANSWERED` with the correct answer.
   }
 }
