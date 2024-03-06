@@ -28,7 +28,7 @@ public class SherllinTQuiz implements QuizQuestionProvider {
             AnswerChoice.B, "False"),
         AnswerChoice.UNANSWERED); // Replace `UNANSWERED` with the correct answer.
   }
-  
+
   private QuizQuestion makeQuestion1() {
     return new MultipleChoiceQuizQuestion(
         1,
