@@ -3,6 +3,9 @@ spring:
     active: dev
 quiz: 
   answers:
+    kenricksutherland:
+     - $2y$10$UaUgisFsIHm9WlhdpI1pTuwb7ArlzFDouZb7PbMcgukf66/InLJs.
+     - $2y$10$mmKQ0mNUJ6wfGOgKfJH7a.6vBZon2j3r.cnAaI7lAu8pAIZ7JO3v.
     brooklyn:
      - $2y$10$.mMoSMt3GJ8RQUGigwrbfei0r3ax2Gnn3R6TbUNOaGe6L7YBruehO
      - $2y$10$5PaRHu4pigJBwuinPkwxCOhk/j86xTFlLo8A2HhQZ3sEJoRbVMhdygit rebase origin/Lesson2
@@ -21,6 +24,9 @@ quiz:
     javyenware:
      - $2y$10$BeOZiGHEZhPmVsDZctelR.MoJM.d958.kQNXUbU8wv9YJv6y5LCyi
      - $2y$10$7ME1EOl6VP35kEiUc4YFG.ZOgOcfmoOrsvgjsoGY9xoVPdlH3uK8K
+    jadawhite:
+     - $2y$10$w1XGxEj5H14aw8rP5hBHO.YnffYQ/7il5NXtFNPcTXSbXWVeP5FBK
+     - $2y$10$4ctg3vPGw8BJBzGFE59Ode2cS1oPzb7wA5nXT/Ci5QfhoHr2XenG2
     jordaneldridge:
      - $2y$10$1.1MtWYxD3gDw6VOmRot6OA.TQcPc1FzenesnN.RJn.6EYD.eG0s6
      - $2y$10$C39zXtqTtYWE63Xb9av72evDs8U1ErCu30T5a4YGztaCJTbrjL7fC
@@ -30,4 +36,8 @@ quiz:
     sherllint:
      - $2y$10$t.Bp0AznB1y1OuzyLD5y1eBHI3uGhzDGZAYmGmhQ7KevnafFbzgey
      - $2y$10$ixh3kgGd8tFk0fBH4sr2JO87LncX88lqJGwVauc182Nug8IeHaJ7i
+    vicentevigueras:
+     - $2y$10$ZvHv8epqQTKiHglU62V5YOAT0gMAgzkikkabDH56gY3oqeFpK0uKC
+     - $2y$10$VIQxIQCzXdOYgiYfJ62.luYL5DFu34tU0HbqlawoH2LAOYCbT.Bky
+
 
