@@ -10,7 +10,8 @@ public class ExpressionCalculator {
    */
   public double calculate(double a, double b, double c, double d, double e) {
     // Implement your code here to return the correct value.
-    return 0d;
+    double sum = ((a + b) * c) / pow(d, e);
+    return sum;
   }
 
   public double pow(double base, double exponent) {
