@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SampleFileGenerator {
@@ -24,17 +25,36 @@ public class SampleFileGenerator {
   };
 
   public void createTestFile(String path, String providerName) {
+    var generators = getShuffledGenerators();
+    ArrayList<Map<String, String>> rows = createSampleData(generators);
+    saveToFile(path, providerName, rows);
+  }
+
+  private List<ValueGenerator> getShuffledGenerators() {
     var generators = Arrays.asList(GENERATORS);
     Collections.shuffle(generators);
+    return generators;
+  }
+
+  private ArrayList<Map<String, String>> createSampleData(List<ValueGenerator> generators) {
     var rows = new ArrayList<Map<String, String>>();
     for (var i = 0; i < 10; ++i) {
-      var row = new LinkedHashMap<String, String>();
-      for (int j = 0; j < generators.size(); ++j) {
-        var columnIndex = j + 1;
-        row.put("column" + columnIndex, generators.get(j).generateValue());
-      }
-      rows.add(row);
+      Map<String, String> row = createRow(generators);
+      rows.add(createRow(generators));
     }
+    return rows;
+  }
+
+  private Map<String, String> createRow(List<ValueGenerator> generators) {
+    var row = new LinkedHashMap<String, String>();
+    for (int i = 0; i < GENERATORS.length; ++i) {
+      var columnIndex = i + 1;
+      row.put("column" + columnIndex, GENERATORS[i].generateValue());
+    }
+    return row;
+  }
+
+  private void saveToFile(String path, String providerName, ArrayList<Map<String, String>> rows) {
     var file = new File(path + "/" + providerName + ".json");
     file.getParentFile().mkdirs();
     var gson = new GsonBuilder().setPrettyPrinting().create();
