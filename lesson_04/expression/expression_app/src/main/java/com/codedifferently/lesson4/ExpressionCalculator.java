@@ -5,21 +5,35 @@ public class ExpressionCalculator {
    * Returns the calculation of ((a + b) * c) / d^e
    */
   public double calculate(double a, double b, double c, double d, double e) {
-    // Implement your code here to return the correct value.
+    // Implement your code here to return the correct value.    
+    return 0;
+  }
 
+  // addition function 
   public double add(double a, double b){
-    return a + b;
+    double sum = a + b;
+    return sum;
   }
 
-  public double multiply(double a, double b, double c){
-    return a+b * c;
+  // multiply function 
+  public double multiply(double sum, double c){
+    double product = sum * c;
+    return product;
   }
 
+  // divide function
+  public double divide(double a , double b){
+    double quotient =  a / b;
+    return quotient;
+  }
+
+  // expotential function
   public double pow(double base, double exponent) {
     return Math.pow(base, exponent);
   }
 
-  public double divide(double a, double b, double c, double d){
-    
-  }
-}
+
+} 
+
+
+//   q = a / b
