@@ -10,9 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import org.assertj.core.api.SoftAssertions;
 import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +23,8 @@ import org.springframework.test.context.ContextConfiguration;
 class Lesson5Test {
   @Autowired private List<DataProvider> dataProviders;
 
-  private SoftAssertions softly;
-
-  @BeforeEach
-  void setUp() {
-    softly = new SoftAssertions();
-  }
-
   @Test
-  void testDataProvider_filesLoads() throws IOException {
+  void testDataProvider_filesLoad() throws IOException {
     assertThat(dataProviders.size()).isGreaterThanOrEqualTo(1);
     for (DataProvider provider : dataProviders) {
       // Arrange
@@ -72,6 +63,13 @@ class Lesson5Test {
       assertThat(columnTypeByName.size())
           .as("Number of column types must match number of columns in file.")
           .isEqualTo(data.get(0).size());
+      Set<String> uniqueColumnTypes =
+          columnTypeByName.entrySet().stream()
+              .map(c -> c.getValue().getName())
+              .collect(Collectors.toSet());
+      assertThat(uniqueColumnTypes.size())
+          .as("Each column should be a different type.")
+          .isEqualTo(columnTypeByName.size());
     }
   }
 
