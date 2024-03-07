@@ -13,6 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+/** A class to generate a sample file with random data. */
 public class SampleFileGenerator {
 
   private static final ValueGenerator[] GENERATORS = {
@@ -21,13 +22,20 @@ public class SampleFileGenerator {
     new DoubleValueGenerator(),
     new ShortValueGenerator(),
     new LongValueGenerator(),
-    new FloatValueGenerator()
+    new FloatValueGenerator(),
+    new BooleanValueGenerator()
   };
 
+  /**
+   * Create a test file with sample data.
+   *
+   * @param path the path to the directory where the file will be created
+   * @param providerName the name of the provider
+   */
   public void createTestFile(String path, String providerName) {
     var generators = getShuffledGenerators();
     ArrayList<Map<String, String>> rows = createSampleData(generators);
-    saveToFile(path, providerName, rows);
+    saveToJsonFile(path, providerName, rows);
   }
 
   private List<ValueGenerator> getShuffledGenerators() {
@@ -54,8 +62,9 @@ public class SampleFileGenerator {
     return row;
   }
 
-  private void saveToFile(String path, String providerName, ArrayList<Map<String, String>> rows) {
-    var file = new File(path + "/" + providerName + ".json");
+  private void saveToJsonFile(
+      String path, String providerName, ArrayList<Map<String, String>> rows) {
+    var file = new File(path + File.separator + providerName + ".json");
     file.getParentFile().mkdirs();
     var gson = new GsonBuilder().setPrettyPrinting().create();
     try (var writer = new FileWriter(file, false)) {

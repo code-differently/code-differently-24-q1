@@ -2,7 +2,6 @@ package com.codedifferently.lesson5;
 
 import static com.codedifferently.lesson5.generator.Generators.*;
 
-import com.codedifferently.lesson5.util.SampleFileGenerator;
 import java.io.File;
 import java.nio.file.Paths;
 import org.springframework.boot.CommandLineRunner;
@@ -20,14 +19,19 @@ public class Lesson5 implements CommandLineRunner {
   }
 
   public void run(String... args) {
-    String providerName = "test";
-    String[] pathParts = {
-      Paths.get("").toAbsolutePath().toString(), "src", "main", "resources", providerName
-    };
-    String path = String.join(File.separator, pathParts);
+    // var providerName = "anthonymays";
+    // String path = getDataPath();
+    // var fileGenerator = new SampleFileGenerator();
+    // fileGenerator.createTestFile(path, providerName);
 
-    System.out.println("Creating a test file at: " + path + File.separator + "input.json");
-    var fileGenerator = new SampleFileGenerator();
-    fileGenerator.createTestFile(path, providerName);
+    var parser = new com.codedifferently.lesson5.parser.AnthonyMaysParser();
+    System.out.println(parser.getParsedData().get(0).get("column1"));
+  }
+
+  private static String getDataPath() {
+    String[] pathParts = {
+      Paths.get("").toAbsolutePath().toString(), "src", "main", "resources", "data"
+    };
+    return String.join(File.separator, pathParts);
   }
 }
