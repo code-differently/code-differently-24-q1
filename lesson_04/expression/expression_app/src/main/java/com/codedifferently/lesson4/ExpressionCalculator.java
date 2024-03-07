@@ -1,7 +1,9 @@
 package com.codedifferently.lesson4;
 
 public class ExpressionCalculator {
-
+  /**
+   * Returns the calculation of ((a + b) * c) / d^e
+   */
   public double calculate(double a, double b, double c, double d, double e) {
     // Step 1: Add a and b together
     double sum = add(a, b);
