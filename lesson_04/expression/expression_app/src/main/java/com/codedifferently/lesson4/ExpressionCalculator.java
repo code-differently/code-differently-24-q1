@@ -3,10 +3,6 @@ package com.codedifferently.lesson4;
 public class ExpressionCalculator {
   /**
    * Returns the calculation of ((a + b) * c) / d^e
-   *
-   * @param a
-   * @param b
-   * @return
    */
   public double add(double a, double b) {
     double addAnswer = a + b;
