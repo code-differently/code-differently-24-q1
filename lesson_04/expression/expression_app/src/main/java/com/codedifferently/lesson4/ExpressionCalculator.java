@@ -5,11 +5,11 @@ public class ExpressionCalculator {
   //  * Returns the calculation of ((a + b) * c) / d^e
   public double calculate(double a, double b, double c, double d, double e) {
     double sum = add(a, b);
-    double product = multiply(sum,c);
+    double product = multiply(sum, c);
     double result = divide(product, pow(d, e));
     return result;
   }
-  
+
   // Functions (add, multiply, divide, exponent)
   public double add(double a, double b) {
     return a + b;
