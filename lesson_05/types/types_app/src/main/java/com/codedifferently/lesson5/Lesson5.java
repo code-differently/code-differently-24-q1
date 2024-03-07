@@ -1,5 +1,7 @@
 package com.codedifferently.lesson5;
 
+import static com.codedifferently.lesson5.generator.Generators.*;
+
 import com.codedifferently.lesson5.util.SampleFileGenerator;
 import java.io.File;
 import java.nio.file.Paths;
@@ -7,7 +9,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
-import static com.codedifferently.lesson5.generator.Generators.*;
 
 @Configuration
 @SpringBootApplication(scanBasePackages = "com.codedifferently")
@@ -26,9 +27,7 @@ public class Lesson5 implements CommandLineRunner {
     String path = String.join(File.separator, pathParts);
 
     System.out.println("Creating a test file at: " + path + File.separator + "input.json");
-
-    System.out.println("Here's a random long value: " + new StringValueGenerator().generateValue());
     var fileGenerator = new SampleFileGenerator();
-    fileGenerator.createTestFile(providerName);
+    fileGenerator.createTestFile(path, providerName);
   }
 }
