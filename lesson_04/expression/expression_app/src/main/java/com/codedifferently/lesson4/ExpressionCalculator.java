@@ -15,6 +15,15 @@ public class ExpressionCalculator {
    * divide product
    */
 
+  public double calculate(double a, double b, double c, double d, double e) {
+    // Implement your code here to return the correct value.
+    double addition = add(a, b);
+    double multiplication = multiply(addition, c);
+    double power = pow(d, e);
+    double division = divide(multiplication, power);
+    return division;
+  }
+
   public double add(double a, double b) {
     double sum = a + b;
     return sum;
@@ -33,17 +42,4 @@ public class ExpressionCalculator {
     double quotient = product / pow;
     return quotient;
   }
-
-  public double calculate(double a, double b, double c, double d, double e) {
-    // Implement your code here to return the correct value.
-    double addition = add(a, b);
-    double multiplication = multiply(addition, c);
-    double power = pow(d, e);
-    double division = divide(multiplication, power);
-    return division;
-  }
-
-  /* public double pow(double base, double exponent) {
-    return Math.pow(base, exponent);
-  }*/
 }
