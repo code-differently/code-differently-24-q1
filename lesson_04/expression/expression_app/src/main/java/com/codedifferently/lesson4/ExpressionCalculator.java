@@ -1,9 +1,7 @@
 package com.codedifferently.lesson4;
 
 public class ExpressionCalculator {
-  /**
-   * Returns the calculation of ((a + b) * c) / d^e
-   */
+  /** Returns the calculation of ((a + b) * c) / d^e */
   public double calculate(double a, double b, double c, double d, double e) {
     // Step 1: Add a and b together
     double sum = add(a, b);
@@ -37,9 +35,7 @@ public class ExpressionCalculator {
     return a / b;
   }
 
- /**
-   * Calculates the result of raising a base to a given exponent.
-   *
+  /**
    * @param base the base number
    * @param exponent the exponent
    * @return the result of raising the base to the exponent
