@@ -9,11 +9,6 @@ public class ExpressionCalculator {
    * @return
    */
 
-  /* add a+b
-   * multiply a+b by c
-   * figure out exponent
-   * divide product
-   */
 
   public double calculate(double a, double b, double c, double d, double e) {
     // Implement your code here to return the correct value.
