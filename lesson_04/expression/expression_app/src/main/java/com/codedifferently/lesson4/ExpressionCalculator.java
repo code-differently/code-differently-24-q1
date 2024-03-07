@@ -1,9 +1,7 @@
 package com.codedifferently.lesson4;
 
 public class ExpressionCalculator {
-  /**
-   * Returns the calculation of ((a + b) * c) / d^e
-   */
+  /** Returns the calculation of ((a + b) * c) / d^e */
   public double calculate(double a, double b, double c, double d, double e) {
     // Implement your code here to return the correct value.
     double addition = add(a, b);
@@ -23,12 +21,12 @@ public class ExpressionCalculator {
     return product;
   }
 
-  public double pow(double base, double exponent) {
-    return Math.pow(base, exponent);
-  }
-
   public double divide(double product, double pow) {
     double quotient = product / pow;
     return quotient;
+  }
+
+  public double pow(double base, double exponent) {
+    return Math.pow(base, exponent);
   }
 }
