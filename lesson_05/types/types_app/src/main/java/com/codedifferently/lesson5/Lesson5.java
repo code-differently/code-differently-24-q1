@@ -18,14 +18,15 @@ public class Lesson5 implements CommandLineRunner {
     application.run(args);
   }
 
-  public void run(String... args) {
-    // var providerName = "anthonymays";
-    // String path = getDataPath();
-    // var fileGenerator = new SampleFileGenerator();
-    // fileGenerator.createTestFile(path, providerName);
+  public void run(String... args) throws Exception {
+    var providerName = args[0];
+    if (providerName == null) {
+      throw new IllegalArgumentException("Provider name is required");
+    }
 
-    var parser = new com.codedifferently.lesson5.parser.AnthonyMaysParser();
-    System.out.println(parser.getParsedData().get(0).get("column1"));
+    String path = getDataPath();
+    var fileGenerator = new SampleFileGenerator();
+    fileGenerator.createTestFile(path, providerName);
   }
 
   private static String getDataPath() {

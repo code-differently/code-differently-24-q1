@@ -1,7 +1,6 @@
-package com.codedifferently.lesson5.util;
+package com.codedifferently.lesson5.generator;
 
 import com.codedifferently.lesson5.generator.Generators.*;
-import com.codedifferently.lesson5.generator.ValueGenerator;
 import com.google.gson.GsonBuilder;
 import java.io.File;
 import java.io.FileWriter;
