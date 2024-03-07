@@ -1,43 +1,32 @@
 package com.codedifferently.lesson4;
 
 public class ExpressionCalculator {
-  /**
-   * Returns the calculation of ((a + b) * c) / d^e
-   */
-
-  public double add(double a, double b){
-    double addSum = a + b;
-    return addSum;
-
-   }
-
-  public double multiply(double a, double b){
-    double product = a * b;
-    return product;
-
-  }
-
-
-  public double divide(double a, double b){
-    double quotient = a / b;
-    return quotient;
-
-  }
-
-
-
-
-  public double pow(double base, double exponent) {
-    return Math.pow(base, exponent);
-  }
+  /** Returns the calculation of ((a + b) * c) / d^e */
+  // Method to add two numbers
 
   public double calculate(double a, double b, double c, double d, double e) {
     double sum = add(a, b);
-    double productSum = multiply(a, b);
-    double power = pow(b, e);
 
-    double result = divide(productSum,power);
-    // Implement your code here to return the correct value.
-    return result;
+    double product = multiply(sum, c);
+
+    double dToThePowerOfE = pow(d, e);
+
+    return divide(product, dToThePowerOfE);
+  }
+
+  public double add(double number1, double number2) {
+    return number1 + number2;
+  }
+
+  public double multiply(double number1, double number2) {
+    return number1 * number2;
+  }
+
+  public double divide(double numerator, double denominator) {
+    return numerator / denominator;
+  }
+
+  public double pow(double base, double exponent) {
+    return Math.pow(base, exponent);
   }
 }
