@@ -9,5 +9,11 @@ class Lesson5Test {
   void setUp() {}
 
   @Test
-  void testCalculate() {}
+  void testDataProvider_filesLoads() {}
+
+  @Test
+  void testDataProvider_configuredCorrectly() {}
+
+  @Test
+  void testDataProvider_correctlyParsesData() {}
 }
