@@ -1,37 +1,39 @@
 package com.codedifferently.lesson3;
 
-import com.codedifferently.instructional.quiz.QuizPrinter;
+import com.codedifferently.instructional.quiz.AnswerChoice;
+import com.codedifferently.instructional.quiz.MultipleChoiceQuizQuestion;
 import com.codedifferently.instructional.quiz.QuizQuestion;
 import com.codedifferently.instructional.quiz.QuizQuestionProvider;
 import java.util.List;
-import java.util.Objects;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Configuration;
+import java.util.Map;
+import org.springframework.stereotype.Service;
 
-@Configuration
-@SpringBootApplication(scanBasePackages = "com.codedifferently")
-public class Lesson3 implements CommandLineRunner {
+@Service
+public class Lesson3 implements QuizQuestionProvider {
 
-  @Autowired private List<QuizQuestionProvider> quizQuestionProviders;
-
-  public static void main(String[] args) {
-    var application = new SpringApplication(Lesson3.class);
-    application.run(args);
-  }
-
-  public void run(String... args) {
-    for (QuizQuestionProvider provider : quizQuestionProviders) {
-      System.out.println("\nQuestions by " + provider.getProviderName() + ":");
-      printQuiz(provider.makeQuizQuestions());
+    @Override
+    public String getProviderName() {
+        return "techquiz";
     }
-  }
 
-  public void printQuiz(List<QuizQuestion> quizQuestions) {
-    Objects.requireNonNull(quizQuestions);
-    var printer = new QuizPrinter();
-    printer.printQuiz(quizQuestions);
-  }
+    @Override
+    public List<QuizQuestion> makeQuizQuestions() {
+        return List.of(makeQuestion0(), makeQuestion1());
+    }
+
+    private QuizQuestion makeQuestion0() {
+        return new MultipleChoiceQuizQuestion(
+                0,
+                "Which programming language is known for its versatility and use in web development?",
+                Map.of(
+                        AnswerChoice.A, "Java",
+                        AnswerChoice.B, "Python",
+                        AnswerChoice.C, "C++",
+                        AnswerChoice.D, "JavaScript"),
+                AnswerChoice.UNANSWERED); // SOLVE
+    }
+
+    private QuizQuestion makeQuestion1() {
+        return new QuizQuestion(1, "What does CPU stand for?", ""); // SOLVE
+    }
 }
