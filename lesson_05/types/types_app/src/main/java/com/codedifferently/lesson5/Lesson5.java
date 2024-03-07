@@ -18,6 +18,10 @@ public class Lesson5 implements CommandLineRunner {
   }
 
   public void run(String... args) throws Exception {
+    if (args.length == 0) {
+      return;
+    }
+
     var providerName = args[0];
     if (providerName == null) {
       throw new IllegalArgumentException("Provider name is required");
