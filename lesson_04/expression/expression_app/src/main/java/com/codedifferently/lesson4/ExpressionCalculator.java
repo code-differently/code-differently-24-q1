@@ -17,10 +17,6 @@ public class ExpressionCalculator {
     return quotion;
   }
 
-  public double pow(double base, double exponent) {
-    return Math.pow(base, exponent);
-  }
-
   public double add(double a, double b) {
     double sum = a + b;
     return sum;
@@ -34,5 +30,9 @@ public class ExpressionCalculator {
   public double divide(double a, double b) {
     double quotion = a / b;
     return quotion;
+  }
+
+  public double pow(double base, double exponent) {
+    return Math.pow(base, exponent);
   }
 }
