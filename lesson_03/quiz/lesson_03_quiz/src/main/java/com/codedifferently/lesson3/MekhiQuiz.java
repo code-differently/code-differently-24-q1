@@ -23,7 +23,7 @@ public class MekhiQuiz implements QuizQuestionProvider {
     }
 
     private QuizQuestion makeQuestion0() {
-        return new MultipleChoiceQuizQuestion(
+        return new MultipleChoiceQuizQuestion (
                 0,
                 "Which programming language is known for its versatility and use in web development?",
                 Map.of(
