@@ -37,7 +37,7 @@ public class ExpressionCalculator {
     return a / b;
   }
 
-  /**
+ /**
    * Calculates the result of raising a base to a given exponent.
    *
    * @param base the base number
