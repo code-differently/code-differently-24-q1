@@ -1,7 +1,6 @@
 package com.codedifferently.lesson5;
 
-import static com.codedifferently.lesson5.generator.Generators.*;
-
+import com.codedifferently.lesson5.generator.SampleFileGenerator;
 import java.io.File;
 import java.nio.file.Paths;
 import org.springframework.boot.CommandLineRunner;
