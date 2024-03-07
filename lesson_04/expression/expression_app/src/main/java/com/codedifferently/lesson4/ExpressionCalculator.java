@@ -8,8 +8,6 @@ public class ExpressionCalculator {
    * @param b
    * @return
    */
-
-
   public double calculate(double a, double b, double c, double d, double e) {
     // Implement your code here to return the correct value.
     double addition = add(a, b);
