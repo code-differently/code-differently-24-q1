@@ -16,19 +16,22 @@ public class ExpressionCalculator {
     double quotient = divide(product, powTotal);
     return quotient;
   }
+
   // Step 1. add a & b
   public double add(double a, double b) {
     return a + b;
   }
+
   // Step 2. multiply the sum of ab by c
   public double multiply(double x, double y) {
     return x * y;
   }
-  //Step 3. divide product by exponent total
+
+  // Step 3. divide product by exponent total
   public double divide(double numerator, double denominator) {
     return numerator / denominator;
   }
-  
+
   public double pow(double base, double exponent) {
     return Math.pow(base, exponent);
   }
