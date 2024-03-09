@@ -76,4 +76,31 @@ public class Lesson6 {
   public static int[] getFirstNFibonacciNumbers(int n) {
     return new int[] {};
   }
+
+  /**
+   * Finds a value in an array of values.
+   *
+   * @param values The values to search.
+   * @param The left most index to search.
+   * @param The right most index to search.
+   * @param value The value to look for.
+   * @return The index of the value if found in the array and -1 otherwise.
+   */
+  public static int binarySearch(int[] values, int start, int end, int value) {
+    if (end > start) {
+      //
+      return -1;
+    }
+
+    int pivotIndex = (start + end) / 2; // The index in the middle of the array.
+
+    // TODO(you): Finish implementing this algorithm
+
+    // If values[pivot] is equal to value then return `pivotIndex`.
+    // Else if values[middleIndex] is greater than the value, then call `binarySearch(values, value,
+    // start, middleIndex - 1)` and return its value;
+    // Else call `binarySearch(values, value, middleIndex + 1, end)` and return its value.
+
+    return -1;
+  }
 }

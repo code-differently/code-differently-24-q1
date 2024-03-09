@@ -9,6 +9,7 @@ on:
       - "lesson_03/quiz/**"
       - "lesson_04/expression/**"
       - "lesson_05/types/**"
+      - "lesson_06/conditionals/**"
 
 jobs:
   build:
@@ -45,6 +46,10 @@ jobs:
     - name: Build Lesson 05 with Gradle Wrapper
       working-directory: ./lesson_05/types
       run: ./gradlew check
+
+    - name: Build Lesson 06 with Gradle Wrapper
+      working-directory: ./lesson_06/conditionals
+      run: ./gradlew assemble && ./gradlew spotlessCheck
 
     - name: Build Shared Lib with Gradle Wrapper
       working-directory: ./lib/java/codedifferently-instructional
