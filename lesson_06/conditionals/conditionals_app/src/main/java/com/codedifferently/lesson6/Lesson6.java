@@ -106,5 +106,6 @@ public class Lesson6 {
     // Else if values[pivotIndex] is greater than the value, then
     // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
     // Else call `binarySearch(values, pivotIndex + 1, end, value)` and return its value.
+    return -1;
   }
 }
