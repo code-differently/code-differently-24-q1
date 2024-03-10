@@ -103,9 +103,15 @@ public class Lesson6 {
     // TODO(you): Finish implementing this algorithm
 
     // If values[pivotIndex] is equal to value then return `pivotIndex`.
+    if (values[pivotIndex] == value) {
+        return pivotIndex;
+    }
     // Else if values[pivotIndex] is greater than the value, then
     // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
+    if (values[pivotIndex] > value) {
+        return binarySearch(values, start, pivotIndex - 1, value);
+    }
     // Else call `binarySearch(values, pivotIndex + 1, end, value)` and return its value.
-    return -1;
+    return binarySearch();
   }
 }

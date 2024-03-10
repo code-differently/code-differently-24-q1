@@ -109,7 +109,11 @@ class Lesson6Test {
     int[] values = {1, 3, 5, 7, 9};
 
     // Test for value present in the array
+    assertThat(Lesson6.binarySearch(values, 0, values.length - 1, 1)).isEqualTo(0);
+    assertThat(Lesson6.binarySearch(values, 0, values.length - 1, 3)).isEqualTo(1);
     assertThat(Lesson6.binarySearch(values, 0, values.length - 1, 5)).isEqualTo(2);
+    assertThat(Lesson6.binarySearch(values, 0, values.length - 1, 7)).isEqualTo(3);
+    assertThat(Lesson6.binarySearch(values, 0, values.length - 1, 9)).isEqualTo(4);
 
     // Test for value not present in the array
     assertThat(Lesson6.binarySearch(values, 0, values.length - 1, 4)).isEqualTo(-1);
