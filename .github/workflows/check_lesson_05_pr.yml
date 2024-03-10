@@ -1,13 +1,9 @@
-name: Check Push
+name: Check Lesson 05 Pull Request
 
 on:
-  push:
+  pull_request:
     branches: [ "main" ]
     paths:
-      - "lib/**"
-      - "lesson_02/quiz/**"
-      - "lesson_03/quiz/**"
-      - "lesson_04/expression/**"
       - "lesson_05/types/**"
 
 jobs:
@@ -30,24 +26,7 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
-    - name: Build Lesson 02 with Gradle Wrapper
-      working-directory: ./lesson_02/quiz
-      run: ./gradlew assemble
-
-    - name: Build Lesson 03 with Gradle Wrapper
-      working-directory: ./lesson_03/quiz
-      run: ./gradlew check
-
-    - name: Build Lesson 04 with Gradle Wrapper
-      working-directory: ./lesson_04/expression
-      run: ./gradlew assemble
-
     - name: Build Lesson 05 with Gradle Wrapper
       working-directory: ./lesson_05/types
       run: ./gradlew check
-
-    - name: Build Shared Lib with Gradle Wrapper
-      working-directory: ./lib/java/codedifferently-instructional
-      run: ./gradlew check
-
 
