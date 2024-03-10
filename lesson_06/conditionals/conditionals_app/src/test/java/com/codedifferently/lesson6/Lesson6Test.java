@@ -2,6 +2,8 @@ package com.codedifferently.lesson6;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
@@ -36,14 +38,33 @@ class Lesson6Test {
 
   @Test
   void testConvertGpaToLetterGrade() {
-    // Test for GPA 4.0
-    assertThat(Lesson6.convertGpaToLetterGrade(4.0)).isEqualTo("A");
+    Map<String, String> letterGradeByGpa = new HashMap<String, String>();
+    letterGradeByGpa.put("4.0", "A");
+    letterGradeByGpa.put("3.99", "A-");
+    letterGradeByGpa.put("3.7", "A-");
+    letterGradeByGpa.put("3.69", "B+");
+    letterGradeByGpa.put("3.3", "B+");
+    letterGradeByGpa.put("3.29", "B");
+    letterGradeByGpa.put("3.0", "B");
+    letterGradeByGpa.put("2.99", "B-");
+    letterGradeByGpa.put("2.7", "B-");
+    letterGradeByGpa.put("2.69", "C+");
+    letterGradeByGpa.put("2.3", "C+");
+    letterGradeByGpa.put("2.29", "C");
+    letterGradeByGpa.put("2.0", "C");
+    letterGradeByGpa.put("1.99", "C-");
+    letterGradeByGpa.put("1.7", "C-");
+    letterGradeByGpa.put("1.69", "D+");
+    letterGradeByGpa.put("1.3", "D+");
+    letterGradeByGpa.put("1.29", "D");
+    letterGradeByGpa.put("1.00", "D");
+    letterGradeByGpa.put("0.99", "F");
 
-    // Test for GPA 3.5
-    assertThat(Lesson6.convertGpaToLetterGrade(3.5)).isEqualTo("B+");
-
-    // Test for GPA 2.7
-    assertThat(Lesson6.convertGpaToLetterGrade(2.7)).isEqualTo("B-");
+    letterGradeByGpa.entrySet().stream()
+        .forEach(
+            entry ->
+                assertThat(Lesson6.convertGpaToLetterGrade(Double.parseDouble(entry.getKey())))
+                    .isEqualTo(entry.getValue()));
   }
 
   @Test
