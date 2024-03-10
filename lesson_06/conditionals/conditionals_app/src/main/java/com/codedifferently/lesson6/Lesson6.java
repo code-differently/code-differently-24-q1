@@ -4,8 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 
-import ch.qos.logback.core.joran.sanity.Pair;
-
 @Configuration
 @SpringBootApplication(scanBasePackages = "com.codedifferently")
 public class Lesson6 {
@@ -22,7 +20,7 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-      return false;
+    return false;
   }
 
   /**
@@ -33,26 +31,36 @@ public class Lesson6 {
    * @rerturn -1 if a is less than b, 1 if a is greater than b, and 0 otherwise.
    */
   public static int compareStrings(String a, String b) {
-      int distance = computeLexographicDistance(a, b);
+    int distance = computeLexographicDistance(a, b);
 
-      // TODO(you): Finish this method.
+    // TODO(you): Finish this method.
 
-      return 0;
+    return 0;
   }
 
+  /**
+   * Computes a score describing the lexographic distance between two strings. For two strings of
+   * equal length, the score will be the difference between the first differing character. In the
+   * case where either is a sub-string of the other, then the difference in length determines the
+   * score.
+   *
+   * @param a The first string to compare.
+   * @param b The second string to compare.
+   * @return A score representing the lexographic distance between two strings.
+   */
   private static int computeLexographicDistance(String a, String b) {
-      for (var i = 0; i < a.length(); ++i) {
-          if (a.charAt(i) == b.charAt(i)) {
-              continue;
-          }
-          return (int)a.charAt(i) - (int)b.charAt(i);
+    for (var i = 0; i < a.length(); ++i) {
+      if (a.charAt(i) == b.charAt(i)) {
+        continue;
       }
+      return (int) a.charAt(i) - (int) b.charAt(i);
+    }
 
-      if (a.length() != b.length()) {
-          return a.length() - b.length();
-      }
+    if (a.length() != b.length()) {
+      return a.length() - b.length();
+    }
 
-      return 0;
+    return 0;
   }
 
   /**
@@ -65,7 +73,7 @@ public class Lesson6 {
    * @return The letter grade ("A+", "A", "A-", "B+", etc.).
    */
   public static String convertGpaToLetterGrade(double gpa) {
-      return "F";
+    return "F";
   }
 
   /**
@@ -75,7 +83,7 @@ public class Lesson6 {
    * @return The factorial of n.
    */
   public static int computeFactorial(int n) {
-      return 0;
+    return 0;
   }
 
   /**
@@ -85,7 +93,7 @@ public class Lesson6 {
    * @return The sum of all the values.
    */
   public static double addNumbers(double[] values) {
-      return 0;
+    return 0;
   }
 
   /**
@@ -95,7 +103,7 @@ public class Lesson6 {
    * @return An array containing the first `n` fibonacci values.
    */
   public static int[] getFirstNFibonacciNumbers(int n) {
-      return null;
+    return null;
   }
 
   /**
