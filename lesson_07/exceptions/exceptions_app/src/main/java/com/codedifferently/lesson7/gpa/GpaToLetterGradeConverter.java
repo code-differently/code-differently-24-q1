@@ -31,6 +31,8 @@ public class GpaToLetterGradeConverter {
    * @return The letter grade ("A+", "A", "A-", "B+", etc.).
    */
   public String convertToLetterGrade(double gpa) throws IllegalArgumentException {
+    // Iterate through the list list starting at the head node and return the letter grade for the
+    // matching GPA range.
     throw new UnsupportedOperationException();
   }
 }
