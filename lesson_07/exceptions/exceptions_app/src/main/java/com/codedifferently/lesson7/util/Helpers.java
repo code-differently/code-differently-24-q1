@@ -1,6 +1,6 @@
-package com.codedifferently.lesson7;
+package com.codedifferently.lesson7.util;
 
-class Utils {
+public class Helpers {
   /**
    * Computes a score describing the lexographic distance between two strings. For two strings of
    * equal length, the score will be the difference between the first differing character. In the
@@ -24,15 +24,5 @@ class Utils {
     }
 
     return 0;
-  }
-
-  /**
-   * Tests whether the given array is sorted or not.
-   *
-   * @param values The array to check.
-   * @return True if the array is sorted, and false otherwise.
-   */
-  public static boolean isArraySortedAscending(int[] values) {
-    return false;
   }
 }

@@ -1,5 +1,7 @@
 package com.codedifferently.lesson7;
 
+import com.codedifferently.lesson7.gpa.GpaToLetterGradeConverter;
+import com.codedifferently.lesson7.util.Helpers;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +35,7 @@ public class Lesson7 {
   public static int compareStrings(String a, String b) {
     // The distance will be a number less than 0 if string `a` is lexographically less than `b`, 1
     // if it is greater, and 0 if the strings are equal.
-    int distance = Utils.computeLexographicDistance(a, b);
+    int distance = Helpers.computeLexographicDistance(a, b);
 
     // TODO(you): Finish this method.
 

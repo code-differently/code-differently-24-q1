@@ -1,7 +1,9 @@
-package com.codedifferently.lesson7;
+package com.codedifferently.lesson7.gpa;
+
+import com.codedifferently.lesson7.util.LinkedListNode;
 
 /** An object that converts GPAs to their letter grade equivalent. */
-class GpaToLetterGradeConverter {
+public class GpaToLetterGradeConverter {
 
   private LinkedListNode<GpaLetterGradeMapping> head;
 
@@ -30,19 +32,6 @@ class GpaToLetterGradeConverter {
    */
   public String convertToLetterGrade(double gpa) throws IllegalArgumentException {
     throw new UnsupportedOperationException();
-  }
-}
-
-/** A LinkedList node. */
-class LinkedListNode<T> {
-  /** The next node in a linked list. */
-  public LinkedListNode<T> next;
-
-  /** The data stored in this node. */
-  public T data;
-
-  public LinkedListNode(T data) {
-      this.data = data;
   }
 }
 
