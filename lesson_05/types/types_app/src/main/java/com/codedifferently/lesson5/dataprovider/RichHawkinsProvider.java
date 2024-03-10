@@ -4,7 +4,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RichHawkins extends DataProvider {
+public class RichHawkinsProvider extends DataProvider {
   public String getProviderName() {
     return "richhawkins";
   }
