@@ -51,6 +51,10 @@ jobs:
       working-directory: ./lesson_06/conditionals
       run: ./gradlew assemble && ./gradlew spotlessCheck
 
+    - name: Build Lesson 07 with Gradle Wrapper
+      working-directory: ./lesson_07/exceptions
+      run: ./gradlew assemble && ./gradlew spotlessCheck
+
     - name: Build Shared Lib with Gradle Wrapper
       working-directory: ./lib/java/codedifferently-instructional
       run: ./gradlew check
