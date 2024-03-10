@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 
+import ch.qos.logback.core.joran.sanity.Pair;
+
 @Configuration
 @SpringBootApplication(scanBasePackages = "com.codedifferently")
 public class Lesson6 {
@@ -20,7 +22,7 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    return false;
+      return false;
   }
 
   /**
@@ -31,7 +33,26 @@ public class Lesson6 {
    * @rerturn -1 if a is less than b, 1 if a is greater than b, and 0 otherwise.
    */
   public static int compareStrings(String a, String b) {
-    return 0;
+      int distance = computeLexographicDistance(a, b);
+
+      // TODO(you): Finish this method.
+
+      return 0;
+  }
+
+  private static int computeLexographicDistance(String a, String b) {
+      for (var i = 0; i < a.length(); ++i) {
+          if (a.charAt(i) == b.charAt(i)) {
+              continue;
+          }
+          return (int)a.charAt(i) - (int)b.charAt(i);
+      }
+
+      if (a.length() != b.length()) {
+          return a.length() - b.length();
+      }
+
+      return 0;
   }
 
   /**
@@ -44,7 +65,7 @@ public class Lesson6 {
    * @return The letter grade ("A+", "A", "A-", "B+", etc.).
    */
   public static String convertGpaToLetterGrade(double gpa) {
-    return "A+";
+      return "F";
   }
 
   /**
@@ -54,7 +75,7 @@ public class Lesson6 {
    * @return The factorial of n.
    */
   public static int computeFactorial(int n) {
-    return 0;
+      return 0;
   }
 
   /**
@@ -64,7 +85,7 @@ public class Lesson6 {
    * @return The sum of all the values.
    */
   public static double addNumbers(double[] values) {
-    return 0d;
+      return 0;
   }
 
   /**
@@ -74,7 +95,7 @@ public class Lesson6 {
    * @return An array containing the first `n` fibonacci values.
    */
   public static int[] getFirstNFibonacciNumbers(int n) {
-    return new int[] {};
+      return null;
   }
 
   /**
@@ -87,7 +108,7 @@ public class Lesson6 {
    * @return The index of the value if found in the array and -1 otherwise.
    */
   public static int binarySearch(int[] values, int start, int end, int value) {
-    if (end > start) {
+    if (end < start) {
       //
       return -1;
     }
@@ -96,11 +117,10 @@ public class Lesson6 {
 
     // TODO(you): Finish implementing this algorithm
 
-    // If values[pivot] is equal to value then return `pivotIndex`.
-    // Else if values[middleIndex] is greater than the value, then call `binarySearch(values, value,
-    // start, middleIndex - 1)` and return its value;
-    // Else call `binarySearch(values, value, middleIndex + 1, end)` and return its value.
-
+    // If values[pivotIndex] is equal to value then return `pivotIndex`.
+    // Else if values[pivotIndex] is greater than the value, then
+    // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
+    // Else call `binarySearch(values, pivotIndex + 1, end, value)` and return its value.
     return -1;
   }
 }
