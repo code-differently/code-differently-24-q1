@@ -2,7 +2,7 @@
 
 ## Homework
 
-* Read CC 16, 19
+* Read CC 16, 19; PIE 8
 * Complete [Conditionals and Loops](#choosing-the-right-data-types) exercise.
 
 ## Conditionals and Loops
