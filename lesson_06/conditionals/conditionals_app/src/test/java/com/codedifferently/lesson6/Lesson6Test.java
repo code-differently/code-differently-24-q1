@@ -38,6 +38,7 @@ class Lesson6Test {
 
   @Test
   void testConvertGpaToLetterGrade() {
+    // Arrange
     Map<String, String> letterGradeByGpa = new HashMap<String, String>();
     letterGradeByGpa.put("4.0", "A");
     letterGradeByGpa.put("3.99", "A-");
@@ -60,6 +61,7 @@ class Lesson6Test {
     letterGradeByGpa.put("1.00", "D");
     letterGradeByGpa.put("0.99", "F");
 
+    // Act & Assert
     letterGradeByGpa.entrySet().stream()
         .forEach(
             entry ->
@@ -106,6 +108,7 @@ class Lesson6Test {
 
   @Test
   void testBinarySearch() {
+    // Arrange
     int[] values = {1, 3, 5, 7, 9};
 
     // Test for value present in the array
