@@ -20,7 +20,7 @@ public class Lesson7 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    return false;
+    throw new UnsupportedOperationException();
   }
 
   /**
@@ -40,6 +40,9 @@ public class Lesson7 {
     return 0;
   }
 
+  /** An instance of a GPA converter. */
+  private static final GpaToLetterGradeConverter gpaConverter = new GpaToLetterGradeConverter();
+
   /**
    * Converts a GPA on the 4.0 scale to the corresponding letter grade using the college board
    * scale. See
@@ -50,7 +53,7 @@ public class Lesson7 {
    * @return The letter grade ("A+", "A", "A-", "B+", etc.).
    */
   public static String convertGpaToLetterGrade(double gpa) {
-    return "F";
+    return gpaConverter.convertToLetterGrade(gpa);
   }
 
   /**
@@ -93,19 +96,19 @@ public class Lesson7 {
    * @return The index of the value if found in the array and -1 otherwise.
    */
   public static int binarySearch(int[] values, int start, int end, int value) {
-    if (end < start) {
-      //
-      return -1;
+
+    while (start <= end) {
+      int pivotIndex = (start + end) / 2;
+
+      if (values[pivotIndex] == value) {
+        return pivotIndex;
+      } else if (values[pivotIndex] > value) {
+        end = pivotIndex - 1;
+      } else {
+        start = pivotIndex + 1;
+      }
     }
 
-    int pivotIndex = (start + end) / 2; // The index in the middle of the array.
-
-    // TODO(you): Finish implementing this algorithm
-
-    // If values[pivotIndex] is equal to value then return `pivotIndex`.
-    // Else if values[pivotIndex] is greater than the value, then
-    // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
-    // Else call `binarySearch(values, pivotIndex + 1, end, value)` and return its value.
     return -1;
   }
 }

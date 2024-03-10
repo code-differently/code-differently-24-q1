@@ -3,7 +3,6 @@ package com.codedifferently.lesson7;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.lang.IllegalArgumentException;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
@@ -28,7 +27,9 @@ class Lesson7Test {
 
   @Test
   void testCanVote_ageIsValid() {
-    assertThatThrownBy(() -> Lesson7.canVote(-10)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("Age must be greater than 0.");
+    assertThatThrownBy(() -> Lesson7.canVote(-10))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("Age must be greater than 0.");
   }
 
   @Test
@@ -45,8 +46,10 @@ class Lesson7Test {
 
   @Test
   void testCompareStrings_mustNotBeNull() {
-      assertThatThrownBy(() -> Lesson7.compareStrings(null, "test")).isInstanceOf(IllegalArgumentException.class);
-      assertThatThrownBy(() -> Lesson7.compareStrings("test", null)).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> Lesson7.compareStrings(null, "test"))
+        .isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> Lesson7.compareStrings("test", null))
+        .isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
@@ -82,7 +85,8 @@ class Lesson7Test {
 
   @Test
   void testConvertGpaToLetterGrade_validGpaRange() {
-      assertThatThrownBy(() -> Lesson7.convertGpaToLetterGrade(-1)).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> Lesson7.convertGpaToLetterGrade(-1))
+        .isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
@@ -124,7 +128,8 @@ class Lesson7Test {
 
   @Test
   void testGetFirstNFibonacciNumbers_validateInput() {
-    assertThatThrownBy(() -> Lesson7.getFirstNFibonacciNumbers(-1)).isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> Lesson7.getFirstNFibonacciNumbers(-1))
+        .isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
@@ -144,10 +149,11 @@ class Lesson7Test {
 
   @Test
   void testBinarySearch_confirmInputSorted() {
-      // Arrange
-      int[] values = {7, 5, 1};
+    // Arrange
+    int[] values = {7, 5, 1};
 
-      // Act
-      assertThatThrownBy(() -> Lesson7.binarySearch(values, 0, 0, 10)).isInstanceOf(IllegalArgumentException.class);
+    // Act
+    assertThatThrownBy(() -> Lesson7.binarySearch(values, 0, 0, 10))
+        .isInstanceOf(IllegalArgumentException.class);
   }
 }

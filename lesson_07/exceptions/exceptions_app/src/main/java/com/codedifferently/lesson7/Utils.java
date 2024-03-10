@@ -25,4 +25,14 @@ class Utils {
 
     return 0;
   }
+
+  /**
+   * Tests whether the given array is sorted or not.
+   *
+   * @param values The array to check.
+   * @return True if the array is sorted, and false otherwise.
+   */
+  public static boolean isArraySortedAscending(int[] values) {
+    return false;
+  }
 }
