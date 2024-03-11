@@ -52,6 +52,8 @@ class Lesson5Test {
   @Test
   void testDataProvider_configuredCorrectly() throws IOException {
     for (DataProvider provider : dataProviders) {
+      System.out.println("Checking provider " + provider.getProviderName());
+
       // Arrange
       var loader = new DataFileLoader(provider);
       List<Map<String, String>> data = loader.readData();
