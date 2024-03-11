@@ -21,7 +21,12 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    return false;
+    if (age >= 18) {
+      return true;
+
+    } else {
+      return false;
+    }
   }
 
   /**
@@ -38,7 +43,15 @@ public class Lesson6 {
 
     // TODO(you): Finish this method.
 
-    return 0;
+    if (distance < 0) {
+      return -1;
+    }
+    if (distance > 0) {
+      return 1;
+
+    } else {
+      return 0;
+    }
   }
 
   /**
@@ -51,7 +64,30 @@ public class Lesson6 {
    * @return The letter grade ("A+", "A", "A-", "B+", etc.).
    */
   public static String convertGpaToLetterGrade(double gpa) {
-    return "F";
+
+    if (gpa >= 4.0) {
+      return "A";
+    } else if (gpa >= 3.7) {
+      return "A-";
+    } else if (gpa >= 3.3) {
+      return "B+";
+    } else if (gpa >= 3.0) {
+      return "B";
+    } else if (gpa >= 2.7) {
+      return "B-";
+    } else if (gpa >= 2.3) {
+      return "C+";
+    } else if (gpa >= 2.0) {
+      return "C";
+    } else if (gpa >= 1.7) {
+      return "C-";
+    } else if (gpa >= 1.3) {
+      return "D+";
+    } else if (gpa >= 1.0) {
+      return "D";
+    } else {
+      return "F";
+    }
   }
 
   /**
@@ -61,7 +97,13 @@ public class Lesson6 {
    * @return The factorial of n.
    */
   public static int computeFactorial(int n) {
-    return 0;
+    int factorial = 1;
+
+    for (int i = 1; i <= n; i++) {
+      factorial *= i;
+    }
+
+    return factorial;
   }
 
   /**
@@ -71,7 +113,13 @@ public class Lesson6 {
    * @return The sum of all the values.
    */
   public static double addNumbers(double[] values) {
-    return 0;
+    double sum = 0;
+
+    for (double value : values) {
+      sum += value;
+    }
+
+    return sum;
   }
 
   /**
@@ -80,8 +128,37 @@ public class Lesson6 {
    * @param n The first `n` of fibonacci values to compute.
    * @return An array containing the first `n` fibonacci values.
    */
+
+  // Validate Input: Ensure n is positive. Return an empty array for invalid input.
+
+  // Initialize Array: Create an array of size n to store Fibonacci numbers.
+
+  // Handle Base Cases: Directly assign 1 to the first (and second if n > 1) elements.
+
+  // Calculate Fibonacci: Loop from the third element, each value is the sum of the two preceding
+  // ones.
+
+  // Return Array: Output the array with the first n Fibonacci numbers.
   public static int[] getFirstNFibonacciNumbers(int n) {
-    return null;
+
+    if (n < 1) {
+      return new int[0];
+    }
+
+    int[] fibonacciNumbers = new int[n];
+
+    fibonacciNumbers[0] = 1;
+
+    if (n > 1) {
+      fibonacciNumbers[1] = 1;
+
+      // Calculate subsequent Fibonacci numbers
+      for (int i = 2; i < n; i++) {
+        fibonacciNumbers[i] = fibonacciNumbers[i - 1] + fibonacciNumbers[i - 2];
+      }
+    }
+
+    return fibonacciNumbers;
   }
 
   /**
@@ -95,7 +172,7 @@ public class Lesson6 {
    */
   public static int binarySearch(int[] values, int start, int end, int value) {
     if (end < start) {
-      // The range is not valid so just return -1.
+
       return -1;
     }
 
@@ -104,9 +181,17 @@ public class Lesson6 {
     // TODO(you): Finish implementing this algorithm
 
     // If values[pivotIndex] is equal to value then return `pivotIndex`.
+    if (values[pivotIndex] == value) {
+      return pivotIndex;
+    }
     // Else if values[pivotIndex] is greater than the value, then
     // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
+    else if (values[pivotIndex] > value) {
+      return binarySearch(values, start, pivotIndex - 1, value);
+    }
     // Else call `binarySearch(values, pivotIndex + 1, end, value)` and return its value.
-    return -1;
+    else {
+      return binarySearch(values, pivotIndex + 1, end, value);
+    }
   }
 }
