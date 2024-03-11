@@ -13,7 +13,7 @@ public class AaronSantiagoProvider extends DataProvider {
   public Map<String, Class> getColumnTypeByName() {
     return Map.of(
         "column1", Long.class,
-        "column2", BigDecimal.class,
+        "column2", Short.class,
         "column3", Integer.class,
         "column4", Double.class,
         "column5", Boolean.class,
