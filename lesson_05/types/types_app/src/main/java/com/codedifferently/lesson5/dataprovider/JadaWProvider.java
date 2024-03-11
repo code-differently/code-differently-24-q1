@@ -1,6 +1,6 @@
 package com.codedifferently.lesson5.dataprovider;
 
-import com.codedifferently.lesson5.dataprovider.DataProvider;
+import java.math.BigInteger;
 import java.util.Map;
 import org.springframework.stereotype.Service;
 
@@ -12,19 +12,12 @@ public class JadaWProvider extends DataProvider {
 
   public Map<String, Class> getColumnTypeByName() {
     return Map.of(
-        "column1",
-        Integer.class,
-        "column2",
-        String.class,
-        "column3",
-        Boolean.class,
-        "column4",
-        Float.class,
-        "column5",
-        Double.class,
-        "column6",
-        Long.class,
-        "column7",
-        Short.class);
+        "column1", Integer.class,
+        "column2", String.class,
+        "column3", Float.class,
+        "column4", Boolean.class,
+        "column5", Double.class,
+        "column6", BigInteger.class,
+        "column7", Long.class);
   }
 }
