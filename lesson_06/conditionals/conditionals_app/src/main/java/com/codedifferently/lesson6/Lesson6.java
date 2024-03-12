@@ -21,7 +21,7 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    return age >= 18; 
+    return age >= 18;
   }
 
   /**
@@ -40,7 +40,7 @@ public class Lesson6 {
     } else {
       return 0;
     }
-  } 
+  }
 
   /**
    * Converts a GPA on the 4.0 scale to the corresponding letter grade using the college board
