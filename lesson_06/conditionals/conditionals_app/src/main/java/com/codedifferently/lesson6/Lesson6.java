@@ -21,7 +21,7 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    return false;
+    return age >= 18 ? true : false;
   }
 
   /**
@@ -35,10 +35,16 @@ public class Lesson6 {
     // The distance will be a number less than 0 if string `a` is lexographically less than `b`, 1
     // if it is greater, and 0 if the strings are equal.
     int distance = Helpers.computeLexographicDistance(a, b);
+    if (distance < 0) {
+      return -1;
+    } else if (distance == 1) {
+      return 1;
+    } else {
+      return 0;
+    }
 
     // TODO(you): Finish this method.
 
-    return 0;
   }
 
   /**
@@ -51,7 +57,29 @@ public class Lesson6 {
    * @return The letter grade ("A+", "A", "A-", "B+", etc.).
    */
   public static String convertGpaToLetterGrade(double gpa) {
-    return "F";
+    if (gpa >= 4.0) {
+      return "A";
+    } else if (gpa >= 3.7) {
+      return "A-";
+    } else if (gpa >= 3.3) {
+      return "B+";
+    } else if (gpa >= 3.0) {
+      return "B";
+    } else if (gpa >= 2.7) {
+      return "B-";
+    } else if (gpa >= 2.3) {
+      return "C+";
+    } else if (gpa >= 2.0) {
+      return "C";
+    } else if (gpa >= 1.7) {
+      return "C-";
+    } else if (gpa >= 1.3) {
+      return "D+";
+    } else if (gpa >= 1.0) {
+      return "D";
+    } else {
+      return "F";
+    }
   }
 
   /**
@@ -61,7 +89,11 @@ public class Lesson6 {
    * @return The factorial of n.
    */
   public static int computeFactorial(int n) {
-    return 0;
+    int factorial = 1;
+    for (int i = 1; i <= n; i++) {
+      factorial *= i;
+    }
+    return factorial;
   }
 
   /**
@@ -71,7 +103,11 @@ public class Lesson6 {
    * @return The sum of all the values.
    */
   public static double addNumbers(double[] values) {
-    return 0;
+    double sum = 0;
+    for (double num : values) {
+      sum += num;
+    }
+    return sum;
   }
 
   /**
@@ -81,7 +117,17 @@ public class Lesson6 {
    * @return An array containing the first `n` fibonacci values.
    */
   public static int[] getFirstNFibonacciNumbers(int n) {
-    return null;
+    int[] fibNums = new int[n];
+    int num1 = 1;
+    int num2 = 1;
+    for (int i = 0; i < n; i++) {
+      fibNums[i] = num1;
+      int num3 = num1 + num2;
+      num1 = num2;
+      num2 = num3;
+    }
+
+    return fibNums;
   }
 
   /**
@@ -103,10 +149,17 @@ public class Lesson6 {
 
     // TODO(you): Finish implementing this algorithm
 
+    if (values[pivotIndex] == value) {
+      return pivotIndex;
+    } else if (values[pivotIndex] > value) {
+      return binarySearch(values, start, pivotIndex - 1, value);
+    } else {
+      return binarySearch(values, pivotIndex + 1, end, value);
+    }
+
     // If values[pivotIndex] is equal to value then return `pivotIndex`.
     // Else if values[pivotIndex] is greater than the value, then
     // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
     // Else call `binarySearch(values, pivotIndex + 1, end, value)` and return its value.
-    return -1;
   }
 }
