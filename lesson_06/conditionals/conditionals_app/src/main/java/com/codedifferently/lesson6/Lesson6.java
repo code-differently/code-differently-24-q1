@@ -11,7 +11,7 @@ public class Lesson6 {
 
   public static void main(String[] args) {
     var application = new SpringApplication(Lesson6.class);
-    application.run(args);
+    application.run(args); 
   }
 
   /**
