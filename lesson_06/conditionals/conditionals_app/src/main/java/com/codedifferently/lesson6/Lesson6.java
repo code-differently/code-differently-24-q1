@@ -40,11 +40,22 @@ public class Lesson6 {
     // The distance will be a number less than 0 if string `a` is lexographically less than `b`, 1
     // if it is greater, and 0 if the strings are equal.
     int distance = Helpers.computeLexographicDistance(a, b);
+   
+if( distance < 0) {
+  return -1; 
+} else if (distance == 1) {
+  return 1;
+} else {
+  return 0;
+}
+  }
+
+
+
+
+
 
     // TODO(you): Finish this method.
-
-    return 0;
-  }
 
   /**
    * Converts a GPA on the 4.0 scale to the corresponding letter grade using the college board
@@ -106,6 +117,9 @@ public class Lesson6 {
 
     int pivotIndex = (start + end) / 2; // The index in the middle of the array.
 
+
+
+    for()
     // TODO(you): Finish implementing this algorithm
 
     // If values[pivotIndex] is equal to value then return `pivotIndex`.
@@ -113,5 +127,10 @@ public class Lesson6 {
     // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
     // Else call `binarySearch(values, pivotIndex + 1, end, value)` and return its value.
     return -1;
+  }
+
+  @Override
+  public String toString() {
+    return "Lesson6 []";
   }
 }
