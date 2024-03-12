@@ -21,11 +21,7 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    if (age >= 18) {
-      return true;
-    } else {
-      return false;
-    }
+    return age >= 18;
   }
 
   /**
@@ -79,10 +75,8 @@ public class Lesson6 {
       return "D+";
     } else if (gpa >= 1.0 && gpa < 1.3) {
       return "D";
-    } else if (gpa >= 0 && gpa < 1.0) {
-      return "F";
     } else {
-      return "Error: GPA entered is not valid";
+      return "F";
     }
   }
 
@@ -95,12 +89,15 @@ public class Lesson6 {
   static int total = 1;
 
   public static int computeFactorial(int n) {
-    int fact = 1;
-    for (int i = 1; i <= n; i++) {
-      fact *= i;
+    if (n < 0) {
+      throw new IllegalArgumentException("The number inputed is below the expexted");
+    } else {
+      int factorial = 1;
+      for (int i = 1; i <= n; i++) {
+        factorial *= i;
+      }
+      return factorial;
     }
-
-    return fact;
   }
 
   /**
@@ -114,7 +111,6 @@ public class Lesson6 {
     for (double num : values) {
       sum += num;
     }
-
     return sum;
   }
 
@@ -125,16 +121,21 @@ public class Lesson6 {
    * @return An array containing the first `n` fibonacci values.
    */
   public static int[] getFirstNFibonacciNumbers(int n) {
-    int num1 = 1;
-    int num2 = 1;
-    int[] fib = new int[n];
-    for (int i = 0; i < n; i++) {
-      fib[i] = num1;
-      int num3 = num1 + num2;
-      num1 = num2;
-      num2 = num3;
+    if (n < 0) {
+      throw new IllegalArgumentException("Number must be greater that 0");
+    } else {
+      int[] fib = new int[n];
+      if (n >= 1) {
+        fib[0] = 1;
+      }
+      if (n >= 2) {
+        fib[1] = 1;
+      }
+      for (int i = 2; i < n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+      }
+      return fib;
     }
-    return fib;
   }
 
   /**
