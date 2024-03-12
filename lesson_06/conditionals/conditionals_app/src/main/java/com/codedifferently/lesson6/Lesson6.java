@@ -21,7 +21,7 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    return age >= 18 ? true : false;
+    return age >= 18;
   }
 
   /**
@@ -89,6 +89,10 @@ public class Lesson6 {
    * @return The factorial of n.
    */
   public static int computeFactorial(int n) {
+    if (n < 0) {
+      throw new IllegalArgumentException("Error: n must be a positive whole number");
+    }
+
     int factorial = 1;
     for (int i = 1; i <= n; i++) {
       factorial *= i;
@@ -117,16 +121,18 @@ public class Lesson6 {
    * @return An array containing the first `n` fibonacci values.
    */
   public static int[] getFirstNFibonacciNumbers(int n) {
-    int[] fibNums = new int[n];
-    int num1 = 1;
-    int num2 = 1;
-    for (int i = 0; i < n; i++) {
-      fibNums[i] = num1;
-      int num3 = num1 + num2;
-      num1 = num2;
-      num2 = num3;
+    if (n <= 0) {
+      return new int[] {};
     }
-
+    if (n == 1) {
+      return new int[] {1};
+    }
+    int[] fibNums = new int[n];
+    fibNums[0] = 1;
+    fibNums[1] = 1;
+    for (int i = 2; i < n; i++) {
+      fibNums[i] = fibNums[i - 1] + fibNums[i - 2];
+    }
     return fibNums;
   }
 
