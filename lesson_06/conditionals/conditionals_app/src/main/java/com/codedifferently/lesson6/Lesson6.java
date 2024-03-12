@@ -93,11 +93,11 @@ public class Lesson6 {
     if (n < 0) {
       throw new IllegalArgumentException("The number inputed is below the expexted");
     }
-      int factorial = 1;
-      for (int i = 1; i <= n; i++) {
-        factorial *= i;
-      }
-      return factorial;
+    int factorial = 1;
+    for (int i = 1; i <= n; i++) {
+      factorial *= i;
+    }
+    return factorial;
   }
 
   /**
