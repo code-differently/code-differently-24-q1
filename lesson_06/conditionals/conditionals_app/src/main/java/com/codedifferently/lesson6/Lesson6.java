@@ -129,7 +129,7 @@ if( distance < 0) {
    */
   public static int binarySearch(int[] values, int start, int end, int value) {
     if (end < start) {
-      //
+      // The range is not valid so just return -1.
       return -1;
     }
 
