@@ -21,7 +21,12 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    return false;
+    if (age>=18) {
+      return true;
+    }else{
+      return false;
+    }
+    
   }
 
   /**
