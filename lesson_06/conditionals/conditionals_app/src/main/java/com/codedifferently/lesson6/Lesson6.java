@@ -21,12 +21,8 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    if (age >= 18) {
-      return true;
 
-    } else {
-      return false;
-    }
+    return age >= 18;
   }
 
   /**
@@ -128,17 +124,6 @@ public class Lesson6 {
    * @param n The first `n` of fibonacci values to compute.
    * @return An array containing the first `n` fibonacci values.
    */
-
-  // Validate Input: Ensure n is positive. Return an empty array for invalid input.
-
-  // Initialize Array: Create an array of size n to store Fibonacci numbers.
-
-  // Handle Base Cases: Directly assign 1 to the first (and second if n > 1) elements.
-
-  // Calculate Fibonacci: Loop from the third element, each value is the sum of the two preceding
-  // ones.
-
-  // Return Array: Output the array with the first n Fibonacci numbers.
   public static int[] getFirstNFibonacciNumbers(int n) {
 
     if (n < 1) {
@@ -146,18 +131,13 @@ public class Lesson6 {
     }
 
     int[] fibonacciNumbers = new int[n];
-
-    fibonacciNumbers[0] = 1;
-
-    if (n > 1) {
-      fibonacciNumbers[1] = 1;
-
-      // Calculate subsequent Fibonacci numbers
-      for (int i = 2; i < n; i++) {
+    for (int i = 0; i < n; i++) {
+      if (i == 0 || i == 1) {
+        fibonacciNumbers[i] = 1;
+      } else {
         fibonacciNumbers[i] = fibonacciNumbers[i - 1] + fibonacciNumbers[i - 2];
       }
     }
-
     return fibonacciNumbers;
   }
 
@@ -172,7 +152,7 @@ public class Lesson6 {
    */
   public static int binarySearch(int[] values, int start, int end, int value) {
     if (end < start) {
-
+      // The range is not valid so just return -1.
       return -1;
     }
 
