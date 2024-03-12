@@ -78,20 +78,17 @@ public class Lesson6 {
   }
 
   /**
-   * Computes the factorial of the given value of `n`.
+   * Computes the factorial of the given value of `n` using recursion.
    *
    * @param n The value for which to compute the factorial.
    * @return The factorial of n.
    */
   public static int computeFactorial(int n) {
-    if (n == 0) {
+    if (n == 0 || n == 1) {
       return 1;
+    } else {
+      return n * computeFactorial(n - 1);
     }
-    int result = 1;
-    for (int i = 1; i <= n; i++) {
-      result *= i;
-    }
-    return result;
   }
 
   /**
