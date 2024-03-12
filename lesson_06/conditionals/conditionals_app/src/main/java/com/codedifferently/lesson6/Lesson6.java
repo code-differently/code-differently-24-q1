@@ -94,11 +94,11 @@ public class Lesson6 {
       throw new IllegalArgumentException("Error: n must be a positive whole number");
     }
 
-    int factorial = 1;
-    for (int i = 1; i <= n; i++) {
-      factorial *= i;
+    if (n == 0) {
+      return 1;
+    } else {
+      return n * computeFactorial(n - 1);
     }
-    return factorial;
   }
 
   /**
