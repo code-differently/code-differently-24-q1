@@ -20,9 +20,17 @@ public class Lesson6 {
    * @param age The age to check.
    * @return True if the age corresponds to a voting age and false otherwise.
    */
-  public static boolean canVote(int age) {
-    return false;
-  }
+  public static boolean canVote(int age) { 
+    byte minimumAge = 18;
+    if (age >= minimumAge){
+      return true; 
+    } 
+    else {
+      return false;
+    }
+  lombok.launch}
+
+
 
   /**
    * Compares two strings lexographically.
@@ -32,6 +40,8 @@ public class Lesson6 {
    * @rerturn -1 if a is less than b, 1 if a is greater than b, and 0 otherwise.
    */
   public static int compareStrings(String a, String b) {
+    
+    
     // The distance will be a number less than 0 if string `a` is lexographically less than `b`, 1
     // if it is greater, and 0 if the strings are equal.
     int distance = Helpers.computeLexographicDistance(a, b);
