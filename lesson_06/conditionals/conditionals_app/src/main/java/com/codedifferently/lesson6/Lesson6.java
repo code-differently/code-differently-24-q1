@@ -1,6 +1,7 @@
 package com.codedifferently.lesson6;
 
 import com.codedifferently.lesson6.util.Helpers;
+import java.util.Arrays;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
@@ -107,11 +108,8 @@ public class Lesson6 {
    * @return The sum of all the values.
    */
   public static double addNumbers(double[] values) {
-    double sum = 0;
-    for (double num : values) {
-      sum += num;
-    }
-    return sum;
+
+    return Arrays.stream(values).reduce(0, (a, b) -> a + b);
   }
 
   /**
