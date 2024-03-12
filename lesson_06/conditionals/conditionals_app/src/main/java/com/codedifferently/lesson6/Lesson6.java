@@ -89,7 +89,10 @@ public class Lesson6 {
    * @return The sum of all the values.
    */
   public static double addNumbers(double[] values) {
-    double sum = 1+2;
+   double sum = 0; 
+    for(int i = 0; i < values.length; i++) {
+      sum += values[i];
+    }
     return sum;
   }
 
