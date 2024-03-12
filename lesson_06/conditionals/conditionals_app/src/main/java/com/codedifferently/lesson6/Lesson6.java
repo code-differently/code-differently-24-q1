@@ -21,7 +21,10 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    return false;
+    if (age >= 18) return true;
+    else {
+      return false;
+    }
   }
 
   /**
@@ -31,14 +34,15 @@ public class Lesson6 {
    * @param value2 The second `String` to compare.
    * @rerturn -1 if a is less than b, 1 if a is greater than b, and 0 otherwise.
    */
-  public static int compareStrings(String a, String b) {
+  public static int compareStrings(String value1, String value2) {
     // The distance will be a number less than 0 if string `a` is lexographically less than `b`, 1
     // if it is greater, and 0 if the strings are equal.
-    int distance = Helpers.computeLexographicDistance(a, b);
+    int distance = Helpers.computeLexographicDistance(value1, value2);
 
-    // TODO(you): Finish this method.
+    if (distance < 0) return -1;
+    else if (distance > 0) return 1;
+    else return 0;
 
-    return 0;
   }
 
   /**
@@ -51,7 +55,17 @@ public class Lesson6 {
    * @return The letter grade ("A+", "A", "A-", "B+", etc.).
    */
   public static String convertGpaToLetterGrade(double gpa) {
-    return "F";
+    if (gpa < 1.0) return "F";
+    else if (gpa < 1.3) return "D";
+    else if (gpa < 1.7) return "D+";
+    else if (gpa < 2.0) return "C-";
+    else if (gpa < 2.3) return "C";
+    else if (gpa < 2.7) return "C+";
+    else if (gpa < 3.0) return "B-";
+    else if (gpa < 3.3) return "B";
+    else if (gpa < 3.7) return "B+";
+    else if (gpa < 4.0) return "A-";
+    else return "A";
   }
 
   /**
@@ -61,7 +75,11 @@ public class Lesson6 {
    * @return The factorial of n.
    */
   public static int computeFactorial(int n) {
-    return 0;
+    int factorial = 1;
+    for (int i = 1; i <= n; i++) {
+      factorial *= i;
+    }
+    return factorial;
   }
 
   /**
@@ -71,7 +89,8 @@ public class Lesson6 {
    * @return The sum of all the values.
    */
   public static double addNumbers(double[] values) {
-    return 0;
+    double sum = 1+2;
+    return sum;
   }
 
   /**
@@ -95,7 +114,7 @@ public class Lesson6 {
    */
   public static int binarySearch(int[] values, int start, int end, int value) {
     if (end < start) {
-      // The range is not valid so just return -1.
+      //
       return -1;
     }
 
