@@ -144,26 +144,26 @@ public class Lesson6 {
    * @return The index of the value if found in the array and -1 otherwise.
    */
   public static int binarySearch(int[] values, int start, int end, int value) {
-    if (end < start) {
-      // The range is not valid so just return -1.
-      return -1;
-    }
-
-    int pivotIndex = (start + end) / 2; // The index in the middle of the array.
 
     // TODO(you): Finish implementing this algorithm
 
-    if (values[pivotIndex] == value) {
-      return pivotIndex;
-    } else if (values[pivotIndex] > value) {
-      return binarySearch(values, start, pivotIndex - 1, value);
-    } else {
-      return binarySearch(values, pivotIndex + 1, end, value);
+    while (start <= end) {
+      int pivotIndex = start + (end - start) / 2;
+
+      if (values[pivotIndex] == value) {
+        return pivotIndex;
+      } else if (values[pivotIndex] < value) {
+        start = pivotIndex + 1;
+      } else {
+        end = pivotIndex - 1;
+      }
     }
 
-    // If values[pivotIndex] is equal to value then return `pivotIndex`.
-    // Else if values[pivotIndex] is greater than the value, then
-    // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
-    // Else call `binarySearch(values, pivotIndex + 1, end, value)` and return its value.
+    return -1;
   }
+
+  // If values[pivotIndex] is equal to value then return `pivotIndex`.
+  // Else if values[pivotIndex] is greater than the value, then
+  // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
+  // Else call `binarySearch(values, pivotIndex + 1, end, value)` and return its value.
 }
