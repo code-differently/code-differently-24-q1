@@ -89,9 +89,6 @@ public class Lesson6 {
    * @return The factorial of n.
    */
   public static int computeFactorial(int n) {
-    if (n < 0) {
-      return -1;
-    }
     int factorial = 1;
     for (int i = 1; i <= n; i++) {
       factorial *= i;
