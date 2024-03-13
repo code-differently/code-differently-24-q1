@@ -42,7 +42,6 @@ public class Lesson6 {
     if (distance < 0) return -1;
     else if (distance > 0) return 1;
     else return 0;
-
   }
 
   /**
@@ -89,8 +88,8 @@ public class Lesson6 {
    * @return The sum of all the values.
    */
   public static double addNumbers(double[] values) {
-   double sum = 0; 
-    for(int i = 0; i < values.length; i++) {
+    double sum = 0;
+    for (int i = 0; i < values.length; i++) {
       sum += values[i];
     }
     return sum;
@@ -103,32 +102,49 @@ public class Lesson6 {
    * @return An array containing the first `n` fibonacci values.
    */
   public static int[] getFirstNFibonacciNumbers(int n) {
-    return null;
+
+    if (n < 0) {
+      return null;
+    }
+
+    int[] firstNFNumbers = new int[n];
+
+    if (n >= 1) {
+      firstNFNumbers[0] = 1;
+    }
+
+    if (n >= 2) {
+      firstNFNumbers[1] = 1;
+    }
+    for (int i = 2; i < n; i++) {
+
+      firstNFNumbers[i] = firstNFNumbers[i - 1] + firstNFNumbers[i - 2];
+    }
+    return firstNFNumbers;
   }
 
   /**
    * Finds a value in an array of values.
    *
    * @param values The values to search.
-   * @param The left most index to search.
-   * @param The right most index to search.
+   * @param start left most index to search.
+   * @param end right most index to search.
    * @param value The value to look for.
    * @return The index of the value if found in the array and -1 otherwise.
    */
   public static int binarySearch(int[] values, int start, int end, int value) {
-    if (end < start) {
-      //
-      return -1;
+    while (start <= end) {
+      int pivotIndex = start + (end - start) / 2;
+
+      if (values[pivotIndex] == value) {
+        return pivotIndex;
+      } else if (values[pivotIndex] < value) {
+        start = pivotIndex + 1;
+      } else {
+        end = pivotIndex - 1;
+      }
     }
 
-    int pivotIndex = (start + end) / 2; // The index in the middle of the array.
-
-    // TODO(you): Finish implementing this algorithm
-
-    // If values[pivotIndex] is equal to value then return `pivotIndex`.
-    // Else if values[pivotIndex] is greater than the value, then
-    // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
-    // Else call `binarySearch(values, pivotIndex + 1, end, value)` and return its value.
     return -1;
   }
 }
