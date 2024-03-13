@@ -47,6 +47,10 @@ jobs:
       working-directory: ./lesson_05/types
       run: ./gradlew check
 
+    - name: Build Lesson 06 with Gradle Wrapper
+      working-directory: ./lesson_06/conditionals
+      run: ./gradlew assemble && ./gradlew spotlessCheck
+
     - name: Build Lesson 07 with Gradle Wrapper
       working-directory: ./lesson_07/objects
       run: ./gradlew assemble && ./gradlew spotlessCheck
