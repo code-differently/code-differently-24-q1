@@ -157,8 +157,14 @@ public class Lesson6 {
    * @return The index of the value if found in the array and -1 otherwise.
    */
   public static int binarySearch(int[] values, int start, int end, int value) {
-    while (start <= end) {
-      int pivotIndex = start + (end - start) / 2;
+    if (end < start) {
+      //
+      return -1;
+    }
+
+    int pivotIndex = (start + end) / 2; // The index in the middle of the array.
+
+    // TODO(you): Finish implementing this algorithm
 
       if (values[pivotIndex] == value) {
         return pivotIndex;
