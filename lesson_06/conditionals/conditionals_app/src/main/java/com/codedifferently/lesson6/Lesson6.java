@@ -21,12 +21,11 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    if (age>=18) {
+    if (age >= 18) {
       return true;
-    }else{
+    } else {
       return false;
     }
-    
   }
 
   /**
@@ -40,17 +39,17 @@ public class Lesson6 {
     // The distance will be a number less than 0 if string `a` is lexographically less than `b`, 1
     // if it is greater, and 0 if the strings are equal.
     int distance = Helpers.computeLexographicDistance(a, b);
-   
-if( distance < 0) {
-  return -1; 
-} else if (distance == 1) {
-  return 1;
-} else {
-  return 0;
-}
+
+    if (distance < 0) {
+      return -1;
+    } else if (distance == 1) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 
-// TODO(you): Finish this method.
+  // TODO(you): Finish this method.
 
   /**
    * Converts a GPA on the 4.0 scale to the corresponding letter grade using the college board
@@ -62,30 +61,18 @@ if( distance < 0) {
    * @return The letter grade ("A+", "A", "A-", "B+", etc.).
    */
   public static String convertGpaToLetterGrade(double gpa) {
-   
 
-    if(gpa < 1.00)
-    return "F";
-    else if (gpa < 1.3)
-    return "D";
-    else if(gpa < 1.70)
-    return "D+";
-    else if(gpa < 2.0)
-    return "C-";
-    else if(gpa < 2.3)
-    return "C";
-    else if(gpa < 2.7)
-    return "C+";
-    else if(gpa < 3.0)
-    return "B-";
-    else if(gpa < 3.3)
-    return "B";
-    else if(gpa < 3.7)
-    return "B+";
-    else if(gpa < 4.0)
-    return"A-";
+    if (gpa < 1.00) return "F";
+    else if (gpa < 1.3) return "D";
+    else if (gpa < 1.70) return "D+";
+    else if (gpa < 2.0) return "C-";
+    else if (gpa < 2.3) return "C";
+    else if (gpa < 2.7) return "C+";
+    else if (gpa < 3.0) return "B-";
+    else if (gpa < 3.3) return "B";
+    else if (gpa < 3.7) return "B+";
+    else if (gpa < 4.0) return "A-";
     else return "A";
-
   }
 
   /**
@@ -95,7 +82,11 @@ if( distance < 0) {
    * @return The factorial of n.
    */
   public static int computeFactorial(int n) {
-    return 0;
+    int factorial = 1;
+    for (int i = 1; i <= n; i++) {
+      factorial *= i;
+    }
+    return factorial;
   }
 
   /**
@@ -105,7 +96,11 @@ if( distance < 0) {
    * @return The sum of all the values.
    */
   public static double addNumbers(double[] values) {
-    return 0;
+    double sum = 0;
+    for (int i = 0; i < values.length; i++) {
+      sum += values[i];
+    }
+    return sum;
   }
 
   /**
@@ -115,7 +110,14 @@ if( distance < 0) {
    * @return An array containing the first `n` fibonacci values.
    */
   public static int[] getFirstNFibonacciNumbers(int n) {
-    return null;
+    int[]fibonacci = 0
+    for( i = 0,; i < fibonacci.length, i++) {
+      return fibonacci;
+    }
+
+
+
+
   }
 
   /**
@@ -135,9 +137,6 @@ if( distance < 0) {
 
     int pivotIndex = (start + end) / 2; // The index in the middle of the array.
 
-
-
-    for()
     // TODO(you): Finish implementing this algorithm
 
     // If values[pivotIndex] is equal to value then return `pivotIndex`.
