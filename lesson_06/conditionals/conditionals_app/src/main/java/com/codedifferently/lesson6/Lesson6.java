@@ -166,14 +166,12 @@ public class Lesson6 {
 
     // TODO(you): Finish implementing this algorithm
 
-      if (values[pivotIndex] == value) {
-        return pivotIndex;
-      } else if (values[pivotIndex] < value) {
-        start = pivotIndex + 1;
-      } else {
-        end = pivotIndex - 1;
-      }
+    if (values[pivotIndex] == value) {
+      return pivotIndex;
+    } else if (values[pivotIndex] > value) {
+      return binarySearch(values, start, pivotIndex - 1, value);
+    } else {
+      return binarySearch(values, pivotIndex + 1, end, value);
     }
-    return -1;
   }
 }
