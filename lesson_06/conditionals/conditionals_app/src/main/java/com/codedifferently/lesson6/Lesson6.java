@@ -90,14 +90,14 @@ public class Lesson6 {
   static int total = 1;
 
   public static int computeFactorial(int n) {
-    if (n < 0) {
-      throw new IllegalArgumentException("The number inputed is below the expexted");
+    if (n <= 0) {
+      return 1;
+      // throw new IllegalArgumentException("The number inputed is below the expexted");
     }
-    int factorial = 1;
-    for (int i = 1; i <= n; i++) {
-      factorial *= i;
+    if (n == 1) {
+      return 1;
     }
-    return factorial;
+    return n * computeFactorial(n - 1);
   }
 
   /**
@@ -149,16 +149,18 @@ public class Lesson6 {
       return -1;
     }
 
-    int pivotIndex = (start + end) / 2; // The index in the middle of the array.
-
     // TODO(you): Finish implementing this algorithm
-    if (values[pivotIndex] == value) {
-      return pivotIndex;
-    } else if (values[pivotIndex] > value) {
-      return binarySearch(values, start, pivotIndex - 1, value);
-    } else {
-      return binarySearch(values, pivotIndex + 1, end, value);
+    while (start <= end) {
+      int pivotIndex = (start + end) / 2; // The index in the middle of the array.
+      if (values[pivotIndex] == value) {
+        return pivotIndex;
+      } else if (values[pivotIndex] > value) {
+        end = pivotIndex - 1;
+      } else {
+        start = pivotIndex + 1;
+      }
     }
+    return -1;
     // If values[pivotIndex] is equal to value then return `pivotIndex`.
     // Else if values[pivotIndex] is greater than the value, then
     // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
