@@ -110,14 +110,16 @@ public class Lesson6 {
    * @return An array containing the first `n` fibonacci values.
    */
   public static int[] getFirstNFibonacciNumbers(int n) {
-    int[]fibonacci = 0
-    for( i = 0,; i < fibonacci.length, i++) {
-      return fibonacci;
+    if (n <= 0) {
+      return new int[] {};
     }
-
-
-
-
+    int[] fibNums = new int[n];
+    fibNums[0] = 1;
+    fibNums[1] = 1;
+    for (int i = 2; i < n; i++) {
+      fibNums[i] = fibNums[i - 1] + fibNums[i - 2];
+    }
+    return fibNums;
   }
 
   /**
