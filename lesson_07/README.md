@@ -18,7 +18,7 @@ For this assignment, you will need to pull together everything that you've learn
     * One of your functions must make use of a conditional expression.
     * One of your functions must make use of a loop.
     * You must use at least one custom exception.
-3. Create a matching subfolder in the [test folder][test-folder] and a test file.
+3. Create a matching subfolder in the [test folder][test-folder] and a test file. Your test must include at least 5 test methods.
 
 [pie-book]: https://github.com/shshankar1/ebooks/blob/master/Programming%20Interviews%20Exposed.PDF
 [lesson7-folder]: ./objects/objects_app/src/main/java/com/codedifferently/lesson7/
