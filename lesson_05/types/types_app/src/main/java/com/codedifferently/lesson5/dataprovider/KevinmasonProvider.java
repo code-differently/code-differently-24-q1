@@ -1,7 +1,7 @@
 package com.codedifferently.lesson5.dataprovider;
 
 import java.util.Map;
-
+@service
 public class KevinmasonProvider extends DataProvider {
   public String getProviderName() {
     return "Kevinmason";
