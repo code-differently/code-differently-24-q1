@@ -15,6 +15,8 @@ For this assignment, you will need to pull together everything that you've learn
     * You must also incorporate an enum type as well.
     * The class must have at least one constructor.
     * The class must have at least 3 member functions.
+    * One of your functions must make use of a conditional expression.
+    * One of your functions must make use of a loop.
     * You must use at least one custom exception.
 3. Create a matching subfolder in the [test folder][test-folder] and a test file.
 
