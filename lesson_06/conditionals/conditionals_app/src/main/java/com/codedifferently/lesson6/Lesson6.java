@@ -21,7 +21,12 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    return false;
+
+    if (age < 18) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   /**
@@ -36,9 +41,13 @@ public class Lesson6 {
     // if it is greater, and 0 if the strings are equal.
     int distance = Helpers.computeLexographicDistance(a, b);
 
-    // TODO(you): Finish this method.
-
-    return 0;
+    if (distance < 0) {
+      return -1;
+    } else if (distance > 0) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 
   /**
@@ -51,7 +60,31 @@ public class Lesson6 {
    * @return The letter grade ("A+", "A", "A-", "B+", etc.).
    */
   public static String convertGpaToLetterGrade(double gpa) {
-    return "F";
+    if (gpa == 4.0) {
+      return "A";
+    } else if (gpa >= 3.7) {
+      return "A-";
+    } else if (gpa >= 3.3) {
+      return "B+";
+    } else if (gpa >= 3.0) {
+      return "B";
+    } else if (gpa >= 2.7) {
+      return "B-";
+    } else if (gpa >= 2.3) {
+      return "C+";
+    } else if (gpa >= 2.0) {
+      return "C";
+    } else if (gpa >= 1.7) {
+      return "C-";
+    } else if (gpa >= 1.3) {
+      return "D+";
+    } else if (gpa >= 1.0) {
+      return "D";
+    } else if (gpa >= 0.7) {
+      return "F";
+    } else {
+      return "F";
+    }
   }
 
   /**
@@ -61,7 +94,17 @@ public class Lesson6 {
    * @return The factorial of n.
    */
   public static int computeFactorial(int n) {
-    return 0;
+    if (n < 0) {
+
+      return 0;
+    } else {
+      int factorial = 1;
+      for (int i = 1; i <= n; i++) {
+
+        factorial *= i;
+      }
+      return factorial;
+    }
   }
 
   /**
@@ -71,7 +114,15 @@ public class Lesson6 {
    * @return The sum of all the values.
    */
   public static double addNumbers(double[] values) {
-    return 0;
+    double sum = 0;
+
+    for (int i = 0; i < values.length; i++) {
+
+      sum += values[i];
+    }
+
+    // Return the sum
+    return sum;
   }
 
   /**
@@ -81,7 +132,21 @@ public class Lesson6 {
    * @return An array containing the first `n` fibonacci values.
    */
   public static int[] getFirstNFibonacciNumbers(int n) {
-    return null;
+    if (n <= 0) {
+      return new int[0];
+    }
+
+    int[] fibonacciNumbers = new int[n];
+
+    fibonacciNumbers[0] = 1;
+    if (n > 1) {
+      fibonacciNumbers[1] = 1;
+
+      for (int i = 2; i < n; i++) {
+        fibonacciNumbers[i] = fibonacciNumbers[i - 1] + fibonacciNumbers[i - 2];
+      }
+    }
+    return fibonacciNumbers;
   }
 
   /**
@@ -95,18 +160,25 @@ public class Lesson6 {
    */
   public static int binarySearch(int[] values, int start, int end, int value) {
     if (end < start) {
-      // The range is not valid so just return -1.
+      // If so, it means the search space is empty, and the value is not found
       return -1;
     }
 
-    int pivotIndex = (start + end) / 2; // The index in the middle of the array.
+    // Calculate the index of the middle element
+    int midIndex = (start + end) / 2;
 
-    // TODO(you): Finish implementing this algorithm
-
-    // If values[pivotIndex] is equal to value then return `pivotIndex`.
-    // Else if values[pivotIndex] is greater than the value, then
-    // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
-    // Else call `binarySearch(values, pivotIndex + 1, end, value)` and return its value.
-    return -1;
+    // Check if the middle element is the value we're looking for
+    if (values[midIndex] == value) {
+      // If so, return its index
+      return midIndex;
+    } else if (values[midIndex] > value) {
+      // If the middle element is greater than the value,
+      // search the left half of the array recursively
+      return binarySearch(values, start, midIndex - 1, value);
+    } else {
+      // If the middle element is less than the value,
+      // search the right half of the array recursively
+      return binarySearch(values, midIndex + 1, end, value);
+    }
   }
 }
