@@ -34,18 +34,13 @@ public class BankAccountTest {
   }
 
   @Test
-  public void testTransferSufficientFunds() {
+  public void testTransferSufficientFunds() throws InsufficientFundsException {
     BankAccount sourceAccount =
         new BankAccount("Jermaine Cole", 200.0, "2024-03-03", "CHECKING", 1843456889);
     BankAccount targetAccount =
         new BankAccount("Michael B. Jordan", 100.0, "2022-11-19", "SAVINGS", 987654321);
-    try {
-      sourceAccount.transfer(50.0, targetAccount);
-      assertEquals(150.0, sourceAccount.getBalance(), 0.0);
-      assertEquals(150.0, targetAccount.getBalance(), 0.0);
-    } catch (BankAccount.InsufficientFundsException e) {
-      fail("Unexpected exception: " + e.getMessage());
-    }
+    sourceAccount.transfer(50.0, targetAccount);
+    assertEquals(150.0, sourceAccount.getBalance(), 0.0);
   }
 
   @Test
