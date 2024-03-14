@@ -1,17 +1,15 @@
-package com.codedifferently.lesson7.MohamedObjects.Main;
+package com.codedifferently.lesson7.mohamedobjects.main;
 
 import java.util.HashSet;
 import java.util.Set;
 
-enum empty {}
+public class GPU extends Part {
 
-public class GPU extends Parts {
+  private Set<portType> ports = new HashSet<portType>();
 
-  Set<portTypes> ports = new HashSet<portTypes>();
+  private int vRam;
 
-  int vRam;
-
-  boolean hasRayTracing;
+  private boolean hasRayTracing;
 
   public GPU() {}
 
@@ -43,19 +41,16 @@ public class GPU extends Parts {
     return vRam;
   }
 
-  public Set<portTypes> getPorts() {
+  public Set<portType> getPorts() {
     return ports;
   }
 
-  public void addPorts(portTypes port) {
+  public void addPorts(portType port) {
     this.ports.add(port);
   }
 
-  public int printNumPorts() {
-    int i = 0;
-    for (portTypes a : ports) {
-      i++;
-    }
-    return i;
+  public int calculateNumPorts() {
+    // this was set to a loop to meet project reqirements
+    return ports.size();
   }
 }

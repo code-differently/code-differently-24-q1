@@ -1,12 +1,14 @@
-package com.codedifferently.lesson7.MohamedObjects.Main;
+package com.codedifferently.lesson7.mohamedobjects.main;
 
-public class CPU extends Parts {
+public class CPU extends Part {
   double clockSpeed;
   int cores;
 
-  public CPU() {}
+  public CPU(cpuBrand brand) {
+    this.brand = brand.toString();
+  }
 
-  public CPU(String name, int releaseYear, cpuBrands brand, double clockSpeed) {
+  public CPU(String name, int releaseYear, cpuBrand brand, double clockSpeed) {
     this.name = name;
     checkValidYear(releaseYear);
     this.releaseYear = releaseYear;
@@ -14,7 +16,7 @@ public class CPU extends Parts {
     this.clockSpeed = clockSpeed;
   }
 
-  public CPU(String name, int releaseYear, cpuBrands brand, double clockSpeed, int cores) {
+  public CPU(String name, int releaseYear, cpuBrand brand, double clockSpeed, int cores) {
     this.name = name;
     checkValidYear(releaseYear);
     this.releaseYear = releaseYear;
