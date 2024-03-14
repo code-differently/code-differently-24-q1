@@ -1,4 +1,7 @@
-package com.codedifferently.lesson7.Jordan_Eldridge;
+package com.codedifferently.lesson7.jordan_eldridge;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Animal {
 
@@ -17,6 +20,7 @@ public class Animal {
   private String color;
   private String sound;
   private AnimalType type;
+  private static List<Animal> allAnimals = new ArrayList<>();
 
   public Animal(
       String name, boolean canBreathe, int age, String color, String sound, AnimalType type) {
@@ -26,6 +30,12 @@ public class Animal {
     this.color = color;
     this.sound = sound;
     this.type = type;
+
+    allAnimals.add(this);
+  }
+
+  public static List<Animal> getAllAnimals() {
+    return allAnimals;
   }
 
   public String canFly() {
@@ -50,8 +60,8 @@ public class Animal {
     return name;
   }
 
-  public boolean isCanBreathe() {
-    return canBreathe;
+  public boolean getCanBreathe() {
+    return this.canBreathe;
   }
 
   public int getAge() {
@@ -74,7 +84,10 @@ public class Animal {
     this.canBreathe = canBreathe;
   }
 
-  public void setAge(int age) {
+  public void setAge(int age) throws InvalidAgeException {
+    if (age < 0) {
+      throw new InvalidAgeException("Age cannot be negative.");
+    }
     this.age = age;
   }
 
@@ -113,9 +126,6 @@ public class Animal {
   }
 
   public Object getType() {
-    if (this.type == null) {
-      throw new UnsupportedOperationException("Unimplemented method 'getType'");
-    }
     return this.type;
   }
 }
