@@ -1,6 +1,5 @@
 package com.codedifferently.lesson7.MohamedObjects.Main;
 
-
 public class CPU extends Parts {
   double clockSpeed;
   int cores;
@@ -14,6 +13,7 @@ public class CPU extends Parts {
     this.brand = brand.toString();
     this.clockSpeed = clockSpeed;
   }
+
   public CPU(String name, int releaseYear, cpuBrands brand, double clockSpeed, int cores) {
     this.name = name;
     checkValidYear(releaseYear);

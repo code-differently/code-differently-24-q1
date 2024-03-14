@@ -1,14 +1,9 @@
 package com.codedifferently.lesson7.MohamedObjects.Main;
 
-import java.util.EnumMap;
-import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
 
-enum empty{
-
-}
-
+enum empty {}
 
 public class GPU extends Parts {
 
@@ -28,7 +23,6 @@ public class GPU extends Parts {
     this.brand = brand;
   }
 
-  
   public GPU(String name, int releaseYear, String brand, int vRam, boolean hasRayTracing) {
     this.vRam = vRam;
     this.name = name;
@@ -40,13 +34,15 @@ public class GPU extends Parts {
   public void setvRam(int vRam) {
     this.vRam = vRam;
   }
-  
+
   public void setHasRayTracing(boolean hasRayTracing) {
-      this.hasRayTracing = hasRayTracing;
+    this.hasRayTracing = hasRayTracing;
   }
+
   public int getvRam() {
     return vRam;
   }
+
   public Set<portTypes> getPorts() {
     return ports;
   }
@@ -54,12 +50,12 @@ public class GPU extends Parts {
   public void addPorts(portTypes port) {
     this.ports.add(port);
   }
-  public int printNumPorts(){
+
+  public int printNumPorts() {
     int i = 0;
-    for (portTypes a : ports){
+    for (portTypes a : ports) {
       i++;
     }
     return i;
   }
- 
 }
