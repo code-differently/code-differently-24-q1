@@ -12,7 +12,21 @@ public class House {
     boolean hasGarage;
     short numberOfBedrooms;
     // You must also incorporate an enum type as well.
+    public enum houseType {
+        APARTMENT,
+        BUNGALOW,
+        COTTAGE,
+        CAPECOD,
+        COLONIAL,
+        FARMHOUSE,
+        MANSION,
+        TINYHOME,
+        TOWNHOUSE,
+        SINGLEFAMILY,
+        SPLITLEVEL,
+    }
     // The class must have at least one constructor.
+    
     // The class must have at least 3 member functions.
     // One of your functions must make use of a conditional expression.
     // One of your functions must make use of a loop.
