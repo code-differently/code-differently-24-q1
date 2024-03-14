@@ -2,8 +2,7 @@ package com.codedifferently.lesson7.Jordan_Eldridge;
 
 public class Animal {
 
-   
-public enum AnimalType {
+  public enum AnimalType {
     MAMMAL,
     BIRD,
     REPTILE,
@@ -20,7 +19,7 @@ public enum AnimalType {
   private AnimalType type;
 
   public Animal(
-    String name, boolean canBreathe, int age, String color, String sound, AnimalType type) {
+      String name, boolean canBreathe, int age, String color, String sound, AnimalType type) {
     this.name = name;
     this.canBreathe = canBreathe;
     this.age = age;
@@ -115,9 +114,8 @@ public enum AnimalType {
 
   public Object getType() {
     if (this.type == null) {
-        throw new UnsupportedOperationException("Unimplemented method 'getType'");
+      throw new UnsupportedOperationException("Unimplemented method 'getType'");
     }
     return this.type;
-
-}
+  }
 }
