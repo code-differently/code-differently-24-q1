@@ -2,7 +2,6 @@ package com.codedifferently.lesson7.jordan_eldridge;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.codedifferently.lesson7.jordan_eldridge.Animal;
 import com.codedifferently.lesson7.jordan_eldridge.Animal.AnimalType;
 import com.codedifferently.lesson7.jordan_eldridge.Animal.InvalidAgeException;
 import java.util.List;
