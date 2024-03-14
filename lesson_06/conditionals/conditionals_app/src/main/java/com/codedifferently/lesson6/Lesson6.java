@@ -1,5 +1,6 @@
 package com.codedifferently.lesson6;
 
+import com.codedifferently.lesson6.util.Helpers;
 import java.util.Arrays;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +19,14 @@ public class Lesson6 {
   }
 
   public static int compareStrings(String value1, String value2) {
-    return value1.compareTo(value2);
+    int distance = Helpers.computeLexographicDistance(value1, value2);
+    if (distance < 0) {
+      return -1;
+    } else if (distance > 0) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
 
   /**
