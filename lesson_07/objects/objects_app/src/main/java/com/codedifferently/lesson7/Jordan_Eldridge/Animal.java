@@ -42,8 +42,9 @@ public class Animal {
     return (type == AnimalType.BIRD) ? "This animal can fly!" : "This animal cannot fly.";
   }
 
-  public void makeSound() {
+  public String makeSound() {
     System.out.println("The " + this.name + " makes a sound!");
+    return this.sound;
   }
 
   public void growOlder() {

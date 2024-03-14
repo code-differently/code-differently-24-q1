@@ -2,6 +2,7 @@ package com.codedifferently.lesson7.jordan_eldridge;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.codedifferently.lesson7.jordan_eldridge.Animal;
 import com.codedifferently.lesson7.jordan_eldridge.Animal.AnimalType;
 import com.codedifferently.lesson7.jordan_eldridge.Animal.InvalidAgeException;
 import java.util.List;
@@ -28,7 +29,8 @@ public class AnimalTest {
   @Test
   public void testMakeSound() {
     Animal animal = new Animal("lizard", true, 3, "Green", "Hissing", AnimalType.REPTILE);
-    animal.makeSound();
+    String sound = animal.makeSound();
+    assertEquals("Hissing", sound);
   }
 
   @Test
