@@ -1,8 +1,10 @@
 package com.codedifferently.lesson7.ChukwumaIbezimTest;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.codedifferently.lesson7.chukwumaibezim.*;
+import com.codedifferently.lesson7.chukwumaibezim.BankAccount.InsufficientFundsException;
 import org.junit.jupiter.api.Test;
 
 public class BankAccountTest {
@@ -16,26 +18,19 @@ public class BankAccountTest {
   }
 
   @Test
-  public void testWithdrawSufficientFunds() {
+  public void testWithdrawSufficientFunds() throws InsufficientFundsException {
     BankAccount account =
         new BankAccount("Michael B. Jordan", 200.0, "2022-11-19", "SAVINGS", 987654321);
-    try {
-      account.withdraw(100.0);
-      assertEquals(100.0, account.getBalance(), 0.0);
-    } catch (BankAccount.InsufficientFundsException e) {
-      fail("Unexpected exception: " + e.getMessage());
-    }
+    account.withdraw(100.0);
+    assertEquals(100.0, account.getBalance(), 0.0);
   }
 
   @Test
   public void testWithdrawInsufficientFunds() {
     BankAccount account = new BankAccount("Denzel Washington", 50.0, "2019-07-01", "CD", 135792468);
-    try {
-      account.withdraw(100.0);
-      fail("Expected InsufficientFundsException was not thrown");
-    } catch (BankAccount.InsufficientFundsException e) {
-      assertEquals("Insufficient funds to withdraw $100.0", e.getMessage());
-    }
+    assertThatThrownBy(() -> account.withdraw(100.0))
+        .isInstanceOf(InsufficientFundsException.class)
+        .hasMessage("Insufficient funds to withdraw $100.0");
   }
 
   @Test
@@ -59,12 +54,10 @@ public class BankAccountTest {
         new BankAccount("Jermaine Cole", 50.0, "2024-03-03", "CHECKING", 1843456889);
     BankAccount targetAccount =
         new BankAccount("Michael B. Jordan", 100.0, "2022-11-19", "SAVINGS", 987654321);
-    try {
-      sourceAccount.transfer(100.0, targetAccount);
-      fail("Expected InsufficientFundsException was not thrown");
-    } catch (BankAccount.InsufficientFundsException e) {
-      assertEquals("Insufficient funds to transfer $100.0", e.getMessage());
-    }
+
+    assertThatThrownBy(() -> sourceAccount.transfer(100.0, targetAccount))
+        .isInstanceOf(BankAccount.InsufficientFundsException.class)
+        .hasMessage("Insufficient funds to transfer $100.0");
   }
 
   @Test

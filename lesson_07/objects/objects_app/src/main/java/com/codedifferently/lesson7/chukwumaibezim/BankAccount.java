@@ -3,13 +3,6 @@ package com.codedifferently.lesson7.chukwumaibezim;
 import java.util.HashMap;
 import java.util.Map;
 
-// import org.springframework.boot.SpringApplication;
-// import org.springframework.boot.autoconfigure.SpringBootApplication;
-// import org.springframework.context.annotation.Configuration;
-
-// @Configuration
-// @SpringBootApplication(scanBasePackages = "com.chukwumaibezim")
-
 public class BankAccount {
 
   public static class InsufficientFundsException extends Exception {
@@ -22,7 +15,7 @@ public class BankAccount {
   private double balance;
   private String dateOpened;
   private String accountType;
-  private int accountNumber;
+  private final int accountNumber;
 
   public enum AccountType {
     CHECKING,
@@ -81,10 +74,6 @@ public class BankAccount {
     return accountNumber;
   }
 
-  public void setAccountNumber(int accountNumber) {
-    this.accountNumber = accountNumber;
-  }
-
   public void addAdditionalInfo(int key, String value) {
     additionalInfo.put(key, value);
   }
@@ -118,21 +107,21 @@ public class BankAccount {
     }
   }
 
-  public void displayAccountInfo() {
-    System.out.println("Account Holder: " + accountHolderName);
-    System.out.println("Balance: " + balance);
-    System.out.println("Date Opened: " + dateOpened);
-    System.out.println("Account Type: " + accountType);
-    System.out.println("Account Number: " + accountNumber);
-
-    for (int i = 0; i < 20; i++) {
-      System.out.print("-");
-    }
-    System.out.println();
+  @Override
+  public String toString() {
+    return "Account Holder: "
+        + accountHolderName
+        + "\n"
+        + "Balance: "
+        + balance
+        + "\n"
+        + "Date Opened: "
+        + dateOpened
+        + "\n"
+        + "Account Type: "
+        + accountType
+        + "\n"
+        + "Account Number: "
+        + accountNumber;
   }
 }
-
-    // public static void main(String[] args) {
-    //     var application = new SpringApplication(BankAccount.class);
-    //     application.run(args);
-    //   }
