@@ -18,8 +18,6 @@ public class SneakerTest {
     assertThrows(Sneaker.InvalidSizeException.class, () -> sneaker.validateSize());
   }
 
-  
-
   @Test
   void testLimitedEditionTrue() {
     Sneaker sneaker = new Sneaker("Nike", "Air Jordan", 9.0, Sneaker.SneakerType.BASKETBALL, true);
