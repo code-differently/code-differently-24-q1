@@ -99,4 +99,16 @@ public class Food {
         throw new InvalidFoodCategoryException("Invalid food category: " + category);
     }
   }
+
+  // Function to print details of food for a specified number of times
+  public void printFoodDetails(int times) {
+    for (int i = 0; i < times; i++) {
+      System.out.println("Name: " + name);
+      System.out.println("Price: " + price);
+      System.out.println("Is Vegetarian: " + isVegetarian);
+      System.out.println("Calories: " + calories);
+      System.out.println("Category: " + category);
+      System.out.println("--------------------------");
+    }
+  }
 }
