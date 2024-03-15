@@ -1,5 +1,8 @@
 package com.codedifferently.lesson7.mekhiwilliams;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Custom class representing a sneaker
 public class Sneaker {
   // Enum for different sneaker types
@@ -15,6 +18,17 @@ public class Sneaker {
   private double size;
   private SneakerType type;
   private boolean isLimitedEdition;
+
+  // Valid sizes collection
+  private static final List<Double> validSizes = new ArrayList<>();
+
+  static {
+    validSizes.add(7.0);
+    validSizes.add(8.0);
+    validSizes.add(9.0);
+    validSizes.add(10.0);
+    validSizes.add(11.0);
+  }
 
   // Constructor
   public Sneaker(
@@ -63,8 +77,8 @@ public class Sneaker {
 
   // Function throwing custom exception
   public void validateSize() throws InvalidSizeException {
-    if (size <= 0) {
-      throw new InvalidSizeException("Size should be greater than 0");
+    if (!validSizes.contains(size)) {
+      throw new InvalidSizeException("Size is not valid");
     }
   }
 

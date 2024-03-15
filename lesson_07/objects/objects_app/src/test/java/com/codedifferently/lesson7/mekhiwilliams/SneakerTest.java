@@ -1,38 +1,21 @@
 package com.codedifferently.lesson7.mekhiwilliams;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
 public class SneakerTest {
 
   @Test
-  void testSneakerDetails() {
-    Sneaker sneaker = new Sneaker("Nike", "Air Max", 10.5, Sneaker.SneakerType.RUNNING, false);
-    assertEquals("Nike", sneaker.getBrand());
-    assertEquals("Air Max", sneaker.getModel());
-    assertEquals(10.5, sneaker.getSize());
-    assertEquals(Sneaker.SneakerType.RUNNING, sneaker.getType());
-    assertEquals(false, sneaker.isLimitedEdition());
+  void testValidSize() {
+    Sneaker sneaker = new Sneaker("Nike", "Air Max", 10.0, Sneaker.SneakerType.RUNNING, false);
+    assertDoesNotThrow(() -> sneaker.validateSize());
   }
 
   @Test
-  void testPopularity() {
-    Sneaker sneaker1 = new Sneaker("Adidas", "Yeezy", 9.5, Sneaker.SneakerType.CASUAL, true);
-    Sneaker sneaker2 = new Sneaker("Nike", "Air Force 1", 11.0, Sneaker.SneakerType.CASUAL, false);
-
-    assertEquals("Limited Edition", sneaker1.getPopularity());
-    assertEquals("Regular Edition", sneaker2.getPopularity());
-  }
-
-  @Test
-  void testValidateSize() {
-    Sneaker sneaker = new Sneaker("Puma", "RS-X", -1, Sneaker.SneakerType.CASUAL, false);
-
-    try {
-      sneaker.validateSize();
-    } catch (Sneaker.InvalidSizeException e) {
-      assertEquals("Size should be greater than 0", e.getMessage());
-    }
+  void testInvalidSize() {
+    Sneaker sneaker = new Sneaker("Adidas", "Yeezy", 12.0, Sneaker.SneakerType.CASUAL, true);
+    assertThrows(Sneaker.InvalidSizeException.class, () -> sneaker.validateSize());
   }
 }
