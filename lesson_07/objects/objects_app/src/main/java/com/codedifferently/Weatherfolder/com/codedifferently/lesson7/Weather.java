@@ -1,27 +1,19 @@
 package com.codedifferently.lesson7;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Configuration;
+public class Weather {
+  
+  public int temp;
+  public String windDirection;
+  public Boolean weatherCondition;
+  public int humidity;
+  public int sunrise;
+  public int sunset;
 
-@Configuration
-@SpringBootApplication(scanBasePackages = "com.codedifferently")
-public class Lesson7 {
-
-  public static void main(String[] args) {
-    var application = new SpringApplication(Lesson7.class);
-    application.run(args);
+  //enum
+  private enum weatherCondition {
+    Sunny, Rainy;
   }
-
-  public class Weather {
-    public int temp;
-    public String windDirection;
-    public Boolean weatherCondition;
-    public int humidity;
-    public int sunrise;
-    public int sunset;
-  }
-
+  
   // Constructor
 
   public Weather(
@@ -43,40 +35,61 @@ public class Lesson7 {
   // functions//
   // create getters and setters to grab temp
 
-  public int gettemp(){
-return temp;}
-  public void setTemp(int temp) {
-  this.temp = temp;
+  public int gettemp() {
+    return temp;
   }
 
-  public String getWindDirection(){
+  public void setTemp(int temp) {
+    this.temp = temp;
+  }
+
+  public String getWindDirection() {
     return windDirection;
   }
-  public void setWindDirecction(){
-    this.windDirection =windDirection;
+
+  public void setWindDirecction() {
+    this.windDirection = windDirection;
   }
-public Boolean getweatherCondition(){
+
+  public Boolean getweatherCondition() {
     return weatherCondition;
-}
-public int getSunrise(){
-    retrun sunrise;
-}
-public void setSunrise(){
-    this.sunrise = sunrise;
-}
-public int getSunset(){
-    return sunset;
-}
-public void setSunset(){
-    this.sunset = sunset;
-}
-
-
- 
- 
-
   }
 
+  public int getSunrise() {
+    return sunrise;
+  }
+
+  public void setSunrise() {
+    this.sunrise = sunrise;
+  }
+
+  public int getSunset() {
+    return sunset;
+  }
+
+  public void setSunset() {
+    this.sunset = sunset;
+
+    // for loop
+    for (int i = 1; i <= 3; i++) {
+      System.out.println("Day" + i + "Sunrise at" + sunrise + " and sunset at" + sunset);
+    }
+  }
+
+
+// if loop
+
+public void checkWeatherCondition() {
+  if (Sunny) {
+      System.out.println("The weather condition is good.");
+  } else {
+      System.out.println("The weather condition is not good.");
+  }
+}
+// for loop
+
+
+}
 
 /*                                     5 Member Variables
 1 Temp                data type: int
