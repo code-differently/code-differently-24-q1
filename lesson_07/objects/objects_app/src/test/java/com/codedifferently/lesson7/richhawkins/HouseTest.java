@@ -1,8 +1,7 @@
 package com.codedifferently.lesson7.richhawkins;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import com.codedifferently.lesson7.richhawkins.House.HouseType;
 import org.junit.jupiter.api.Test;
@@ -10,12 +9,18 @@ import org.junit.jupiter.api.Test;
 public class HouseTest {
 
   @Test
-  public void testCheckValidYear() {
-    House house = new House("oak", 53);
-    assertThatThrownBy(() -> house.checkValidYear(2030))
-        .isInstanceOf(InvalidYearException.class)
-        .hasMessage("Year must be equal to or less than current year.");
-    assertThat(house.checkValidYear(2020)).isTrue();
+  public void testSetYearBuilt() {
+    House house = new House("Pine", 234);
+
+    house.setYearBuilt(2020);
+    assertEquals(2020, house.getYearBuilt());
+
+    try {
+      house.setYearBuilt(2030);
+      fail("Exception not thrown");
+    } catch (InvalidYearException e) {
+      System.out.println("Exception caught: " + e.getMessage());
+    }
   }
 
   @Test
@@ -28,8 +33,8 @@ public class HouseTest {
   @Test
   public void testConstructor() {
     House house = new House("main", 123);
-    assertEquals("main", house.streetName);
-    assertEquals(123, house.streetNum);
+    assertEquals("main", house.getStreetName());
+    assertEquals(123, house.getStreetNum());
   }
 
   @Test
@@ -45,5 +50,17 @@ public class HouseTest {
     assertEquals(
         "APARTMENT BUNGALOW COTTAGE CAPECOD COLONIAL FARMHOUSE MANSION TINYHOME TOWNHOUSE SINGLEFAMILY SPLITLEVEL ",
         allTypes);
+  }
+  @Test
+  public void testHasGarage() {
+      House house = new House("Oak", 123);
+      house.setHasGarage(true);
+      assertEquals(true, house.getHasGarage());
+  }
+  @Test
+  public void testNumberOfBedrooms() {
+      House house = new House("Oak", 123);
+      house.setNumberOfBedrooms(4);
+      assertEquals(4, house.getNumberOfBedrooms());
   }
 }

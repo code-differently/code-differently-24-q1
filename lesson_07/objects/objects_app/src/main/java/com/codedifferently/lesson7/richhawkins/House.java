@@ -4,11 +4,47 @@ import java.time.Year;
 
 public class House {
   //     The class must have at least 5 member variables of at least 3 different types.
-  String streetName;
-  int streetNum;
-  int yearBuilt;
-  boolean hasGarage;
-  short numberOfBedrooms;
+  private String streetName;
+  private int streetNum;
+  private int yearBuilt;
+  private boolean hasGarage;
+  private int numberOfBedrooms;
+
+  public String getStreetName() {
+    return streetName;
+  }
+
+  public void setStreetName(String streetName) {
+    this.streetName = streetName;
+  }
+
+  public int getStreetNum() {
+    return streetNum;
+  }
+
+  public void setStreetNum(int streetNum) {
+    this.streetNum = streetNum;
+  }
+
+  public int getYearBuilt() {
+    return yearBuilt;
+  }
+
+  public boolean getHasGarage() {
+    return hasGarage;
+  }
+
+  public void setHasGarage(boolean hasGarage) {
+    this.hasGarage = hasGarage;
+  }
+
+  public int getNumberOfBedrooms() {
+    return numberOfBedrooms;
+  }
+
+  public void setNumberOfBedrooms(int numberOfBedrooms) {
+    this.numberOfBedrooms = numberOfBedrooms;
+  }
 
   // You must also incorporate an enum type as well.
 
@@ -37,12 +73,16 @@ public class House {
 
   // One of your functions must make use of a conditional expression.
   // You must use at least one custom exception.
-  public boolean checkValidYear(int yearBuilt) {
+  private boolean checkValidYear() {
     int currentYear = Year.now().getValue();
-    if (yearBuilt > currentYear) {
-      throw new InvalidYearException("Year must be equal to or less than current year.");
+    return yearBuilt <= currentYear;
+  }
+
+  public void setYearBuilt(int yearBuilt) {
+    this.yearBuilt = yearBuilt;
+    if (!checkValidYear()) {
+      throw new InvalidYearException("Error: Must enter a valid year");
     }
-    return true;
   }
 
   public String printFullAddress() {
