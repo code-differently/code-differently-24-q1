@@ -14,7 +14,7 @@ public class Book {
         public NoBookAvailable (string insertMessage) {
         }
     }
-
+ 
 // The class must have at least 5 member variables of at least 3 different types.
     private string Title;
     private string Author; 
@@ -51,7 +51,9 @@ public Book(string Title, string Author, string Publisher, short YearReleased, f
     }
 
 // One of your functions must make use of a conditional expression.
+
 // One of your functions must make use of a loop.
+
 // You must use at least one custom exception.
 
 }
