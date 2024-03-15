@@ -81,7 +81,7 @@ public class House {
   public void setYearBuilt(int yearBuilt) {
     this.yearBuilt = yearBuilt;
     if (!checkValidYear()) {
-      throw new InvalidYearException("Error: Must enter a valid year");
+      throw new InvalidYearException("Error: Must enter a valid year.");
     }
   }
 

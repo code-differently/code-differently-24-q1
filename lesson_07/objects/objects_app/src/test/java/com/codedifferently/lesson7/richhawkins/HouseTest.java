@@ -1,7 +1,7 @@
 package com.codedifferently.lesson7.richhawkins;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import com.codedifferently.lesson7.richhawkins.House.HouseType;
 import org.junit.jupiter.api.Test;
@@ -15,12 +15,9 @@ public class HouseTest {
     house.setYearBuilt(2020);
     assertEquals(2020, house.getYearBuilt());
 
-    try {
-      house.setYearBuilt(2030);
-      fail("Exception not thrown");
-    } catch (InvalidYearException e) {
-      System.out.println("Exception caught: " + e.getMessage());
-    }
+    assertThatThrownBy(() -> house.setYearBuilt(2030))
+        .isInstanceOf(InvalidYearException.class)
+        .hasMessage("Error: Must enter a valid year.");
   }
 
   @Test
