@@ -6,6 +6,7 @@ public class Astronaut {
     private Integer age;
 
     public Astronaut(String newName, Integer newAge) {
+        age = newAge;
         name = newName;
 
     }

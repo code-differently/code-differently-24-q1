@@ -1,13 +1,14 @@
 package com.codedifferently.lesson7.Spaceship;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Crew {
 
-    Astronaut[] astronautArray = new Astronaut[6];
+    List<Astronaut> astronautList = new ArrayList<Astronaut>();
 
-    private final Integer MIN = 3;
-    private final Integer MAX = 6;
+    private final Integer MIN = 2;
+    private final Integer MAX = 4;
 
     public Integer getMin() {
         return MIN;
@@ -18,21 +19,21 @@ public class Crew {
     }
 
     public void addCrewMember(Astronaut astronaut) {
-        astronautArray[0] = astronaut; // improve
+        astronautList.add(astronaut);
     }
 
     public void removeCrewMember(Astronaut astronaut) {
-        astronautArray[0] = null; // improve
+        astronautList.remove(astronaut);
     }
 
+
+    public List<Astronaut> getAstronautList() {
+        return astronautList;
+    }
 
     @Override
     public String toString() {
-        return "Crew{" + 
-                "astronautArray=" + Arrays.toString(astronautArray) +
-                ", MIN=" + MIN +
-                ", MAX=" + MAX +
-                '}';
-    }
+        return "Crew [astronautList=" + astronautList + ", MIN=" + MIN + ", MAX=" + MAX + "]";
+    } 
 
 }
