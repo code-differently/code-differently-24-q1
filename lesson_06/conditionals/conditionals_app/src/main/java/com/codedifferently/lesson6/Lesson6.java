@@ -29,16 +29,16 @@ public class Lesson6 {
   }
 
   /**
-   * Compares two strings lexographically.
+   * Compares two strings lexicographically.
    *
    * @param value1 The first `String` to compare.
    * @param value2 The second `String` to compare.
-   * @rerturn -1 if a is less than b, 1 if a is greater than b, and 0 otherwise.
+   * @return -1 if a is less than b, 1 if a is greater than b, and 0 otherwise.
    */
   public static int compareStrings(String a, String b) {
-    // The distance will be a number less than 0 if string `a` is lexographically less than `b`, 1
+    // The distance will be a number less than 0 if string `a` is lexicographically less than `b`, 1
     // if it is greater, and 0 if the strings are equal.
-    int distance = Helpers.computeLexographicDistance(a, b);
+    int distance = Helpers.computeLexicographicDistance(a, b);
 
     if (distance < 0) {
       return -1;
@@ -104,10 +104,10 @@ public class Lesson6 {
   }
 
   /**
-   * Returns an array of the first `n` fibonacci numbers starting from 1.
+   * Returns an array of the first `n` Fibonacci numbers starting from 1.
    *
-   * @param n The first `n` of fibonacci values to compute.
-   * @return An array containing the first `n` fibonacci values.
+   * @param n The first `n` of Fibonacci values to compute.
+   * @return An array containing the first `n` Fibonacci values.
    */
   public static int[] getFirstNFibonacciNumbers(int n) {
     if (n <= 0) {
@@ -126,8 +126,8 @@ public class Lesson6 {
    * Finds a value in an array of values.
    *
    * @param values The values to search.
-   * @param The left most index to search.
-   * @param The right most index to search.
+   * @param start The left most index to search.
+   * @param end The right most index to search.
    * @param value The value to look for.
    * @return The index of the value if found in the array and -1 otherwise.
    */
