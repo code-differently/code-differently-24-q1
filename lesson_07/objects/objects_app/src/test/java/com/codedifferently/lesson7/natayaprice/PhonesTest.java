@@ -2,9 +2,7 @@ package com.codedifferently.lesson7.natayaprice;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -39,12 +37,11 @@ public class PhonesTest {
     @Test
     public void testSetNegativePrice() throws Phones.InvalidPriceException {
         Phones phone = new Phones("PINK", 700.0, "Google", "T-Mobile", 64);
-        Exception exception =
-        assert throws(
-            InvalidPriceException.class, 
+            assertThrows(
+            InvalidPriceException.class,
             () -> {
-            phone.setPrice(-100.0)
-        });
+              phone.setPrice(-1);
+            });
     }
 
     @Test
