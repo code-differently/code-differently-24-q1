@@ -1,4 +1,4 @@
-package com.codedifferently.lesson7.SherllinLesson7;
+package com.codedifferently.lesson7.sherllinlesson7;
 import java.util.ArrayList;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
@@ -29,12 +29,21 @@ public class Dog {
         this.dogToy = new ArrayList<>();
     }
 
-    public void addToy(String toy) {
-        dogToy.add(toy);
+    public void addToy(String... toys) {
+        for (String toy : toys) {
+            dogToy.add(toy);
+        }
     }
 
     public ArrayList<String> getDogToys() {
         return dogToy;
+    }
+
+    public void displayToys() {
+        System.out.println("Toys for " + breed + " dog:");
+        for (String toy : dogToy) {
+            System.out.println(toy);
+        }
     }
 
     public int getAge() {
@@ -59,11 +68,5 @@ public class Dog {
 
     public boolean isBreed(Breed val) {
         return this.breed == val;
-    }
-
-    public static void main(String[] args) {
-        for (int i = 0; i < Breed.values().length; i++) {
-            System.out.println("Oh my godddd, Look at that " + Breed.values()[i]);
-        }
     }
 }
