@@ -1,56 +1,84 @@
-public class Weather {
+package com.codedifferently.lesson7;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
+@SpringBootApplication(scanBasePackages = "com.codedifferently")
+public class Lesson7 {
 
+  public static void main(String[] args) {
+    var application = new SpringApplication(Lesson7.class);
+    application.run(args);
+  }
 
+  public class Weather {
+    public int temp;
+    public String windDirection;
+    public Boolean weatherCondition;
+    public int humidity;
+    public int sunrise;
+    public int sunset;
+  }
 
+  // Constructor
 
-public enum weatherCondition{
-    Sunny,
-    Rainy,
-    Snowy
+  public Weather(
+      int temp,
+      String windDirection,
+      Boolean weatherCondition,
+      int humidity,
+      int sunrise,
+      int sunset) {
+
+    this.temp = temp;
+    this.windDirection = windDirection;
+    this.weatherCondition = weatherCondition;
+    this.humidity = humidity;
+    this.sunrise = sunrise;
+    this.sunset = sunset;
+  }
+
+  // functions//
+  // create getters and setters to grab temp
+
+  public int gettemp(){
+return temp;}
+  public void setTemp(int temp) {
+  this.temp = temp;
+  }
+
+  public String getWindDirection(){
+    return windDirection;
+  }
+  public void setWindDirecction(){
+    this.windDirection =windDirection;
+  }
+public Boolean getweatherCondition(){
+    return weatherCondition;
+}
+public int getSunrise(){
+    retrun sunrise;
+}
+public void setSunrise(){
+    this.sunrise = sunrise;
+}
+public int getSunset(){
+    return sunset;
+}
+public void setSunset(){
+    this.sunset = sunset;
 }
 
-// Constructor
 
-public Weather (int temp,String windDirection,Boolean weatherCondition, int humidity,int sunrise, int sunset){
+ 
+ 
 
-this.temp = temp;
-this.windDirection = windDirection;
-this.weatherCondition = weatherCondition;
-this.humidity = humidity;
-this.sunrise = sunrise;
-this.sunset = sunset;
-
-}
-// functions//
-
-public Weather int findTemp(){
-    return this.temp 
-}
+  }
 
 
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/*                                     5 Member Variables 
+/*                                     5 Member Variables
 1 Temp                data type: int
 2 Wind direction      data type: String
 3 Weather condition   data type: Boolean
@@ -78,7 +106,7 @@ public class weather {
 }
 (int temp, wind direction, weather condition, humidity, sunrise/ sunset)
 
-Constructing weather by including these variables 
+Constructing weather by including these variables
 
 
 
@@ -92,8 +120,8 @@ Constructing weather by including these variables
 print sunrise
 else if time == 7:09pm - 7:39pm
 print sunset
-else 
-print 
+else
+print
 
 
                                             Loop (for, while)
