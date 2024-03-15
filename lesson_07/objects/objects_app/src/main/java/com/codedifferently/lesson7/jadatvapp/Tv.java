@@ -47,7 +47,10 @@ public class Tv {
     return screenSize;
   }
 
-  public void setScreenSize(double screenSize) {
+  public void testSetScreenSize(double screenSize) throws TvException {
+    if (screenSize < 30) {
+      throw new TvException("Screen size is too small.");
+    }
     this.screenSize = screenSize;
   }
 
@@ -69,9 +72,10 @@ public class Tv {
     return isSmart ? "Yes" : "No";
   }
 
-  public void throwCustomException() throws TvException {
+  public void setScreenSize(double screenSize) throws TvException {
     if (screenSize < 30) {
-      throw new TvException(("Screen size is too small."));
+      throw new TvException("Screen size is too small.");
     }
+    this.screenSize = screenSize;
   }
 }

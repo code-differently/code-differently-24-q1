@@ -83,6 +83,13 @@ public class TvTest {
     Tv smallTV =
         new Tv(
             "Sony", "Small TV 2022", 20.0, "HD", DisplayTechnology.LED, false, new ArrayList<>());
-    assertThrows(TvException.class, smallTV::throwCustomException);
+    TvException exception = assertThrows(TvException.class, () -> smallTV.testSetScreenSize(20.0));
+    assertEquals("Screen size is too small.", exception.getMessage());
+  }
+
+  @Test
+  public void testSetScreenSizeThrowsExceptionWhenSizeIsTooSmall() {
+    Tv smallTV = new Tv("Sony", "Small TV 2022", 20.0, "HD", DisplayTechnology.LED, false, null);
+    assertThrows(TvException.class, () -> smallTV.setScreenSize(20.0));
   }
 }
