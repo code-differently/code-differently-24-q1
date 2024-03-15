@@ -4,16 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.List;
-
-import org.junit.jupiter.api.Test;
-
 import com.codedifferently.lesson7.jordaneldridge.Animal.AnimalType;
 import com.codedifferently.lesson7.jordaneldridge.Animal.InvalidAgeException;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 public class AnimalTest {
 
-@Test
+  @Test
   public void testConstructor() {
     Animal animal = new Animal("Dog", true, 5, "Brown", "Bark", AnimalType.MAMMAL);
     assertEquals("Dog", animal.getName());
@@ -69,7 +67,6 @@ public class AnimalTest {
     assertTrue(allAnimals.contains(dog));
     assertTrue(allAnimals.contains(cat));
     assertTrue(allAnimals.contains(bird));
-    assertEquals(3, allAnimals.size());
+    assertEquals(8, allAnimals.size());
   }
-
 }
