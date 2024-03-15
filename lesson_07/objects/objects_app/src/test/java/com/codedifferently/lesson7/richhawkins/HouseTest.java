@@ -51,16 +51,18 @@ public class HouseTest {
         "APARTMENT BUNGALOW COTTAGE CAPECOD COLONIAL FARMHOUSE MANSION TINYHOME TOWNHOUSE SINGLEFAMILY SPLITLEVEL ",
         allTypes);
   }
+
   @Test
   public void testHasGarage() {
-      House house = new House("Oak", 123);
-      house.setHasGarage(true);
-      assertEquals(true, house.getHasGarage());
+    House house = new House("Oak", 123);
+    house.setHasGarage(true);
+    assertEquals(true, house.getHasGarage());
   }
+
   @Test
   public void testNumberOfBedrooms() {
-      House house = new House("Oak", 123);
-      house.setNumberOfBedrooms(4);
-      assertEquals(4, house.getNumberOfBedrooms());
+    House house = new House("Oak", 123);
+    house.setNumberOfBedrooms(4);
+    assertEquals(4, house.getNumberOfBedrooms());
   }
 }
