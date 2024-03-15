@@ -7,9 +7,9 @@ public class Tv {
   private String model;
   private double screenSize;
   private String resolution;
-  private DisplayTechnology displaytechnology;
+  private DisplayTechnology displayTechnology;
   private boolean isSmart;
-  private List<String> inputports;
+  private List<String> inputPorts;
 
   public Tv(
       String brand,
@@ -18,13 +18,14 @@ public class Tv {
       String resolution,
       DisplayTechnology displayTechnology,
       boolean isSmart,
-      List<String> inputports) {
+      List<String> inputPorts) {
     this.brand = brand;
     this.model = model;
     this.screenSize = screenSize;
     this.resolution = resolution;
-    this.displaytechnology = displayTechnology;
+    this.displayTechnology = displayTechnology;
     this.isSmart = isSmart;
+    this.inputPorts = inputPorts;
   }
 
   public String getBrand() {
@@ -47,18 +48,10 @@ public class Tv {
     return screenSize;
   }
 
-  public void testSetScreenSize(double screenSize) throws TvException {
-    if (screenSize < 30) {
-      throw new TvException("Screen size is too small.");
-    }
-    this.screenSize = screenSize;
-  }
-
   public String getResolution() {
     StringBuilder modifiedResolution = new StringBuilder();
     for (int i = 0; i < resolution.length(); i++) {
       char c = resolution.charAt(i);
-
       if (Character.isLetter(c)) {
         modifiedResolution.append(Character.toUpperCase(c));
       } else {
