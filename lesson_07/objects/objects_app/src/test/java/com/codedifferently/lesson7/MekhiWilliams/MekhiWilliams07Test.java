@@ -34,6 +34,5 @@ public class MekhiWilliams07Test {
     } catch (Sneaker.InvalidSizeException e) {
       assertEquals("Size should be greater than 0", e.getMessage());
     }
-  } 
+  }
 }
-
