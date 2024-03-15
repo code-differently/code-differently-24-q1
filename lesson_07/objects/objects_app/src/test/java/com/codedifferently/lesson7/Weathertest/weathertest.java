@@ -1,9 +1,33 @@
-import com.codedifferently.lesson7.Weather;
+package com.codedifferently.lesson7.RandyCastro;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
 
 class weathertest {
 
-  public class Main {
+
+class Weather {
+
+@Test
+void getWeatherC(){
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+  public class Weather {
     public static void main(String[] args) {
       // Create an instance of the Weather class
       Weather weather = new Weather();

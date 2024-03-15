@@ -1,4 +1,4 @@
-package com.codedifferently.lesson7;
+package com.codedifferently.lesson7.RandyCastro;
 
 public class Weather {
   
