@@ -33,7 +33,7 @@ public class Weather {
   }
 
   // functions//
-  // create getters and setters to grab temp
+  // created getters and setters 
 
   public int gettemp() {
     return temp;
@@ -47,7 +47,7 @@ public class Weather {
     return windDirection;
   }
 
-  public void setWindDirecction() {
+  public void setWindDirection(String windDirection) {
     this.windDirection = windDirection;
   }
 
@@ -59,7 +59,7 @@ public class Weather {
     return sunrise;
   }
 
-  public void setSunrise() {
+  public void setSunrise( int sunrise) {
     this.sunrise = sunrise;
   }
 
@@ -67,7 +67,7 @@ public class Weather {
     return sunset;
   }
 
-  public void setSunset() {
+  public void setSunset( int sunset) {
     this.sunset = sunset;
 
     // for loop
@@ -77,15 +77,33 @@ public class Weather {
   }
 
 
-// if loop
+// if loop, If sunny it will print out "It will be a sunny day!". Else, it will print out "It will be a rainy day!".
 
 public void checkWeatherCondition() {
   if (Sunny) {
-      System.out.println("The weather condition is good.");
+      System.out.println("It will be a sunny day!");
   } else {
-      System.out.println("The weather condition is not good.");
+      System.out.println("It will be a rainy day!");
+
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // for loop
 
 
