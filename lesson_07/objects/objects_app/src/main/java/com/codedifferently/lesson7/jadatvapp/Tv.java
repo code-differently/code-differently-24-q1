@@ -2,11 +2,10 @@ package com.codedifferently.lesson7.jadatvapp;
 
 import java.util.List;
 
-
 public class Tv {
   private String brand;
   private String model;
-  private double screenSize; // Renamed to follow naming convention
+  private double screenSize;
   private String resolution;
   private DisplayTechnology displaytechnology;
   private boolean isSmart;
@@ -15,14 +14,14 @@ public class Tv {
   public Tv(
       String brand,
       String model,
-      double screenSize, // Renamed to follow naming convention
+      double screenSize,
       String resolution,
       DisplayTechnology displayTechnology,
       boolean isSmart,
       List<String> inputports) {
     this.brand = brand;
     this.model = model;
-    this.screenSize = screenSize; // Renamed to follow naming convention
+    this.screenSize = screenSize;
     this.resolution = resolution;
     this.displaytechnology = displayTechnology;
     this.isSmart = isSmart;
@@ -32,7 +31,7 @@ public class Tv {
     return brand;
   }
 
-  public void setBrand(String brand) { // Renamed to follow naming convention
+  public void setBrand(String brand) {
     this.brand = brand;
   }
 
@@ -44,15 +43,15 @@ public class Tv {
     this.model = model;
   }
 
-  public double getScreenSize() { // Renamed to follow naming convention
+  public double getScreenSize() {
     return screenSize;
   }
 
-  public void setScreenSize(double screenSize) { // Renamed to follow naming convention
+  public void setScreenSize(double screenSize) {
     this.screenSize = screenSize;
   }
 
-  public String getResolution() { // Renamed to follow naming convention
+  public String getResolution() {
     StringBuilder modifiedResolution = new StringBuilder();
     for (int i = 0; i < resolution.length(); i++) {
       char c = resolution.charAt(i);
@@ -70,10 +69,9 @@ public class Tv {
     return isSmart ? "Yes" : "No";
   }
 
-  public void throwCustomException() throws TVException {
-    if (screenSize < 30) { // Renamed to follow naming convention
-      throw new TVException(("Screen size is too small."));
+  public void throwCustomException() throws TvException {
+    if (screenSize < 30) {
+      throw new TvException(("Screen size is too small."));
     }
   }
 }
-
