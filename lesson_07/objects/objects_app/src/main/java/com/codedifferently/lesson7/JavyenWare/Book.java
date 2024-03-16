@@ -1,4 +1,4 @@
-package com.codedifferently.lesson7;
+package com.codedifferently.lesson7.javyenware;
 
 
 import org.springframework.boot.SpringApplication;
@@ -6,24 +6,26 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 
 
-// Design at least one custom class that represents a real-world object.
+/** Design at least one custom class that represents a real-world object.
+**(javy/W comment) A class is a blueprint or template for creating something 
+*/ 
 public class Book {
 
-   // (Javyens comment) The extends keyword indicates that the class is inherited from the book class
-   public static class NoBookAvailable extends Exception {
-       public NoBookAvailable (string insertMessage) {
-        super(insertMessage);
-       }
-   }
+// (javy/W comment) The extends keyword indicates that the class is inherited from the book class
+public static class NoBookAvailable extends Exception {
+    public NoBookAvailable (string insertMessage) {
+     super(insertMessage);
+    }
+}
 
 
 // The class must have at least 5 member variables of at least 3 different types.
-   private string Title;
-   private string Author;
-   private string Publisher;
-   private short YearReleased;
-   private float Price; 
-   private byte PageNumber;
+   private string title;
+   private string author;
+   private string publisher;
+   private short yearReleased;
+   private float price; 
+   private byte pageNumber;
 
 
 // You must also incorporate an enum type as well.
@@ -34,13 +36,13 @@ public class Book {
 
 
 // The class must have at least one constructor.
-public Book(string Title, string Author, string Publisher, short YearReleased, float Price, byte PageNumber) {
-   this.Title = Title;
-   this.Author = Author;
-   this.Publisher = Publisher;
-   this.YearReleased = YearReleased;
-   this.Price = Price;
-   this.PageNumber = PageNumber;
+public Book(string title, string author, string publisher, short yearReleased, float price, byte pageNumber) {
+   this.Title = title;
+   this.Author = author;
+   this.Publisher = publisher;
+   this.YearReleased = yearReleased;
+   this.Price = price;
+   this.PageNumber = pageNumber;
 }
 
 
@@ -65,7 +67,7 @@ public Book(string Title, string Author, string Publisher, short YearReleased, f
     return Price;
    } 
    public byte getPageNumber() {
-    return PageNumber;
+    return pageNumber;
    }
 
 
@@ -80,10 +82,9 @@ public Book(string Title, string Author, string Publisher, short YearReleased, f
 
 
 // One of your functions must make use of a loop.
-   public static void main(String[] args) {
-    Book[] book = new Book[5];
-
-    for (short i = 0; i < books.length; i++) {
+   public static void CollectionOfAuthorNames(String[] args) {
+    authorNames[] authorNames =  authorNames[3];
+    for (short i = 0; i < authorNames.length; i++) {
       System.out.println("Books Published in" + getYearReleased);
     }
    }
