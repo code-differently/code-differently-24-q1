@@ -50,7 +50,7 @@ public class Lesson8 {
     int leftHeight = getMaximumBinaryTreeHeight(root.left);
     int rightHeight = getMaximumBinaryTreeHeight(root.right);
     // Returns the greater value which indicates the height of the tree and
-    // adds 1 to account for current node. Constructors are wild.
+    // adds 1 to account for current node. Recursive functions are wild.
     return Math.max(leftHeight, rightHeight) + 1;
   }
 
