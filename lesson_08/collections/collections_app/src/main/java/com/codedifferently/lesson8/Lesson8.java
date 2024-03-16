@@ -14,6 +14,25 @@ public class Lesson8 {
   }
 
   public static boolean containsCycle(LinkedListNode head) {
+    // Uses Floyd's Cycle Detection Algorithm aka Tortoise and Hare
+
+    // Check for empty LinkedList or a LL with one node, if either is the case a cycle is impossible.
+    if (head == null || head.next == null) {
+      return false;
+    }
+    // Initializes slow at the first node and fast at second node
+    LinkedListNode slow = head;
+    LinkedListNode fast = head.next;
+    // Create a loop that will move slow one step and fast two steps each loop through.
+    // If slow == fast at any point this indicates a cycle
+    // If fast becomes null this indicates the end of list and no cycle
+    while (fast != null && fast.next != null) {
+      if (slow == fast) {
+        return true;
+      }
+      slow = slow.next;
+      fast = fast.next.next;
+    }
     return false;
   }
 
