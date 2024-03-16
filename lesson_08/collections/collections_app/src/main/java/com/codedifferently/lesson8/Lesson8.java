@@ -16,7 +16,8 @@ public class Lesson8 {
   public static boolean containsCycle(LinkedListNode head) {
     // Uses Floyd's Cycle Detection Algorithm aka Tortoise and Hare
 
-    // Check for empty LinkedList or a LL with one node, if either is the case a cycle is impossible.
+    // Check for empty LinkedList or a LL with one node, if either is the case a cycle is
+    // impossible.
     if (head == null || head.next == null) {
       return false;
     }
@@ -25,7 +26,7 @@ public class Lesson8 {
     LinkedListNode fast = head.next;
     // Create a loop that will move slow one step and fast two steps each loop through.
     // If slow == fast at any point this indicates a cycle
-    // If fast becomes null this indicates the end of list and no cycle
+
     while (fast != null && fast.next != null) {
       if (slow == fast) {
         return true;
@@ -33,11 +34,24 @@ public class Lesson8 {
       slow = slow.next;
       fast = fast.next.next;
     }
+    // If fast becomes null this indicates the end of list and no cycle and returns false
     return false;
   }
 
   public static int getMaximumBinaryTreeHeight(BinaryTreeNode root) {
-    return -1;
+
+    // Uses a recursive call to advance through the tree's nodes
+
+    // Base case for trees with 0 height.
+    if (root == null) {
+      return 0;
+    }
+    // Cycles recursively through left and right branches until it hits a null value
+    int leftHeight = getMaximumBinaryTreeHeight(root.left);
+    int rightHeight = getMaximumBinaryTreeHeight(root.right);
+    // Returns the greater value which indicates the height of the tree and
+    // adds 1 to account for current node. Constructors are wild.
+    return Math.max(leftHeight, rightHeight) + 1;
   }
 
   public static boolean containsDuplicates(String[] values) {
