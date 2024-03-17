@@ -14,6 +14,21 @@ public class Lesson8 {
   }
 
   public static boolean containsCycle(LinkedListNode head) {
+    if (head == null || head.next == null) {
+      return false;
+    }
+
+    LinkedListNode slow = head;
+    LinkedListNode fast = head.next;
+
+    while (fast != null && fast.next != null) {
+      if (slow == fast) {
+        return true;
+      }
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+
     return false;
   }
 
