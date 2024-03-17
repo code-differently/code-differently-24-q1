@@ -14,7 +14,11 @@
 		"ghcr.io/devcontainers/features/node:1": {},
 		"ghcr.io/devcontainers/features/python:1": {},
 		"ghcr.io/devcontainers-contrib/features/ts-node:1": {},
-		"ghcr.io/devcontainers/features/sshd:1": {}
+		"ghcr.io/devcontainers/features/sshd:1": {},
+		"homebrew": {
+      "version": "latest",
+      "shallow": false
+    }
 	},
 	"portsAttributes": {
 	  "80": {
