@@ -20,6 +20,7 @@
 			"shallow": false
 		}
 	},
+	"postCreateCommand": "yarn global add @devcontainers/cli && brew install neovim",
 	"portsAttributes": {
 	  "80": {
 		"requireLocalPort": true,
