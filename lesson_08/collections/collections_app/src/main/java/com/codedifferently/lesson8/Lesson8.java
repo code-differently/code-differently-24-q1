@@ -1,5 +1,6 @@
 package com.codedifferently.lesson8;
 
+import java.util.HashMap;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
@@ -44,6 +45,15 @@ public class Lesson8 {
   }
 
   public static boolean containsDuplicates(String[] values) {
+    HashMap<String, Integer> map = new HashMap<>();
+
+    for (String value : values) {
+      if (map.containsKey(value)) {
+        return true;
+      }
+      map.put(value, 1);
+    }
+
     return false;
   }
 
