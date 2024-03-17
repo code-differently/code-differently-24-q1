@@ -2,8 +2,16 @@ package com.codedifferently.randycastro;
 
 import java.lang.reflect.Array;
 
+import com.codedifferently.randycastro.Weather.WeatherCondition;
+
 public class Weather {
   
+ public class TempOutOfBoundsException extends Exception {
+    public TempOutOfBoundsException(String message) {
+        super(message);
+    }
+}
+
    //enum
    public enum WeatherCondition { 
     SUNNY, RAINY;
@@ -26,7 +34,7 @@ public class Weather {
   
   // Constructor
 
-  public Weather( 
+  public class Weather( 
     int temp, 
     String windDirection,
     WeatherCondition weatherCondition,
@@ -117,7 +125,7 @@ for(int i = 0; i < tempatures.length; i++){
   try {
     // Print temperature information
     System.out.println("Temperature " + (i + 1) + ": " + temperatures[i]);
-} catch (ArrayIndexOutOfBoundsException e) {
+} catch (TempOutOfBoundsException e) {
     // Handle the exception (if index is out of bounds)
     System.out.println("Error: Temp is out of bounds[] " + i);
 }

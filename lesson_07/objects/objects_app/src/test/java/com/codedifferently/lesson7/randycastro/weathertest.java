@@ -65,7 +65,7 @@ public class WeatherTest {
     }
       // Weather class implementation
   }
-
+@Test
     public static void main(String[] args) {
       // Create an instance of the Weather class
       Weather weather = new Weather();
@@ -78,15 +78,6 @@ public class WeatherTest {
       weather.printSunriseAndSunset(7);
     }
   
-
-
-    // if loop. To print out message during Sunset/Sunrise hours.
-    // if(time == 7:13am, 7:33am)
-    // system.outPrintln (Sunrise, Good Morning);
-
-    // else if(time == 7:09pm, 7:39pm)
-    // sustem.outPrintln (Sunset, Good Night)
-
 
 
 
