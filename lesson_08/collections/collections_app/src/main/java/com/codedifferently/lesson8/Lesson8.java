@@ -1,5 +1,7 @@
 package com.codedifferently.lesson8;
 
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
@@ -55,6 +57,18 @@ public class Lesson8 {
   }
 
   public static boolean containsDuplicates(String[] values) {
+    // Creates a Hashmap to store values from values array
+    Set<String> setOfValues = new HashSet<>();
+    // Uses an enhanced for loop to iterate through the values array and assign the value
+    // stored in each index in the value variable.
+    for (String value : values) {
+      // The add method will return false if it tries to add a value already stored in set
+      // ! is used to negate the false value to a true value and then returns true indicating a
+      // dupe.
+      if (!setOfValues.add(value)) {
+        return true;
+      }
+    }
     return false;
   }
 
