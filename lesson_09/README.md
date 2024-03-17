@@ -2,7 +2,7 @@
 
 ## Homework
 
-TODO(anthonydmays): Add this
+* Read this [article on Test-Driven Development][tdd-article].
 
 ## Library Management System
 
