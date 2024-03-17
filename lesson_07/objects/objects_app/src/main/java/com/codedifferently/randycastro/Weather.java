@@ -1,43 +1,51 @@
-package com.codedifferently.lesson7.RandyCastro;
+package com.codedifferently.randycastro;
 
 import java.lang.reflect.Array;
 
 public class Weather {
   
+   //enum
+   public enum WeatherCondition { 
+    SUNNY, RAINY;
+  
   public int temp;
   public String windDirection;
-  public Boolean weatherCondition;
+  public WeatherCondition weatherCondition;
   public int humidity;
   public int sunrise;
   public int sunset;
 }
-  //enum
-  private enum weatherCondition {
-    Sunny, Rainy;
-  
+
+  private int temp;
+  private String windDirection;
+  private WeatherCondition weatherCondition;
+  private int humidity;
+  private int sunrise;
+  private int sunset;
+ 
   
   // Constructor
 
-  public Weather(
-      int temp,
-      String windDirection,
-      Boolean weatherCondition,
-      int humidity,
-      int sunrise,
-      int sunset) {
-      
+  public Weather( 
+    int temp, 
+    String windDirection,
+    WeatherCondition weatherCondition,
+    int humidity, 
+    int sunrise, 
+     int sunset) {
+
     this.temp = temp;
     this.windDirection = windDirection;
     this.weatherCondition = weatherCondition;
     this.humidity = humidity;
     this.sunrise = sunrise;
     this.sunset = sunset;
-  }
+}
 
   // functions//
   // created getters and setters 
 
-  public int gettemp() {
+  public int getTemp() {
     return temp;
   }
 
@@ -53,7 +61,7 @@ public class Weather {
     this.windDirection = windDirection;
   }
 
-  public Boolean getweatherCondition() {
+  public WeatherCondition getWeatherCondition() {
     return weatherCondition;
   }
 
@@ -82,7 +90,7 @@ public class Weather {
 // if loop, If sunny it will print out "It will be a sunny day!". Else, it will print out "It will be a rainy day!".
 
 public void checkWeatherCondition() {
-  if (Sunny) {
+  if (weatherCondition == WeatherCondition.SUNNY) {
       System.out.println("It will be a sunny day!");
   } else {
       System.out.println("It will be a rainy day!");
@@ -92,24 +100,33 @@ public void checkWeatherCondition() {
 //Array
 
 // Constructor for Array 
-public class Weather {
+public static class Weather {
   private int [] Tempatures;
+  private int[] tempatures;
+  private String[] temperatures;
   public Weather (int[] Tempatures ) {
-    this.Tempatures = Tempatures;
+    this.tempatures = Tempatures;
   
 }
 
 
   public void printTempatures() {
-int[] Tempatures = {10,20,30,40,50,60,70,80,90,100};
+int[] tempatures = {10,20,30,40,50,60,70,80,90,100};
 
-for(int i = 0; i < Tempatures.length; i++){
-System.out.println( "Tempature" + ( i + 10) + Tempatures[i]);
+for(int i = 0; i < tempatures.length; i++){
+  try {
+    // Print temperature information
+    System.out.println("Temperature " + (i + 1) + ": " + temperatures[i]);
+} catch (ArrayIndexOutOfBoundsException e) {
+    // Handle the exception (if index is out of bounds)
+    System.out.println("Error: Temp is out of bounds[] " + i);
 }
 }
 }
 }
-  }
+}
+}
+  
   
 
 
