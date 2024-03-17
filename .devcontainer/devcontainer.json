@@ -18,7 +18,8 @@
 		"ghcr.io/meaningful-ooo/devcontainer-features/homebrew:2": {
 			"version": "latest",
 			"shallow": false
-		}
+		},
+		"postCreateCommand": "yarn global add @devcontainers/cli && brew install neovim"
 	},
 	"portsAttributes": {
 	  "80": {
