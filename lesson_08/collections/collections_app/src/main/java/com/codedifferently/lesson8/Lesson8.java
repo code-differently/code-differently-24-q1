@@ -33,7 +33,14 @@ public class Lesson8 {
   }
 
   public static int getMaximumBinaryTreeHeight(BinaryTreeNode root) {
-    return -1;
+    if (root == null) {
+      return 0;
+    }
+
+    int leftHeight = getMaximumBinaryTreeHeight(root.left);
+    int rightHeight = getMaximumBinaryTreeHeight(root.right);
+
+    return Math.max(leftHeight, rightHeight) + 1;
   }
 
   public static boolean containsDuplicates(String[] values) {
