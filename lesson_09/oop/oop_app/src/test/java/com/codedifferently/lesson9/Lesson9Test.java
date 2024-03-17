@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class Lesson9Test {
 
   @Test
-  void testCanVote() {
+  void testLesson9_create() {
     assertThat(new Lesson9()).isNotNull();
   }
 }
