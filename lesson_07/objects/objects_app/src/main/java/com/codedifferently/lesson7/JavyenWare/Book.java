@@ -37,34 +37,34 @@ public static class NoBookAvailable extends Exception {
 
 // The class must have at least one constructor.
 public Book(string title, string author, string publisher, short yearReleased, float price, byte pageNumber) {
-   this.Title = title;
-   this.Author = author;
-   this.Publisher = publisher;
-   this.YearReleased = yearReleased;
-   this.Price = price;
-   this.PageNumber = pageNumber;
+   this.title = title;
+   this.author = author;
+   this.publisher = publisher;
+   this.yearReleased = yearReleased;
+   this.price = price;
+   this.pageNumber = pageNumber;
 }
 
 
 // The class must have at least 3 member functions.
    public string getAuthor() {
-       return Author;
+       return author;
    }
 
    public string getTitle() {
-       return Title;
+       return title;
    }
 
    public string getPublisher() {
-       return Publisher;
+       return publisher;
    } 
 
    public short getYearReleased() {
-    return YearReleased;
+    return yearReleased;
    }
 
    public float getPrice() {
-    return Price;
+    return price;
    } 
    public byte getPageNumber() {
     return pageNumber;
