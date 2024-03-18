@@ -1,72 +1,69 @@
 package com.codedifferently.lesson7.sherllinlesson7;
+
 import java.util.ArrayList;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Configuration;
-@Configuration
-@SpringBootApplication(scanBasePackages = "com.codedifferently")
 
 public class Dog {
-    
-    public static class InvalidBreedException extends Exception {
-        public InvalidBreedException(String message) {
-            super(message);
-        }
-    }
 
-    private int age;
-    private double weight;
-    private String color;
-    private boolean gender;
-    private Breed breed;
-    private ArrayList<String> dogToy;
-
-    public Dog(int age, double weight, String color, boolean gender, Breed breed) {
-        this.age = age;
-        this.weight = weight;
-        this.color = color;
-        this.gender = gender;
-        this.breed = breed;
-        this.dogToy = new ArrayList<>();
+  public static class InvalidBreedException extends Exception {
+    public InvalidBreedException(String message) {
+      super(message);
     }
+  }
 
-    public void addToy(String... toys) {
-        for (String toy : toys) {
-            dogToy.add(toy);
-        }
-    }
+  private int age;
+  private double weight;
+  private String color;
+  private boolean gender;
+  private Breed breed;
+  private ArrayList<String> dogToy;
 
-    public ArrayList<String> getDogToys() {
-        return dogToy;
-    }
+  public Dog(int age, double weight, String color, boolean gender, Breed breed) {
+    this.age = age;
+    this.weight = weight;
+    this.color = color;
+    this.gender = gender;
+    this.breed = breed;
+    this.dogToy = new ArrayList<>();
+  }
 
-    public void displayToys() {
-        System.out.println("Toys for " + breed + " dog:");
-        for (String toy : dogToy) {
-            System.out.println(toy);
-        }
+  public void addToy(String... toys) {
+    for (String toy : toys) {
+      dogToy.add(toy);
     }
+  }
 
-    public int getAge() {
-        return age;
-    }
+  public ArrayList<String> getDogToys() {
+    return dogToy;
+  }
 
-    public double getWeight() {
-        return weight;
+  public void displayToys() {
+    System.out.println("Toys for " + breed + " dog:");
+    for (String toy : dogToy) {
+      System.out.println(toy);
     }
+  }
 
-    public String getColor() {
-        return color;
-    }
+  public int getAge() {
+    return age;
+  }
 
-    public boolean getGender() {
-        return gender;
-    }
+  public double getWeight() {
+    return weight;
+  }
 
-    public Breed getBreed() {
-        return breed;
-    }
+  public String getColor() {
+    return color;
+  }
 
-    public boolean isBreed(Breed val) {
-        return this.breed == val;
-    }
+  public boolean getGender() {
+    return gender;
+  }
+
+  public Breed getBreed() {
+    return breed;
+  }
+
+  public boolean isBreed(Breed val) {
+    return this.breed == val;
+  }
 }
