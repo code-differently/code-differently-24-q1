@@ -14,7 +14,7 @@ public class CommandCenter {
     delawareCrew.addCrewMember(secondAstronaut);
     delawareCrew.addCrewMember(thirdAstronaut);
 
-    System.out.println("Event started with crew: " + delawareCrew);
+    System.out.println("First event started with crew: " + delawareCrew + " ship is getting ready");
 
     int numberOfSpaceshipsToBeSent = 5;
 
@@ -26,12 +26,12 @@ public class CommandCenter {
       try {
         System.out.println(
             delawareShip.getSpaceshipName()
-                + " is getting ready, currently in status: "
+                + " status: "
                 + delawareShip.getStatus());
         delawareShip.Launch();
-        System.out.println(delawareShip.getSpaceshipName() + " is: " + delawareShip.getStatus());
+        System.out.println(delawareShip.getSpaceshipName() + " status: " + delawareShip.getStatus());
         delawareShip.Landed();
-        System.out.println(delawareShip.getSpaceshipName() + " is: " + delawareShip.getStatus());
+        System.out.println(delawareShip.getSpaceshipName() + " status: " + delawareShip.getStatus());
       } catch (Exception e) {
         System.out.println(e.getMessage());
         eventStatus = false;
@@ -46,7 +46,7 @@ public class CommandCenter {
 
     Crew delawareCrew = new Crew();
     delawareCrew.addCrewMember(firstAstronaut);
-    System.out.println("Event started with crew: " + delawareCrew);
+    System.out.println("Second event started with crew: " + delawareCrew);
 
     int numberOfSpaceshipsToBeSent = 5;
 
@@ -63,7 +63,7 @@ public class CommandCenter {
         eventStatus = false;
       }
 
-      System.out.println("status after: " + delawareShip);
+      System.out.println("current status: " + delawareShip);
     }
     return eventStatus;
   }

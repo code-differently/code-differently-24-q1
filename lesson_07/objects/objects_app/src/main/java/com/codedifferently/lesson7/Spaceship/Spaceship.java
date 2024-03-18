@@ -3,22 +3,22 @@ package com.codedifferently.lesson7.Spaceship;
 public class Spaceship {
 
   private String spaceshipName;
-  private String status = "parked"; // start with a parked status
+  private SpaceshipStatus status = SpaceshipStatus.PARKED; // start with a parked status
   private Crew crew; // creates empty crew
 
   public void Launch() throws CrewSizeException {
     if (crew.getAstronautList().size() >= 2 && crew.getAstronautList().size() <= 4) {
-      status = "launched";
+      status = SpaceshipStatus.LAUNCHED;
     } else {
       throw new CrewSizeException(" cannot be launched because needs a proper crew size");
     }
   }
 
   public void Landed() {
-    status = "Landed";
+    status = SpaceshipStatus.LANDED;
   }
 
-  public String getStatus() {
+  public SpaceshipStatus getStatus() {
     return status;
   }
 
