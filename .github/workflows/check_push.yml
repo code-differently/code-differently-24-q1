@@ -10,6 +10,8 @@ on:
       - "lesson_04/expression/**"
       - "lesson_05/types/**"
       - "lesson_06/conditionals/**"
+      - "lesson_07/objects/**"
+      - "lesson_08/collections/**"
 
 jobs:
   build:
@@ -53,6 +55,10 @@ jobs:
 
     - name: Build Lesson 07 with Gradle Wrapper
       working-directory: ./lesson_07/objects
+      run: ./gradlew assemble && ./gradlew spotlessCheck
+
+    - name: Build Lesson 08 with Gradle Wrapper
+      working-directory: ./lesson_08/collections
       run: ./gradlew assemble && ./gradlew spotlessCheck
 
     - name: Build Shared Lib with Gradle Wrapper
