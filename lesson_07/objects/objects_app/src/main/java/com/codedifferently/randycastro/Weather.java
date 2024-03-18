@@ -92,6 +92,7 @@ public String checkWeatherCondition() {
 
 public int printTemperatures() {
   int[] temperatures = {10,20,30,40,50,60,70,80,90,100};
+  int count = 0;
   for(int i = 0; i < temperatures.length; i++) {
       try {
           // Print temperature information
@@ -101,6 +102,7 @@ public int printTemperatures() {
           System.out.println("Error: Temperature is out of bounds[] " + i);
 }
   }
+  return count;
 }
 
 public void setWeatherCondition(WeatherCondition sunny) {

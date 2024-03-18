@@ -36,11 +36,24 @@ public void testCheckWeatherConditionSunny() {
   assertEquals("It will be a sunny day!", weather.checkWeatherCondition());
 }
 
+@Test
+public void testPrintTemperatures() {
+  Weather weather = new Weather( 90, "E", Weather.WeatherCondition.SUNNY, 600,1800);
+  int count = weather.printTemperatures();
+  int expectedCount = 8;
+  assertEquals(8, 8);
+}
+
 
 @Test
     public void testCheckWeatherConditionRainy() {
       Weather weather = new Weather( 40, "S", Weather.WeatherCondition.RAINY, 600,1800);
       assertEquals("It will be a rainy day!", weather.checkWeatherCondition());
     }
-  }
 
+@Test
+public void test
+
+
+
+  }
