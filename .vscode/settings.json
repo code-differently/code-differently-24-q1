@@ -1,4 +1,9 @@
 {
+    "remote.containers.defaultExtensions": [ "asvetliakov.vscode-neovim"],
+    "remote.extensionKind": {
+        "asvetliakov.vscode-neovim": ["workspace"]
+    },
+    "vscode-neovim.neovimExecutablePaths.linux": "/home/linuxbrew/.linuxbrew/bin/nvim",
     "java.configuration.updateBuildConfiguration": "automatic",
     "java.compile.nullAnalysis.mode": "automatic"
 }
