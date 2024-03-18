@@ -1,5 +1,6 @@
 package com.codedifferently.lesson8;
 
+import java.util.HashMap;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
@@ -14,14 +15,45 @@ public class Lesson8 {
   }
 
   public static boolean containsCycle(LinkedListNode head) {
+    if (head == null || head.next == null) {
+      return false;
+    }
+
+    LinkedListNode slow = head;
+    LinkedListNode fast = head.next;
+
+    while (fast != null && fast.next != null) {
+      if (slow == fast) {
+        return true;
+      }
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+
     return false;
   }
 
   public static int getMaximumBinaryTreeHeight(BinaryTreeNode root) {
-    return -1;
+    if (root == null) {
+      return 0;
+    }
+
+    int leftHeight = getMaximumBinaryTreeHeight(root.left);
+    int rightHeight = getMaximumBinaryTreeHeight(root.right);
+
+    return Math.max(leftHeight, rightHeight) + 1;
   }
 
   public static boolean containsDuplicates(String[] values) {
+    HashMap<String, Integer> map = new HashMap<>();
+
+    for (String value : values) {
+      if (map.containsKey(value)) {
+        return true;
+      }
+      map.put(value, 1);
+    }
+
     return false;
   }
 
