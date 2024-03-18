@@ -30,16 +30,17 @@ assertEquals(sunset, weather.getSunset());
 }
 
 
-
-
-  @Test
-  public void testCheckWeatherConditionSunny() {
-    Weather weather = new Weather();  
-    
-    // Set the weather condition to SUNNY
-      weather.setWeatherCondition(Weather.WeatherCondition.SUNNY);
-      
-      // Assert that the method returns the expected message for sunny weather
-      assertEquals("It will be a sunny day!", weather.getWeatherCondition());
-  }
+@Test
+public void testCheckWeatherConditionSunny() {
+  Weather weather = new Weather( 80, "W",Weather.WeatherCondition.SUNNY, 600, 1800);
+  assertEquals("It will be a sunny day!", weather.checkWeatherCondition());
 }
+
+
+@Test
+    public void testCheckWeatherConditionRainy() {
+      Weather weather = new Weather( 40, "S", Weather.WeatherCondition.RAINY, 600,1800);
+      assertEquals("It will be a rainy day!", weather.checkWeatherCondition());
+    }
+  }
+
