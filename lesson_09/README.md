@@ -2,6 +2,7 @@
 
 ## Homework
 
+* Read [PIE][pie-book] 8
 * Read this [article on Test-Driven Development][tdd-article].
 
 ## Library Management System
@@ -29,4 +30,5 @@ For this assignment, you will build a library management system using object ori
 * Read the functional requirements carefully, and take special care to identify *objects*, their *data*, and their *actions*.
 * It is highly recommended that you write your tests firsts, and then build what you need to make the tests work. This is essential to [Test-Driven Development][tdd-article].
 
+[pie-book]: https://github.com/shshankar1/ebooks/blob/master/Programming%20Interviews%20Exposed.PDF
 [tdd-article]: https://semaphoreci.com/blog/test-driven-development
