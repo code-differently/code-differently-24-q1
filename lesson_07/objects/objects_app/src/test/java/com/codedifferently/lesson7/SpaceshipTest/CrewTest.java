@@ -10,14 +10,14 @@ public class CrewTest {
   public void MinSizeTest() {
     Crew crew = new Crew();
     Integer min = crew.getMin();
-    Assertions.assertEquals(3, min);
+    Assertions.assertEquals(2, min);
   }
 
   @Test
   public void MaxSizeTest() {
     Crew crew = new Crew();
-    Integer max = crew.getMin();
-    Assertions.assertEquals(6, max);
+    Integer max = crew.getMax();
+    Assertions.assertEquals(4, max);
   }
 
   @Test

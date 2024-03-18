@@ -3,9 +3,11 @@ package com.codedifferently.lesson7.Spaceship;
 public class CommandCenter {
 
   public boolean firstEvent() {
+    boolean eventStatus = true;
+    
     Astronaut firstAstronaut = new Astronaut("Vicente", 21);
-    Astronaut secondAstronaut = new Astronaut("Michael", 30);
-    Astronaut thirdAstronaut = new Astronaut("Lionel", 35);
+    Astronaut secondAstronaut = new Astronaut("Cristiano", 39);
+    Astronaut thirdAstronaut = new Astronaut("Lionel", 36);
 
     Crew delawareCrew = new Crew();
     delawareCrew.addCrewMember(firstAstronaut);
@@ -21,17 +23,21 @@ public class CommandCenter {
       delawareShip.setSpaceshipName("Apollo" + spaceshipCount);
       delawareShip.setCrew(delawareCrew);
 
-      System.out.println(
-          delawareShip.getSpaceshipName()
-              + " is getting ready, currently in status: "
-              + delawareShip.getStatus());
-      delawareShip.Launch();
-      System.out.println(delawareShip.getSpaceshipName() + " is: " + delawareShip.getStatus());
-      delawareShip.Landed();
-      System.out.println(delawareShip.getSpaceshipName() + " is: " + delawareShip.getStatus());
+      try {
+        System.out.println(
+            delawareShip.getSpaceshipName()
+                + " is getting ready, currently in status: "
+                + delawareShip.getStatus());
+        delawareShip.Launch();
+        System.out.println(delawareShip.getSpaceshipName() + " is: " + delawareShip.getStatus());
+        delawareShip.Landed();
+        System.out.println(delawareShip.getSpaceshipName() + " is: " + delawareShip.getStatus());
+      } catch (Exception e) {
+        System.out.println(e.getMessage());
+        eventStatus = false;
+      } 
     }
-
-    return true;
+    return eventStatus;
   }
 
   public boolean secondEvent() {

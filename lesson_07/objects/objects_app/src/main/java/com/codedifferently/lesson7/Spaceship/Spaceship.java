@@ -6,13 +6,11 @@ public class Spaceship {
   private String status = "parked"; // start with a parked status
   private Crew crew; // creates empty crew
 
-  public void Launch() {
-
+  public void Launch() throws CrewSizeException {
     if (crew.getAstronautList().size() >= 2 && crew.getAstronautList().size() <= 4) {
       status = "launched";
     } else {
-      throw new RuntimeException(
-          spaceshipName + " cannot be launched because needs a proper crew size");
+      throw new CrewSizeException(" cannot be launched because needs a proper crew size");
     }
   }
 
