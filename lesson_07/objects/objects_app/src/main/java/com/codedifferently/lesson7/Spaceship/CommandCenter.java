@@ -4,7 +4,7 @@ public class CommandCenter {
 
   public boolean firstEvent() {
     boolean eventStatus = true;
-    
+
     Astronaut firstAstronaut = new Astronaut("Vicente", 21);
     Astronaut secondAstronaut = new Astronaut("Cristiano", 39);
     Astronaut thirdAstronaut = new Astronaut("Lionel", 36);
@@ -25,17 +25,17 @@ public class CommandCenter {
 
       try {
         System.out.println(
-            delawareShip.getSpaceshipName()
-                + " status: "
-                + delawareShip.getStatus());
+            delawareShip.getSpaceshipName() + " status: " + delawareShip.getStatus());
         delawareShip.Launch();
-        System.out.println(delawareShip.getSpaceshipName() + " status: " + delawareShip.getStatus());
+        System.out.println(
+            delawareShip.getSpaceshipName() + " status: " + delawareShip.getStatus());
         delawareShip.Landed();
-        System.out.println(delawareShip.getSpaceshipName() + " status: " + delawareShip.getStatus());
+        System.out.println(
+            delawareShip.getSpaceshipName() + " status: " + delawareShip.getStatus());
       } catch (Exception e) {
         System.out.println(e.getMessage());
         eventStatus = false;
-      } 
+      }
     }
     return eventStatus;
   }
