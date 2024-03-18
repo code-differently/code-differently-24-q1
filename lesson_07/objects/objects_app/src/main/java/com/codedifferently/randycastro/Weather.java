@@ -15,14 +15,6 @@ public class Weather {
    //enum
    public enum WeatherCondition { 
     SUNNY, RAINY;
-  
-  public int temp;
-  public String windDirection;
-  public WeatherCondition weatherCondition;
-  public int humidity;
-  public int sunrise;
-  public int sunset;
-}
 
   private int temp;
   private String windDirection;
@@ -34,14 +26,8 @@ public class Weather {
   
   // Constructor
 
-  public class Weather( 
-    int temp, 
-    String windDirection,
-    WeatherCondition weatherCondition,
-    int humidity, 
-    int sunrise, 
-     int sunset) {
-
+  public Weather(int temp, String windDirection, WeatherCondition weatherCondition, int humidity, int sunrise, int sunset) 
+     {
     this.temp = temp;
     this.windDirection = windDirection;
     this.weatherCondition = weatherCondition;
@@ -105,35 +91,29 @@ public void checkWeatherCondition() {
 
 
   }
+  
 //Array
 
 // Constructor for Array 
-public static class Weather {
-  private int [] Tempatures;
-  private int[] tempatures;
-  private String[] temperatures;
-  public Weather (int[] Tempatures ) {
-    this.tempatures = Tempatures;
-  
+public void printTempatures() {
+  int[] temperatures = {10,20,30,40,50,60,70,80,90,100};
+}
+private int[] temperatures;
+public void printTemperatures() {
+  for(int i = 0; i < temperatures.length; i++) {
+      try {
+          // Print temperature information
+          System.out.println("Temperature " + (i + 1) + ": " + temperatures[i]);
+      } catch (ArrayIndexOutOfBoundsException e) {
+          // Handle the exception (if index is out of bounds)
+          System.out.println("Error: Temperature is out of bounds[] " + i);
 }
 
 
-  public void printTempatures() {
-int[] tempatures = {10,20,30,40,50,60,70,80,90,100};
+}
+}
 
-for(int i = 0; i < tempatures.length; i++){
-  try {
-    // Print temperature information
-    System.out.println("Temperature " + (i + 1) + ": " + temperatures[i]);
-} catch (TempOutOfBoundsException e) {
-    // Handle the exception (if index is out of bounds)
-    System.out.println("Error: Temp is out of bounds[] " + i);
-}
-}
-}
-}
-}
-}
+
   
   
 
