@@ -4,6 +4,7 @@
 
 * Read [PIE][pie-book] 8; TPP 2.8–2.10
 * Read this [article on Test-Driven Development][tdd-article].
+* Complete [Library Management System](#library-management-system) assignment.
 
 ## Library Management System
 
