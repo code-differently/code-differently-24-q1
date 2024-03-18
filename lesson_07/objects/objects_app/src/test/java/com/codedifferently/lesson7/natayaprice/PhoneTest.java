@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import com.codedifferently.lesson7.natayaprice.Phone.Color;
-import com.codedifferently.lesson7.natayaprice.Phones.InvalidPriceException;
+import com.codedifferently.lesson7.natayaprice.Phone.InvalidPriceException;
 import org.junit.jupiter.api.Test;
 
 public class PhoneTest {

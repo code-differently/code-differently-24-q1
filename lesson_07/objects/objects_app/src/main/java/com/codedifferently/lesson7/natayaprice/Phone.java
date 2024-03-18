@@ -37,9 +37,10 @@ public class Phone {
     return color;
   }
 
-  public static void comparePrice(int price1, int price2) {
+  public static int comparePrice(int price1, int price2) {
     int difference = price1 - price2;
     System.out.println("The difference between " + price1 + " && " + price2 + " is: " + difference);
+    return difference;
   }
 
   public double getPrice() {
