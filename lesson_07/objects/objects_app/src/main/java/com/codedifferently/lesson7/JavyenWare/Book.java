@@ -1,6 +1,5 @@
 package com.codedifferently.lesson7.javyenware;
 
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
@@ -13,30 +12,34 @@ public class Book {
 
 // (javy/W comment) The extends keyword indicates that the class is inherited from the book class
 public static class NoBookAvailable extends Exception {
-    public NoBookAvailable (string insertMessage) {
+    public NoBookAvailable (String insertMessage) {
      super(insertMessage);
     }
 }
 
 
 // The class must have at least 5 member variables of at least 3 different types.
-   private string title;
-   private string author;
-   private string publisher;
-   private short yearReleased;
+   private String title;
+   private String author;
+   private String publisher;
+   private Short yearReleased;
    private float price; 
    private byte pageNumber;
 
 
 // You must also incorporate an enum type as well.
    private enum Genre {
-       NONFICTION, FICTION, HORROR,
-       MYSTERY, FANTASY, HISTORY;
+       NONFICTION, 
+       FICTION, 
+       HORROR,
+       MYSTERY, 
+       FANTASY, 
+       HISTORY;
    }
 
 
 // The class must have at least one constructor.
-public Book(string title, string author, string publisher, short yearReleased, float price, byte pageNumber) {
+public Book(String title, String author, String publisher, Short yearReleased, Float price, Byte pageNumber) {
    this.title = title;
    this.author = author;
    this.publisher = publisher;
@@ -47,26 +50,26 @@ public Book(string title, string author, string publisher, short yearReleased, f
 
 
 // The class must have at least 3 member functions.
-   public string getAuthor() {
+   public String getAuthor() {
        return author;
    }
 
-   public string getTitle() {
+   public String getTitle() {
        return title;
    }
 
-   public string getPublisher() {
+   public String getPublisher() {
        return publisher;
    } 
 
-   public short getYearReleased() {
+   public Short getYearReleased() {
     return yearReleased;
    }
 
-   public float getPrice() {
+   public Float getPrice() {
     return price;
    } 
-   public byte getPageNumber() {
+   public Byte getPageNumber() {
     return pageNumber;
    }
 
@@ -83,7 +86,7 @@ public Book(string title, string author, string publisher, short yearReleased, f
 
 // One of your functions must make use of a loop.
    public static void CollectionOfAuthorNames(String[] args) {
-    authorNames[] authorNames =  authorNames[3];
+    CollectionOfAuthorNames[] authorNames =  authorNames[3];
     for (short i = 0; i < authorNames.length; i++) {
       System.out.println("Books Published in" + getYearReleased);
     }
