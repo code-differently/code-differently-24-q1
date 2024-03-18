@@ -2,7 +2,7 @@
 
 ## Homework
 
-* Read [PIE][pie-book] 8
+* Read [PIE][pie-book] 8; TPP 2.8–2.10
 * Read this [article on Test-Driven Development][tdd-article].
 
 ## Library Management System
