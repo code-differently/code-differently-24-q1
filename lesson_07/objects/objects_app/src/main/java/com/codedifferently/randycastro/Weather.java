@@ -55,8 +55,8 @@ public Weather(int temp, String windDirection, WeatherCondition weatherCondition
     return sunrise;
   }
 
-  public void setSunrise( int sunrise) {
-    this.sunrise = sunrise;
+  public void setSunrise( int i) {
+    this.sunrise = i;
   }
 
   public int getSunset() {

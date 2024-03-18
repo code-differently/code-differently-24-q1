@@ -52,8 +52,16 @@ public void testPrintTemperatures() {
     }
 
 @Test
-public void test
+  public void testSetAndGetSunrise() {
+    Weather weather = new Weather( 60,"N",Weather.WeatherCondition.RAINY, 600,1800);
+    // Set sunrise time
+    weather.setSunrise( "600");
+    // Get sunrise time and verify
+    assertEquals("600", weather.getSunrise());
+}
+
+}
 
 
 
-  }
+  
