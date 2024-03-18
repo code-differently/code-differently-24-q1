@@ -14,13 +14,14 @@ public class Lesson8 {
   }
 
   public static boolean containsCycle(LinkedListNode head) {
-    // (If Linked List is empty == null, or if head doesn't have refrence == null),(if LinkedList only has one node == null because head.next would be invalid)
+    // (If Linked List is empty == null, or if head doesn't have refrence == null),(if LinkedList
+    // only has one node == null because head.next would be invalid)
     if (head == null || head.next == null) {
       return false;
     }
     LinkedListNode slow = head;
     LinkedListNode fast = head.next;
-// if "fast" reaches end of list == null 
+    // if "fast" reaches end of list == null
     while (fast != null && fast.next != null) {
       // if "fast" cathces up to "slow" == cycle, return true
       if (slow == fast) {
