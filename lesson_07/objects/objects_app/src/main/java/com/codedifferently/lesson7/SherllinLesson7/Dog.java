@@ -24,6 +24,7 @@ public class Dog {
     this.gender = gender;
     this.breed = breed;
     this.dogToy = new ArrayList<>();
+    
   }
 
   public void addToy(String... toys) {
