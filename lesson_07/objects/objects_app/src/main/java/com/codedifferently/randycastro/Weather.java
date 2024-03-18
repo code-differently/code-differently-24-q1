@@ -27,6 +27,10 @@ public Weather(int temp, String windDirection, WeatherCondition weatherCondition
   // functions//
   // created getters and setters 
 
+  public Weather() {
+  //TODO Auto-generated constructor stub
+}
+
   public int getTemp() {
     return temp;
   }
@@ -64,33 +68,30 @@ public Weather(int temp, String windDirection, WeatherCondition weatherCondition
     //public TempOutOfBoundsException(String message) {
        // super(message);
      
-    this.temp = temp;
-    this.windDirection = windDirection;
-    this.weatherCondition = weatherCondition;
-    this.sunrise = sunrise;
-    this.sunset = sunset;
-
+  
 
 
 // if loop, If sunny it will print out "It will be a sunny day!". Else, it will print out "It will be a rainy day!".
 
-public void checkWeatherCondition() {
-  if (weatherCondition == WeatherCondition.SUNNY) {
-      System.out.println("It will be a sunny day!");
-  } else {
-      System.out.println("It will be a rainy day!");
-  }
 
-  }
   
 //Array
 
 // Constructor for Array 
-public void printTempatures() {
-  int[] temperatures = {10,20,30,40,50,60,70,80,90,100};
+ 
+public String checkWeatherCondition() {
+  if (weatherCondition == WeatherCondition.SUNNY) {
+      return "It will be a sunny day!";
+  } else {
+      return "It will be a rainy day!";
+  }
 }
-private int[] temperatures;
-public void printTemperatures() {
+
+
+
+
+public int printTemperatures() {
+  int[] temperatures = {10,20,30,40,50,60,70,80,90,100};
   for(int i = 0; i < temperatures.length; i++) {
       try {
           // Print temperature information
@@ -99,13 +100,13 @@ public void printTemperatures() {
           // Handle the exception (if index is out of bounds)
           System.out.println("Error: Temperature is out of bounds[] " + i);
 }
-
-
-}
-}
-   
+  }
 }
 
+public void setWeatherCondition(WeatherCondition sunny) {
+ 
+}
+}
 
   
   
