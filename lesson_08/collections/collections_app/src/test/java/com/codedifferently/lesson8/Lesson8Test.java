@@ -1,8 +1,8 @@
 package com.codedifferently.lesson8;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static com.codedifferently.lesson8.Lesson8.LinkedListNode;
 import static com.codedifferently.lesson8.Lesson8.BinaryTreeNode;
+import static com.codedifferently.lesson8.Lesson8.LinkedListNode;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
