@@ -5,37 +5,25 @@ import java.lang.reflect.Array;
 import com.codedifferently.randycastro.Weather.WeatherCondition;
 
 public class Weather {
-  
- public class TempOutOfBoundsException extends Exception {
-    public TempOutOfBoundsException(String message) {
-        super(message);
-    }
-}
-
    //enum
-   public enum WeatherCondition { 
+public enum WeatherCondition {
     SUNNY, RAINY;
-
-  private int temp;
-  private String windDirection;
-  private WeatherCondition weatherCondition;
-  private int humidity;
-  private int sunrise;
-  private int sunset;
- 
-  
-  // Constructor
-
-  public Weather(int temp, String windDirection, WeatherCondition weatherCondition, int humidity, int sunrise, int sunset) 
-     {
-    this.temp = temp;
-    this.windDirection = windDirection;
-    this.weatherCondition = weatherCondition;
-    this.humidity = humidity;
-    this.sunrise = sunrise;
-    this.sunset = sunset;
 }
-
+private int temp;
+private String windDirection;
+private WeatherCondition weatherCondition;
+private int sunrise;
+private int sunset;
+// Constructor
+public Weather(int temp, String windDirection, WeatherCondition weatherCondition, int sunrise, int sunset) {
+     
+  this.temp = temp;
+  this.windDirection = windDirection;
+  this.weatherCondition = weatherCondition;
+  this.sunrise = sunrise;
+  this.sunset = sunset;
+}
+  
   // functions//
   // created getters and setters 
 
@@ -71,15 +59,18 @@ public class Weather {
     return sunset;
   }
 
-  public void setSunset( int sunset) {
+ 
+ //public class TempOutOfBoundsException extends Exception {
+    //public TempOutOfBoundsException(String message) {
+       // super(message);
+     
+    this.temp = temp;
+    this.windDirection = windDirection;
+    this.weatherCondition = weatherCondition;
+    this.sunrise = sunrise;
     this.sunset = sunset;
-  
-    // for loop
-    for (int i = 1; i <= 3; i++) {
-      System.out.println("Day" + i + "Sunrise at" + sunrise + " and sunset at" + sunset);
-    }
-  
-  }
+
+
 
 // if loop, If sunny it will print out "It will be a sunny day!". Else, it will print out "It will be a rainy day!".
 
@@ -88,7 +79,7 @@ public void checkWeatherCondition() {
       System.out.println("It will be a sunny day!");
   } else {
       System.out.println("It will be a rainy day!");
-
+  }
 
   }
   
@@ -111,6 +102,8 @@ public void printTemperatures() {
 
 
 }
+}
+   
 }
 
 
