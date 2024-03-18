@@ -8,7 +8,6 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class ComputerPartsTest {
-  Part apart = new Part();
 
   @Test
   public void testCpuConstruction() {
