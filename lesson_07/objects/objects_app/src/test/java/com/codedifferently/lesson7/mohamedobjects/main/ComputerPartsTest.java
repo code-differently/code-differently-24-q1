@@ -12,6 +12,7 @@ class ComputerPartsTest {
   @Test
   public void testCpuConstruction() {
     CPU cpu = new CPU("M1", 2020, cpuBrand.INTEL, 23.32);
+
     assertEquals(23.32, cpu.getClockSpeed());
     assertNotEquals(8, cpu.getCores());
 
@@ -26,11 +27,12 @@ class ComputerPartsTest {
   void testGpuConstruction() {
     GPU bGpu = new GPU("Radion 560 xt", 2015, "AMD", 8);
     Set<portType> porty = Set.of(portType.DP, portType.HDMI, portType.VGA);
+
     bGpu.addPorts(portType.DP);
     bGpu.addPorts(portType.HDMI);
     bGpu.addPorts(portType.VGA);
-    assertEquals(porty, bGpu.getPorts());
 
+    assertEquals(porty, bGpu.getPorts());
     assertEquals(3, bGpu.calculateNumPorts());
   }
 
@@ -66,8 +68,10 @@ class ComputerPartsTest {
   @Test
   void testCpuPerformance() {
     CPU acpu = new CPU("M1", 2020, cpuBrand.INTEL, 23.32);
+
     assertEquals(0, acpu.calcPerformance());
     acpu.setCores(8);
+
     assertEquals(Math.round(87463805373.55), acpu.calcPerformance());
   }
 }
