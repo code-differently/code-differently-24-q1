@@ -80,4 +80,23 @@ public class LibraryProjectTest {
 
     assertTrue(library.getPatrons().contains(patron));
   }
+
+  @Test
+  public void testCheckOutBook() {
+    Library library = new Library();
+    Book book = new Book("Test Book", 1234, new ArrayList<>(), 145, false);
+    Patron patron = new Patron("John Doe");
+
+    // Add the book to the library
+    library.addBook(book);
+
+    // Check out the book
+    library.checkOutBook(book, patron);
+
+    // Check if the book is marked as checked out
+    assertTrue(book.getCheckedOut());
+
+    // Check if the book is in the patron's checked out books
+    assertTrue(patron.getCheckedOutBooks().contains(book.getTitle()));
+  }
 }

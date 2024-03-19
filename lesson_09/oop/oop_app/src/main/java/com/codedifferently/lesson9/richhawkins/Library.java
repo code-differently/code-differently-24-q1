@@ -30,4 +30,15 @@ public class Library {
     }
     patrons.add(patron);
   }
+
+  public void checkOutBook(Book book, Patron patron) {
+    if (!book.getCheckedOut()) {
+      book.setCheckedOut(true);
+      patron.getCheckedOutBooks().add(book.getTitle());
+    } else {
+      System.out.println("Book is already checked out.");
+    }
+  }
+
+  public void checkBookIn() {}
 }
