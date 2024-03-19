@@ -1,11 +1,22 @@
 package com.codedifferently.lesson9.chukwumaibezim;
 
+/** 
+ * Book class
+ */
 public class Book {
   private String title;
   private String ISBN;
   private String author;
   private int numberOfPages;
   private boolean isCheckedOut;
+
+  /**
+   * Constructor for Book
+   * @param title
+   * @param ISBN
+   * @param author
+   * @param numberOfPages
+   */
 
   public Book(String title, String ISBN, String author, int numberOfPages) {
     this.title = title;
@@ -15,6 +26,10 @@ public class Book {
     this.isCheckedOut = false;
   }
 
+  /**
+   * Getters and Setters
+   * @return
+   */
   public String getTitle() {
     return title;
   }
@@ -30,7 +45,10 @@ public class Book {
   public int getNumberOfPages() {
     return numberOfPages;
   }
-
+/**
+ * Check if book is checked out
+ * @return
+ */
   public boolean isCheckedOut() {
     return isCheckedOut;
   }
@@ -43,6 +61,9 @@ public class Book {
     isCheckedOut = false;
   }
 
+/**
+ * toString, equals, and hashCode methods
+ */
   public String toString() {
     return title + " by " + author;
   }
