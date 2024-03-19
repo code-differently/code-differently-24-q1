@@ -21,11 +21,7 @@ public class Lesson6 {
    * @return True if the age corresponds to a voting age and false otherwise.
    */
   public static boolean canVote(int age) {
-    if (age >= 18) {
-      return true;
-    } else {
-      return false;
-    }
+    return false;
   }
 
   /**
@@ -40,16 +36,10 @@ public class Lesson6 {
     // if it is greater, and 0 if the strings are equal.
     int distance = Helpers.computeLexicographicDistance(a, b);
 
-    if (distance < 0) {
-      return -1;
-    } else if (distance == 1) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
+    // TODO(you): Finish this method.
 
-  // TODO(you): Finish this method.
+    return 0;
+  }
 
   /**
    * Converts a GPA on the 4.0 scale to the corresponding letter grade using the college board
@@ -61,18 +51,7 @@ public class Lesson6 {
    * @return The letter grade ("A+", "A", "A-", "B+", etc.).
    */
   public static String convertGpaToLetterGrade(double gpa) {
-
-    if (gpa < 1.00) return "F";
-    else if (gpa < 1.3) return "D";
-    else if (gpa < 1.70) return "D+";
-    else if (gpa < 2.0) return "C-";
-    else if (gpa < 2.3) return "C";
-    else if (gpa < 2.7) return "C+";
-    else if (gpa < 3.0) return "B-";
-    else if (gpa < 3.3) return "B";
-    else if (gpa < 3.7) return "B+";
-    else if (gpa < 4.0) return "A-";
-    else return "A";
+    return "F";
   }
 
   /**
@@ -82,11 +61,7 @@ public class Lesson6 {
    * @return The factorial of n.
    */
   public static int computeFactorial(int n) {
-    int factorial = 1;
-    for (int i = 1; i <= n; i++) {
-      factorial *= i;
-    }
-    return factorial;
+    return 0;
   }
 
   /**
@@ -96,11 +71,7 @@ public class Lesson6 {
    * @return The sum of all the values.
    */
   public static double addNumbers(double[] values) {
-    double sum = 0;
-    for (int i = 0; i < values.length; i++) {
-      sum += values[i];
-    }
-    return sum;
+    return 0;
   }
 
   /**
@@ -110,16 +81,7 @@ public class Lesson6 {
    * @return An array containing the first `n` Fibonacci values.
    */
   public static int[] getFirstNFibonacciNumbers(int n) {
-    if (n <= 0) {
-      return new int[] {};
-    }
-    int[] fibNums = new int[n];
-    fibNums[0] = 1;
-    fibNums[1] = 1;
-    for (int i = 2; i < n; i++) {
-      fibNums[i] = fibNums[i - 1] + fibNums[i - 2];
-    }
-    return fibNums;
+    return null;
   }
 
   /**
@@ -139,25 +101,12 @@ public class Lesson6 {
 
     int pivotIndex = (start + end) / 2; // The index in the middle of the array.
 
-    if (values[pivotIndex] == value) {
-      return pivotIndex;
-    } else if (values[pivotIndex] > value) {
-      return binarySearch(values, start, pivotIndex - 1, value);
-    } else {
-      return binarySearch(values, pivotIndex + 1, end, value);
-    }
-
     // TODO(you): Finish implementing this algorithm
 
     // If values[pivotIndex] is equal to value then return `pivotIndex`.
     // Else if values[pivotIndex] is greater than the value, then
     // call `binarySearch(values, start, pivotIndex - 1, value)` and return its value;
     // Else call `binarySearch(values, pivotIndex + 1, end, value)` and return its value.
-
-  }
-
-  @Override
-  public String toString() {
-    return "Lesson6 []";
+    return -1;
   }
 }
