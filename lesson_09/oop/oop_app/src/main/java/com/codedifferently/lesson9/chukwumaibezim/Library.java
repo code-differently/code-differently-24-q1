@@ -2,17 +2,14 @@ package com.codedifferently.lesson9.chukwumaibezim;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Objects;
 
-/**
- * Library class
- */
+/** Library class */
 public class Library {
   private HashSet<Book> books;
   private ArrayList<Patron> patrons;
 
-  /**
-   * Constructor for Library
-   */
+  /** Constructor for Library */
   public Library() {
     this.books = new HashSet<>();
     this.patrons = new ArrayList<>();
@@ -20,6 +17,7 @@ public class Library {
 
   /**
    * Getters and Setters
+   *
    * @return
    */
   public void addBook(Book book) {
@@ -27,7 +25,8 @@ public class Library {
   }
 
   /**
-   * Add book to library
+   * Remove book from library
+   *
    * @param book
    */
   public void removeBook(Book book) {
@@ -35,49 +34,61 @@ public class Library {
   }
 
   /**
-   * Remove book from library
-   * @param book
+   * Add patron to library
+   *
+   * @param patron
    */
   public void addPatron(Patron patron) {
     patrons.add(patron);
   }
 
   /**
-   * Add patron to library
-   * @param patron
-   */
-  public void removePatron(Patron patron) {
-    patrons.remove(patron);
-  }
-
-  /**
-   * Remove patron from library
+   * Checks to see if book is in library, if so, checks out book
+   *
+   * @param book
    * @param patron
    */
   public void checkOutBook(Book book, Patron patron) {
     if (books.contains(book) && !book.isCheckedOut()) {
-      patron.checkOutBook(book);
+      patron.performCheckout(book);
+      book.checkOut();
     }
   }
 
   /**
-   * Check out book
+   * Checks to see if book is in library, if so, checks in book
+   *
    * @param book
    * @param patron
    */
-  public void checkInBook(Book book, Patron patron) {
+  public void returnBook(Book book, Patron patron) {
     if (patron.getCheckedOutBooks().contains(book)) {
-      patron.checkInBook(book);
+      patron.performCheckIn(book);
+      book.checkIn();
     }
   }
 
   /**
-   * Check in book
-   * @param book
-   * @param patron
+   * Checks if two libraries are equal by comparing their books and patrons collections.
+   *
+   * @param obj The object to compare with this library.
+   * @return True if the libraries are equal, false otherwise.
    */
-  public void returnBook(Book book1, Patron patron) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'returnBook'");
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null || getClass() != obj.getClass()) return false;
+    Library library = (Library) obj;
+    return Objects.equals(books, library.books) && Objects.equals(patrons, library.patrons);
+  }
+
+  /**
+   * Generates a hash code value for the library based on its books and patrons collections.
+   *
+   * @return The hash code value for the library.
+   */
+  @Override
+  public int hashCode() {
+    return Objects.hash(books, patrons);
   }
 }
