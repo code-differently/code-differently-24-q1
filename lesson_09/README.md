@@ -30,6 +30,9 @@ For this assignment, you will build a library management system using object ori
 
 * Read the functional requirements carefully, and take special care to identify *objects*, their *data*, and their *actions*.
 * It is highly recommended that you write your tests firsts, and then build what you need to make the tests work. This is essential to [Test-Driven Development][tdd-article].
+* How will you ensure that books are properly checked out using the library? What if someone tries to check out a book the library doesn't own (or vice-versa with returns)?
+* What are the public methods that you need to have to get the system working? Don't make anything public that you don't need to fulfill the requirements of the assignment. For instance, adding a getter method for a book's ISBN makes sense, but adding a method for returning the library's hours of operation is beyond the scope of this assignment.
+* How can you use collections to manage books and patrons? For instance, it would be wise to ensure that patrons can only be registered once based on some unique identifier.
 
 [pie-book]: https://github.com/shshankar1/ebooks/blob/master/Programming%20Interviews%20Exposed.PDF
 [tdd-article]: https://semaphoreci.com/blog/test-driven-development
