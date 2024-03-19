@@ -25,6 +25,9 @@ public class Library {
   }
 
   public void registerNewPatron(Patron patron) {
+    if (patrons.contains(patron)) {
+      throw new DuplicatePatronException("Error: This patron already exists.");
+    }
     patrons.add(patron);
   }
 }
