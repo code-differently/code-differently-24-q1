@@ -2,7 +2,6 @@ package com.codedifferently.lesson7.randycastro;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.codedifferently.randycastro.Weather;
 import org.junit.jupiter.api.Test;
 
 public class WeatherTest {
