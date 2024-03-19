@@ -11,4 +11,12 @@ public class Patron {
           this.name = name;
           this.booksCheckedOut = booksCheckedOut;
         }
+        // Getters and Setters
+        public String getName(){
+            return name;
+        }
+        public String  getbooksCheckedOut(){
+            return booksCheckedOut;
+        }
+        
 }
