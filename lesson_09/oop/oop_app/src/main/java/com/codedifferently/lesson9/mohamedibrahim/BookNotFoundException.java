@@ -1,10 +1,10 @@
 package com.codedifferently.lesson9.mohamedibrahim;
 
-public class BookNotFound extends RuntimeException {
+public class BookNotFoundException extends RuntimeException {
   /**
    * @param error
    */
-  BookNotFound(String error) {
+  BookNotFoundException(String error) {
     super(error);
   }
 }

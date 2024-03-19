@@ -1,5 +1,6 @@
 package com.codedifferently.lesson9.mohamedibrahim;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -13,24 +14,74 @@ class LibraryTest {
     ArrayList<Book> books = new ArrayList<>();
 
     // Act
-    books.add(new Book("name", 1, "Jessie", 1));
-    books.add(new Book("name", 2, "James", 1));
-    books.add(new Book("name", 3, "Meowth", 1));
-    books.add(new Book("name", 1, "wobbuffet", 1));
+
     Library library = new Library(books);
-    library.registerPatron(new Patron("John", 0));
+    books.add(new Book("name", 1, "Jessie", 1, library));
+    books.add(new Book("name", 2, "James", 1, library));
+    books.add(new Book("name", 3, "Meowth", 1, library));
+    books.add(new Book("name", 1, "wobbuffet", 1, library));
+
+    library = new Library(books);
 
     // Assert
-    assertEquals(books, library.getBooks());
+    assertThat(library.getBooks().equals(books));
+  }
+
+  @Test
+  void testPatronIdChecker() {
+    Library library = new Library();
+
+    library.addBook(new Book("Name", 0, "name2", 0, library));
+    library.registerPatron(new Patron("John", 0));
+
     assertThrows(
-        UserAlreadyRegistered.class,
+        UserAlreadyRegisteredException.class,
         () -> {
-          library.registerPatron(new Patron("Jake", 0));
+          library.registerPatron(new Patron("John", 0));
         });
+  }
+
+  @Test
+  void testBookOrginValidation() {
+    Library library = new Library();
+    Library libs = new Library();
+
+    library.addBook(new Book("Name", 0, "name2", 0, library));
+    Book books = new Book("books", 1, "Henry Booker", 3, libs);
+
     assertThrows(
-        BookNotFound.class,
+        BookOfDifferentOrginException.class,
         () -> {
-          library.checkOutBook(new Book("books", 1, "Henry Booker", 3));
+          library.checkInBook(books, library);
         });
+  }
+
+  @Test
+  void testBookCheckoutValadation() {
+    Library library = new Library();
+    Book book = new Book("books", 1, "Henry Booker", 3, library);
+
+    assertThrows(
+        BookNotFoundException.class,
+        () -> {
+          library.checkOutBook(book);
+        });
+  }
+
+  @Test
+  void testMassCheckOut() {
+    Library library = new Library();
+    ArrayList<Book> checkOutBooks = new ArrayList<>();
+    Book book1 = (new Book("name", 1, "Jessie", 1, library));
+    Book book2 = (new Book("name", 2, "James", 1, library));
+
+    library.addBook(book1);
+    library.addBook(new Book("name", 3, "Meowth", 1, library));
+    library.addBook(book2);
+    library.addBook(new Book("name", 1, "wobbuffet", 1, library));
+    checkOutBooks.add(book2);
+    checkOutBooks.add(book1);
+
+    assertEquals(checkOutBooks, library.checkOutBooks(checkOutBooks));
   }
 }

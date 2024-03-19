@@ -1,58 +1,62 @@
 package com.codedifferently.lesson9.mohamedibrahim;
 
+import com.google.common.base.Objects;
 import java.util.ArrayList;
 
 public class Book {
   private String name;
   private int isbn;
-  private ArrayList<String> author = new ArrayList<String>();
+  private ArrayList<String> authors = new ArrayList<String>();
   private int pageNums;
   private boolean checkedOut;
+  private Library origin;
 
   /**
    * Takes in all of the elaments of the book class exept for the boolean checked out. This is due
    * to all the books made will be by defult checked in.
    *
-   * @param name the title of each book
-   * @param isbn a unique id for each book
-   * @param author takes in the name of ONE author in the form of a string
-   * @param pageNums the number of pages in each book
+   * @param name The title of each book.
+   * @param isbn A unique id for each book.
+   * @param author Takes in the name of ONE author in the form of a string.
+   * @param pageNums The number of pages in each book.
    */
-  public Book(String name, int isbn, String author, int pageNums) {
+  public Book(String name, int isbn, String author, int pageNums, Library origin) {
     this.name = name;
     this.isbn = isbn;
-    this.author.add(author);
+    this.authors.add(author);
     this.pageNums = pageNums;
     this.checkedOut = false;
+    this.origin = origin;
   }
 
   /**
-   * Same as above however takes in a list of names
+   * Same as above however takes in a list of names.
    *
-   * @param name the title of each book
-   * @param isbn a unique id for each book
-   * @param author takes in the name of MANY author in the form of a Arraylist =
-   * @param pageNums the number of pages in each book
+   * @param name The title of each book.
+   * @param isbn A unique id for each book.
+   * @param author Takes in the name of MANY author in the form of a Arraylist.
+   * @param pageNums The number of pages in each book.
    */
-  public Book(String name, int isbn, ArrayList<String> author, int pageNums) {
+  public Book(String name, int isbn, ArrayList<String> authors, int pageNums, Library origin) {
     this.name = name;
     this.isbn = isbn;
-    this.author = author;
+    this.authors = authors;
     this.pageNums = pageNums;
     this.checkedOut = false;
+    this.origin = origin;
   }
 
   /**
-   * Retruns the author arraylists
+   * Returns the author arraylists.
    *
    * @return ArrayList<String>
    */
   public ArrayList<String> getAuthor() {
-    return author;
+    return authors;
   }
 
   /**
-   * returns the unique isbn number
+   * Returns the unique isbn number.
    *
    * @return int
    */
@@ -61,7 +65,7 @@ public class Book {
   }
 
   /**
-   * returns the book name
+   * Returns the book name.
    *
    * @return String
    */
@@ -70,7 +74,7 @@ public class Book {
   }
 
   /**
-   * returns the page number
+   * Returns the page number.
    *
    * @return int
    */
@@ -79,7 +83,7 @@ public class Book {
   }
 
   /**
-   * Tells the user if the book is checked in or out
+   * Tells the user if the book is checked in or out.
    *
    * @return
    */
@@ -87,58 +91,62 @@ public class Book {
     return checkedOut;
   }
 
+  public Library getOrigin() {
+    return origin;
+  }
+
   /**
-   * adds authors to the author arrayList
+   * Adds authors to the author arrayList.
    *
    * @param author
    */
   public void addAuthors(ArrayList<String> author) {
-    this.author.addAll(author);
+    this.authors.addAll(author);
   }
 
   /**
-   * adds AN author to the author arrayList
+   * Adds AN author to the author arrayList.
    *
    * @param author
    */
   public void addAuthor(String author) {
-    this.author.add(author);
+    this.authors.add(author);
   }
 
   /**
-   * Removes AN author from a book
+   * Removes AN author from a book.
    *
    * @param author
    */
   public void removeAuthor(String author) {
-    if (this.author.contains(author)) {
-      this.author.remove(author);
+    if (this.authors.contains(author)) {
+      this.authors.remove(author);
     }
   }
 
   /**
-   * Removes AN author from a book
+   * Removes many author from a book.
    *
    * @param author
    */
   public void removeAuthors(ArrayList<String> author) {
-    if (this.author.containsAll(author)) {
-      this.author.removeAll(author);
+    if (this.authors.containsAll(author)) {
+      this.authors.removeAll(author);
     }
   }
 
-  /** Sets the boolean to checkedout */
-  public void isCheckedOut() {
+  /** Sets the boolean to checkedout. */
+  public void checkOut() {
     this.checkedOut = true;
   }
 
-  /** Sets the boolean to returned */
-  public void isReturned() {
-    this.checkedOut = true;
+  /** Sets the boolean to false meaning the book is returned. */
+  public void checkIn() {
+    this.checkedOut = false;
   }
 
   /**
-   * takes in a new isbn and sets it as the isbn
+   * Takes in a new isbn and sets it as the isbn.
    *
    * @param isbn
    */
@@ -147,7 +155,7 @@ public class Book {
   }
 
   /**
-   * takes in a new string name and makes it name of the object
+   * Takes in a new string name and makes it name of the object.
    *
    * @param name
    */
@@ -156,11 +164,28 @@ public class Book {
   }
 
   /**
-   * Takes in a new number that becomes the page number of that book
+   * Takes in a new number that becomes the page number of that book.
    *
    * @param pageNums
    */
   public void setPageNums(int pageNums) {
     this.pageNums = pageNums;
+  }
+
+  public void setOrigin(Library origin) {
+    this.origin = origin;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    else if (o == null || getClass() != o.getClass()) return false;
+    Book book = (Book) o;
+    return Objects.equal(isbn, book.isbn);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(isbn);
   }
 }

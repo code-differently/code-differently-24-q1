@@ -1,12 +1,12 @@
 package com.codedifferently.lesson9.mohamedibrahim;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
-  private ArrayList<Book> shelves = new ArrayList<Book>();
-  private ArrayList<Integer> currentPatronIds = new ArrayList<Integer>();
-  private ArrayList<Patron> currentPatrons = new ArrayList<Patron>();
-  private ArrayList<Integer> usedIsbns = new ArrayList<Integer>();
+  private HashMap<Integer, Book> shelves = new HashMap<>();
+  private HashMap<Integer, Patron> currentPatronsById = new HashMap<>();
+  private ArrayList<Book> books = new ArrayList<>();
 
   public Library() {}
 
@@ -15,55 +15,61 @@ public class Library {
    *
    * @param shelves
    */
-  public Library(ArrayList<Book> shelves) {
-    this.shelves = shelves;
+  public Library(ArrayList<Book> books) {
+
+    for (Book i : books) {
+      this.shelves.put(i.getIsbn(), i);
+    }
   }
 
   /**
-   * Retreives current patrons in the library
+   * Retreives current patrons and ids in the library.
    *
    * @return Arraylist<Patrons>
    */
-  public ArrayList<Patron> getCurrentPatrons() {
-    return currentPatrons;
+  HashMap<Integer, Patron> getCurrentPatronsById() {
+    return currentPatronsById;
   }
 
   /**
-   * Retrieves the existin patron Ids
+   * Retrieves the current books and isbn in the library.
    *
    * @return
    */
-  public ArrayList<Integer> getCurrentPatronIds() {
-    return currentPatronIds;
-  }
-
-  /**
-   * Retrieves the current books in the library
-   *
-   * @return
-   */
-  public ArrayList<Book> getBooks() {
+  HashMap<Integer, Book> getShelves() {
     return shelves;
   }
 
   /**
-   * takes a book and adds it to the shelves array list and the used isbns array list
+   * Retrieves the current books in the library.
    *
-   * @param book
+   * @return
    */
-  public void addBooks(Book book) {
-    usedIsbns.add(book.getIsbn());
-    shelves.add(book);
+  ArrayList<Book> getBooks() {
+    return books;
   }
 
   /**
-   * same as add books but changes the boolen is checked out for the book to false
+   * Takes a book and adds it to the shelves array list and the used isbns arraylist.
    *
    * @param book
    */
-  public void checkInBook(Book book) {
-    addBooks(book);
-    book.isReturned();
+  public void addBook(Book book) {
+    books.add(book);
+    shelves.put(book.getIsbn(), book);
+  }
+
+  /**
+   * Same as add books but changes the boolen is checked out for the book to false.
+   *
+   * @param book
+   */
+  public void checkInBook(Book book, Library library) {
+    if (!(book.getOrigin().equals(library))) {
+      throw new BookOfDifferentOrginException("Book Not From This Library");
+    }
+    addBook(book);
+    book.checkIn();
   }
 
   /**
@@ -73,11 +79,10 @@ public class Library {
    * @param patron
    */
   public void registerPatron(Patron patron) {
-    if (currentPatronIds.contains(patron.getId())) {
-      throw new UserAlreadyRegistered("This User ID is In Use!");
+    if (currentPatronsById.containsKey(patron.getId())) {
+      throw new UserAlreadyRegisteredException("This User ID is In Use!");
     }
-    currentPatronIds.add(patron.getId());
-    currentPatrons.add(patron);
+    currentPatronsById.put(patron.getId(), patron);
   }
 
   /**
@@ -88,12 +93,12 @@ public class Library {
    * @return Book
    */
   public Book checkOutBook(Book book) {
-    if (shelves.contains(book)) {
-      book.isCheckedOut();
-      shelves.remove(book);
-      return book;
+    if (!(shelves.containsKey(book.getIsbn()))) {
+      throw new BookNotFoundException("Error Book not Found!");
     } else {
-      throw new BookNotFound("Error Book not Found!");
+      book.checkOut();
+      shelves.remove(book.getIsbn());
+      return book;
     }
   }
 
@@ -101,17 +106,23 @@ public class Library {
    * Same as the code above just uses an array to check out more books at once.
    *
    * @param books
-   * @return
+   * @return ArrayList<Books>
    */
-  public ArrayList<Book> checkOutBook(ArrayList<Book> books) {
-    if (shelves.containsAll(books)) {
-      for (Book b : books) {
-        b.isCheckedOut();
+  public ArrayList<Book> checkOutBooks(ArrayList<Book> books) {
+    int i = 0;
+    for (Book b : books) {
+
+      if (!(this.shelves.containsValue(b))) {
+        i++;
+      } else {
+
+        b.checkOut();
+        this.shelves.remove(b.getIsbn(), b);
       }
-      shelves.removeAll(books);
-      return books;
-    } else {
-      throw new BookNotFound("Error Book not Found!");
     }
+    if (i + 1 == books.size()) {
+      throw new BookNotFoundException("Error Book not found");
+    }
+    return books;
   }
 }

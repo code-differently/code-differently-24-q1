@@ -14,10 +14,11 @@ class BookTest {
     var isbn = 01234567;
     ArrayList<String> author = new ArrayList<String>();
     int pageNums = 1184;
+    Library library = new Library();
 
     // Act
     author.add("George R. R. Martin");
-    Book iceAndFire = new Book(name, isbn, author, pageNums);
+    Book iceAndFire = new Book(name, isbn, author, pageNums, library);
 
     // Assert
     assertEquals("Song of ice and fire", iceAndFire.getName());

@@ -8,10 +8,10 @@ public class Patron {
   private ArrayList<Book> checkedOutBooks = new ArrayList<Book>();
 
   /**
-   * takes in the name and id# of a patron
+   * Takes in the name and id# of a patron.
    *
-   * @param name name of a person
-   * @param id a unique id for the person
+   * @param name Name of a person.
+   * @param id A unique id for the person.
    */
   public Patron(String name, int id) {
     this.name = name;
@@ -19,7 +19,7 @@ public class Patron {
   }
 
   /**
-   * takes in the name and sets it for this patron
+   * Takes in the name and sets it for this patron.
    *
    * @param name
    */
@@ -28,27 +28,27 @@ public class Patron {
   }
 
   /**
-   * takes in the library that the patron is borrowing from and the book they are borrowing
+   * Takes in the library that the patron is borrowing from and the book they are borrowing.
    *
-   * @param library implemented to use the check out book fuction in the library class
-   * @param book implemented to look for the book that they want to borrow
+   * @param library Implemented to use the check out book fuction in the library class.
+   * @param book Implemented to look for the book that they want to borrow.
    */
   public void checkOutBook(Library library, Book book) {
     checkedOutBooks.add(library.checkOutBook(book));
   }
 
   /**
-   * takes in the library that the patron is borrowing from and the books they are borrowing
+   * Takes in the library that the patron is borrowing from and the books they are borrowing.
    *
-   * @param library implemented to use the check out book fuction in the library class
-   * @param book implemented to look for the books that they want to borrow
+   * @param library Implemented to use the check out book fuction in the library class.
+   * @param book Implemented to look for the books that they want to borrow.
    */
-  public void checkOutBook(Library library, ArrayList<Book> book) {
-    checkedOutBooks.addAll(library.checkOutBook(book));
+  public void checkOutBooks(Library library, ArrayList<Book> book) {
+    checkedOutBooks.addAll(library.checkOutBooks(book));
   }
 
   /**
-   * gets the patron name and returns it
+   * Gets the patron name and returns it.
    *
    * @return String
    */
@@ -57,7 +57,7 @@ public class Patron {
   }
 
   /**
-   * gets the array list that countains books and returns it
+   * Gets the array list that countains books and returns it.
    *
    * @return Book
    */
@@ -66,7 +66,7 @@ public class Patron {
   }
 
   /**
-   * Gets the id and returns it
+   * Gets the id and returns it.
    *
    * @return int
    */
