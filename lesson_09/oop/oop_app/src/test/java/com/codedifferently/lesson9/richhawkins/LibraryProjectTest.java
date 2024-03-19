@@ -70,4 +70,14 @@ public class LibraryProjectTest {
 
     assertTrue(!library.getBookCollection().contains(book));
   }
+
+  @Test
+  public void testRegisterNewPatron() {
+    Library library = new Library();
+    Patron patron = new Patron("Rich");
+
+    library.registerNewPatron(patron);
+
+    assertTrue(library.getPatrons().contains(patron));
+  }
 }
