@@ -26,23 +26,22 @@ public class Book {
     this.isCheckedOut = false;
   }
 
-  /**
-   * Getters and Setters
-   *
-   * @return
-   */
+  /** getter for title */
   public String getTitle() {
     return title;
   }
 
+  /** getter for ISBN */
   public String getISBN() {
     return ISBN;
   }
 
+  /** getter for author */
   public String getAuthor() {
     return author;
   }
 
+  /** getter for number of pages */
   public int getNumberOfPages() {
     return numberOfPages;
   }
