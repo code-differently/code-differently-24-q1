@@ -1,0 +1,152 @@
+spring:
+  profiles:
+    active: dev
+quiz:
+  questions:
+    default:
+      - prompt: "What is the DRY principle about?"
+        choices:
+          A: "An OOP principle about developing realistic YAML configuration values."
+          B: "Preventing the duplication of the same thing in multiple places."
+          C: "A means for defining interfaces in an object-oriented system."
+          D: "'Do Repeat Yourself': It advocates for writing code that repeats throughout the application for easier understanding."
+
+      - prompt: "What does the concept of Inheritance in OOP represent?"
+        choices:
+          A: "The ability to derive a class from multiple base classes."
+          B: "The ability of a class to include properties and methods of another class."
+          C: "The ability of a class to hide its internal implementation."
+          D: "The ability of objects to take on many forms."
+
+      - prompt: "What does the term 'Abstraction' mean in the context of OOP?"
+        choices:
+          A: "Removing the features from a class that makes it unique."
+          B: "The process of simplifying and hiding complexity."
+          C: "The act of inheriting from more than one class."
+          D: "Combining data and functions that operate on that data into a single unit."
+            
+      - prompt: "What is a Class in OOP?"
+        choices:
+          A: "An instance of an object."
+          B: "A special function that creates objects containing data and behavior."
+          C: "A method that is automatically called when an object is created."
+          D: "A blueprint from which objects are created that combine data and behavior."
+
+      - prompt: "Which concept of OOP allows different classes to be treated as instances of the same class through a common interface?"
+        choices:
+          A: "Inheritance"
+          B: "Encapsulation"
+          C: "Polymorphism"
+          D: "Abstraction"
+
+      - prompt: "When changes in one part of a system force changes in another part, this is an indication of what?"
+        choices:
+          A: "High coupling"
+          B: "High cohesion"
+          C: "Low coupling"
+          D: "Low cohesion"
+
+      - prompt: "When storing numbers that require high precision in Java, which data type is best to use?"
+        choices:
+          A: "long"
+          B: "double"
+          C: "decimal"
+          D: "float"
+
+      - prompt: "Which data structure is great for random access?"
+        choices:
+          A: "Linked list"
+          B: "Set"
+          C: "Array"
+          D: "Tree"
+
+      - prompt: "Which data structure is optimized for 'last in, first out' operation?"
+        choices:
+          A: "Stack"
+          B: "Queue"
+          C: "Tree"
+          D: "Array"
+
+      - prompt: "What method must you include in your Java application in order to run your application?"
+        choices:
+          A: "constructor App()"
+          B: "public void main(String[] args)"
+          C: "public static enum App"
+          D: "public static void main(String[] args)"
+
+      - prompt: "Which line of code creates an object instance for a class called `Test` with a single parameter?"
+        choices:
+          A: "Test obj = new Test(123);"
+          B: "Object test = new Object(\"param1\");"
+          C: "Test val = Test.PARAM1;"
+          D: "@Test testClass(Param value)"
+
+      - prompt: "The Java programming language is a:"
+        choices:
+          A: "Dynamically typed language" 
+          B: "Strongly typed language"
+          C: "Weakly typed language"
+          D: "Storage typed language"
+
+      - prompt: "What keyword do you use if you want to get out of a loop before it finishes:"
+        choices:
+          A: "for"
+          B: "while"
+          C: "interrupt"
+          D: "break" 
+
+      - prompt: "Choose the line of code that shows a class inheriting another class:"
+        choices:
+          A: "class Foo implements Bar {}"
+          B: "class Foo extends Bar {}"
+          C: "class Foo inherits Bar {}"
+          D: "class Foo abstracts Bar {}"
+
+      - prompt: "Which git command should you use to restore a file to a previous commit?"
+        choices:
+          A: "git checkout"
+          B: "git stash"
+          C: "git commit"
+          D: "git revert"
+
+      - prompt: "What's the name of branch intended for use when implementing new features?"
+        choices:
+          A: "A feature branch"
+          B: "A forked branch"
+          C: "A main branch"
+          D: "A clone branch"
+
+      - prompt: "What is the purpose of the `git clone` command?"
+        choices:
+          A: "To create a new branch in the repository."
+          B: "To copy a git repository from a remote source to your local machine."
+          C: "To merge changes from one branch to another."
+          D: "To stage changes for the next commit."
+
+      - prompt: "In what order do `for` loop iterations run?"
+        choices:
+          A: "(1) increment, (2) initialization, (3) condition, (4) loop body"
+          B: "(1) increment, (2) condition, (3) initialization, (4) loop body"
+          C: "(1) initialization, (2) loop body, (3) condition, (4) increment"
+          D: "(1) initialization, (2) condition, (3) loop body, (4) increment"
+
+      - prompt: "To skip to the next loop iteration, what keyword should you use?"
+        choices:
+          A: "return"
+          B: "break"
+          C: "continue"
+          D: "goto"
+
+      - prompt: "Which of the following options are in lower camel case?"
+        choices:
+          A: "lowerCamelCase"
+          B: "lower_camel_case"
+          C: "Lower_Camel_Case"
+          D: "LowerCamelCase"
+
+      - prompt: "Which of the following options are in upper case snake case?"
+        choices:
+          A: "snakeCase"
+          B: "SNAKE_CASE"
+          C: "Snake_Case"
+          D: "SnakeCase"

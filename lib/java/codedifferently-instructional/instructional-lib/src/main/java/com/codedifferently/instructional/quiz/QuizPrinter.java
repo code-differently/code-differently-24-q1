@@ -12,12 +12,20 @@ public class QuizPrinter {
     }
   }
 
-  private void printQuizQuestion(QuizQuestion question) {
+  public void printQuizQuestion(QuizQuestion question) {
+    this.printQuizQuestion(question, true);
+  }
+
+  public void printQuizQuestion(QuizQuestion question, boolean printAnswer) {
     System.out.println(
         "Question " + question.getQuestionNumber() + ": " + question.getQuestionPrompt());
 
     if (question instanceof MultipleChoiceQuizQuestion) {
       printPossibleAnswers((MultipleChoiceQuizQuestion) question);
+    }
+
+    if (!printAnswer) {
+      return;
     }
 
     System.out.println(">> Your answer: " + question.getAnswer());
@@ -27,6 +35,10 @@ public class QuizPrinter {
   private void printPossibleAnswers(MultipleChoiceQuizQuestion question) {
     for (AnswerChoice option : AnswerChoice.values()) {
       if (option == AnswerChoice.UNANSWERED) {
+        continue;
+      }
+      var answer = question.getAnswerForOption(option);
+      if (answer == null) {
         continue;
       }
       System.out.println(option + ": " + question.getAnswerForOption(option));
