@@ -1,0 +1,7 @@
+quiz:
+  questions:
+    default:
+      - prompt: "What is my name?"
+        choices:
+          A: "Some answer"
+      - prompt: "What is your name?"
