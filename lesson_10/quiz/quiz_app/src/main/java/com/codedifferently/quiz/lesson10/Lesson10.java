@@ -9,10 +9,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -70,12 +69,15 @@ public class Lesson10 implements CommandLineRunner {
   }
 
   private void saveAnswersToFile(List<QuizQuestion> questions, String filename) {
-    Map<Integer, String> values =
-        questions.stream()
-            .collect(Collectors.toMap(QuizQuestion::getQuestionNumber, QuizQuestion::getAnswer));
+    var values = new LinkedHashMap<Integer, String>();
+    for (QuizQuestion question : questions) {
+      values.put(question.getQuestionNumber(), question.getAnswer());
+    }
+
     var file = new File(getDataPath() + File.separator + filename + ".json");
     file.getParentFile().mkdirs();
     var gson = new GsonBuilder().setPrettyPrinting().create();
+
     try (var writer = new FileWriter(file, false)) {
       writer.write(gson.toJson(values));
     } catch (IOException e) {
