@@ -171,8 +171,10 @@ public class Book {
   public void setPageNums(int pageNums) {
     this.pageNums = pageNums;
   }
+
   /**
    * Sets the origin of the book to a Library.
+   *
    * @param origin The library the book came from.
    */
   public void setOrigin(Library origin) {
@@ -181,6 +183,7 @@ public class Book {
 
   /**
    * Overrites the .equals fuction so that it can work better with book.
+   *
    * @return boolean
    */
   @Override
@@ -193,6 +196,7 @@ public class Book {
 
   /**
    * Overrites the hashcode function to make the isbn its hash code.
+   *
    * @return int
    */
   @Override

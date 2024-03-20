@@ -30,26 +30,25 @@ class BookTest {
   }
 
   @Test
-  void testAuthorAdditionAndRemoval(){
-    //Arrange
-    ArrayList<String> authors =new ArrayList<>();
+  void testAuthorAdditionAndRemoval() {
+    // Arrange
+    ArrayList<String> authors = new ArrayList<>();
     Book book1 = new Book("Book", 1, "John Book", 3000, null);
 
-    //Act
+    // Act
     book1.addAuthor("John Book Jr.");
     authors.add("John Book");
     authors.add("John Book Jr.");
 
-
-    //Assert
-    assertEquals(authors ,book1.getAuthors());
+    // Assert
+    assertEquals(authors, book1.getAuthors());
     book1.removeAuthor("John Book Jr.");
     authors.remove("John Book Jr.");
     assertEquals(authors, book1.getAuthors());
   }
 
   @Test
-  void testEqualsOveride(){
+  void testEqualsOveride() {
     Book book2 = new Book("Book 2, The Return of Book", 2, "John Book", 3000, null);
     Book book3 = new Book("Book 3, Books Revenge", 3, "John Book", 3000, null);
 

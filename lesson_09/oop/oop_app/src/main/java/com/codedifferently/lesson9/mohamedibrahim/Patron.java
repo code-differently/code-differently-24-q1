@@ -47,12 +47,13 @@ public class Patron {
     checkedOutBooks.addAll(library.checkOutBooks(book));
   }
 
-  public void checkInBook(Library library, Book book){
+  public void checkInBook(Library library, Book book) {
     checkedOutBooks.remove(book);
     library.checkInBook(book, library);
   }
-  public void checkInBooks(Library library, ArrayList<Book> books){
-    for (Book b : books){
+
+  public void checkInBooks(Library library, ArrayList<Book> books) {
+    for (Book b : books) {
       library.checkInBook(b, library);
     }
     checkedOutBooks.removeAll(books);

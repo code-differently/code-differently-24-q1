@@ -23,7 +23,7 @@ class LibraryTest {
     library = new Library(books);
 
     // Assert
-    for (Book b : books){
+    for (Book b : books) {
       assertThat(library.getShelves().containsValue(b));
     }
   }
@@ -36,7 +36,7 @@ class LibraryTest {
     library.addBook(new Book("Name", 0, "name2", 0, library));
     library.registerPatron(patron);
 
-    assertEquals("John" , library.getCurrentPatronsById().get(0).getName());
+    assertEquals("John", library.getCurrentPatronsById().get(0).getName());
     assertThrows(
         UserAlreadyRegisteredException.class,
         () -> {
@@ -62,7 +62,7 @@ class LibraryTest {
   @Test
   void testBookCheckoutValadation() {
     Library library = new Library();
-    
+
     Book book = new Book("books", 1, "Henry Booker", 3, library);
 
     assertThrows(

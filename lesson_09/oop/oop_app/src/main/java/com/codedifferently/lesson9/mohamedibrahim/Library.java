@@ -6,6 +6,7 @@ import java.util.HashMap;
 public class Library {
   private HashMap<Integer, Book> shelves = new HashMap<>();
   private HashMap<Integer, Patron> currentPatronsById = new HashMap<>();
+
   public Library() {}
 
   /**
@@ -80,8 +81,8 @@ public class Library {
   }
 
   /**
-   * This is for checking a book out. It takes in the book you are checking out in. 
-   * After it checkes, if the book is on the shelves it is checked out and tbe book is removed from the list.
+   * This is for checking a book out. It takes in the book you are checking out in. After it
+   * checkes, if the book is on the shelves it is checked out and tbe book is removed from the list.
    *
    * @param book
    * @return Book
