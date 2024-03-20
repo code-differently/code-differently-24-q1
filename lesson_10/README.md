@@ -18,6 +18,14 @@
 * Read HFDP 1-2.
 * Complete [Applying SOLID principles](#applying-solid-principles) exercise.
 
-## Applying SOLID Principles
+## Applying SOLID Principles (Library Management System, Part II)
 
-* TODO(anthonydmays): Add details
+In this assignment, you will be given starting implementations for the `Library`, `Book`, and `Patron` classes. You will need to add the following enhancements to support new functionality:
+
+* We now want to support the concept of a `Librarian`. A librarian should be able to check out or check in books just like other patrons. Books can no longer be added or removed from the `Library` without a librarian.
+* We also want to support other types of media formats, including `Dvd`, `Magazine`, and `Newspaper` types. Patrons cannot check out `Magazine` or `Newspaper` items.
+* [Stretch] Add the ability to search for items in the library by title, ISBN, author, or type. Extra credit will not be assigned unless the previous requirements have been met.
+
+You will need to make changes to code in the [solid/][solid-folder] sub-folder and submit your PR for credit. Don't forget to follow the Conventional Commit spec for your commit messages and pull requests title and descriptions.
+
+[solid-folder]: ./solid/
