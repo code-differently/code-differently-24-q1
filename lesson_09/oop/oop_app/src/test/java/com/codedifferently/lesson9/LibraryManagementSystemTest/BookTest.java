@@ -5,14 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.codedifferently.lesson9.LibraryManagementSystem.Book;
 import org.junit.jupiter.api.Test;
 
-/**
- * Test class for the {@link com.codedifferently.lesson9.LibraryManagementSystem.Book} class.
- */
+/** Test class for the {@link com.codedifferently.lesson9.LibraryManagementSystem.Book} class. */
 public class BookTest {
 
-  /**
-   * Test the constructor of the Book class.
-   */
+  /** Test the constructor of the Book class. */
   @Test
   public void testBookConstructor() {
     // Arrange
