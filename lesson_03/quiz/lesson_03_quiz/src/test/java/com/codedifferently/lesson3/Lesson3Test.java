@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.codedifferently.instructional.quiz.AnswerChoice;
-import com.codedifferently.instructional.quiz.QuizAnswers;
+import com.codedifferently.instructional.quiz.QuizConfig;
 import com.codedifferently.instructional.quiz.QuizQuestion;
 import com.codedifferently.instructional.quiz.QuizQuestionProvider;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ import org.springframework.test.context.junit.jupiter.EnabledIf;
 @ExtendWith(SoftAssertionsExtension.class)
 class Lesson3Test {
 
-  @Autowired private QuizAnswers quizAnswers;
+  @Autowired private QuizConfig quizConfig;
 
   @Autowired private List<QuizQuestionProvider> quizQuestionsProviders;
 
@@ -109,7 +109,7 @@ class Lesson3Test {
       String providerName = entry.getKey();
       List<QuizQuestion> quizQuestions = entry.getValue();
 
-      assertThat(quizAnswers.size(providerName))
+      assertThat(quizConfig.size(providerName))
           .as("Check # of answers for provider " + providerName)
           .isGreaterThanOrEqualTo(quizQuestions.size());
     }
@@ -134,7 +134,7 @@ class Lesson3Test {
         // Check that the answer is correct.
         softly
             .assertThat(
-                quizAnswers.checkAnswer(providerName, question.getQuestionNumber(), actualAnswer))
+                quizConfig.checkAnswer(providerName, question.getQuestionNumber(), actualAnswer))
             .as("Checking answer matches correct answer: " + question.getQuestionPrompt())
             .isTrue();
       }
