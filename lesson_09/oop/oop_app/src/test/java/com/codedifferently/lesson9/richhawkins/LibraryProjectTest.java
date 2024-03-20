@@ -84,6 +84,7 @@ public class LibraryProjectTest {
 
   @Test
   public void testCheckOutBook() {
+    // Create a library, book, and patrons
     Library library = new Library();
     Book book = new Book("Test Book", 1234, new ArrayList<>(), 145, false);
     Patron patron1 = new Patron("John Doe");
@@ -92,23 +93,56 @@ public class LibraryProjectTest {
     // Add the book to the library
     library.addBook(book);
 
-    // Check out the book
-    library.checkOutBook(book, patron1);
+    // Register patron1 with the library
+    library.registerNewPatron(patron1);
 
-    // Check if the book is marked as checked out
+    // Check out the book to patron1
+    library.checkOutBook(book, patron1, library);
+
+    // Verify that the book is checked out
     assertTrue(book.getCheckedOut());
 
-    // Check to see if patron1's checkedoutbooks contains new book
+    // Verify that patron1 has the book checked out
     assertTrue(patron1.getCheckedOutBooks().contains(book.getTitle()));
 
     // Try to check out the book to patron2 (should fail)
     try {
-      library.checkOutBook(book, patron2);
+      library.checkOutBook(book, patron2, library);
       fail("Expected AlreadyCheckedOutException was not thrown");
     } catch (AlreadyCheckedOutException e) {
       // Expected exception, do nothing
     }
+    // Verify that the book is still checked out by patron1
     assertTrue(book.getCheckedOut());
     assertTrue(patron1.getCheckedOutBooks().contains(book.getTitle()));
+  }
+
+  @Test
+  public void testCheckBookIn() {
+    // Create a library, book, and patron
+    Library library = new Library();
+    Book book = new Book("Test Book", 1234, new ArrayList<>(), 145, false);
+    Patron patron = new Patron("John Doe");
+
+    // Add the book to the library
+    library.addBook(book);
+
+    // Register the patron with the library
+    library.registerNewPatron(patron);
+
+    // Check out the book to the patron
+    library.checkOutBook(book, patron, library);
+
+    // Verify that the book is checked out
+    assertTrue(book.getCheckedOut());
+
+    // Check the book back in
+    library.checkBookIn(book, patron, library);
+
+    // Verify that the book is no longer checked out
+    assertFalse(book.getCheckedOut());
+
+    // Verify that the patron no longer has the book checked out
+    assertFalse(patron.getCheckedOutBooks().contains(book.getTitle()));
   }
 }

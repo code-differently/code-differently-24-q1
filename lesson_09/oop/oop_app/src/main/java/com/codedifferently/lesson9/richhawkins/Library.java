@@ -32,13 +32,16 @@ public class Library {
   }
 
   public void checkOutBook(Book book, Patron patron, Library library) {
-    if (!book.getCheckedOut()
-        && patrons.contains(patron)
-        && library.bookCollection.contains(book)) {
+    if (book.getCheckedOut()) {
+      throw new AlreadyCheckedOutException("Error: The book is already checked out.");
+    }
+
+    if (patrons.contains(patron) && library.getBookCollection().contains(book)) {
       book.setCheckedOut(true);
       patron.getCheckedOutBooks().add(book.getTitle());
     } else {
-      throw new AlreadyCheckedOutException("Book is already checked out.");
+      throw new IllegalArgumentException(
+          "Error: Either the patron is not registered or the book is not in the library's collection.");
     }
   }
 
