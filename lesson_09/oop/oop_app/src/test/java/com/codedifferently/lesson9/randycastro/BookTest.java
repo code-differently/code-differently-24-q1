@@ -27,4 +27,15 @@ public class BookTest{
             assertEquals(checkedOut, book.getCheckedout());
     }
   
+@Test
+
+public void testBook(){
+String title = "The Software Engineer Guidebook";
+String isbn = "12345e";
+String author = "Gergely Orosz";
+int page = 405;
+boolean checkedOut = false;
+}
+
+
 }

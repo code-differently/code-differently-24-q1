@@ -33,8 +33,24 @@ public class Book {
       public int getPage() {
         return page;
       }
-  
+
       public boolean getCheckedout() {
         return checkedOut;
       }
-}
+
+      
+        Book book1 = new Book("The Software Engineer Guidebook","12345e","Gergely Orosz",405,false);{
+      
+        System.out.println("Book title: " + book1.getTitle());
+      }
+      Book book2 = new Book("Code Complete", "9788178530857","Steve McConnel", 960, false);{
+        System.out.println("Book title: " + book2.getTitle());
+      }
+ Book book3 = new Book("Cracking the coding interview","9780984782871","Gayle Laakmann McDowell", 700, false); {
+  System.out.println("Book title: " + book3.getTitle());
+ }
+
+
+
+
+    }

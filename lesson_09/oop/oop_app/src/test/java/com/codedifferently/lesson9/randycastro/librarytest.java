@@ -5,20 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class librarytest {
-    
- @Test
+    @Test
+    public void testGetBookByISBN(){
+        com.codedifferently.lesson9.randycastro.library library = new library ();
+
+        Book retrievedBook1 = library.getBookByISBN ( "12345e");
+    }
+
+    }
+
  // Testing library
  //Arrange
-
- public void testLibrary(){
-Map<String, Book> = "codeComplete";
-
-
-
-
-
- }
-
 
 
  //Act
@@ -30,4 +27,3 @@ Map<String, Book> = "codeComplete";
  //Assert
 
 
-}
