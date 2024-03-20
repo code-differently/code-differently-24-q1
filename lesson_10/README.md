@@ -15,8 +15,9 @@
 
 ## Homework
 
-* TODO(anthonydmays): Add details
+* Read HFDP 1-2.
+* Complete [Applying SOLID principles](#applying-solid-principles) exercise.
 
-## Custom Data Types
+## Applying SOLID Principles
 
 * TODO(anthonydmays): Add details
