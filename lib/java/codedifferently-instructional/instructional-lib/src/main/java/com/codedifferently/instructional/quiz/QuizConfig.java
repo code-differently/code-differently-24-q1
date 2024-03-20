@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 /** Loads quiz answers from the config file and uses bcrypt to check provided answers. */
 @Component
 @ConfigurationProperties(prefix = "quiz")
-public class QuizAnswers {
+public class QuizConfig {
 
   private Map<String, List<String>> answersByProvider;
 
