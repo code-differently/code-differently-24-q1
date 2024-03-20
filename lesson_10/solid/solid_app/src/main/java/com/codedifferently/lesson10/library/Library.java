@@ -147,16 +147,12 @@ public class Library {
    * @return True if the book was returned, false otherwise.
    */
   public boolean checkInBook(Book book, Patron patron) {
-    if (!this.bookBelongsToLibrary(book)) {
+    if (!this.hasBook(book)) {
       return false;
     }
     this.checkedOutIsbns.remove(book.getIsbn());
     this.checkedOutBooksByPatron.get(patron.getId()).remove(book);
     return true;
-  }
-
-  private boolean bookBelongsToLibrary(Book book) {
-    return this.bookIds.contains(book.getId());
   }
 
   /**
