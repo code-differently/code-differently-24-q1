@@ -40,8 +40,10 @@ tasks.named<JavaExec>("run") {
 }
 
 tasks.named<Test>("test") {
-    // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+    if (System.getProperty("profile") != null) {
+        systemProperty("spring.profiles.active", System.getProperty("profile"))
+    }
 }
 
 

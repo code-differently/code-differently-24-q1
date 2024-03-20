@@ -25,5 +25,6 @@ public class QuizPrompter {
   private void promptForAnswer(Scanner scanner, QuizQuestion question) {
     this.printer.printQuizQuestion(question, false);
     question.promptForAnswer(scanner);
+    System.out.println();
   }
 }

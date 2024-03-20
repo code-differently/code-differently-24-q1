@@ -2,6 +2,7 @@ package com.codedifferently.instructional.quiz;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.Scanner;
 
 public class MultipleChoiceQuizQuestion extends QuizQuestion {
@@ -16,6 +17,10 @@ public class MultipleChoiceQuizQuestion extends QuizQuestion {
 
     super(questionNumber, question, correctAnswer.toString());
     this.answersByOption = answerOptions;
+  }
+
+  public Set<AnswerChoice> getAnswerChoices() {
+      return answersByOption.keySet();
   }
 
   public String getAnswerForOption(AnswerChoice option) {
@@ -45,7 +50,7 @@ public class MultipleChoiceQuizQuestion extends QuizQuestion {
 
       // Try to parse the answer.
       answer = AnswerChoice.valueOrEmpty(response);
-    } while (answer.isEmpty());
+    } while (answer.isEmpty() || !answersByOption.containsKey(answer.get()));
 
     // Set the question answer.
     this.setAnswer(answer.get().toString());

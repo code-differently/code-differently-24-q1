@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -29,11 +30,19 @@ public class Lesson10 implements CommandLineRunner {
   }
 
   public void run(String... args) {
+
+    if (isJUnitTest()) {
+      return;
+    }
+
+    System.out.println("\n");
     var scanner = new Scanner(System.in);
 
     try {
       // Randomize questions and choose first 15
-      var questions = quizConfig.getQuestions("default");
+      List<QuizQuestion> questions = quizConfig.getQuestions("default");
+      Collections.shuffle(questions);
+      questions = questions.subList(0, Math.min(questions.size(), 15));
 
       // Prompt for answers.
       var prompter = new QuizPrompter(scanner);
@@ -42,11 +51,7 @@ public class Lesson10 implements CommandLineRunner {
       // Generate answers file in resources.
       String fileName = promptForFileName(scanner);
       saveAnswersToFile(questions, fileName);
-    } catch (Exception e) {
-        System.out.println(e);
-        e.printStackTrace();
     } finally {
-
       scanner.close();
     }
   }
@@ -60,7 +65,6 @@ public class Lesson10 implements CommandLineRunner {
       System.out.print(">> Your answer: ");
       response = scanner.next().toLowerCase().replaceAll("\\s+", "");
     } while (response.equals(""));
-    scanner.close();
 
     return response;
   }
@@ -79,10 +83,19 @@ public class Lesson10 implements CommandLineRunner {
     }
   }
 
-  private static String getDataPath() {
+  public static String getDataPath() {
     String[] pathParts = {
       Paths.get("").toAbsolutePath().toString(), "src", "main", "resources", "data"
     };
     return String.join(File.separator, pathParts);
+  }
+
+  private static boolean isJUnitTest() {
+    for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+      if (element.getClassName().startsWith("org.junit.")) {
+        return true;
+      }
+    }
+    return false;
   }
 }

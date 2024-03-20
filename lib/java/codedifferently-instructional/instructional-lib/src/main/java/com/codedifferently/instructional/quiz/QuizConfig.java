@@ -3,6 +3,7 @@ package com.codedifferently.instructional.quiz;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import at.favre.lib.crypto.bcrypt.BCrypt.Verifyer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -24,6 +25,10 @@ public class QuizConfig {
   }
 
   public void setQuestions(Map<String, List<QuestionConfig>> questionsByProvider) {
+    if (questionsByProvider == null) {
+        this.questionsByProvider = new HashMap<>();
+        return;
+    }
     this.questionsByProvider =
         (Map<String, List<QuizQuestion>>)
             questionsByProvider.entrySet().stream()
