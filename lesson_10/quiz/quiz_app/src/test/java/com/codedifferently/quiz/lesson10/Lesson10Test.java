@@ -1,6 +1,7 @@
 package com.codedifferently.quiz.lesson10;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import com.codedifferently.instructional.quiz.MultipleChoiceQuizQuestion;
 import com.codedifferently.instructional.quiz.QuizConfig;
@@ -63,12 +64,19 @@ class Lesson10Test {
   void checkQuestions_answeredCorrectly() throws Exception {
     List<QuizQuestion> questions = quizConfig.getQuestions("default");
     List<Path> paths = getResponseFilePaths();
+    var quizTaker = quizConfig.getQuizTaker();
+    var answersFound = false;
     for (Path path : paths) {
+      if (!quizTaker.isEmpty()
+          && !path.getFileName().toString().contains(quizConfig.getQuizTaker())) {
+        continue;
+      }
       Map<Integer, String> responses = getResponsesFromPath(path);
       for (var entry : responses.entrySet()) {
         Integer questionNumber = entry.getKey();
         QuizQuestion question = questions.get(questionNumber);
         String actualAnswer = entry.getValue();
+        answersFound = true;
 
         // Check that the answer is correct.
         softly
@@ -80,6 +88,9 @@ class Lesson10Test {
                     + question.getQuestionPrompt())
             .isTrue();
       }
+    }
+    if (!answersFound) {
+      fail("No answers found to check.");
     }
   }
 
