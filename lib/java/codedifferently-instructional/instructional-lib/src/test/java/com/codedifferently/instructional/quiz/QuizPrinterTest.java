@@ -1,19 +1,16 @@
 package com.codedifferently.instructional.quiz;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.MockitoAnnotations;
 
 class QuizPrinterTest {
 
@@ -35,7 +32,8 @@ class QuizPrinterTest {
 
     QuizQuestion question2 = mock(QuizQuestion.class);
     when(question2.getQuestionNumber()).thenReturn(2);
-    when(question2.getQuestionPrompt()).thenReturn("What is the largest planet in our solar system?");
+    when(question2.getQuestionPrompt())
+        .thenReturn("What is the largest planet in our solar system?");
     when(question2.getAnswer()).thenReturn("Jupiter");
 
     List<QuizQuestion> quizQuestions = Arrays.asList(question1, question2);
@@ -47,12 +45,13 @@ class QuizPrinterTest {
     quizPrinter.printQuiz(quizQuestions);
 
     // Assert
-    String expectedOutput = "\nQuestion 1: What is the capital of France?\n" +
-        ">> Your answer: Paris\n" +
-        "\n" +
-        "Question 2: What is the largest planet in our solar system?\n" +
-        ">> Your answer: Jupiter\n" +
-        "\n";
+    String expectedOutput =
+        "\nQuestion 1: What is the capital of France?\n"
+            + ">> Your answer: Paris\n"
+            + "\n"
+            + "Question 2: What is the largest planet in our solar system?\n"
+            + ">> Your answer: Jupiter\n"
+            + "\n";
 
     assertEquals(expectedOutput, outputStream.toString());
   }
@@ -77,12 +76,13 @@ class QuizPrinterTest {
     quizPrinter.printQuiz(List.of(question));
 
     // Assert
-    String expectedOutput = "\nQuestion 1: What is the capital of France?\n" + 
-        "A: London\n" +
-        "B: Berlin\n" +
-        "C: null\n" +
-        "D: null\n" +
-        ">> Your answer: Paris\n\n";
+    String expectedOutput =
+        "\nQuestion 1: What is the capital of France?\n"
+            + "A: London\n"
+            + "B: Berlin\n"
+            + "C: null\n"
+            + "D: null\n"
+            + ">> Your answer: Paris\n\n";
 
     assertEquals(expectedOutput, outputStream.toString());
   }
