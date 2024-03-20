@@ -1,9 +1,10 @@
 package com.codedifferently.instructional.quiz;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.Map;
+import org.junit.jupiter.api.Test;
 
 class MultipleChoiceQuizQuestionTest {
 
@@ -17,8 +18,8 @@ class MultipleChoiceQuizQuestionTest {
     answerOptions.put(AnswerChoice.B, "London");
     answerOptions.put(AnswerChoice.C, "Berlin");
     AnswerChoice correctAnswer = AnswerChoice.A;
-    MultipleChoiceQuizQuestion quizQuestion = new MultipleChoiceQuizQuestion(
-        questionNumber, question, answerOptions, correctAnswer);
+    MultipleChoiceQuizQuestion quizQuestion =
+        new MultipleChoiceQuizQuestion(questionNumber, question, answerOptions, correctAnswer);
 
     // Act
     String actualAnswerForOptionA = quizQuestion.getAnswerForOption(AnswerChoice.A);
