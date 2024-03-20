@@ -1,17 +1,27 @@
 package com.codedifferently.quiz.lesson10;
 
+import com.codedifferently.instructional.quiz.QuizConfig;
+import com.codedifferently.instructional.quiz.QuizPrompter;
+import com.codedifferently.instructional.quiz.QuizQuestion;
+import com.google.gson.GsonBuilder;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
-import com.codedifferently.instructional.quiz.QuizConfig;
-import org.springframework.boot.CommandLineRunner;
 
 @Configuration
 @SpringBootApplication(scanBasePackages = "com.codedifferently")
 public class Lesson10 implements CommandLineRunner {
-  @Autowired
-  private QuizConfig quizConfig;
+  @Autowired private QuizConfig quizConfig;
 
   public static void main(String[] args) {
     var application = new SpringApplication(Lesson10.class);
@@ -19,6 +29,60 @@ public class Lesson10 implements CommandLineRunner {
   }
 
   public void run(String... args) {
-      System.out.println("choices are" + quizConfig.getQuestions("default").get(0));
+    var scanner = new Scanner(System.in);
+
+    try {
+      // Randomize questions and choose first 15
+      var questions = quizConfig.getQuestions("default");
+
+      // Prompt for answers.
+      var prompter = new QuizPrompter(scanner);
+      prompter.promptForAnswers(questions);
+
+      // Generate answers file in resources.
+      String fileName = promptForFileName(scanner);
+      saveAnswersToFile(questions, fileName);
+    } catch (Exception e) {
+        System.out.println(e);
+        e.printStackTrace();
+    } finally {
+
+      scanner.close();
+    }
+  }
+
+  private String promptForFileName(Scanner scanner) {
+    System.out.println();
+    System.out.println("Quiz completed. Please provide a unique name for saving your answers.");
+
+    String response = null;
+    do {
+      System.out.print(">> Your answer: ");
+      response = scanner.next().toLowerCase().replaceAll("\\s+", "");
+    } while (response.equals(""));
+    scanner.close();
+
+    return response;
+  }
+
+  private void saveAnswersToFile(List<QuizQuestion> questions, String filename) {
+    Map<Integer, String> values =
+        questions.stream()
+            .collect(Collectors.toMap(QuizQuestion::getQuestionNumber, QuizQuestion::getAnswer));
+    var file = new File(getDataPath() + File.separator + filename + ".json");
+    file.getParentFile().mkdirs();
+    var gson = new GsonBuilder().setPrettyPrinting().create();
+    try (var writer = new FileWriter(file, false)) {
+      writer.write(gson.toJson(values));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  private static String getDataPath() {
+    String[] pathParts = {
+      Paths.get("").toAbsolutePath().toString(), "src", "main", "resources", "data"
+    };
+    return String.join(File.separator, pathParts);
   }
 }
