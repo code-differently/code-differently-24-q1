@@ -80,8 +80,6 @@ class QuizPrinterTest {
         "\nQuestion 1: What is the capital of France?\n"
             + "A: London\n"
             + "B: Berlin\n"
-            + "C: null\n"
-            + "D: null\n"
             + ">> Your answer: Paris\n\n";
 
     assertEquals(expectedOutput, outputStream.toString());
