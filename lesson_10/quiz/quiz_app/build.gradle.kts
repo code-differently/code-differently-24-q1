@@ -44,6 +44,9 @@ tasks.named<Test>("test") {
     if (System.getProperty("profile") != null) {
         systemProperty("spring.profiles.active", System.getProperty("profile"))
     }
+    if (System.getProperty("quizTaker") != null) {
+        systemProperty("quiz.quizTaker", System.getProperty("quizTaker"))
+    }
 }
 
 
