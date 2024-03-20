@@ -4,149 +4,244 @@ spring:
 quiz:
   questions:
     default:
-      - prompt: "What is the DRY principle about?"
-        choices:
-          A: "An OOP principle about developing realistic YAML configuration values."
-          B: "Preventing the duplication of the same thing in multiple places."
-          C: "A means for defining interfaces in an object-oriented system."
-          D: "'Do Repeat Yourself': It advocates for writing code that repeats throughout the application for easier understanding."
+    - prompt: "Which keyword is used to declare a variable in Java?"
+      choices:
+        A: "let"
+        B: "variable"
+        C: "const"
+        D: "int"
 
-      - prompt: "What does the concept of Inheritance in OOP represent?"
-        choices:
-          A: "The ability to derive a class from multiple base classes."
-          B: "The ability of a class to include properties and methods of another class."
-          C: "The ability of a class to hide its internal implementation."
-          D: "The ability of objects to take on many forms."
+    - prompt: "What is the difference between a class and an object in Java?"
+      choices:
+        A: "A class is a collection of objects, while an object is an instance of a class."
+        B: "A class is used for inheritance, while an object is used for polymorphism."
+        C: "A class is a blueprint for creating objects, while an object is a collection of classes."
+        D: "A class is a data type, while an object is a method."
 
-      - prompt: "What does the term 'Abstraction' mean in the context of OOP?"
-        choices:
-          A: "Removing the features from a class that makes it unique."
-          B: "The process of simplifying and hiding complexity."
-          C: "The act of inheriting from more than one class."
-          D: "Combining data and functions that operate on that data into a single unit."
-            
-      - prompt: "What is a Class in OOP?"
-        choices:
-          A: "An instance of an object."
-          B: "A special function that creates objects containing data and behavior."
-          C: "A method that is automatically called when an object is created."
-          D: "A blueprint from which objects are created that combine data and behavior."
+    - prompt: "Which data type is used to store whole numbers in Java?"
+      choices:
+        A: "boolean"
+        B: "String"
+        C: "double"
+        D: "long"
 
-      - prompt: "Which concept of OOP allows different classes to be treated as instances of the same class through a common interface?"
-        choices:
-          A: "Inheritance"
-          B: "Encapsulation"
-          C: "Polymorphism"
-          D: "Abstraction"
+    - prompt: "What is the correct syntax for declaring a string variable in Java?"
+      choices:
+        A: "String name = \"John\";"
+        B: "string name = 'John';"
+        C: "String name = 'John';"
+        D: "string name = \"John\";"
 
-      - prompt: "When changes in one part of a system force changes in another part, this is an indication of what?"
-        choices:
-          A: "High coupling"
-          B: "High cohesion"
-          C: "Low coupling"
-          D: "Low cohesion"
+    - prompt: "What is the purpose of the 'if' statement in Java?"
+      choices:
+        A: "To repeat a block of code a specific number of times."
+        B: "To execute a block of code only if a certain condition is true."
+        C: "To define a method in a class."
+        D: "To declare a variable."
 
-      - prompt: "When storing numbers that require high precision in Java, which data type is best to use?"
-        choices:
-          A: "long"
-          B: "double"
-          C: "decimal"
-          D: "float"
+    - prompt: "Which operator is used to compare two values for equality in Java?"
+      choices:
+        A: "!="
+        B: ">"
+        C: "=="
+        D: "="
 
-      - prompt: "Which data structure is great for random access?"
-        choices:
-          A: "Linked list"
-          B: "Set"
-          C: "Array"
-          D: "Tree"
+    - prompt: "What is the purpose of the 'for' loop in Java?"
+      choices:
+        A: "To execute a block of code only if a certain condition is true."
+        B: "To repeat a block of code a specific number of times."
+        C: "To define a method in a class."
+        D: "To declare a variable."
 
-      - prompt: "Which data structure is optimized for 'last in, first out' operation?"
-        choices:
-          A: "Stack"
-          B: "Queue"
-          C: "Tree"
-          D: "Array"
+    - prompt: "Which data type is used to store decimal numbers in Java?"
+      choices:
+        A: "boolean"
+        B: "String"
+        C: "int"
+        D: "double"
 
-      - prompt: "What method must you include in your Java application in order to run your application?"
-        choices:
-          A: "constructor App()"
-          B: "public void main(String[] args)"
-          C: "public static enum App"
-          D: "public static void main(String[] args)"
+    - prompt: "What is the purpose of the 'while' loop in Java?"
+      choices:
+        A: "To execute a block of code only if a certain condition is true."
+        B: "To define a method in a class."
+        C: "To repeat a block of code as long as a certain condition is true."
+        D: "To declare a variable."
 
-      - prompt: "Which line of code creates an object instance for a class called `Test` with a single parameter?"
-        choices:
-          A: "Test obj = new Test(123);"
-          B: "Object test = new Object(\"param1\");"
-          C: "Test val = Test.PARAM1;"
-          D: "@Test testClass(Param value)"
+    - prompt: "What is the purpose of the 'switch' statement in Java?"
+      choices:
+        A: "To repeat a block of code a specific number of times."
+        B: "To declare a variable."
+        C: "To define a method in a class."
+        D: "To select one of many code blocks to be executed."
 
-      - prompt: "The Java programming language is a:"
-        choices:
-          A: "Dynamically typed language" 
-          B: "Strongly typed language"
-          C: "Weakly typed language"
-          D: "Storage typed language"
+    - prompt: "Which data type is used to store true or false values in Java?"
+      choices:
+        A: "int"
+        B: "double"
+        C: "String"
+        D: "boolean"
 
-      - prompt: "What keyword do you use if you want to get out of a loop before it finishes:"
-        choices:
-          A: "for"
-          B: "while"
-          C: "interrupt"
-          D: "break" 
+    - prompt: "What is the correct syntax for declaring an integer variable in Java?"
+      choices:
+        A: "integer num = '10';"
+        B: "int num = 10;"
+        C: "integer num = 10;"
+        D: "int num = '10';"
 
-      - prompt: "Choose the line of code that shows a class inheriting another class:"
-        choices:
-          A: "class Foo implements Bar {}"
-          B: "class Foo extends Bar {}"
-          C: "class Foo inherits Bar {}"
-          D: "class Foo abstracts Bar {}"
+    - prompt: "What is the purpose of the 'else' statement in Java?"
+      choices:
+        A: "To repeat a block of code a specific number of times."
+        B: "To declare a variable."
+        C: "To define a method in a class."
+        D: "To execute a block of code if the 'if' condition is false."
 
-      - prompt: "Which git command should you use to restore a file to a previous commit?"
-        choices:
-          A: "git checkout"
-          B: "git stash"
-          C: "git commit"
-          D: "git revert"
+    - prompt: "Which data type is used to store text in Java?"
+      choices:
+        A: "String"
+        B: "int"
+        C: "double"
+        D: "boolean"
 
-      - prompt: "What's the name of branch intended for use when implementing new features?"
-        choices:
-          A: "A feature branch"
-          B: "A forked branch"
-          C: "A main branch"
-          D: "A clone branch"
+    - prompt: "What is the correct syntax for declaring a double variable in Java?"
+      choices:
+        A: "double num = '3.14';"
+        B: "double num = 3,14;"
+        C: "double num = \"3.14\";"
+        D: "double num = 3.14;"
 
-      - prompt: "What is the purpose of the `git clone` command?"
-        choices:
-          A: "To create a new branch in the repository."
-          B: "To copy a git repository from a remote source to your local machine."
-          C: "To merge changes from one branch to another."
-          D: "To stage changes for the next commit."
+    - prompt: "What is encapsulation in object-oriented programming?"
+      choices:
+        A: "Encapsulation is the process of creating multiple instances of a class."
+        B: "Encapsulation is the process of defining a class."
+        C: "Encapsulation is the process of hiding internal data and methods of an object and providing access to it only through public methods."
+        D: "Encapsulation is the process of inheriting properties and behaviors from a parent class."
 
-      - prompt: "In what order do `for` loop iterations run?"
-        choices:
-          A: "(1) increment, (2) initialization, (3) condition, (4) loop body"
-          B: "(1) increment, (2) condition, (3) initialization, (4) loop body"
-          C: "(1) initialization, (2) loop body, (3) condition, (4) increment"
-          D: "(1) initialization, (2) condition, (3) loop body, (4) increment"
+    - prompt: "What is inheritance in object-oriented programming?"
+      choices:
+        A: "Inheritance is the process of creating multiple instances of a class."
+        B: "Inheritance is the process of defining a class."
+        C: "Inheritance is the process of hiding internal data and methods of an object and providing access to it only through public methods."
+        D: "Inheritance is the process of inheriting properties and behaviors from a parent class."
 
-      - prompt: "To skip to the next loop iteration, what keyword should you use?"
-        choices:
-          A: "return"
-          B: "break"
-          C: "continue"
-          D: "goto"
+    - prompt: "What is polymorphism in object-oriented programming?"
+      choices:
+        A: "Polymorphism is the process of creating multiple instances of a class."
+        B: "Polymorphism is the process of defining a class."
+        C: "Polymorphism is the process of hiding internal data and methods of an object and providing access to it only through public methods."
+        D: "Polymorphism is the process of using a single interface to represent different types of objects."
 
-      - prompt: "Which of the following options are in lower camel case?"
-        choices:
-          A: "lowerCamelCase"
-          B: "lower_camel_case"
-          C: "Lower_Camel_Case"
-          D: "LowerCamelCase"
+    - prompt: "What is abstraction in object-oriented programming?"
+      choices:
+        A: "Abstraction is the process of creating multiple instances of a class."
+        B: "Abstraction is the process of simplifying complex systems by breaking them down into smaller, more manageable parts."
+        C: "Abstraction is the process of defining a class."
+        D: "Abstraction is the process of hiding internal data and methods of an object and providing access to it only through public methods."
 
-      - prompt: "Which of the following options are in upper case snake case?"
-        choices:
-          A: "snakeCase"
-          B: "SNAKE_CASE"
-          C: "Snake_Case"
-          D: "SnakeCase"
+    - prompt: "Which principle of object-oriented programming allows objects of different classes to be treated as objects of the same class?"
+      choices:
+        A: "Inheritance"
+        B: "Polymorphism"
+        C: "Encapsulation"
+        D: "Abstraction"
+
+    - prompt: "What is the naming convention for classes in Java?"
+      choices:
+        A: "camelCase"
+        B: "PascalCase"
+        C: "snake_case"
+        D: "kebab-case"
+
+    - prompt: "What is the naming convention for variables in Java?"
+      choices:
+        A: "PascalCase"
+        B: "camelCase"
+        C: "snake_case"
+        D: "kebab-case"
+
+    - prompt: "What is the naming convention for methods in Java?"
+      choices:
+        A: "PascalCase"
+        B: "snake_case"
+        C: "kebab-case"
+        D: "camelCase"
+
+    - prompt: "What is the naming convention for packages in Java?"
+      choices:
+        A: "PascalCase"
+        B: "snake_case"
+        C: "lowercase"
+        D: "kebab-case"
+
+    - prompt: "What is Git?"
+      choices:
+        A: "A programming language commonly used for web development."
+        B: "A version control system used for tracking changes in files and coordinating work among multiple people."
+        C: "A database management system for storing and retrieving data."
+        D: "A software development methodology for agile project management."
+
+    - prompt: "What is a commit in Git?"
+      choices:
+        A: "A software tool used for analyzing and optimizing code."
+        B: "A command used to merge branches in Git."
+        C: "A record of changes made to a repository at a specific point in time."
+        D: "A file that contains the source code of a program."
+
+    - prompt: "What is a branch in Git?"
+      choices:
+        A: "A command used to create a new repository in Git."
+        B: "A separate line of development that allows you to work on a feature or bug fix without affecting the main codebase."
+        C: "A file that contains the configuration settings for a program."
+        D: "A software tool used for managing dependencies in a project."
+
+    - prompt: "What is a merge conflict in Git?"
+      choices:
+        A: "A command used to discard changes and revert to a previous version in Git."
+        B: "A file that contains the documentation and instructions for using a program."
+        C: "A situation that occurs when Git is unable to automatically merge changes from different branches."
+        D: "A software tool used for profiling and optimizing code performance."
+
+    - prompt: "What command should you use to restore a file to its state at an earlier commit?"
+      choices:
+        A: "git reset <commit-hash> <file>"
+        B: "git checkout <commit-hash> <file>"
+        C: "git restore <commit-hash> <file>"
+        D: "git revert <commit-hash> <file>"
+
+    - prompt: "What Git command do you use to create a new branch?"
+      choices:
+        A: "git checkout -b <branch-name>"
+        B: "git branch <branch-name>"
+        C: "git commit -m 'Create branch'"
+        D: "git merge <branch-name>"
+  answers:
+    default:
+      - $2y$10$mhwamqUPf8AlI2N9UNSOve/PNRo1aKKRXGVVyuAZmXTByDKjE7Htm
+      - $2y$10$VHv7.t7MLdDE8Fd2Hqo.oOhH0VUfu6jT2aZRPaeWypmZb9YYTjOQK
+      - $2y$10$XKYYo.Kqr3OH9taIQ3ktWeby29gt1EWQqI652O3Olim5thHd7MmDm
+      - $2y$10$KfuFshyYl.EMU8/R6UgZeOTjgRctSejlttkAaQxRLw7bcriMbC/BO
+      - $2y$10$IjYrvmc.kHlQl1RgOx5czOZBSWIt17PDhbzqQ4y34wBVKUOv7ndM6
+      - $2y$10$I3iiNwXF8a1/NlhonKKhKeykCUKF8JbfYmfSe/Fnm9BFyyvxJWTYK
+      - $2y$10$AoEJX6ZNU3M/drohEN9FQ.TGDM/sCCyaRLVIquzZ9aBpF0nGbXY5q
+      - $2y$10$2XgmrcrXQhdIEVg4VG2kmOJ7q4SsQ5m7ADBP7OoTrYzHdd.zVsVYe
+      - $2y$10$xDqH8PMa29gEBZLyzSNwH.zVjsMlSw0S9xKP4hirXpCUkGPpV4OCO
+      - $2y$10$/bYGhp..VtYS.WLkUxl0CeKCPfxazFib.dIDKffpZHn9vcRRMIYXe
+      - $2y$10$iDtgVSWSR.pT2e3RIIkWq./.wr.rd8OEyRyE.L5.hjPXzHknlU1w2
+      - $2y$10$3X1snpG9.yaWfCIJvO60W.EiKjsNYPC1y6h6DjI.4t.sy1TYh5WqG
+      - $2y$10$.eRBNLeZnI7/gcrlvKjbK.MqBvcMAng7Xwb5meNoA2psW4osaWTSq
+      - $2y$10$BVgsKcyAupOvIs3PENI8VuXDpcLT79WCvAKCL3lasIko1xOySVCba
+      - $2y$10$cQaUh8BtUxyA.Uy4I6fTV.jy9pvOQlUlWJCXkmdA/hXFSe.hXkneu
+      - $2y$10$cbSbw.rKDqRcKpEjzxWLHeGZ05b/UeIlRwpQAiFgaJmyPHJ.ruCt6
+      - $2y$10$eeKtu6LJx7qsFO/DqH/TQ.6loAKI6tJjgXQtqjxazA3z.NKQeyTku
+      - $2y$10$YG066HQb9BwlOzi2vcRpKeSDShaeE8SPlOzhAtPMVhvCYEW6qS4q2
+      - $2y$10$LME4LyliAhiVxD6BtkzsQuLuG5zLjydoarE9r2dSw.3Nb6aGWT.fC
+      - $2y$10$IL3165Mie6PPSdQ61keHm.e7t1lzFH5RZOkq5kFwrKNJBLAOPi89u
+      - $2y$10$5xUEwhWf.47OVHhP1ForuuFKqFto0ZGAnZNpe7DS1dhw3Imq91qye
+      - $2y$10$G0l0E4QQQkAupN92Y.2hTetAhIeq1C0hOhDUZvE/Vb3rTsvWqBUIO
+      - $2y$10$9h4YJXOcBYFUTg5SbWvWG.OpNOAIREXYd0zUCsojizdoFr0dkpK9C
+      - $2y$10$9jCWir.loewv48CkBGTpKOF5BdffKHET7134v1eXRxI.BI6JAiwtK
+      - $2y$10$TVAUHe1Qnfp9HBrLKaXoaeOcgogKCOh75Xl0g4slyGE59q2OuzLIW
+      - $2y$10$IbU1hFYURn2c/3n3vU1EiulH/J7RiYbRJZqntaJuFeF5SiYiK87ju
+      - $2y$10$Tn7OfgalNswMFsDDYqg0se65LbgDIitoI5r/.NqrbGlbWnG0wZAh.
+      - $2y$10$N6tLPnI/ME0fct9ELNNqNe5gHye3mtBh7LHfduIhsPEELSAROvBri
+      - $2y$10$k2Pb2AIjqMcPBxhauVo2fuRNuzQnje7w/wTs6vhf2X/jKdYSWBkJa
+      - $2y$10$ccOFeGlKvjS24vEbry0jT.LWTGdQ5Z641XCf2FSPTuF7x9PN4RJw6
