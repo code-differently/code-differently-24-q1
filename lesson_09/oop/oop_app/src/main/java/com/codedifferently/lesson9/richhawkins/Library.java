@@ -36,9 +36,13 @@ public class Library {
       book.setCheckedOut(true);
       patron.getCheckedOutBooks().add(book.getTitle());
     } else {
-      System.out.println("Book is already checked out.");
+      throw new AlreadyCheckedOutException("Book is already checked out.");
     }
   }
 
-  public void checkBookIn() {}
+  public void checkBookIn(Book book, Patron patron) {
+    if (book.getCheckedOut() && patrons.contains(patron) && library.bookCollection.contains(book)){
+        book.setChecked
+    }
+  }
 }

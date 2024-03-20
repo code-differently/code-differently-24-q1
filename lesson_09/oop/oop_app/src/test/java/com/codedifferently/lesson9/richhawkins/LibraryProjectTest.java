@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import main.java.com.codedifferently.lesson9.richhawkins.AlreadyCheckedOutException;
 import main.java.com.codedifferently.lesson9.richhawkins.Book;
 import main.java.com.codedifferently.lesson9.richhawkins.Library;
 import main.java.com.codedifferently.lesson9.richhawkins.Patron;
@@ -85,18 +86,29 @@ public class LibraryProjectTest {
   public void testCheckOutBook() {
     Library library = new Library();
     Book book = new Book("Test Book", 1234, new ArrayList<>(), 145, false);
-    Patron patron = new Patron("John Doe");
+    Patron patron1 = new Patron("John Doe");
+    Patron patron2 = new Patron("Jane Doe");
 
     // Add the book to the library
     library.addBook(book);
 
     // Check out the book
-    library.checkOutBook(book, patron);
+    library.checkOutBook(book, patron1);
 
     // Check if the book is marked as checked out
     assertTrue(book.getCheckedOut());
 
-    // Check if the book is in the patron's checked out books
-    assertTrue(patron.getCheckedOutBooks().contains(book.getTitle()));
+    // Check to see if patron1's checkedoutbooks contains new book
+    assertTrue(patron1.getCheckedOutBooks().contains(book.getTitle()));
+
+    // Try to check out the book to patron2 (should fail)
+    try {
+      library.checkOutBook(book, patron2);
+      fail("Expected AlreadyCheckedOutException was not thrown");
+    } catch (AlreadyCheckedOutException e) {
+      // Expected exception, do nothing
+    }
+    assertTrue(book.getCheckedOut());
+    assertTrue(patron1.getCheckedOutBooks().contains(book.getTitle()));
   }
 }
