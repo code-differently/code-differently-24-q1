@@ -40,8 +40,8 @@ public class Lesson10 implements CommandLineRunner {
     try {
       // Randomize questions and choose first 15
       List<QuizQuestion> questions = quizConfig.getQuestions("default");
-      Collections.shuffle(questions);
-      questions = questions.subList(0, Math.min(questions.size(), 15));
+      // Collections.shuffle(questions);
+      // questions = questions.subList(0, Math.min(questions.size(), 15));
 
       // Prompt for answers.
       var prompter = new QuizPrompter(scanner);
