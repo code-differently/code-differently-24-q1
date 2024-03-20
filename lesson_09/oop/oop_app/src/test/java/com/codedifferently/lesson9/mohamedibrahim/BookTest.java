@@ -34,8 +34,6 @@ class BookTest {
     //Arrange
     ArrayList<String> authors =new ArrayList<>();
     Book book1 = new Book("Book", 1, "John Book", 3000, null);
-    // Book book3 = new Book("Book 3, Books Revenge", 3, "John Book", 3000, null);
-    // Book book4 = new Book("Book 4, The Final Book", 4, "John Book", 3000, null);
 
     //Act
     book1.addAuthor("John Book Jr.");
