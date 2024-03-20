@@ -10,13 +10,13 @@ public class Book {
     private float isbn; 
 
 // Book Constructor
-public Book(Boolean checkedOut, String authors, String title, int pageNumber, float isbn) {
+public Book(Boolean checkedOut, String authors, String title, int pageNumber, double d) {
 
     this.checkedOut = checkedOut;
     this.authors = authors;
     this.title = title;
     this.pageNumber = pageNumber;
-    this.isbn = isbn;
+    this.isbn = d;
     }
 
     //Getter for whether it was checked out
