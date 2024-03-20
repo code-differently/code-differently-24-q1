@@ -18,7 +18,7 @@
 * Read HFDP 1-2.
 * Complete [Applying SOLID principles](#applying-solid-principles) exercise.
 
-## Applying SOLID Principles
+## Applying SOLID Principles (Library Management System, Part II)
 
 In this assignment, you will be given starting implementations for the `Library`, `Book`, and `Patron` classes. You will need to add the following enhancements to support new functionality:
 
