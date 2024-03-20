@@ -8,7 +8,6 @@ import java.util.List;
 public class Library {
   private List<Book> books;
   private List<Patron> patrons;
-  
 
   public Library() {
     this.books = new ArrayList<>();

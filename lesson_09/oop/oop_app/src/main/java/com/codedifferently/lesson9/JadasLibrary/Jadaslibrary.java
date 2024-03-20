@@ -33,11 +33,10 @@ public class Jadaslibrary {
 
   public void returnBook(Book book, Patron patron) {
     if (patron.getCheckedOutBooks().contains(book)) {
-        book.setCheckedOut(false); 
-        patron.getCheckedOutBooks().remove(book);
+      book.setCheckedOut(false); // Set the checkout status of the book to false
+      patron.getCheckedOutBooks().remove(book);
     }
-}
-
+  }
 
   public List<Book> getBooks() {
     return new ArrayList<>(books);
