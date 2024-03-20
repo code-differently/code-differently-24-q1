@@ -31,8 +31,10 @@ public class Library {
     patrons.add(patron);
   }
 
-  public void checkOutBook(Book book, Patron patron) {
-    if (!book.getCheckedOut()) {
+  public void checkOutBook(Book book, Patron patron, Library library) {
+    if (!book.getCheckedOut()
+        && patrons.contains(patron)
+        && library.bookCollection.contains(book)) {
       book.setCheckedOut(true);
       patron.getCheckedOutBooks().add(book.getTitle());
     } else {
@@ -40,9 +42,10 @@ public class Library {
     }
   }
 
-  public void checkBookIn(Book book, Patron patron) {
-    if (book.getCheckedOut() && patrons.contains(patron) && library.bookCollection.contains(book)){
-        book.setChecked
+  public void checkBookIn(Book book, Patron patron, Library library) {
+    if (book.getCheckedOut() && patrons.contains(patron) && library.bookCollection.contains(book)) {
+      book.setCheckedOut(false);
+      patron.getCheckedOutBooks().remove(book.getTitle());
     }
   }
 }
