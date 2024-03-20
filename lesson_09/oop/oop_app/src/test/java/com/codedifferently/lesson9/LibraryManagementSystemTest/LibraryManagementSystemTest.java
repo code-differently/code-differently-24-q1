@@ -2,14 +2,24 @@ package com.codedifferently.lesson9.LibraryManagementSystemTest;
 
 import org.junit.jupiter.api.Test;
 
+import com.codedifferently.lesson9.LibraryManagementSystem.Book;
+import com.codedifferently.lesson9.LibraryManagementSystem.Library;
+
 
 public class LibraryManagementSystemTest {
 
 @Test
 public void testAddBook() {
-    Library library = new library(); // create a new library
-    Book book = new book(title,isbn,numberofpages,author); // create a new book
+    Library library = new Library(); // create a new library
+    
+    String title = "The Pragmatic Programmer, 20th Anniversary Edition";
+    String isbn = "9780135957059";
+    String author = "David Thomas, Andrew Hunt";
+    int pages = 320;
 
+    Book book = new Book(title,isbn,author,pages); // create a new book
+
+   
     library.addBook(book); // adds book to library
   
     /*  addBook() method will be defined in library class
@@ -18,7 +28,7 @@ public void testAddBook() {
         
     */
 
-    assertThat  
+
 
 }
 
