@@ -1,6 +1,4 @@
-package com.codedifferently.randycastro;
-
-import com.codedifferently.randycastro.Weather.WeatherCondition;
+package com.codedifferently.lesson7.randycastro;
 
 public class Weather {
   // enum
