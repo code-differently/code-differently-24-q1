@@ -81,6 +81,18 @@ public class Library {
   }
 
   /**
+   * Removes a patron from the patronbyid hash map.
+   *
+   * @param patron
+   */
+  public void unRegisterPatron(Patron patron) {
+    if (!currentPatronsById.containsKey(patron.getId())) {
+      throw new UserNotRegisteredException("USER NOT REGISTERED!");
+    }
+    currentPatronsById.remove(patron.getId(), patron);
+  }
+
+  /**
    * This is for checking a book out. It takes in the book you are checking out in. After it
    * checkes, if the book is on the shelves it is checked out and tbe book is removed from the list.
    *
