@@ -6,8 +6,6 @@ import java.util.HashMap;
 public class Library {
   private HashMap<Integer, Book> shelves = new HashMap<>();
   private HashMap<Integer, Patron> currentPatronsById = new HashMap<>();
-  private ArrayList<Book> books = new ArrayList<>();
-
   public Library() {}
 
   /**
@@ -18,7 +16,7 @@ public class Library {
   public Library(ArrayList<Book> books) {
 
     for (Book i : books) {
-      this.shelves.put(i.getIsbn(), i);
+      this.shelves.put(i.hashCode(), i);
     }
   }
 
@@ -45,9 +43,6 @@ public class Library {
    *
    * @return
    */
-  ArrayList<Book> getBooks() {
-    return books;
-  }
 
   /**
    * Takes a book and adds it to the shelves array list and the used isbns arraylist.
@@ -55,8 +50,7 @@ public class Library {
    * @param book
    */
   public void addBook(Book book) {
-    books.add(book);
-    shelves.put(book.getIsbn(), book);
+    shelves.put(book.hashCode(), book);
   }
 
   /**
@@ -86,18 +80,18 @@ public class Library {
   }
 
   /**
-   * This is for checking a book out. It takes in the book you are checking out in. After it checkes
-   * if the book is on the shelves it is checked out and tbe book is removed from the list.
+   * This is for checking a book out. It takes in the book you are checking out in. 
+   * After it checkes, if the book is on the shelves it is checked out and tbe book is removed from the list.
    *
    * @param book
    * @return Book
    */
   public Book checkOutBook(Book book) {
-    if (!(shelves.containsKey(book.getIsbn()))) {
+    if (!(shelves.containsKey(book.hashCode()))) {
       throw new BookNotFoundException("Error Book not Found!");
     } else {
       book.checkOut();
-      shelves.remove(book.getIsbn());
+      shelves.remove(book.hashCode());
       return book;
     }
   }
@@ -109,13 +103,12 @@ public class Library {
    * @return ArrayList<Books>
    */
   public ArrayList<Book> checkOutBooks(ArrayList<Book> books) {
+
     int i = 0;
     for (Book b : books) {
-
       if (!(this.shelves.containsValue(b))) {
         i++;
       } else {
-
         b.checkOut();
         this.shelves.remove(b.getIsbn(), b);
       }

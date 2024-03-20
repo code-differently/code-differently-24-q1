@@ -51,7 +51,7 @@ public class Book {
    *
    * @return ArrayList<String>
    */
-  public ArrayList<String> getAuthor() {
+  public ArrayList<String> getAuthors() {
     return authors;
   }
 
@@ -171,11 +171,18 @@ public class Book {
   public void setPageNums(int pageNums) {
     this.pageNums = pageNums;
   }
-
+  /**
+   * Sets the origin of the book to a Library.
+   * @param origin The library the book came from.
+   */
   public void setOrigin(Library origin) {
     this.origin = origin;
   }
 
+  /**
+   * Overrites the .equals fuction so that it can work better with book.
+   * @return boolean
+   */
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -184,6 +191,10 @@ public class Book {
     return Objects.equal(isbn, book.isbn);
   }
 
+  /**
+   * Overrites the hashcode function to make the isbn its hash code.
+   * @return int
+   */
   @Override
   public int hashCode() {
     return Objects.hashCode(isbn);

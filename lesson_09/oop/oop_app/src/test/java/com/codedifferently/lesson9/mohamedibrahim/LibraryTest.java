@@ -20,20 +20,23 @@ class LibraryTest {
     books.add(new Book("name", 2, "James", 1, library));
     books.add(new Book("name", 3, "Meowth", 1, library));
     books.add(new Book("name", 1, "wobbuffet", 1, library));
-
     library = new Library(books);
 
     // Assert
-    assertThat(library.getBooks().equals(books));
+    for (Book b : books){
+      assertThat(library.getShelves().containsValue(b));
+    }
   }
 
   @Test
   void testPatronIdChecker() {
     Library library = new Library();
+    Patron patron = new Patron("John", 0);
 
     library.addBook(new Book("Name", 0, "name2", 0, library));
-    library.registerPatron(new Patron("John", 0));
+    library.registerPatron(patron);
 
+    assertEquals("John" , library.getCurrentPatronsById().get(0).getName());
     assertThrows(
         UserAlreadyRegisteredException.class,
         () -> {
@@ -59,6 +62,7 @@ class LibraryTest {
   @Test
   void testBookCheckoutValadation() {
     Library library = new Library();
+    
     Book book = new Book("books", 1, "Henry Booker", 3, library);
 
     assertThrows(
