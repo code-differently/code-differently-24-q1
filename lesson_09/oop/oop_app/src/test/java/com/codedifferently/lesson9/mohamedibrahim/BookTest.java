@@ -59,7 +59,4 @@ class BookTest {
     assertThat(book2.equals(new Book("Book 2, The Return of Book", 2, "John Book", 3000, null)));
     assertThat(!(book2.equals(book3)));
   }
-
-  @Test
-  void test
 }
