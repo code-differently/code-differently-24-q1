@@ -14,7 +14,7 @@ public class Book {
   private int numberOfPages;
 
   /**
-   * Create a new book with the given title, isbn, authors, and number of pages.
+   * Create a new book with the given title, ISBN, authors, and number of pages.
    *
    * @param title The title of the book.
    * @param isbn The ISBN of the book.
