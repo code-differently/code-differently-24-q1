@@ -8,13 +8,13 @@ public class DVD extends MediaItem {
   private String director;
   private int duration;
 
-    /**
-     * Create a new DVD with the given title, director, and duration.
-     *
-     * @param title The title of the DVD.
-     * @param director The director of the DVD.
-     * @param duration The duration of the DVD.
-     */
+  /**
+   * Create a new DVD with the given title, director, and duration.
+   *
+   * @param title The title of the DVD.
+   * @param director The director of the DVD.
+   * @param duration The duration of the DVD.
+   */
   public DVD(String title, String director, int duration) {
     this.title = title;
     this.director = director;
