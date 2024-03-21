@@ -46,11 +46,13 @@ public class Library {
    * Remove a book from the library.
    *
    * @param book The book to remove.
+   * @throws BookCheckedOutException If the book is checked out.
    */
   public void removeBook(Book book) throws BookCheckedOutException {
     if (this.isCheckedOut(book)) {
       throw new BookCheckedOutException("Cannot remove checked out book.");
     }
+
     this.bookIds.remove(book.getId());
     book.setLibrary(null);
   }
@@ -70,6 +72,7 @@ public class Library {
    * Remove a patron from the library.
    *
    * @param patron The patron to remove.
+   * @throws BookCheckedOutException If the patron has checked out books.
    */
   public void removePatron(Patron patron) throws BookCheckedOutException {
     if (this.checkedOutBooksByPatron.get(patron.getId()).size() > 0) {
@@ -96,6 +99,13 @@ public class Library {
     return true;
   }
 
+  /**
+   * Check in a book from a patron.
+   *
+   * @param book The book to check in.
+   * @param patron The patron to check in the book from.
+   * @return True if the book was checked in, false otherwise.
+   */
   private boolean canCheckOutBook(Book book, Patron patron) {
     if (!this.hasBook(book)) {
       return false;
@@ -122,7 +132,7 @@ public class Library {
   /**
    * Check if the given book is checked out.
    *
-   * @param book The book to check.
+   * @param book The book to check for.
    * @return True if the book is checked out, false otherwise.
    */
   public boolean isCheckedOut(Book book) {
@@ -140,11 +150,11 @@ public class Library {
   }
 
   /**
-   * Return a book to the library.
+   * Check in a book from a patron.
    *
-   * @param book The book to return.
-   * @param patron The patron returning the book.
-   * @return True if the book was returned, false otherwise.
+   * @param book The book to check in.
+   * @param patron The patron to check in the book from.
+   * @return True if the book was checked in, false otherwise.
    */
   public boolean checkInBook(Book book, Patron patron) {
     if (!this.hasBook(book)) {
@@ -156,15 +166,101 @@ public class Library {
   }
 
   /**
-   * Get the books checked out by a patron.
+   * Get the books currently checked out by a patron.
    *
    * @param patron The patron to get the books for.
-   * @return The books checked out by the patron.
+   * @return The books currently checked out by the patron.
    */
   public Set<Book> getCheckedOutByPatron(Patron patron) {
     return this.checkedOutBooksByPatron.get(patron.getId());
   }
 
+  /**
+   * Check out a book to a librarian.
+   *
+   * @param book The book to check out.
+   * @param librarian The librarian to check out the book to.
+   * @return True if the book was checked out, false otherwise.
+   */
+  public boolean CheckOutMedia(Book item, Librarian librarian) {
+    if (canCheckOutMedia(item, librarian)) {
+      if (!checkedOutIsbns.contains(item.getIsbn())) {
+        checkedOutIsbns.add(item.getIsbn());
+        Set<Book> checkedOutBooks =
+            checkedOutBooksByPatron.getOrDefault(librarian.getId(), new HashSet<>());
+        checkedOutBooks.add(item);
+        checkedOutBooksByPatron.put(librarian.getId(), checkedOutBooks);
+        return true;
+      } else {
+        System.out.println("This item is already checked out.");
+        return false;
+      }
+    } else {
+      System.out.println("You are not allowed to check out this item.");
+      return false;
+    }
+  }
+
+  /**
+   * Check in a book from a librarian.
+   *
+   * @param book The book to check in.
+   * @param librarian The librarian to check in the book from.
+   * @return True if the book was checked in, false otherwise.
+   */
+  public boolean CheckInMedia(Book item, Librarian librarian) {
+    if (checkedOutIsbns.contains(item.getIsbn())) {
+      checkedOutIsbns.remove(item.getIsbn());
+      Set<Book> checkedOutBooks =
+          checkedOutBooksByPatron.getOrDefault(librarian.getId(), new HashSet<>());
+      checkedOutBooks.remove(item);
+      checkedOutBooksByPatron.put(librarian.getId(), checkedOutBooks);
+      return true;
+    } else {
+      System.out.println("This item is not currently checked out.");
+      return false;
+    }
+  }
+
+  /**
+   * Check if a librarian is registered in the library.
+   *
+   * @param librarian The librarian to check for.
+   * @return True if the librarian is registered in the library, false otherwise.
+   */
+  public boolean canCheckOutMedia(MediaItem item, Librarian librarian) {
+    if (!hasPatron(librarian)) {
+      System.out.println("Librarian is not registered in the library.");
+      return false;
+    }
+
+    if (!checkedOutBooksByPatron.containsKey(librarian.getId())) {
+      checkedOutBooksByPatron.put(librarian.getId(), new HashSet<>());
+    }
+
+    if (item instanceof Book) {
+      Book book = (Book) item;
+      if (!hasBook(book)) {
+        System.out.println("The library does not have this book.");
+        return false;
+      }
+      if (isCheckedOut(book)) {
+        System.out.println("The book is already checked out.");
+        return false;
+      }
+      return true;
+    } else {
+      System.out.println("This library only supports checking out books.");
+      return false;
+    }
+  }
+
+  /**
+   * Check if a librarian is registered in the library.
+   *
+   * @param librarian The librarian to check for.
+   * @return True if the librarian is registered in the library, false otherwise.
+   */
   @Override
   public String toString() {
     return "Library{"
