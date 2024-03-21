@@ -1,48 +1,56 @@
 package com.codedifferently.lesson9;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.ArrayList;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.codedifferently.lesson9.KyvonThompsonlesson09.Book;
-
+import org.junit.jupiter.api.Test;
 
 public class Librarytest {
-    @Test
-     void main(String[] args) {
-        // Creating books
-        Book book1 = new Book(true, "Frank Miller", "The Dark Knight Returns", 250, 18.9595);
-        Book book2 = new Book(false, "Scott Snyder", "Batman And Robin", 375, 12.4565);
+  private Library library;
+  private Book book;
+  private Patron patron;
 
-        // Creating patrons
-        Patron patron1 = new Patron("Bruce Wayne");
-        Patron patron2 = new Patron("Dick Grayson");
+  @Before
+  public void setUp() {
+    library = new Library();
+    book = new Book(true, "Frank Miller", "The Dark Knight Returns", 250, (float) 18.9595);
+    library.addBook(book);
+    patron = new Patron("John Doe");
+    library.registerPatron(patron);
+  }
 
-        // Creating library
-        Library library = new Library();
+  @Test
+  public void testAddBook() {
+    assertEquals(1, library.getBooks().size());
+    assertEquals(book, library.getBooks().get(0));
+  }
 
-        // Adding books to library
-        library.addBook(book1);
-        library.addBook(book2);
+  @Test
+  public void testRemoveBook() {
+    library.removeBook(book);
+    assertEquals(0, library.getBooks().size());
+  }
 
-        // Registering patrons
-        library.registerPatron(patron1);
-        library.registerPatron(patron2);
+  @Test
+  public void testCheckOutBook() {
+    library.checkOutBook(patron, book);
+    assertTrue(book.getCheckedOut());
+    assertTrue(patron.getCheckedOutBooks().contains(book));
+  }
 
-        // Checking out books
-        library.checkOutBook(patron1, book1);
-        library.checkOutBook(patron2, book2);
+  private void assertTrue(boolean contains) {
+    throw new UnsupportedOperationException("Unimplemented method 'assertTrue'");
+  }
 
-        // Attempting to check out an already checked-out book
-        library.checkOutBook(patron1, book1);
+  @Test
+  public void testReturnBook() {
+    library.checkOutBook(patron, book);
+    library.returnBook(patron, book);
+    assertFalse(book.getCheckedOut());
+    assertFalse(patron.getCheckedOutBooks().contains(book));
+  }
 
-        // Returning books
-        library.returnBook(patron1, book1);
-        library.returnBook(patron2, book2);
-
-        // Removing a book from the library
-        library.removeBook(book2);
-    }
+  private void assertFalse(Boolean checkedOut) {
+    throw new UnsupportedOperationException("Unimplemented method 'assertFalse'");
+  }
 }
