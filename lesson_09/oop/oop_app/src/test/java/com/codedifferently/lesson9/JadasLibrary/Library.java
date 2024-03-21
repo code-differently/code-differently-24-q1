@@ -1,7 +1,5 @@
-package com.codedifferently.lesson9.JadasLibraryTest;
+package com.codedifferently.lesson9.JadasLibrary;
 
-import com.codedifferently.lesson9.JadasLibrary.Book;
-import com.codedifferently.lesson9.JadasLibrary.Patron;
 import java.util.ArrayList;
 import java.util.List;
 

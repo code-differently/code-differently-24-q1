@@ -1,10 +1,8 @@
-package com.codedifferently.lesson9.JadasLibraryTest;
+package com.codedifferently.lesson9.JadasLibrary;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.codedifferently.lesson9.JadasLibrary.Book;
-import com.codedifferently.lesson9.JadasLibrary.Patron;
 import org.junit.jupiter.api.Test;
 
 public class JadaslibraryTest {
