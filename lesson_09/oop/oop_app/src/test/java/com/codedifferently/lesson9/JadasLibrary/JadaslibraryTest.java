@@ -9,7 +9,7 @@ public class JadaslibraryTest {
 
   @Test
   public void testAddBookToLibrary() {
-    Library library = new Library();
+    Jadaslibrary library = new Jadaslibrary();
     Book book = new Book("The Bluest Eye", "978-0140088298", "Toni Morrison", 226);
     library.addBook(book);
     assertTrue(library.getBooks().contains(book));
@@ -17,7 +17,7 @@ public class JadaslibraryTest {
 
   @Test
   public void testRemoveBookFromLibrary() {
-    Library library = new Library();
+    Jadaslibrary library = new Jadaslibrary();
     Book book = new Book("Sula", "978-0452260108", "Toni Morrison", 193);
     library.addBook(book);
     library.removeBook(book);
@@ -26,29 +26,29 @@ public class JadaslibraryTest {
 
   @Test
   public void testRegisterPatron() {
-    Library library = new Library();
-    Patron patron = new ConcretePatronTest("Stacy Law");
+    Jadaslibrary library = new Jadaslibrary();
+    Patron patron = new PatronImpl("Stacy Law");
     library.registerPatron(patron);
     assertTrue(library.getPatrons().contains(patron));
   }
 
   @Test
   public void testCheckOutBook() {
-    Library library = new Library();
+    Jadaslibrary library = new Jadaslibrary();
     Book book = new Book("Liden Hills", "978-3293006853", "Gloria Naylor", 320);
-    Patron patron = new ConcretePatronTest("Clay Brown");
+    Patron patron = new PatronImpl("Clay Brown");
     library.addBook(book);
     library.registerPatron(patron);
     library.checkOutBook(book, patron);
-    assertFalse(patron.getCheckedOutBooks().contains(book));
+    assertTrue(patron.getCheckedOutBooks().contains(book));
     assertTrue(book.isCheckedOut());
   }
 
   @Test
   public void testReturnBook() {
-    Library library = new Library();
+    Jadaslibrary library = new Jadaslibrary();
     Book book = new Book("Nobody Knows My Name", "978-0679744733", "James Baldwin", 256);
-    Patron patron = new ConcretePatronTest("Bob Willson");
+    Patron patron = new PatronImpl("Bob Willson");
     library.addBook(book);
     library.registerPatron(patron);
     library.checkOutBook(book, patron);

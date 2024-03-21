@@ -1,15 +1,13 @@
-package com.codedifferently.lesson9.JadasLibraryTest;
+package com.codedifferently.lesson9.JadasLibrary;
 
-import com.codedifferently.lesson9.JadasLibrary.Book;
-import com.codedifferently.lesson9.JadasLibrary.Patron;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConcretePatronTest implements Patron {
+public class PatronImpl implements Patron {
   private String name;
   private List<Book> checkedOutBooks;
 
-  public ConcretePatronTest(String name) {
+  public PatronImpl(String name) {
     this.name = name;
     this.checkedOutBooks = new ArrayList<>();
   }
@@ -26,7 +24,7 @@ public class ConcretePatronTest implements Patron {
 
   @Override
   public List<Book> getCheckedOutBooks() {
-    return new ArrayList<>(checkedOutBooks);
+    return checkedOutBooks;
   }
 
   @Override
