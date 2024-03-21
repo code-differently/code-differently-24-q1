@@ -1,53 +1,42 @@
 package com.codedifferently.lesson9.jamira;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class BookTest {
-    private Book book;
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+
+
+public class BookTest {
     
 
     @Test
-public void testGetters() {
-    List<String> authors = new ArrayList<> ();
-    authors.add("Author1");
-    authors.add("Author2");
-    Book book = new Book("Title", "ISBN123", authors, 200, false);
-    
-    List<String> expectedAuthors = new ArrayList<> ();
-    expectedAuthors.add("Author1");
-    expectedAuthors.add("Author2");
-
-    assertEquals("Title", book.getTitle());
-    assertEquals("ISBN123", book.getIsbn());
-    assertEquals(expectedAuthors, book.getAuthors());
-    assertEquals(200, book.getNumPages());
-    assertFalse(book.isCheckedOut());
-}
-
+    public void testConstructorAndGetters() {
+        Book book = new Book ("Title",  "ISBN123", "author", 200, false);
+        assertEquals("Title", book.getTitle());
+        assertEquals("ISBN123", book.getIsbn());
+        assertEquals("author", book.getAuthor());
+        assertEquals(200, book.getNumPages());
+        assertFalse(book.isCheckedOut());
+    }
 
     @Test
     public void testSetters() {
-        book.setTitle("New Title");
-        assertEquals("New Title", book.getTitle());
+        Book java = new Book("Title", "ISBN123", "author", 200, false);
+        java.setTitle("Title2");
+        java.setIsbn("ISBN456");
+        java.setAuthor("author");
+        java.setNumPages(300);
+        java.setCheckedOut(false);
+        assertEquals("Title2",java.getTitle());
+        assertEquals("ISBN456", java.getIsbn());
+        assertEquals("author", java.getAuthor());
+        assertEquals(300, java.getNumPages());
+        assertFalse(java.isCheckedOut());
 
-        book.setIsbn("NEWISBN123");
-        assertEquals("NEWISBN123", book.getIsbn());
-
-        List<String> newAuthors = List.of("New Author");
-        book.setAuthors(newAuthors);
-        assertEquals(newAuthors, book.getAuthors());
-
-        book.setNumPages(300);
-        assertEquals(300, book.getNumPages());
-
-        book.setCheckedOut(true);
-        assertTrue(book.isCheckedOut());
     }
 }
-
 

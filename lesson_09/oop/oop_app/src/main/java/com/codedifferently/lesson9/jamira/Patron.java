@@ -7,38 +7,23 @@ public class Patron {
     private String name;
     private List<Book> checkedOutBooks;
 
-    // Constructor
-    public Patron(String name) {
+    public Patron(String name, List<Book> checkedOutBooks) {
         this.name = name;
-        this.checkedOutBooks = new ArrayList<>();
+        this.checkedOutBooks = checkedOutBooks;
     }
 
-    // Getters and setters
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public List<Book> getCheckedOutBooks() {
         return checkedOutBooks;
     }
 
-    public void setCheckedOutBooks(List<Book> checkedOutBooks) {
-        this.checkedOutBooks = checkedOutBooks;
-    }
-
-    public void addCheckedOutBook(Book book) {
-        checkedOutBooks.add(book);
-    }
-
-    public void removeCheckedOutBook(Book book) {
-        checkedOutBooks.remove(book);
-    }
-
-    public boolean hasCheckedOutBook(Book book) {
-        return checkedOutBooks.contains(book);
+    public void addCheckedOutBook(Book newBook) {
+        checkedOutBooks.add(newBook);
     }
 }
+
+
+

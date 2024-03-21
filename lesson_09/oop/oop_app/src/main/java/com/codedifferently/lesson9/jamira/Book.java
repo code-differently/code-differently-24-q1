@@ -1,22 +1,26 @@
 package com.codedifferently.lesson9.jamira;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class Book {
     private String title;
     private String isbn;
-    private List<String> authors= new ArrayList<>();
+    private String author;
     private int numPages;
     private boolean checkedOut;
 
     // Constructor
-    public Book(String title, String isbn, List<String> authors, int numPages, boolean checkedOut) {
+    public Book(String title, String isbn, List<String> list, int numPages, boolean checkedOut) {
         this.title = title;
         this.isbn = isbn;
-        this.authors = authors;
+        this.author = list;
         this.numPages = numPages;
         this.checkedOut = checkedOut; // Initially not checked out
+    }
+
+    public Book(String title, int isbn, String author, int numPages2, boolean checkedOut2) {
+        //TODO Auto-generated constructor stub
     }
 
     // Getters and setters
@@ -36,12 +40,12 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public List<String> getAuthors() {
-        return authors;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthors(List<String> authors) {
-        this.authors = authors;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public int getNumPages() {

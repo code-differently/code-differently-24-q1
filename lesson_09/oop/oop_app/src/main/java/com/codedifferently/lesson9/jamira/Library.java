@@ -30,6 +30,16 @@ public class Library {
         this.patrons = patrons;
     }
 
+    public void removeBook(Book bookToRemove) {
+        
+        throw new UnsupportedOperationException("Unimplemented method 'removeBook'");
+    }
+
+    public void addBook(Book newBook) {
+        
+        throw new UnsupportedOperationException("Unimplemented method 'addBook'");
+    }
+
     // Methods to add/remove books, register new patrons, check out and return books
     // Add appropriate methods as needed...
 }
