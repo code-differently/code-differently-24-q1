@@ -8,8 +8,8 @@ import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 class PatronTest {
 
@@ -62,10 +62,10 @@ class PatronTest {
     expectedBooks.add(book1);
     expectedBooks.add(book2);
 
-    library.addBook(book1);
-    library.addBook(book2);
-    library.checkOutBook(book1, classUnderTest);
-    library.checkOutBook(book2, classUnderTest);
+    library.addAsset(new Librarian("Jane", "A12342"), book1);
+    library.addAsset(new Librarian("Jane", "A12342"), book2);
+    library.checkOutItem(book1, classUnderTest);
+    library.checkOutItem(book2, classUnderTest);
 
     // Act & Assert
     assertThat(classUnderTest.getCheckedOutBooks()).isEqualTo(expectedBooks);

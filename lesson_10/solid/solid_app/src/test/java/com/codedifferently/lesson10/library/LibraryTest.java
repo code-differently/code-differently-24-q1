@@ -5,16 +5,16 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.codedifferently.lesson10.library.exceptions.BookCheckedOutException;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class LibraryTest {
-  private Library classUnderTest;
+  private Library classUnderTest = new Library("12342");
+  private Librarian librarian = new Librarian("John Book", "0");
 
-  @BeforeEach
-  void setUp() {
-    classUnderTest = new Library("compton-library");
-  }
+  // @BeforeEach
+  // void setUp() {
+  //   classUnderTest = new Library("compton-library");
+  // }
 
   @Test
   void testLibrary_canAddBooks() {
@@ -23,11 +23,11 @@ class LibraryTest {
         new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
     // Act
-    classUnderTest.addBook(book1);
-    classUnderTest.addBook(book2);
+    classUnderTest.addAsset(librarian, book1);
+    classUnderTest.addAsset(librarian, book2);
     // Assert
-    assertThat(classUnderTest.hasBook(book1)).isTrue();
-    assertThat(classUnderTest.hasBook(book2)).isTrue();
+    assertThat(classUnderTest.hasAsset(book1)).isTrue();
+    assertThat(classUnderTest.hasAsset(book2)).isTrue();
   }
 
   @Test
@@ -36,14 +36,14 @@ class LibraryTest {
     Book book1 =
         new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
-    classUnderTest.addBook(book1);
-    classUnderTest.addBook(book2);
+    classUnderTest.addAsset(librarian, book1);
+    classUnderTest.addAsset(librarian, book2);
     // Act
-    classUnderTest.removeBook(book1);
-    classUnderTest.removeBook(book2);
+    classUnderTest.removeAsset(librarian, book1);
+    classUnderTest.removeAsset(librarian, book2);
     // Assert
-    assertThat(classUnderTest.hasBook(book1)).isFalse();
-    assertThat(classUnderTest.hasBook(book2)).isFalse();
+    assertThat(classUnderTest.hasAsset(book1)).isFalse();
+    assertThat(classUnderTest.hasAsset(book2)).isFalse();
   }
 
   @Test
@@ -79,10 +79,10 @@ class LibraryTest {
     // Arrange
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com");
-    classUnderTest.addBook(book);
+    classUnderTest.addAsset(librarian, book);
     classUnderTest.addPatron(patron);
     // Act
-    boolean wasCheckedOut = classUnderTest.checkOutBook(book, patron);
+    boolean wasCheckedOut = classUnderTest.checkOutItem(book, patron);
     // Assert
     assertThat(wasCheckedOut).isTrue();
     assertThat(classUnderTest.isCheckedOut(book)).isTrue();
@@ -94,9 +94,9 @@ class LibraryTest {
     // Arrange
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com");
-    classUnderTest.addBook(book);
+    classUnderTest.addAsset(librarian, book);
     classUnderTest.addPatron(patron);
-    classUnderTest.checkOutBook(book, patron);
+    classUnderTest.checkOutItem(book, patron);
     // Act
     boolean wasReturned = classUnderTest.checkInBook(book, patron);
     // Assert
@@ -110,11 +110,11 @@ class LibraryTest {
     // Arrange
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com");
-    classUnderTest.addBook(book);
+    classUnderTest.addAsset(librarian, book);
     classUnderTest.addPatron(patron);
-    classUnderTest.checkOutBook(book, patron);
+    classUnderTest.checkOutItem(book, patron);
     // Act
-    boolean wasCheckedOut = classUnderTest.checkOutBook(book, patron);
+    boolean wasCheckedOut = classUnderTest.checkOutItem(book, patron);
     // Assert
     assertThat(wasCheckedOut).isFalse();
     assertThat(classUnderTest.isCheckedOut(book)).isTrue();
@@ -125,9 +125,9 @@ class LibraryTest {
     // Arrange
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com");
-    classUnderTest.addBook(book);
+    classUnderTest.addAsset(librarian, book);
     classUnderTest.addPatron(patron);
-    classUnderTest.checkOutBook(book, patron);
+    classUnderTest.checkOutItem(book, patron);
     // Act
     assertThatThrownBy(() -> classUnderTest.removePatron(patron))
         .isInstanceOf(BookCheckedOutException.class)
@@ -139,11 +139,11 @@ class LibraryTest {
     // Arrange
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("Jane Doe", "jane@example.com");
-    classUnderTest.addBook(book);
+    classUnderTest.addAsset(librarian, book);
     classUnderTest.addPatron(patron);
-    classUnderTest.checkOutBook(book, patron);
+    classUnderTest.checkOutItem(book, patron);
     // Act
-    assertThatThrownBy(() -> classUnderTest.removeBook(book))
+    assertThatThrownBy(() -> classUnderTest.removeAsset(librarian, book))
         .isInstanceOf(BookCheckedOutException.class)
         .hasMessage("Cannot remove checked out book.");
   }

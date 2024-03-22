@@ -21,7 +21,7 @@ class BookTest {
         new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
     library = mock(Library.class);
     when(library.getId()).thenReturn("Library 1");
-    when(library.hasBook(classUnderTest)).thenReturn(true);
+    when(library.hasAsset(classUnderTest)).thenReturn(true);
     classUnderTest.setLibrary(library);
   }
 
@@ -38,7 +38,7 @@ class BookTest {
   void testSetLibrary_WrongLibrary() {
     // Arrange
     Library otherLibrary = mock(Library.class);
-    when(otherLibrary.hasBook(classUnderTest)).thenReturn(false);
+    when(otherLibrary.hasAsset(classUnderTest)).thenReturn(false);
     when(otherLibrary.getId()).thenReturn("Library 2");
 
     // Act & Assert
@@ -55,7 +55,7 @@ class BookTest {
     // Act & Assert
     assertThatThrownBy(() -> classUnderTest.isCheckedOut())
         .isInstanceOf(LibraryNotSetException.class)
-        .hasMessageContaining("Library not set for book 978-0061120084");
+        .hasMessageContaining("Library not set for item 978-0061120084");
   }
 
   @Test
@@ -80,6 +80,6 @@ class BookTest {
   void testToString() {
     // Act & Assert
     assertThat(classUnderTest.toString())
-        .isEqualTo("Book{id='978-0061120084', title='To Kill a Mockingbird'}");
+        .isEqualTo("Item{id='978-0061120084', title='To Kill a Mockingbird'}");
   }
 }

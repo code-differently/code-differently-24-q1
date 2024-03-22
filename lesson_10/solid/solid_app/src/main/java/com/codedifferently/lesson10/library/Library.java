@@ -10,7 +10,7 @@ import java.util.Set;
 public class Library {
   private Set<String> bookIds = new HashSet<>();
   private Set<String> checkedOutIsbns = new HashSet<>();
-  private Map<String, Set<Book>> checkedOutBooksByPatron = new HashMap<>();
+  private Map<String, Set<LibraryAsset>> checkedOutItemsByPatron = new HashMap<>();
   private Set<String> patronIds = new HashSet<>();
   private String id;
 
@@ -37,8 +37,8 @@ public class Library {
    *
    * @param book The book to add.
    */
-  public void addBook(Book book) {
-    this.bookIds.add(book.getId());
+  public void addAsset(Librarian librarian, LibraryAsset book) {
+    this.bookIds.add(book.getIsbn());
     book.setLibrary(this);
   }
 
@@ -47,11 +47,11 @@ public class Library {
    *
    * @param book The book to remove.
    */
-  public void removeBook(Book book) throws BookCheckedOutException {
+  public void removeAsset(Librarian librarian, LibraryAsset book) throws BookCheckedOutException {
     if (this.isCheckedOut(book)) {
       throw new BookCheckedOutException("Cannot remove checked out book.");
     }
-    this.bookIds.remove(book.getId());
+    this.bookIds.remove(book.getIsbn());
     book.setLibrary(null);
   }
 
@@ -62,7 +62,7 @@ public class Library {
    */
   public void addPatron(Patron patron) {
     this.patronIds.add(patron.getId());
-    this.checkedOutBooksByPatron.put(patron.getId(), new HashSet<>());
+    this.checkedOutItemsByPatron.put(patron.getId(), new HashSet<>());
     patron.setLibrary(this);
   }
 
@@ -72,11 +72,11 @@ public class Library {
    * @param patron The patron to remove.
    */
   public void removePatron(Patron patron) throws BookCheckedOutException {
-    if (this.checkedOutBooksByPatron.get(patron.getId()).size() > 0) {
+    if (this.checkedOutItemsByPatron.get(patron.getId()).size() > 0) {
       throw new BookCheckedOutException("Cannot remove patron with checked out books.");
     }
     this.patronIds.remove(patron.getId());
-    this.checkedOutBooksByPatron.remove(patron.getId());
+    this.checkedOutItemsByPatron.remove(patron.getId());
     patron.setLibrary(null);
   }
 
@@ -87,23 +87,26 @@ public class Library {
    * @param patron The patron to check out the book to.
    * @return True if the book was checked out, false otherwise.
    */
-  public boolean checkOutBook(Book book, Patron patron) {
+  public boolean checkOutItem(Book book, Patron patron) {
     if (!this.canCheckOutBook(book, patron)) {
       return false;
     }
     this.checkedOutIsbns.add(book.getIsbn());
-    this.checkedOutBooksByPatron.get(patron.getId()).add(book);
+    this.checkedOutItemsByPatron.get(patron.getId()).add(book);
     return true;
   }
 
-  private boolean canCheckOutBook(Book book, Patron patron) {
-    if (!this.hasBook(book)) {
+  private boolean canCheckOutBook(LibraryAsset book, Patron patron) {
+    if (!this.hasAsset(book)) {
       return false;
     }
     if (this.isCheckedOut(book)) {
       return false;
     }
     if (!this.hasPatron(patron)) {
+      return false;
+    }
+    if (!book.getCanCheckOut()) {
       return false;
     }
     return true;
@@ -115,8 +118,8 @@ public class Library {
    * @param book The book to check for.
    * @return True if the library has the book, false otherwise.
    */
-  public boolean hasBook(Book book) {
-    return this.bookIds.contains(book.getId());
+  public boolean hasAsset(LibraryAsset book) {
+    return this.bookIds.contains(book.getIsbn());
   }
 
   /**
@@ -125,7 +128,7 @@ public class Library {
    * @param book The book to check.
    * @return True if the book is checked out, false otherwise.
    */
-  public boolean isCheckedOut(Book book) {
+  public boolean isCheckedOut(LibraryAsset book) {
     return this.checkedOutIsbns.contains(book.getIsbn());
   }
 
@@ -146,12 +149,12 @@ public class Library {
    * @param patron The patron returning the book.
    * @return True if the book was returned, false otherwise.
    */
-  public boolean checkInBook(Book book, Patron patron) {
-    if (!this.hasBook(book)) {
+  public boolean checkInBook(LibraryAsset book, Patron patron) {
+    if (!this.hasAsset(book)) {
       return false;
     }
     this.checkedOutIsbns.remove(book.getIsbn());
-    this.checkedOutBooksByPatron.get(patron.getId()).remove(book);
+    this.checkedOutItemsByPatron.get(patron.getId()).remove(book);
     return true;
   }
 
@@ -161,19 +164,19 @@ public class Library {
    * @param patron The patron to get the books for.
    * @return The books checked out by the patron.
    */
-  public Set<Book> getCheckedOutByPatron(Patron patron) {
-    return this.checkedOutBooksByPatron.get(patron.getId());
+  public Set<LibraryAsset> getCheckedOutByPatron(Patron patron) {
+    return this.checkedOutItemsByPatron.get(patron.getId());
   }
 
   @Override
   public String toString() {
     return "Library{"
-        + "bookIds="
+        + "ItemIds="
         + bookIds
         + ", checkedOutIsbns="
         + checkedOutIsbns
-        + ", checkedOutBooksByPatron="
-        + checkedOutBooksByPatron
+        + ", checkedOutItemsByPatron="
+        + checkedOutItemsByPatron
         + ", patronIds="
         + patronIds
         + '}';

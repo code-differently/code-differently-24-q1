@@ -7,8 +7,8 @@ import java.util.Set;
 
 /** Represents a patron of a library. */
 public class Patron {
-  private Library library;
-  private String name;
+  protected Library library;
+  protected String name;
   private String email;
 
   /**
@@ -21,6 +21,8 @@ public class Patron {
     this.name = name;
     this.email = email;
   }
+
+  public Patron() {}
 
   /**
    * Get the library that the patron is in.
@@ -52,7 +54,7 @@ public class Patron {
    * @return The books currently checked out to the patron.
    * @throws LibraryNotSetException If the library is not set for the patron.
    */
-  public Set<Book> getCheckedOutBooks() throws LibraryNotSetException {
+  public Set<LibraryAsset> getCheckedOutBooks() throws LibraryNotSetException {
     if (this.library == null) {
       throw new LibraryNotSetException("Library not set for patron " + this.getId());
     }
