@@ -9,22 +9,34 @@ import org.junit.jupiter.api.Test;
 public class BookTest {
 
   @Test
+  public void testConstructor() {
+    Book book = new Book("Title", 1234567890, "Author", 200, false);
+    assertEquals("Title", book.getTitles());
+        assertEquals(1234567890, book.getISBN());
+        assertEquals("Author", book.getAuthors());
+        assertEquals(200, book.getTotalPages());
+        assertFalse(book.getCheckedOut()); 
+  }
+
+
+
+  @Test
   public void testGetTitle() {
-    Book book = new Book("Children of Blood and Bone", "781250170972", "Tomi Adeyemi", 544);
-    assertEquals("Children of Blood and Bone", book.getTitle());
+    Book book = new Book("Children of Blood and Bone",972, "Tomi Adeyemi", 544, false);
+    assertEquals("Children of Blood and Bone", book.getTitles());
   }
 
   @Test
   public void testGetISBN() {
     Book book =
         new Book(
-            "The Sisters Grimm:The Fairy-Tale Detectives", "9780810970571", "Michael Buckley", 176);
+            "The Sisters Grimm:The Fairy-Tale Detectives",571, "Michael Buckley", 176,true);
     assertEquals("9780810970571", book.getISBN());
   }
 
   @Test
   public void testGetAuthors() {
-    Book book = new Book("A Light in the Attic", "9780060256739", "Shel Silverstein", 176);
+    Book book = new Book("A Light in the Attic",739, "Shel Silverstein", 176,true);
     assertEquals("Shel Silverstein", book.getAuthors());
   }
 
@@ -32,7 +44,7 @@ public class BookTest {
   public void testGetTotalPages() {
     Book book =
         new Book(
-            "Junie B. Jones and the Mushy Gushy Valentine", "9780375800408", "Barbara Park", 80);
+            "Junie B. Jones and the Mushy Gushy Valentine",408, "Barbara Park", 80,true);
     assertEquals(80, book.getTotalPages());
   }
 
@@ -40,23 +52,20 @@ public class BookTest {
   public void testGetCheckedOut() {
     Book book =
         new Book(
-            "Thirst: Human Urges, Fatal Consequences", "9780307237060", "Michael Farquhar", 384);
+            "Thirst: Human Urges, Fatal Consequences", 060, "Michael Farquhar", 384,false);
     assertFalse(book.getCheckedOut());
   }
 
   @Test
   public void testIsCheckedOut() {
     Book book =
-        new Book("Women Who Run with the Wolves", "9780345409874", "Clarissa Pinkola Estés", 560);
-    book.checkOut();
-    assertTrue(book.getCheckedOut());
+        new Book("Women Who Run with the Wolves",874, "Clarissa Pinkola Estés", 560,true);
+      assertTrue(book.getCheckedOut());
   }
 
   @Test
   public void testGetCheckedIn() {
-    Book book = new Book("Beloved", "9781400033416", "Toni Morrison", 324);
-    book.checkIn();
-    book.checkOut();
+    Book book = new Book("Beloved",416, "Toni Morrison", 324,false);
     assertFalse(book.getCheckedOut());
   }
 }
