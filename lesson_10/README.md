@@ -9,7 +9,7 @@
 ```
 3. If you would like to check your answers, you can run the following command:
 ```bash
-./gradlew test -Dprofile=prod
+./gradlew test -Dprofile=prod -DquizTaker={quiz file name}
 ```
 4. Submit a PR with your response. Your last submission up to the cutoff deadline will be accepted (3/20/24 @ 1:20 PM ET).
 
