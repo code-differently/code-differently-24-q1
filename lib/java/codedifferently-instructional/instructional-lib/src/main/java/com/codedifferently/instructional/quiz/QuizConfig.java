@@ -19,9 +19,18 @@ public class QuizConfig {
   private Map<String, List<String>> answersByProvider;
   private Map<String, List<QuizQuestion>> questionsByProvider;
   private Verifyer verifyer = BCrypt.verifyer();
+  private String quizTaker = "";
 
   public void setAnswers(Map<String, List<String>> answersByProvider) {
     this.answersByProvider = answersByProvider;
+  }
+
+  public void setQuizTaker(String quizTaker) {
+      this.quizTaker = quizTaker;
+  }
+
+  public String getQuizTaker() {
+      return this.quizTaker;
   }
 
   public void setQuestions(Map<String, List<QuestionConfig>> questionsByProvider) {
