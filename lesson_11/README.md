@@ -20,7 +20,7 @@ To help you complete the homework, I've updated the devcontainer configuration t
 5. Next, uninstall the [Extension Pack for Java][extension-pack] extension if it is still installed in VS Code.
 6. At this point, you should now be using the improved [Java Platform Support][java-platform] extensions that provide more reliable refactoring and unit testing support.
 
-## Using the VS Code refactoring tools.
+## Using VS Code Refactoring Tools
 
 Once you have the new tools setup, you should now be able to do things like rename a function or variable and update it everywhere it is used. You can [watch this YouTube video][renaming-video] to understand how this tooling works. 
 
