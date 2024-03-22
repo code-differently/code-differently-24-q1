@@ -1,29 +1,25 @@
 package com.codedifferently.lesson9.jamira;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Patron {
-    private String name;
-    private List<Book> checkedOutBooks;
+  private String name;
+  private List<Book> checkedOutBooks;
 
-    public Patron(String name, List<Book> checkedOutBooks) {
-        this.name = name;
-        this.checkedOutBooks = checkedOutBooks;
-    }
+  public Patron(String name, List<Book> checkedOutBooks) {
+    this.name = name;
+    this.checkedOutBooks = checkedOutBooks;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public List<Book> getCheckedOutBooks() {
-        return checkedOutBooks;
-    }
+  public List<Book> getCheckedOutBooks() {
+    return checkedOutBooks;
+  }
 
-    public void addCheckedOutBook(Book newBook) {
-        checkedOutBooks.add(newBook);
-    }
+  public void addCheckedOutBook(Book newBook) {
+    checkedOutBooks.add(newBook);
+  }
 }
-
-
-

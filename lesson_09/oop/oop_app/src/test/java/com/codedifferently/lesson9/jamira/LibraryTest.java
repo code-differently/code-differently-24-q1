@@ -1,49 +1,52 @@
 package com.codedifferently.lesson9.jamira;
 
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class LibraryTest {
-    private Library library;
+  private Library library;
 
-    @BeforeEach
-    public void setUp() {
-        List<Book> books = new ArrayList<>();
-        books.add(new Book("Book1", "ISBN1", List.of("Author1"), 100, true));
-        books.add(new Book("Book2", "ISBN2", List.of("Author2"), 150, true));
+  @BeforeEach
+  public void setUp() {
+    List<Book> books = new ArrayList<>();
+    books.add(new Book("Book1", "ISBN1", List.of("Author1"), 100, true));
+    books.add(new Book("Book2", "ISBN2", List.of("Author2"), 150, true));
 
-        library = new Library();
-    }
+    library = new Library();
+    library.setBooks(books);
+  }
 
-    @Test
-    public void testAddBook() {
-        Book newBook = new Book("New Book", "New ISBN", List.of("New Author"), 200, false);
-        library.addBook(newBook);
+  @Test
+  public void testAddBook() {
+    Book newBook = new Book("New Book", "New ISBN", List.of("New Author"), 200, false);
+    Book book1 = library.getBooks().get(0);
+    Book book2 = library.getBooks().get(1);
 
-        List<Book> expectedBooks = new ArrayList<>();
-        expectedBooks.add(new Book("Book1", "ISBN1", List.of("Author1"), 100, true));
-        expectedBooks.add(new Book("Book2", "ISBN2", List.of("Author2"), 150, true));
-        expectedBooks.add(newBook);
+    library.addBook(newBook);
 
-        assertEquals(expectedBooks.size(), library.getBooks().size());
-        assertEquals(expectedBooks, library.getBooks());
-    }
+    List<Book> expectedBooks = new ArrayList<>();
+    expectedBooks.add(book1);
+    expectedBooks.add(book2);
+    expectedBooks.add(newBook);
 
-    @Test
-    public void testRemoveBook() {
-        Book bookToRemove = new Book("Book1", "ISBN1", List.of("Author1"), 100, true);
-        library.removeBook(bookToRemove);
+    assertEquals(expectedBooks.size(), library.getBooks().size());
+    assertEquals(expectedBooks, library.getBooks());
+  }
 
-        List<Book> expectedBooks = new ArrayList<>();
-        expectedBooks.add(new Book("Book2", "ISBN2", List.of("Author2"), 150, true));
+  @Test
+  public void testRemoveBook() {
+    Book book1 = library.getBooks().get(0);
+    Book book2 = library.getBooks().get(1);
+    library.removeBook(book1);
 
-        assertEquals(expectedBooks.size(), library.getBooks().size());
-        assertEquals(expectedBooks, library.getBooks());
-    }
+    List<Book> expectedBooks = new ArrayList<>();
+    expectedBooks.add(book2);
+
+    assertEquals(expectedBooks.size(), library.getBooks().size());
+    assertEquals(expectedBooks, library.getBooks());
+  }
 }
