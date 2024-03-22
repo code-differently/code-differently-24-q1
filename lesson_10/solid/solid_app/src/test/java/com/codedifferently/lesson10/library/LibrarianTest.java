@@ -16,9 +16,9 @@ public class LibrarianTest {
 
     @Before
     public void setUp() {
-        librarian = new Librarian("John");
-        patron1 = new Patron("Alice");
-        patron2 = new Patron("Bob");
+        librarian = new Librarian("Libarian");
+        patron1 = new Patron("patron1");
+        patron2 = new Patron("patron2");
     }
 
     @Test

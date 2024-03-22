@@ -37,6 +37,8 @@ publi class Librarian {
         patron.checkInItem(item);
     }
 
+
+    // enum data types are used to define a set of constants.
 enum MediaTypes {
     BOOK,
     DVD,
