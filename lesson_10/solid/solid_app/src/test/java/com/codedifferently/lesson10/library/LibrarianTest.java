@@ -16,9 +16,15 @@ public class LibrarianTest {
 
     @Before
     public void setUp() {
+<<<<<<< HEAD
         librarian = new Librarian("Libarian");
         patron1 = new Patron("patron1");
         patron2 = new Patron("patron2");
+=======
+        librarian = new Librarian("John");
+        patron1 = new Patron("Alice");
+        patron2 = new Patron("Bob");
+>>>>>>> d7d8aca (feat: Implemented LibrarianTest.java file and added one test)
     }
 
     @Test
