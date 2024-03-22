@@ -4,7 +4,7 @@ import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 import java.util.Objects;
 
-public class LibraryAsset {
+public abstract class LibraryAsset {
 
   protected Library library;
   protected String title;
