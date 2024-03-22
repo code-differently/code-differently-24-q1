@@ -1,7 +1,7 @@
 package main.java.com.codedifferently.lesson10.library;
 
 
-public class Librarian implements Civilian{
+public class Librarian implements Member{
 
 
     @Override
