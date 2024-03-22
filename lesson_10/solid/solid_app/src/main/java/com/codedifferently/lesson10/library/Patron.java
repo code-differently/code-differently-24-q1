@@ -22,7 +22,7 @@ public class Patron {
     this.email = email;
   }
 
-  public Patron() {}
+  protected Patron() {}
 
   /**
    * Get the library that the patron is in.
