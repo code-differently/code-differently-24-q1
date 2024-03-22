@@ -2,22 +2,20 @@ package com.codedifferently.lesson10.library;
 
 import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
-
-import main.java.com.codedifferently.lesson10.library.Member;
-
 import java.util.Objects;
 import java.util.Set;
+import main.java.com.codedifferently.lesson10.library.Member;
 
 /** Represents a patron of a library. */
-public class Patron implements Member{
+public class Patron implements Member {
 
   public void checkOutItem() {
-    System.out.println( "Patron is checking out");
+    System.out.println("Patron is checking out");
   }
-public void returnItem(){
-  System.out.println("Patron is returning");
-}
 
+  public void returnItem() {
+    System.out.println("Patron is returning");
+  }
 
   private Library library;
   private String name;

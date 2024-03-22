@@ -1,9 +1,8 @@
 package main.java.com.codedifferently.lesson10.library;
 
+public interface Member {
 
- public interface Member {
+  void checkOutItem();
 
-    void checkOutItem();
-    void returnItem();
-
+  void returnItem();
 }

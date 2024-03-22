@@ -55,7 +55,6 @@ public class Library {
     book.setLibrary(null);
   }
 
-
   /**
    * Add a patron to the library.
    *
