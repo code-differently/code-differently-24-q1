@@ -2,8 +2,8 @@
 
 ## Homework
 
-* No additional assigned reading
-* Continue working on [Lesson 10][lesson-10] homework assignment.
+* No additional assigned book reading.
+* Continue working on [Lesson 10][lesson-10] homework assignment on **Applying SOLID Principles**.
 * Do the [housekeeping exercise](#housekeeping).
 
 ## Housekeeping
@@ -32,7 +32,7 @@ If you still run into issues here are some things you can try:
 
 ![alt text](./images/clean-workspace.png)
 
-[lesson-10]: /lesson_10/
+[lesson-10]: /lesson_10#applying-solid-principles-library-management-system-part-ii
 [extension-pack]: vscode:extension/vscjava.vscode-java-pack
 [java-platform]: vscode:extension/Oracle.oracle-java
 [renaming-video]: https://www.youtube.com/watch?v=S1Jzrmw0ww8
