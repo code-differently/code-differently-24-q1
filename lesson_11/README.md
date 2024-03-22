@@ -2,9 +2,9 @@
 
 ## Homework
 
-* No additional assigned book reading.
-* Continue working on [Lesson 10][lesson-10] homework assignment on **Applying SOLID Principles**.
 * Do the [housekeeping exercise](#housekeeping).
+* Continue working on [Lesson 10][lesson-10] homework assignment on **Applying SOLID Principles**.
+* No additional assigned book reading.
 
 ## Housekeeping
 
