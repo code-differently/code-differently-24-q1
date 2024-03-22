@@ -8,7 +8,7 @@ import java.util.Set;
 
 /** Represents a library. */
 public class Library {
-  private Set<String> assetIds = new HashSet<>();
+  private Set<String> bookIds = new HashSet<>();
   private Set<String> checkedOutIsbns = new HashSet<>();
   private Map<String, Set<Book>> checkedOutBooksByPatron = new HashMap<>();
   private Set<String> patronIds = new HashSet<>();
@@ -33,19 +33,18 @@ public class Library {
   }
 
   /**
-   * Add an asset to the Library if librarian is present.
+   * Add a book to the library.
    *
-   * @param asset The asset to add.
-   * 
-   * @param librarian The librarian adding the asset.
+   * @param librarian The librarian adding book.
+   * @param book The book to add.
    */
-  public void addAsset(Asset asset, Librarian librarian) {
+  public void addBook(Book book, Librarian librarian) {
     if (librarian == null) {
       throw new IllegalArgumentException("Librarian needed to add a book.");
     }
 
-    this.assetIds.add(asset.getId());
-    asset.setLibrary(this);
+    this.bookIds.add(book.getId());
+    book.setLibrary(this);
   }
 
   /**
