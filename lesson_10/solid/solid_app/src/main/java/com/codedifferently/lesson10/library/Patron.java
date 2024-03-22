@@ -38,12 +38,20 @@ public class Patron {
     this.library = library;
   }
 
-  /** Get the name of the patron. */
+  /**
+   * Get the name of the patron.
+   *
+   * @return String name of the patron
+   */
   public String getName() {
     return this.name;
   }
 
-  /** Get the email of the patron. */
+  /**
+   * Get the email of the patron.
+   *
+   * @return String patron email
+   */
   public String getId() {
     return this.email;
   }

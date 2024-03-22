@@ -23,7 +23,11 @@ public class Book extends LibraryAsset {
     this.canCheckOut = true;
   }
 
-  /** Get the authors of the book. */
+  /**
+   * Get the authors of the book.
+   *
+   * @return List<String> Returns a list of authors for the book.
+   */
   public List<String> getAuthors() {
     return authors;
   }

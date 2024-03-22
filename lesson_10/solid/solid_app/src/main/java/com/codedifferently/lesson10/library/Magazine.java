@@ -1,6 +1,7 @@
 package com.codedifferently.lesson10.library;
 
-import com.codedifferently.lesson10.library.exceptions.*;
+import com.codedifferently.lesson10.library.exceptions.ItemCantBeCheckOutException;
+import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 
 /** Magazine */
 public class Magazine extends LibraryAsset {
@@ -8,7 +9,6 @@ public class Magazine extends LibraryAsset {
   public Magazine(String title, String isbn) {
     this.title = title;
     this.isbn = isbn;
-    this.library = library;
     this.canCheckOut = false;
   }
 

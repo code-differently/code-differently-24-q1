@@ -8,7 +8,6 @@ public class Newspaper extends LibraryAsset {
   public Newspaper(String title, String isbn) {
     this.title = title;
     this.isbn = isbn;
-    this.library = library;
     this.canCheckOut = false;
   }
 

@@ -98,7 +98,7 @@ class LibraryTest {
     classUnderTest.addPatron(patron);
     classUnderTest.checkOutItem(book, patron);
     // Act
-    boolean wasReturned = classUnderTest.checkInBook(book, patron);
+    boolean wasReturned = classUnderTest.checkInItem(book, patron);
     // Assert
     assertThat(wasReturned).isTrue();
     assertThat(classUnderTest.isCheckedOut(book)).isFalse();
