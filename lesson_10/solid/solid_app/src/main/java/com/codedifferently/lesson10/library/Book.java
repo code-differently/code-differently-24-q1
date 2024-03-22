@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 /** Represents a book. */
-public class Book {
+public class Book implements Assets {
   private Library library;
   private String title;
   private String isbn;
@@ -82,6 +82,11 @@ public class Book {
       throw new LibraryNotSetException("Library not set for book " + this.getId());
     }
     return library.isCheckedOut(this);
+  }
+
+  @Override
+  public void canOrCantCheckOut() {
+    System.out.println("Enjoy your book!");
   }
 
   @Override

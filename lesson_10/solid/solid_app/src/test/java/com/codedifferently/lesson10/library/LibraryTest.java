@@ -19,12 +19,13 @@ class LibraryTest {
   @Test
   void testLibrary_canAddBooks() {
     // Arrange
+    Librarian librarian = new Librarian("Rich", classUnderTest, "rich@mail.com", 1234);
     Book book1 =
         new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
     // Act
-    classUnderTest.addBook(book1);
-    classUnderTest.addBook(book2);
+    classUnderTest.addBook(book1, librarian);
+    classUnderTest.addBook(book2, librarian);
     // Assert
     assertThat(classUnderTest.hasBook(book1)).isTrue();
     assertThat(classUnderTest.hasBook(book2)).isTrue();
@@ -33,14 +34,15 @@ class LibraryTest {
   @Test
   void testLibrary_canRemoveBooks() {
     // Arrange
+    Librarian librarian = new Librarian("Rich", classUnderTest, "Rich@mail.com", 1234);
     Book book1 =
         new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
-    classUnderTest.addBook(book1);
-    classUnderTest.addBook(book2);
+    classUnderTest.addBook(book1, librarian);
+    classUnderTest.addBook(book2, librarian);
     // Act
-    classUnderTest.removeBook(book1);
-    classUnderTest.removeBook(book2);
+    classUnderTest.removeBook(book1, librarian);
+    classUnderTest.removeBook(book2, librarian);
     // Assert
     assertThat(classUnderTest.hasBook(book1)).isFalse();
     assertThat(classUnderTest.hasBook(book2)).isFalse();
@@ -49,8 +51,8 @@ class LibraryTest {
   @Test
   void testLibrary_canAddPatrons() {
     // Arrange
-    Patron patron1 = new Patron("John Doe", "john@example.com");
-    Patron patron2 = new Patron("Jane Doe", "jane@example.com");
+    Patron patron1 = new Patron("John Doe", "john@example.com", classUnderTest);
+    Patron patron2 = new Patron("Jane Doe", "jane@example.com", classUnderTest);
     // Act
     classUnderTest.addPatron(patron1);
     classUnderTest.addPatron(patron2);
@@ -62,8 +64,8 @@ class LibraryTest {
   @Test
   void testLibrary_canRemovePatrons() {
     // Arrange
-    Patron patron1 = new Patron("John Doe", "john@example.com");
-    Patron patron2 = new Patron("Jane Doe", "jane@example.com");
+    Patron patron1 = new Patron("John Doe", "john@example.com", classUnderTest);
+    Patron patron2 = new Patron("Jane Doe", "jane@example.com", classUnderTest);
     classUnderTest.addPatron(patron1);
     classUnderTest.addPatron(patron2);
     // Act
@@ -77,9 +79,10 @@ class LibraryTest {
   @Test
   void testLibrary_allowsPatronToCheckoutBook() {
     // Arrange
+    Librarian librarian = new Librarian("Rich", classUnderTest, "Rich@mail.com", 1234);
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Patron patron = new Patron("John Doe", "john@example.com");
-    classUnderTest.addBook(book);
+    Patron patron = new Patron("John Doe", "john@example.com", classUnderTest);
+    classUnderTest.addBook(book, librarian);
     classUnderTest.addPatron(patron);
     // Act
     boolean wasCheckedOut = classUnderTest.checkOutBook(book, patron);
@@ -92,9 +95,10 @@ class LibraryTest {
   @Test
   void testLibrary_allowPatronToCheckInBook() {
     // Arrange
+    Librarian librarian = new Librarian("Rich", classUnderTest, "Rich@mail.com", 1234);
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Patron patron = new Patron("John Doe", "john@example.com");
-    classUnderTest.addBook(book);
+    Patron patron = new Patron("John Doe", "john@example.com", classUnderTest);
+    classUnderTest.addBook(book, librarian);
     classUnderTest.addPatron(patron);
     classUnderTest.checkOutBook(book, patron);
     // Act
@@ -108,9 +112,10 @@ class LibraryTest {
   @Test
   void testLibrary_preventsMultipleCheckouts() {
     // Arrange
+    Librarian librarian = new Librarian("Rich", classUnderTest, "Rich@mail.com", 1234);
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Patron patron = new Patron("John Doe", "john@example.com");
-    classUnderTest.addBook(book);
+    Patron patron = new Patron("John Doe", "john@example.com", classUnderTest);
+    classUnderTest.addBook(book, librarian);
     classUnderTest.addPatron(patron);
     classUnderTest.checkOutBook(book, patron);
     // Act
@@ -123,9 +128,10 @@ class LibraryTest {
   @Test
   void testLibrary_preventsRemovingPatronWithCheckedOutBooks() {
     // Arrange
+    Librarian librarian = new Librarian("Rich", classUnderTest, "Rich@mail.com", 1234);
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Patron patron = new Patron("John Doe", "john@example.com");
-    classUnderTest.addBook(book);
+    Patron patron = new Patron("John Doe", "john@example.com", classUnderTest);
+    classUnderTest.addBook(book, librarian);
     classUnderTest.addPatron(patron);
     classUnderTest.checkOutBook(book, patron);
     // Act
@@ -137,13 +143,14 @@ class LibraryTest {
   @Test
   void testLibrary_preventsRemovingCheckedOutBooks() {
     // Arrange
+    Librarian librarian = new Librarian("Rich", classUnderTest, "Rich@mail.com", 1234);
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Patron patron = new Patron("Jane Doe", "jane@example.com");
-    classUnderTest.addBook(book);
+    Patron patron = new Patron("Jane Doe", "jane@example.com", classUnderTest);
+    classUnderTest.addBook(book, librarian);
     classUnderTest.addPatron(patron);
     classUnderTest.checkOutBook(book, patron);
     // Act
-    assertThatThrownBy(() -> classUnderTest.removeBook(book))
+    assertThatThrownBy(() -> classUnderTest.removeBook(book, librarian))
         .isInstanceOf(BookCheckedOutException.class)
         .hasMessage("Cannot remove checked out book.");
   }

@@ -18,7 +18,7 @@ class PatronTest {
 
   @BeforeEach
   void setUp() {
-    classUnderTest = new Patron("John Doe", "johndoe@example.com");
+    classUnderTest = new Patron("John Doe", "johndoe@example.com", library);
     library = new Library("Library 1");
     library.addPatron(classUnderTest);
   }
@@ -55,6 +55,7 @@ class PatronTest {
   @Test
   void testGetCheckedOutBooks() {
     // Arrange
+    Librarian librarian = new Librarian("Rich", library, "Rich@mail.com", 12345);
     Book book1 =
         new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
@@ -62,8 +63,8 @@ class PatronTest {
     expectedBooks.add(book1);
     expectedBooks.add(book2);
 
-    library.addBook(book1);
-    library.addBook(book2);
+    library.addBook(book1, librarian);
+    library.addBook(book2, librarian);
     library.checkOutBook(book1, classUnderTest);
     library.checkOutBook(book2, classUnderTest);
 

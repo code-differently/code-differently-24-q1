@@ -8,7 +8,7 @@ import java.util.Set;
 
 /** Represents a library. */
 public class Library {
-  private Set<String> bookIds = new HashSet<>();
+  private Set<String> assetIds = new HashSet<>();
   private Set<String> checkedOutIsbns = new HashSet<>();
   private Map<String, Set<Book>> checkedOutBooksByPatron = new HashMap<>();
   private Set<String> patronIds = new HashSet<>();
@@ -33,13 +33,19 @@ public class Library {
   }
 
   /**
-   * Add a book to the library.
+   * Add an asset to the Library if librarian is present.
    *
-   * @param book The book to add.
+   * @param asset The asset to add.
+   * 
+   * @param librarian The librarian adding the asset.
    */
-  public void addBook(Book book) {
-    this.bookIds.add(book.getId());
-    book.setLibrary(this);
+  public void addAsset(Asset asset, Librarian librarian) {
+    if (librarian == null) {
+      throw new IllegalArgumentException("Librarian needed to add a book.");
+    }
+
+    this.assetIds.add(asset.getId());
+    asset.setLibrary(this);
   }
 
   /**
@@ -47,9 +53,12 @@ public class Library {
    *
    * @param book The book to remove.
    */
-  public void removeBook(Book book) throws BookCheckedOutException {
+  public void removeBook(Book book, Librarian librarian) throws BookCheckedOutException {
     if (this.isCheckedOut(book)) {
       throw new BookCheckedOutException("Cannot remove checked out book.");
+    }
+    if (librarian == null) {
+      throw new IllegalArgumentException("Librarian needed to remove a book.");
     }
     this.bookIds.remove(book.getId());
     book.setLibrary(null);

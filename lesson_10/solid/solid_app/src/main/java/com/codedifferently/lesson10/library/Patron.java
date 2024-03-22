@@ -7,9 +7,9 @@ import java.util.Set;
 
 /** Represents a patron of a library. */
 public class Patron {
-  private Library library;
-  private String name;
-  private String email;
+  protected Library library;
+  protected String name;
+  protected String email;
 
   /**
    * Create a new patron with the given name and email.
@@ -17,9 +17,10 @@ public class Patron {
    * @param name The name of the patron.
    * @param email The email of the patron.
    */
-  public Patron(String name, String email) {
+  public Patron(String name, String email, Library library) {
     this.name = name;
     this.email = email;
+    this.library = library;
   }
 
   /**
@@ -39,6 +40,11 @@ public class Patron {
   /** Get the name of the patron. */
   public String getName() {
     return this.name;
+  }
+
+  /** Set the name of the patron. */
+  public void setName(String name) {
+    this.name = name;
   }
 
   /** Get the email of the patron. */
