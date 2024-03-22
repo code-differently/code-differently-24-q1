@@ -22,7 +22,7 @@ public class LibraryAsset {
   public void setLibrary(Library library) throws WrongLibraryException {
     if (library != null && !library.hasAsset(this)) {
       throw new WrongLibraryException(
-          "Book " + this.getIsbn() + " is not in library " + library.getId());
+          "Item " + this.getIsbn() + " is not in library " + library.getId());
     }
     this.library = library;
   }
@@ -57,9 +57,9 @@ public class LibraryAsset {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (!(o instanceof Book)) return false;
-    Book book = (Book) o;
-    return Objects.equals(getIsbn(), book.getIsbn());
+    if (!(o instanceof LibraryAsset)) return false;
+    LibraryAsset asset = (LibraryAsset) o;
+    return Objects.equals(getIsbn(), asset.getIsbn());
   }
 
   @Override
