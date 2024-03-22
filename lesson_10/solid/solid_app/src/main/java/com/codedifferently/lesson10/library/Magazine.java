@@ -9,9 +9,11 @@ public class Magazine extends LibraryAsset {
   public Magazine(String title, String isbn) {
     this.title = title;
     this.isbn = isbn;
-    this.canCheckOut = false;
   }
-
+  @Override
+    public Boolean isAbleToCheckOut(){
+      return false;
+    }
   @Override
   public boolean isCheckedOut() throws LibraryNotSetException {
     throw new ItemCantBeCheckOutException("This Item Cant Be Checked Out.");

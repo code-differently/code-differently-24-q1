@@ -9,7 +9,6 @@ public abstract class LibraryAsset {
   protected Library library;
   protected String title;
   protected String isbn;
-  protected boolean canCheckOut = true;
 
   LibraryAsset() {}
 
@@ -27,18 +26,24 @@ public abstract class LibraryAsset {
     this.library = library;
   }
 
-  /** Get the title of the book. */
+  /** Get the title of the item.
+   * 
+   * @return String The title of the item.
+   */
   public String getTitle() {
     return title;
   }
 
-  /** Get the ISBN of the book. */
+  /** Get the ISBN of the book. 
+   * 
+   * @return String The Isbn of an item.
+  */
   public String getIsbn() {
     return isbn;
   }
 
-  public Boolean getCanCheckOut() {
-    return this.canCheckOut;
+  public Boolean isAbleToCheckOut(){
+    return true;
   }
 
   /**

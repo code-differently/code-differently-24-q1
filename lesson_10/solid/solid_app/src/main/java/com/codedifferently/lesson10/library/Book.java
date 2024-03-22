@@ -20,13 +20,12 @@ public class Book extends LibraryAsset {
     this.isbn = isbn;
     this.authors = authors;
     this.numberOfPages = numberOfPages;
-    this.canCheckOut = true;
   }
 
   /**
    * Get the authors of the book.
    *
-   * @return List<String> Returns a list of authors for the book.
+   * @return List<> Returns a list of authors for the book.
    */
   public List<String> getAuthors() {
     return authors;

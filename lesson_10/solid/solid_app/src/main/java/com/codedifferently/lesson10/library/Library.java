@@ -108,7 +108,7 @@ public class Library {
     if (!this.hasPatron(patron)) {
       return false;
     }
-    if (!asset.getCanCheckOut()) {
+    if (!asset.isAbleToCheckOut()) {
       return false;
     }
     return true;
