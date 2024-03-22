@@ -2,18 +2,25 @@ package com.codedifferently.lesson9.natayaprice;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 public class PatronTest {
- 
- @Test
-void testPatronConstruction() {
-  Patron patron = new Patron("Jane Smith");
-}
- 
+
+  /** Tests the registration of a patron with the library. */
+  @Test
+  public void testRegisterPatron() {
+    Patron patron = new Patron("John Doe", "john@example.com");
+    Library library = new Library();
+    library.registerPatron(patron);
+    assertTrue(
+        library.getPatrons().contains(patron), "Patron should be registered with the library");
+  }
+
+  /** Tests the patron-books checked out map. */
   @Test
   public void testPatronBooksCheckedOutMap() {
 
@@ -33,5 +40,4 @@ void testPatronConstruction() {
 
     assertNull(patronBooksCheckedOutMap.get("Nonexistent Patron"));
   }
-
- }
+}
