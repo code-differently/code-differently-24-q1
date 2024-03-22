@@ -17,8 +17,8 @@ To help you complete the homework, I've updated the devcontainer configuration t
 ![alt text](./images/rebuild-without-cache.png)
 
 4. Let everything run for a couple of minutes to allow the extensions time to install.
-5. Next, uninstall the **[Extension Pack for Java][extension-pack]** extension if it is still installed in VS Code.
-6. At this point, you should now be using the improved **[Java Platform Support][java-platform]** extensions that provide more reliable refactoring and unit testing support.
+5. Next, uninstall the _[Extension Pack for Java][extension-pack]_ extension if it is still installed in VS Code.
+6. At this point, you should now be using the improved _[Java Platform Support][java-platform]_ extensions that provide more reliable refactoring and unit testing support.
 
 ## Using VS Code Refactoring Tools
 
