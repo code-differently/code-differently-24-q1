@@ -1,4 +1,4 @@
-package main.java.com.codedifferently.lesson10.library;
+package com.codedifferently.lesson10.library;
 
 public class Librarian implements Member {
 

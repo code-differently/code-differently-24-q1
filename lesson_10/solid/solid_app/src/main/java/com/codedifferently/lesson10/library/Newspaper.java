@@ -1,4 +1,4 @@
-package main.java.com.codedifferently;
+package com.codedifferently.lesson10.library;
 
 public class Newspaper {
 
