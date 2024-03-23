@@ -5,6 +5,7 @@ plugins {
     id("com.diffplug.spotless") version "6.25.0"
 	  id("org.springframework.boot") version "3.2.2"
     id("com.adarshr.test-logger") version "4.0.0"
+    id("io.freefair.lombok") version "8.6"
 }
 
 apply(plugin = "io.spring.dependency-management")
@@ -26,7 +27,6 @@ dependencies {
     implementation("com.codedifferently.instructional:instructional-lib")
     implementation("com.google.guava:guava:31.1-jre")
     implementation("com.google.code.gson:gson:2.10.1")
-    implementation("org.projectlombok:lombok:1.18.30")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.3")

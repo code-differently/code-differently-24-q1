@@ -2,6 +2,7 @@ package com.codedifferently.lesson12.library;
 
 import com.codedifferently.lesson12.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson12.library.exceptions.WrongLibraryException;
+import com.codedifferently.lesson12.library.search.SearchCriteria;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -46,6 +47,30 @@ public abstract class MediaItemBase implements MediaItem {
   @Override
   public boolean canCheckOut() {
     return true;
+  }
+
+  /**
+   * Check if the media item matches the given author.
+   *
+   * @param author The author to check.
+   * @return True if the media item matches the author, false otherwise.
+   */
+  protected boolean matchesAuthor(String author) {
+    return false;
+  }
+
+  @Override
+  public boolean matches(SearchCriteria query) {
+    if (query.id != null && !this.getId().toString().equalsIgnoreCase(query.id)) {
+      return false;
+    }
+    if (query.title != null && !this.getTitle().toLowerCase().contains(query.title.toLowerCase())) {
+      return false;
+    }
+    if (query.type != null && !this.getType().equalsIgnoreCase(query.type)) {
+      return false;
+    }
+    return this.matchesAuthor(query.author);
   }
 
   @Override

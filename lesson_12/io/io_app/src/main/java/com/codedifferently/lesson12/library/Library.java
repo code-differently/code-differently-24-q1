@@ -1,6 +1,9 @@
 package com.codedifferently.lesson12.library;
 
 import com.codedifferently.lesson12.library.exceptions.MediaItemCheckedOutException;
+import com.codedifferently.lesson12.library.search.CatalogSearcher;
+import com.codedifferently.lesson12.library.search.SearchCriteria;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -9,11 +12,12 @@ import java.util.UUID;
 
 /** Represents a library. */
 public class Library {
-  private final Set<UUID> itemIds = new HashSet<>();
+  private final Map<UUID, MediaItem> itemsById = new HashMap<>();
   private final Set<UUID> checkedOutItemIds = new HashSet<>();
   private final Map<String, Set<MediaItem>> checkedOutItemsByGuest = new HashMap<>();
-  private final Set<String> guestIds = new HashSet<>();
+  private final Map<String, LibraryGuest> guestsById = new HashMap<>();
   private final String id;
+  private final CatalogSearcher<MediaItem> searcher;
 
   /**
    * Create a new library with the given id.
@@ -22,6 +26,7 @@ public class Library {
    */
   public Library(String id) {
     this.id = id;
+    this.searcher = new CatalogSearcher(this.itemsById.values());
   }
 
   /**
@@ -40,7 +45,7 @@ public class Library {
    * @param librarian The librarian adding the item.
    */
   public void addMediaItem(MediaItem item, Librarian librarian) {
-    this.itemIds.add(item.getId());
+    this.itemsById.put(item.getId(), item);
     item.setLibrary(this);
   }
 
@@ -55,8 +60,18 @@ public class Library {
     if (this.isCheckedOut(item)) {
       throw new MediaItemCheckedOutException("Cannot remove checked out item.");
     }
-    this.itemIds.remove(item.getId());
+    this.itemsById.remove(item.getId());
     item.setLibrary(null);
+  }
+
+  /**
+   * Search the library for items matching the given query.
+   *
+   * @param query The query to search for.
+   * @return The items matching the query.
+   */
+  public Set<MediaItem> search(SearchCriteria query) {
+    return new HashSet<>(this.searcher.search(query));
   }
 
   /**
@@ -65,7 +80,7 @@ public class Library {
    * @param guest The guest to add.
    */
   public void addLibraryGuest(LibraryGuest guest) {
-    this.guestIds.add(guest.getId());
+    this.guestsById.put(guest.getId(), guest);
     this.checkedOutItemsByGuest.put(guest.getId(), new HashSet<>());
     guest.setLibrary(this);
   }
@@ -79,7 +94,7 @@ public class Library {
     if (!this.checkedOutItemsByGuest.get(guest.getId()).isEmpty()) {
       throw new MediaItemCheckedOutException("Cannot remove guest with checked out items.");
     }
-    this.guestIds.remove(guest.getId());
+    this.guestsById.remove(guest.getId());
     this.checkedOutItemsByGuest.remove(guest.getId());
     guest.setLibrary(null);
   }
@@ -110,10 +125,7 @@ public class Library {
     if (this.isCheckedOut(item)) {
       return false;
     }
-    if (!this.hasLibraryGuest(guest)) {
-      return false;
-    }
-    return true;
+    return this.hasLibraryGuest(guest);
   }
 
   /**
@@ -123,7 +135,7 @@ public class Library {
    * @return True if the library has the item, false otherwise.
    */
   public boolean hasMediaItem(MediaItem item) {
-    return this.itemIds.contains(item.getId());
+    return this.itemsById.containsKey(item.getId());
   }
 
   /**
@@ -143,7 +155,7 @@ public class Library {
    * @return True if the library has the guest, false otherwise.
    */
   public boolean hasLibraryGuest(LibraryGuest guest) {
-    return this.guestIds.contains(guest.getId());
+    return this.guestsById.containsKey(guest.getId());
   }
 
   /**
@@ -172,17 +184,40 @@ public class Library {
     return this.checkedOutItemsByGuest.get(guest.getId());
   }
 
+  /**
+   * Get a snapshot of the library info.
+   *
+   * @return The library info.
+   */
+  public LibraryInfo getInfo() {
+    Map<String, Set<MediaItem>> itemsByGuest =
+        this.checkedOutItemsByGuest.entrySet().stream()
+            .collect(
+                HashMap::new,
+                (map, entry) ->
+                    map.put(
+                        entry.getKey(),
+                        Collections.unmodifiableSet(new HashSet<>(entry.getValue()))),
+                HashMap::putAll);
+    return LibraryInfo.builder()
+        .id(this.id)
+        .items(Collections.unmodifiableSet(new HashSet<>(this.itemsById.values())))
+        .guests(Collections.unmodifiableSet(new HashSet<>(this.guestsById.values())))
+        .checkedOutItemsByGuest(Collections.unmodifiableMap(itemsByGuest))
+        .build();
+  }
+
   @Override
   public String toString() {
     return "Library{"
-        + "itemIds="
-        + itemIds
+        + "itemsById="
+        + itemsById
         + ", checkedOutItemIds="
         + checkedOutItemIds
         + ", checkedOutMediaItemsByLibraryGuest="
         + checkedOutItemsByGuest
         + ", guestIds="
-        + guestIds
+        + guestsById
         + '}';
   }
 }

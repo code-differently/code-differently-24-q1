@@ -9,6 +9,11 @@ public class Newspaper extends MediaItemBase {
   }
 
   @Override
+  public String getType() {
+    return "newspaper";
+  }
+
+  @Override
   public boolean canCheckOut() {
     return false;
   }

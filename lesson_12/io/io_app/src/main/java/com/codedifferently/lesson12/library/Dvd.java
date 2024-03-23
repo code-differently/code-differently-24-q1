@@ -9,6 +9,11 @@ public class Dvd extends MediaItemBase {
   }
 
   @Override
+  public String getType() {
+    return "dvd";
+  }
+
+  @Override
   public String toString() {
     return "Dvd{" + "id='" + getId() + '\'' + ", title='" + getTitle() + '\'' + '}';
   }

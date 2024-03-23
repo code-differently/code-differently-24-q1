@@ -2,10 +2,18 @@ package com.codedifferently.lesson12.library;
 
 import com.codedifferently.lesson12.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson12.library.exceptions.WrongLibraryException;
+import com.codedifferently.lesson12.library.search.Searchable;
 import java.util.UUID;
 
 /** Represents a media item. */
-public interface MediaItem {
+public interface MediaItem extends Searchable {
+  /**
+   * Get the type of the media item.
+   *
+   * @return The type of the media item.
+   */
+  public String getType();
+
   /**
    * Get the id of the media item.
    *

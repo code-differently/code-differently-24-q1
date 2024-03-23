@@ -25,6 +25,11 @@ public class Book extends MediaItemBase {
     this.numberOfPages = numberOfPages;
   }
 
+  @Override
+  public String getType() {
+    return "book";
+  }
+
   /**
    * Get the ISBN of the book.
    *
@@ -50,6 +55,19 @@ public class Book extends MediaItemBase {
    */
   public int getNumberOfPages() {
     return this.numberOfPages;
+  }
+
+  @Override
+  protected boolean matchesAuthor(String authorQuery) {
+    if (authorQuery == null) {
+      return true;
+    }
+    for (String author : this.getAuthors()) {
+      if (author.toLowerCase().contains(authorQuery.toLowerCase())) {
+        return true;
+      }
+    }
+    return false;
   }
 
   @Override

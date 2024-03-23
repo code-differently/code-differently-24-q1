@@ -20,6 +20,11 @@ class MediaItemBaseTest {
     public MockMediaItem(UUID id, String title) {
       super(id, title);
     }
+
+    @Override
+    public String getType() {
+      return "mock";
+    }
   }
 
   @BeforeEach
