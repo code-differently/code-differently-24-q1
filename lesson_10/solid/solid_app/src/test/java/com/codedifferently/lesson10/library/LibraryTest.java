@@ -17,35 +17,35 @@ class LibraryTest {
   }
 
   @Test
-  void testLibrary_canAddBooks() {
+  void testLibrary_canAddMedia() {
     // Arrange
-    Librarian librarian = new Librarian("Rich", classUnderTest, "rich@mail.com", 1234);
+    Librarian librarian = new Librarian("Rich", "rich@mail.com", classUnderTest);
     Book book1 =
         new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
     // Act
-    classUnderTest.addBook(book1, librarian);
-    classUnderTest.addBook(book2, librarian);
+    classUnderTest.addMedia(book1, librarian);
+    classUnderTest.addMedia(book2, librarian);
     // Assert
-    assertThat(classUnderTest.hasBook(book1)).isTrue();
-    assertThat(classUnderTest.hasBook(book2)).isTrue();
+    assertThat(classUnderTest.hasMediaItem(book1)).isTrue();
+    assertThat(classUnderTest.hasMediaItem(book2)).isTrue();
   }
 
   @Test
-  void testLibrary_canRemoveBooks() {
+  void testLibrary_canRemoveMedia() {
     // Arrange
-    Librarian librarian = new Librarian("Rich", classUnderTest, "Rich@mail.com", 1234);
+    Librarian librarian = new Librarian("Rich", "Rich@mail.com", classUnderTest);
     Book book1 =
         new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
-    classUnderTest.addBook(book1, librarian);
-    classUnderTest.addBook(book2, librarian);
+    classUnderTest.addMedia(book1, librarian);
+    classUnderTest.addMedia(book2, librarian);
     // Act
-    classUnderTest.removeBook(book1, librarian);
-    classUnderTest.removeBook(book2, librarian);
+    classUnderTest.removeMediaItem(book1, librarian);
+    classUnderTest.removeMediaItem(book2, librarian);
     // Assert
-    assertThat(classUnderTest.hasBook(book1)).isFalse();
-    assertThat(classUnderTest.hasBook(book2)).isFalse();
+    assertThat(classUnderTest.hasMediaItem(book1)).isFalse();
+    assertThat(classUnderTest.hasMediaItem(book2)).isFalse();
   }
 
   @Test
@@ -77,49 +77,49 @@ class LibraryTest {
   }
 
   @Test
-  void testLibrary_allowsPatronToCheckoutBook() {
+  void testLibrary_allowsPatronToCheckoutMedia() {
     // Arrange
-    Librarian librarian = new Librarian("Rich", classUnderTest, "Rich@mail.com", 1234);
+    Librarian librarian = new Librarian("Rich", "Rich@mail.com", classUnderTest);
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com", classUnderTest);
-    classUnderTest.addBook(book, librarian);
+    classUnderTest.addMedia(book, librarian);
     classUnderTest.addPatron(patron);
     // Act
-    boolean wasCheckedOut = classUnderTest.checkOutBook(book, patron);
+    boolean wasCheckedOut = classUnderTest.checkOutMediaItem(book, patron);
     // Assert
     assertThat(wasCheckedOut).isTrue();
     assertThat(classUnderTest.isCheckedOut(book)).isTrue();
-    assertThat(patron.getCheckedOutBooks().contains(book)).isTrue();
+    assertThat(patron.getCheckedOutMedia().contains(book)).isTrue();
   }
 
   @Test
-  void testLibrary_allowPatronToCheckInBook() {
+  void testLibrary_allowPatronToCheckInMedia() {
     // Arrange
-    Librarian librarian = new Librarian("Rich", classUnderTest, "Rich@mail.com", 1234);
+    Librarian librarian = new Librarian("Rich", "Rich@mail.com", classUnderTest);
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com", classUnderTest);
-    classUnderTest.addBook(book, librarian);
+    classUnderTest.addMedia(book, librarian);
     classUnderTest.addPatron(patron);
-    classUnderTest.checkOutBook(book, patron);
+    classUnderTest.checkOutMediaItem(book, patron);
     // Act
-    boolean wasReturned = classUnderTest.checkInBook(book, patron);
+    boolean wasReturned = classUnderTest.checkInMediaItem(book, patron);
     // Assert
     assertThat(wasReturned).isTrue();
     assertThat(classUnderTest.isCheckedOut(book)).isFalse();
-    assertThat(patron.getCheckedOutBooks().contains(book)).isFalse();
+    assertThat(patron.getCheckedOutMedia().contains(book)).isFalse();
   }
 
   @Test
   void testLibrary_preventsMultipleCheckouts() {
     // Arrange
-    Librarian librarian = new Librarian("Rich", classUnderTest, "Rich@mail.com", 1234);
+    Librarian librarian = new Librarian("Rich", "Rich@mail.com", classUnderTest);
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com", classUnderTest);
-    classUnderTest.addBook(book, librarian);
+    classUnderTest.addMedia(book, librarian);
     classUnderTest.addPatron(patron);
-    classUnderTest.checkOutBook(book, patron);
+    classUnderTest.checkOutMediaItem(book, patron);
     // Act
-    boolean wasCheckedOut = classUnderTest.checkOutBook(book, patron);
+    boolean wasCheckedOut = classUnderTest.checkOutMediaItem(book, patron);
     // Assert
     assertThat(wasCheckedOut).isFalse();
     assertThat(classUnderTest.isCheckedOut(book)).isTrue();
@@ -128,30 +128,30 @@ class LibraryTest {
   @Test
   void testLibrary_preventsRemovingPatronWithCheckedOutBooks() {
     // Arrange
-    Librarian librarian = new Librarian("Rich", classUnderTest, "Rich@mail.com", 1234);
+    Librarian librarian = new Librarian("Rich", "Rich@mail.com", classUnderTest);
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com", classUnderTest);
-    classUnderTest.addBook(book, librarian);
+    classUnderTest.addMedia(book, librarian);
     classUnderTest.addPatron(patron);
-    classUnderTest.checkOutBook(book, patron);
+    classUnderTest.checkOutMediaItem(book, patron);
     // Act
     assertThatThrownBy(() -> classUnderTest.removePatron(patron))
         .isInstanceOf(BookCheckedOutException.class)
-        .hasMessage("Cannot remove patron with checked out books.");
+        .hasMessage("Cannot remove patron with checked out media.");
   }
 
   @Test
-  void testLibrary_preventsRemovingCheckedOutBooks() {
+  void testLibrary_preventsRemovingCheckedOutMedia() {
     // Arrange
-    Librarian librarian = new Librarian("Rich", classUnderTest, "Rich@mail.com", 1234);
+    Librarian librarian = new Librarian("Rich", "Rich@mail.com", classUnderTest);
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("Jane Doe", "jane@example.com", classUnderTest);
-    classUnderTest.addBook(book, librarian);
+    classUnderTest.addMedia(book, librarian);
     classUnderTest.addPatron(patron);
-    classUnderTest.checkOutBook(book, patron);
+    classUnderTest.checkOutMediaItem(book, patron);
     // Act
-    assertThatThrownBy(() -> classUnderTest.removeBook(book, librarian))
+    assertThatThrownBy(() -> classUnderTest.removeMediaItem(book, librarian))
         .isInstanceOf(BookCheckedOutException.class)
-        .hasMessage("Cannot remove checked out book.");
+        .hasMessage("Cannot remove checked out media.");
   }
 }

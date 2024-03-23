@@ -2,7 +2,8 @@ package com.codedifferently.lesson10.library;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
@@ -21,7 +22,7 @@ class BookTest {
         new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
     library = mock(Library.class);
     when(library.getId()).thenReturn("Library 1");
-    when(library.hasBook(classUnderTest)).thenReturn(true);
+    when(library.hasMediaItem(classUnderTest)).thenReturn(true);
     classUnderTest.setLibrary(library);
   }
 
@@ -38,13 +39,13 @@ class BookTest {
   void testSetLibrary_WrongLibrary() {
     // Arrange
     Library otherLibrary = mock(Library.class);
-    when(otherLibrary.hasBook(classUnderTest)).thenReturn(false);
+    when(otherLibrary.hasMediaItem(classUnderTest)).thenReturn(false);
     when(otherLibrary.getId()).thenReturn("Library 2");
 
     // Act & Assert
     assertThatThrownBy(() -> classUnderTest.setLibrary(otherLibrary))
         .isInstanceOf(WrongLibraryException.class)
-        .hasMessageContaining("Book 978-0061120084 is not in library Library 2");
+        .hasMessageContaining("Item 978-0061120084 is not in library Library 2");
   }
 
   @Test
@@ -55,7 +56,7 @@ class BookTest {
     // Act & Assert
     assertThatThrownBy(() -> classUnderTest.isCheckedOut())
         .isInstanceOf(LibraryNotSetException.class)
-        .hasMessageContaining("Library not set for book 978-0061120084");
+        .hasMessageContaining("Library not set for item 978-0061120084");
   }
 
   @Test

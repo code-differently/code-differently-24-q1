@@ -23,8 +23,12 @@ public class Patron {
     this.library = library;
   }
 
+  public Library getLibrary() {
+    return this.library;
+  }
+
   /**
-   * Get the library that the patron is in.
+   * Set the library that the patron is in.
    *
    * @param library The library that the patron is in.
    * @throws WrongLibraryException If the patron is not in the library.
@@ -58,7 +62,7 @@ public class Patron {
    * @return The books currently checked out to the patron.
    * @throws LibraryNotSetException If the library is not set for the patron.
    */
-  public Set<Book> getCheckedOutBooks() throws LibraryNotSetException {
+  public Set<MediaItem> getCheckedOutMedia() throws LibraryNotSetException {
     if (this.library == null) {
       throw new LibraryNotSetException("Library not set for patron " + this.getId());
     }

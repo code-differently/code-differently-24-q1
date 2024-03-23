@@ -1,10 +1,8 @@
 package com.codedifferently.lesson10.library;
 
 public class Librarian extends Patron {
-  int employeeId;
 
-  public Librarian(String name, Library library, String email, int employeeId) {
+  public Librarian(String name, String email, Library library) {
     super(name, email, library);
-    this.employeeId = employeeId;
   }
 }

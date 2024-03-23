@@ -1,10 +1,21 @@
 package com.codedifferently.lesson10.library;
 
-import com.codedifferently.lesson10.library.exceptions.NoCheckoutException;
+public class Newspaper extends MediaItem {
+  private String headline;
 
-public class Newspaper implements Assets {
+  /**
+   * Get the id of the newspaper.
+   *
+   * @return The id of the newspaper.
+   */
   @Override
-  public void canOrCantCheckOut() {
-    throw new NoCheckoutException("This item cannot be checked out.");
+  public String getId() {
+    return this.headline;
+  }
+
+  @Override
+  public boolean canOrCantCheckOut() {
+    System.out.print("This item cannot be checked out.");
+    return false;
   }
 }
