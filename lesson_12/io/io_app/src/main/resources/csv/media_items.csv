@@ -1,4 +1,4 @@
-Type,Id,Title,ISBN,Authors,Pages,Runtime,Edition
+type,id,title,isbn,authors,pages,runtime,edition
 book,e27a4e0d-9664-420d-955e-c0e295d0ce02,To Kill a Mockingbird,978-0061120084,"Harper Lee",336,,
 book,17dd5d20-98f5-4a26-be09-449fea88a3c3,1984,978-0451524935,"George Orwell",328,,
 dvd,28e5c91f-0e4b-4be5-abb1-8da01fd5587e,The Shawshank Redemption,,,,142,
