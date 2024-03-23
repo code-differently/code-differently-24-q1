@@ -13,9 +13,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DataModel {
-  public MediaItemModel[] mediaItems;
-  public LibraryGuestModel[] guests;
+public class LibraryDataModel {
+  private MediaItemModel[] mediaItems;
+  private LibraryGuestModel[] guests;
+
+  public void setMediaItems(MediaItemModel[] mediaItems) {
+    this.mediaItems = mediaItems;
+  }
+
+  public void setGuests(LibraryGuestModel[] guests) {
+    this.guests = guests;
+  }
 
   public List<MediaItem> getMediaItems() {
     List<MediaItem> results = new ArrayList<>();

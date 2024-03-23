@@ -1,30 +1,23 @@
-package com.codedifferently.lesson12;
+package com.codedifferently.lesson12.factory;
 
 import com.codedifferently.lesson12.library.Librarian;
 import com.codedifferently.lesson12.library.Library;
 import com.codedifferently.lesson12.library.LibraryGuest;
 import com.codedifferently.lesson12.library.MediaItem;
 import com.codedifferently.lesson12.models.CheckoutModel;
-import com.codedifferently.lesson12.models.DataModel;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import java.io.File;
+import com.codedifferently.lesson12.models.LibraryDataModel;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LibraryLoader {
+public class LibraryFactory {
 
-  public static Library loadLibrary() throws IOException {
+  public static Library createWithLoader(LibraryDataLoader loader) throws IOException {
     Library library = new Library("main-library");
 
-    ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.registerModule(new JavaTimeModule());
-
-    // Load data from data.json file
-    File file = new File(LibraryLoader.class.getClassLoader().getResource("data.json").getFile());
-    DataModel data = objectMapper.readValue(file, DataModel.class);
+    // Load library data.
+    LibraryDataModel data = loader.loadData();
 
     // Organize media items and guests.
     List<MediaItem> mediaItems = data.getMediaItems();
