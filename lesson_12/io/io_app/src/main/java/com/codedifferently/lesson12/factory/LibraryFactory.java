@@ -11,8 +11,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/** A factory class that creates a Library object with a LibraryDataLoader object. */
 public class LibraryFactory {
 
+  /**
+   * Create a Library object with a LibraryDataLoader object.
+   *
+   * @param loader A LibraryDataLoader object.
+   * @return A Library object.
+   * @throws IOException
+   */
   public static Library createWithLoader(LibraryDataLoader loader) throws IOException {
     Library library = new Library("main-library");
 

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.File;
 import java.io.IOException;
 
+/** Loads data from a JSON file and returns a LibraryDataModel object. */
 public class LibraryJsonDataLoader implements LibraryDataLoader {
   @Override
   public LibraryDataModel loadData() throws IOException {
