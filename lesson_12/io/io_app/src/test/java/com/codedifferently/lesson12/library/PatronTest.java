@@ -8,6 +8,7 @@ import com.codedifferently.lesson12.library.exceptions.WrongLibraryException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -56,8 +57,19 @@ class PatronTest {
   void testGetCheckedOutBooks() {
     // Arrange
     Book book1 =
-        new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
+        new Book(
+            UUID.randomUUID(),
+            "The Great Gatsby",
+            "978-0743273565",
+            List.of("F. Scott Fitzgerald"),
+            180);
+    Book book2 =
+        new Book(
+            UUID.randomUUID(),
+            "To Kill a Mockingbird",
+            "978-0061120084",
+            List.of("Harper Lee"),
+            281);
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
     Set<Book> expectedBooks = new HashSet<>();
     expectedBooks.add(book1);

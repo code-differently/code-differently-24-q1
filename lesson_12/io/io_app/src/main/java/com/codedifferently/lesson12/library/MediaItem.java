@@ -2,6 +2,7 @@ package com.codedifferently.lesson12.library;
 
 import com.codedifferently.lesson12.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson12.library.exceptions.WrongLibraryException;
+import java.util.UUID;
 
 /** Represents a media item. */
 public interface MediaItem {
@@ -10,7 +11,7 @@ public interface MediaItem {
    *
    * @return The id of the media item.
    */
-  public String getId();
+  public UUID getId();
 
   /**
    * Set the library that the media item is in.

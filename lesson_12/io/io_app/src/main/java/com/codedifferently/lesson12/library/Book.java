@@ -1,6 +1,7 @@
 package com.codedifferently.lesson12.library;
 
 import java.util.List;
+import java.util.UUID;
 
 /** Represents a book. */
 public class Book extends MediaItemBase {
@@ -17,7 +18,7 @@ public class Book extends MediaItemBase {
    * @param authors The authors of the book.
    * @param numberOfPages The number of pages in the book.
    */
-  public Book(String id, String title, String isbn, List<String> authors, int numberOfPages) {
+  public Book(UUID id, String title, String isbn, List<String> authors, int numberOfPages) {
     super(id, title);
     this.isbn = isbn;
     this.authors = authors;

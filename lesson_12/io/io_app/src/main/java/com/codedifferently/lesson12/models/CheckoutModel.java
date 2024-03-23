@@ -1,8 +1,9 @@
 package com.codedifferently.lesson12.models;
 
 import java.time.Instant;
+import java.util.UUID;
 
 public class CheckoutModel {
-  public String itemId;
+  public UUID itemId;
   public Instant dueDate;
 }

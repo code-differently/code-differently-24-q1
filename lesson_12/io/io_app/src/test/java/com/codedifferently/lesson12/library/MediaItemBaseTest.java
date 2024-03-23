@@ -8,26 +8,28 @@ import static org.mockito.Mockito.when;
 
 import com.codedifferently.lesson12.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson12.library.exceptions.WrongLibraryException;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class MediaItemBaseTest {
   private MediaItemBase mediaItem;
+  private static final UUID ITEM_ID = UUID.fromString("af71ac38-7628-415f-a2cd-bcaf7e001b97");
 
   class MockMediaItem extends MediaItemBase {
-    public MockMediaItem(String id, String title) {
+    public MockMediaItem(UUID id, String title) {
       super(id, title);
     }
   }
 
   @BeforeEach
   void setUp() {
-    mediaItem = new MockMediaItem("123", "Sample Title");
+    mediaItem = new MockMediaItem(ITEM_ID, "Sample Title");
   }
 
   @Test
   void getId() {
-    assertEquals("123", mediaItem.getId());
+    assertEquals(ITEM_ID, mediaItem.getId());
   }
 
   @Test
@@ -42,7 +44,8 @@ class MediaItemBaseTest {
     when(library.hasMediaItem(mediaItem)).thenReturn(false);
     assertThatThrownBy(() -> mediaItem.setLibrary(library))
         .isInstanceOf(WrongLibraryException.class)
-        .hasMessage("Media item 123 is not in library compton-library");
+        .hasMessage(
+            "Media item af71ac38-7628-415f-a2cd-bcaf7e001b97 is not in library compton-library");
   }
 
   @Test
@@ -58,7 +61,7 @@ class MediaItemBaseTest {
   void isCheckedOut_withLibraryNotSetException() {
     assertThatThrownBy(() -> mediaItem.isCheckedOut())
         .isInstanceOf(LibraryNotSetException.class)
-        .hasMessage("Library not set for item 123");
+        .hasMessage("Library not set for item af71ac38-7628-415f-a2cd-bcaf7e001b97");
   }
 
   @Test
@@ -68,19 +71,19 @@ class MediaItemBaseTest {
 
   @Test
   void equals() {
-    MediaItemBase mediaItem2 = new MockMediaItem("123", "Sample Title");
+    MediaItemBase mediaItem2 = new MockMediaItem(ITEM_ID, "Sample Title");
     assertEquals(mediaItem, mediaItem2);
   }
 
   @Test
   void hashCodeTest() {
-    MediaItemBase mediaItem2 = new MockMediaItem("123", "Sample Title");
+    MediaItemBase mediaItem2 = new MockMediaItem(ITEM_ID, "Sample Title");
     assertEquals(mediaItem.hashCode(), mediaItem2.hashCode());
   }
 
   @Test
   void toStringTest() {
-    String expected = "MediaItem{id='123', title='Sample Title'}";
+    String expected = "MediaItem{id='af71ac38-7628-415f-a2cd-bcaf7e001b97', title='Sample Title'}";
     assertEquals(expected, mediaItem.toString());
   }
 }

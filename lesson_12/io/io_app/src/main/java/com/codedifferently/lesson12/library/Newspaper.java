@@ -1,8 +1,10 @@
 package com.codedifferently.lesson12.library;
 
+import java.util.UUID;
+
 /** Represents a newspaper. */
 public class Newspaper extends MediaItemBase {
-  public Newspaper(String id, String title) {
+  public Newspaper(UUID id, String title) {
     super(id, title);
   }
 

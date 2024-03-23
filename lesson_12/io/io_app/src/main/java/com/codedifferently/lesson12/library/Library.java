@@ -5,11 +5,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 /** Represents a library. */
 public class Library {
-  private final Set<String> itemIds = new HashSet<>();
-  private final Set<String> checkedOutItemIds = new HashSet<>();
+  private final Set<UUID> itemIds = new HashSet<>();
+  private final Set<UUID> checkedOutItemIds = new HashSet<>();
   private final Map<String, Set<MediaItem>> checkedOutItemsByGuest = new HashMap<>();
   private final Set<String> guestIds = new HashSet<>();
   private final String id;

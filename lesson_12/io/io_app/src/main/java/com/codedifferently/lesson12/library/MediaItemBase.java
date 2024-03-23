@@ -3,20 +3,21 @@ package com.codedifferently.lesson12.library;
 import com.codedifferently.lesson12.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson12.library.exceptions.WrongLibraryException;
 import java.util.Objects;
+import java.util.UUID;
 
 /** Base implementation of a media item. */
 public abstract class MediaItemBase implements MediaItem {
   private Library library;
-  private final String id;
+  private final UUID id;
   private final String title;
 
-  public MediaItemBase(String id, String title) {
+  public MediaItemBase(UUID id, String title) {
     this.id = id;
     this.title = title;
   }
 
   @Override
-  public String getId() {
+  public UUID getId() {
     return id;
   }
 

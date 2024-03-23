@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import com.codedifferently.lesson12.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson12.library.exceptions.WrongLibraryException;
 import java.util.List;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +20,12 @@ class BookTest {
   @BeforeEach
   void setUp() {
     classUnderTest =
-        new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
+        new Book(
+            UUID.fromString("2b7591dd-f418-4115-974e-45115b3bf39a"),
+            "To Kill a Mockingbird",
+            "978-0061120084",
+            List.of("Harper Lee"),
+            281);
     library = mock(Library.class);
     when(library.getId()).thenReturn("Library 1");
     when(library.hasMediaItem(classUnderTest)).thenReturn(true);
@@ -45,7 +51,8 @@ class BookTest {
     // Act & Assert
     assertThatThrownBy(() -> classUnderTest.setLibrary(otherLibrary))
         .isInstanceOf(WrongLibraryException.class)
-        .hasMessageContaining("Media item 978-0061120084 is not in library Library 2");
+        .hasMessageContaining(
+            "Media item 2b7591dd-f418-4115-974e-45115b3bf39a is not in library Library 2");
   }
 
   @Test
@@ -56,7 +63,7 @@ class BookTest {
     // Act & Assert
     assertThatThrownBy(() -> classUnderTest.isCheckedOut())
         .isInstanceOf(LibraryNotSetException.class)
-        .hasMessageContaining("Library not set for item 978-0061120084");
+        .hasMessageContaining("Library not set for item 2b7591dd-f418-4115-974e-45115b3bf39a");
   }
 
   @Test
@@ -81,6 +88,7 @@ class BookTest {
   void testToString() {
     // Act & Assert
     assertThat(classUnderTest.toString())
-        .isEqualTo("Book{id='978-0061120084', title='To Kill a Mockingbird'}");
+        .isEqualTo(
+            "Book{id='2b7591dd-f418-4115-974e-45115b3bf39a', title='To Kill a Mockingbird'}");
   }
 }

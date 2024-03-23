@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.codedifferently.lesson12.library.exceptions.MediaItemCheckedOutException;
 import java.util.List;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,8 +21,19 @@ class LibraryTest {
   void testLibrary_canAddItems() {
     // Arrange
     Book book1 =
-        new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
+        new Book(
+            UUID.randomUUID(),
+            "The Great Gatsby",
+            "978-0743273565",
+            List.of("F. Scott Fitzgerald"),
+            180);
+    Book book2 =
+        new Book(
+            UUID.randomUUID(),
+            "To Kill a Mockingbird",
+            "978-0061120084",
+            List.of("Harper Lee"),
+            281);
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
     // Act
     classUnderTest.addMediaItem(book1, librarian);
@@ -35,8 +47,19 @@ class LibraryTest {
   void testLibrary_canRemoveItems() {
     // Arrange
     Book book1 =
-        new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
+        new Book(
+            UUID.randomUUID(),
+            "The Great Gatsby",
+            "978-0743273565",
+            List.of("F. Scott Fitzgerald"),
+            180);
+    Book book2 =
+        new Book(
+            UUID.randomUUID(),
+            "To Kill a Mockingbird",
+            "978-0061120084",
+            List.of("Harper Lee"),
+            281);
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
     classUnderTest.addMediaItem(book1, librarian);
     classUnderTest.addMediaItem(book2, librarian);
@@ -79,7 +102,13 @@ class LibraryTest {
   @Test
   void testLibrary_allowsPatronToCheckoutBook() {
     // Arrange
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    Book book =
+        new Book(
+            UUID.randomUUID(),
+            "The Great Gatsby",
+            "978-0743273565",
+            List.of("F. Scott Fitzgerald"),
+            180);
     Patron patron = new Patron("John Doe", "john@example.com");
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
     classUnderTest.addMediaItem(book, librarian);
@@ -95,7 +124,13 @@ class LibraryTest {
   @Test
   void testLibrary_allowPatronToCheckInBook() {
     // Arrange
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    Book book =
+        new Book(
+            UUID.randomUUID(),
+            "The Great Gatsby",
+            "978-0743273565",
+            List.of("F. Scott Fitzgerald"),
+            180);
     Patron patron = new Patron("John Doe", "john@example.com");
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
     classUnderTest.addMediaItem(book, librarian);
@@ -113,7 +148,13 @@ class LibraryTest {
   void testLibrary_allowLibrarianToCheckOutBook() {
     // Arrange
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    Book book =
+        new Book(
+            UUID.randomUUID(),
+            "The Great Gatsby",
+            "978-0743273565",
+            List.of("F. Scott Fitzgerald"),
+            180);
     classUnderTest.addMediaItem(book, librarian);
     classUnderTest.addLibraryGuest(librarian);
     // Act
@@ -126,7 +167,13 @@ class LibraryTest {
   @Test
   void testLibrary_allowLibrarianToCheckInBook() {
     // Arrange
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    Book book =
+        new Book(
+            UUID.randomUUID(),
+            "The Great Gatsby",
+            "978-0743273565",
+            List.of("F. Scott Fitzgerald"),
+            180);
     Librarian librarian = new Librarian("John Doe", "john@example.com");
     classUnderTest.addMediaItem(book, librarian);
     classUnderTest.addLibraryGuest(librarian);
@@ -142,7 +189,13 @@ class LibraryTest {
   @Test
   void testLibrary_preventsMultipleCheckouts() {
     // Arrange
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    Book book =
+        new Book(
+            UUID.randomUUID(),
+            "The Great Gatsby",
+            "978-0743273565",
+            List.of("F. Scott Fitzgerald"),
+            180);
     Patron patron = new Patron("John Doe", "john@example.com");
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
     classUnderTest.addMediaItem(book, librarian);
@@ -158,7 +211,13 @@ class LibraryTest {
   @Test
   void testLibrary_preventsRemovingPatronWithCheckedOutItems() {
     // Arrange
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    Book book =
+        new Book(
+            UUID.randomUUID(),
+            "The Great Gatsby",
+            "978-0743273565",
+            List.of("F. Scott Fitzgerald"),
+            180);
     Patron patron = new Patron("John Doe", "john@example.com");
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
     classUnderTest.addMediaItem(book, librarian);
@@ -173,7 +232,13 @@ class LibraryTest {
   @Test
   void testLibrary_preventsRemovingCheckedOutItems() {
     // Arrange
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    Book book =
+        new Book(
+            UUID.randomUUID(),
+            "The Great Gatsby",
+            "978-0743273565",
+            List.of("F. Scott Fitzgerald"),
+            180);
     Patron patron = new Patron("Jane Doe", "jane@example.com");
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
     classUnderTest.addMediaItem(book, librarian);
@@ -188,7 +253,7 @@ class LibraryTest {
   @Test
   void testLibrary_canAddDvd() {
     // Arrange
-    Dvd dvd = new Dvd("978-0743273565", "The Great Gatsby");
+    Dvd dvd = new Dvd(UUID.randomUUID(), "The Great Gatsby");
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
     // Act
     classUnderTest.addMediaItem(dvd, librarian);
@@ -199,7 +264,7 @@ class LibraryTest {
   @Test
   void testLibrary_canRemoveDvd() {
     // Arrange
-    Dvd dvd = new Dvd("978-0743273565", "The Great Gatsby");
+    Dvd dvd = new Dvd(UUID.randomUUID(), "The Great Gatsby");
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
     // Act
     classUnderTest.removeMediaItem(dvd, librarian);
@@ -211,7 +276,7 @@ class LibraryTest {
   void testLibrary_allowLibrarianToCheckOutDvd() {
     // Arrange
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
-    Dvd dvd = new Dvd("978-0743273565", "The Great Gatsby");
+    Dvd dvd = new Dvd(UUID.randomUUID(), "The Great Gatsby");
     classUnderTest.addMediaItem(dvd, librarian);
     classUnderTest.addLibraryGuest(librarian);
     // Act
@@ -224,7 +289,7 @@ class LibraryTest {
   @Test
   void testLibrary_allowPatronToCheckInDvd() {
     // Arrange
-    Dvd dvd = new Dvd("978-0743273565", "The Great Gatsby");
+    Dvd dvd = new Dvd(UUID.randomUUID(), "The Great Gatsby");
     Patron patron = new Patron("John Doe", "john@example.com");
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
     classUnderTest.addMediaItem(dvd, librarian);
@@ -243,7 +308,7 @@ class LibraryTest {
     // Arrange
     Patron patron = new Patron("John Doe", "john@example.com");
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
-    Magazine magazine = new Magazine("978-0743273565", "The Great Gatsby");
+    Magazine magazine = new Magazine(UUID.randomUUID(), "The Great Gatsby");
     classUnderTest.addMediaItem(magazine, librarian);
     classUnderTest.addLibraryGuest(librarian);
     classUnderTest.addLibraryGuest(patron);
@@ -259,7 +324,7 @@ class LibraryTest {
     // Arrange
     Patron patron = new Patron("John Doe", "john@example.com");
     Librarian librarian = new Librarian("Anthony Mays", "anthony@example.com");
-    Newspaper newspaper = new Newspaper("230322", "LA Times");
+    Newspaper newspaper = new Newspaper(UUID.randomUUID(), "LA Times");
     classUnderTest.addMediaItem(newspaper, librarian);
     classUnderTest.addLibraryGuest(librarian);
     classUnderTest.addLibraryGuest(patron);

@@ -1,8 +1,10 @@
 package com.codedifferently.lesson12.library;
 
+import java.util.UUID;
+
 /** Represents a magazine. */
 public class Magazine extends MediaItemBase {
-  public Magazine(String id, String title) {
+  public Magazine(UUID id, String title) {
     super(id, title);
   }
 

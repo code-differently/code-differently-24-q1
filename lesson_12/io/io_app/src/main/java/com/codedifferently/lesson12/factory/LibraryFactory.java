@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /** A factory class that creates a Library object with a LibraryDataLoader object. */
 public class LibraryFactory {
@@ -29,7 +30,7 @@ public class LibraryFactory {
 
     // Organize media items and guests.
     List<MediaItem> mediaItems = data.getMediaItems();
-    Map<String, MediaItem> mediaItemById = getMediaItemsById(mediaItems);
+    Map<UUID, MediaItem> mediaItemById = getMediaItemsById(mediaItems);
     List<LibraryGuest> guests = data.getGuests();
     Map<String, LibraryGuest> guestsByEmail = getGuestsByEmail(guests);
     Librarian firstLibrarian = findFirstLibrarian(guests);
@@ -43,8 +44,8 @@ public class LibraryFactory {
     return library;
   }
 
-  private static Map<String, MediaItem> getMediaItemsById(List<MediaItem> mediaItems) {
-    Map<String, MediaItem> mediaItemById = new HashMap<>();
+  private static Map<UUID, MediaItem> getMediaItemsById(List<MediaItem> mediaItems) {
+    Map<UUID, MediaItem> mediaItemById = new HashMap<>();
     for (MediaItem mediaItem : mediaItems) {
       mediaItemById.put(mediaItem.getId(), mediaItem);
     }
@@ -86,7 +87,7 @@ public class LibraryFactory {
       Library library,
       Map<String, List<CheckoutModel>> checkoutsByEmail,
       Map<String, LibraryGuest> guestByEmail,
-      Map<String, MediaItem> mediaItemById) {
+      Map<UUID, MediaItem> mediaItemById) {
     for (Map.Entry<String, List<CheckoutModel>> entry : checkoutsByEmail.entrySet()) {
       String email = entry.getKey();
       List<CheckoutModel> checkouts = entry.getValue();
