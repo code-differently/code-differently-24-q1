@@ -28,17 +28,19 @@ public class LibraryFactory {
     // Load library data.
     LibraryDataModel data = loader.loadData();
 
-    // Organize media items and guests.
-    List<MediaItem> mediaItems = data.getMediaItems();
-    Map<UUID, MediaItem> mediaItemById = getMediaItemsById(mediaItems);
+    // Add guests to the library.
     List<LibraryGuest> guests = data.getGuests();
-    Map<String, LibraryGuest> guestsByEmail = getGuestsByEmail(guests);
-    Librarian firstLibrarian = findFirstLibrarian(guests);
-    Map<String, List<CheckoutModel>> checkoutsByEmail = data.getCheckoutsByEmail();
-
-    // Add guests and media items to library
     addLibraryGuests(library, guests);
+
+    // Add library items using the first librarian.
+    Librarian firstLibrarian = findFirstLibrarian(guests);
+    List<MediaItem> mediaItems = data.getMediaItems();
     addLibraryItems(library, mediaItems, firstLibrarian);
+
+    // Check out items from the library.
+    Map<String, List<CheckoutModel>> checkoutsByEmail = data.getCheckoutsByEmail();
+    Map<UUID, MediaItem> mediaItemById = getMediaItemsById(mediaItems);
+    Map<String, LibraryGuest> guestsByEmail = getGuestsByEmail(guests);
     checkOutItems(library, checkoutsByEmail, guestsByEmail, mediaItemById);
 
     return library;
@@ -88,7 +90,7 @@ public class LibraryFactory {
       Map<String, List<CheckoutModel>> checkoutsByEmail,
       Map<String, LibraryGuest> guestByEmail,
       Map<UUID, MediaItem> mediaItemById) {
-    for (Map.Entry<String, List<CheckoutModel>> entry : checkoutsByEmail.entrySet()) {
+    for (var entry : checkoutsByEmail.entrySet()) {
       String email = entry.getKey();
       List<CheckoutModel> checkouts = entry.getValue();
       LibraryGuest guest = guestByEmail.get(email);
