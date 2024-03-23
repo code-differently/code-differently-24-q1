@@ -14,16 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 public class LibraryDataModel {
-  private MediaItemModel[] mediaItems;
-  private LibraryGuestModel[] guests;
-
-  public void setMediaItems(MediaItemModel[] mediaItems) {
-    this.mediaItems = mediaItems;
-  }
-
-  public void setGuests(LibraryGuestModel[] guests) {
-    this.guests = guests;
-  }
+  public List<MediaItemModel> mediaItems;
+  public List<LibraryGuestModel> guests;
 
   public List<MediaItem> getMediaItems() {
     List<MediaItem> results = new ArrayList<>();
