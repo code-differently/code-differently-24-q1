@@ -21,6 +21,13 @@ public interface LibraryGuest {
   public String getName();
 
   /**
+   * Get the email of the guest.
+   *
+   * @return The email of the guest.
+   */
+  public String getEmail();
+
+  /**
    * Get the id of the guest.
    *
    * @return The id of the guest.

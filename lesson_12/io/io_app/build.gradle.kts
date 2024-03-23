@@ -28,11 +28,13 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("org.projectlombok:lombok:1.18.30")
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.3")
 }
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.codedifferently.lesson12.Lesson10")
+    mainClass.set("com.codedifferently.lesson12.Lesson12")
 }
 
 tasks.named<Test>("test") {

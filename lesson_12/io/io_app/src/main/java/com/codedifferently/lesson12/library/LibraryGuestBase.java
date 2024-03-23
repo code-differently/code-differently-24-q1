@@ -32,6 +32,11 @@ public class LibraryGuestBase implements LibraryGuest {
   }
 
   @Override
+  public String getEmail() {
+    return this.email;
+  }
+
+  @Override
   public String getId() {
     return this.email;
   }

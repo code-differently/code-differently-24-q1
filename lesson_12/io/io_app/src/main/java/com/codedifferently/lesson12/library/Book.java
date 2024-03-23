@@ -11,13 +11,14 @@ public class Book extends MediaItemBase {
   /**
    * Create a new book with the given title, ISBN, authors, and number of pages.
    *
+   * @param id The ID of the book.
    * @param title The title of the book.
    * @param isbn The ISBN of the book.
    * @param authors The authors of the book.
    * @param numberOfPages The number of pages in the book.
    */
-  public Book(String title, String isbn, List<String> authors, int numberOfPages) {
-    super(isbn, title);
+  public Book(String id, String title, String isbn, List<String> authors, int numberOfPages) {
+    super(id, title);
     this.isbn = isbn;
     this.authors = authors;
     this.numberOfPages = numberOfPages;
