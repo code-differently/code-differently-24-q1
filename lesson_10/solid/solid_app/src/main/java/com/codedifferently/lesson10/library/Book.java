@@ -1,12 +1,25 @@
 package com.codedifferently.lesson10.library;
 
-import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
-import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 import java.util.List;
 import java.util.Objects;
 
+import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
+import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
+
 /** Represents a book. */
 public class Book implements Media {
+
+  @Override
+  public void checkOutItem() {
+      // Implementation for checking out a book
+  }
+
+  @Override
+  public void returnItem() {
+      // Implementation for returning a book
+  }
+
+
   private Library library;
   private String title;
   private String isbn;

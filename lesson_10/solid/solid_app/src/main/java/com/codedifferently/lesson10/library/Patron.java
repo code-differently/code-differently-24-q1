@@ -62,7 +62,7 @@ public class Patron implements Member {
    * @return The books currently checked out to the patron.
    * @throws LibraryNotSetException If the library is not set for the patron.
    */
-  public Set<Book> getCheckedOut() throws LibraryNotSetException {
+  public Set<Book> getCheckedOutBooks() throws LibraryNotSetException {
     if (this.library == null) {
       throw new LibraryNotSetException("Library not set for patron " + this.getId());
     }

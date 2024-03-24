@@ -7,6 +7,11 @@ import java.util.Set;
 
 
 public class Librarian implements Member  {
+  @Override
+public Set<Media> getCheckedOutBooks(){
+  return null;
+
+}
 
   public  Library library;
   private String name;
@@ -18,12 +23,17 @@ public Librarian ( String name, String id ){
 this.name = name;
 this.id = id;
 this.checkedOutBooks = new HashSet<>();
-
-
+}
+public void setLibrary(Library library) {
+throws WrongLibraryException;
 }
 
-    Object getCheckedOutMedia() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+@Override
+public String getName(){
+return name;
+}
+@Override
+public String getId(){
+return id;
+}
 }
