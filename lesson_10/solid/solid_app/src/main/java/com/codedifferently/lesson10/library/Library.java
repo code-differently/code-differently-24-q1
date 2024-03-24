@@ -1,10 +1,11 @@
 package com.codedifferently.lesson10.library;
 
-import com.codedifferently.lesson10.library.exceptions.BookCheckedOutException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import com.codedifferently.lesson10.library.exceptions.BookCheckedOutException;
 
 /** Represents a library. */
 public class Library {
@@ -178,4 +179,8 @@ public class Library {
         + patronIds
         + '}';
   }
+
+    void addLibrarian(Librarian librarian) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

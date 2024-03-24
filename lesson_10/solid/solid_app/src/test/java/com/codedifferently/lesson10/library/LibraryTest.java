@@ -149,8 +149,20 @@ class LibraryTest {
   }
 
   @Test
-
- void testLibrary_canCheckoutBook
-
-
+  void testLibrary_allowLibrarianToCheckout() {
+  // Arange
+  Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    Librarian librarian = new Librarian("Jane Doe", "jane@example.com");
+    classUnderTest.addBook(book);
+    classUnderTest.addLibrarian(librarian);
+    
+//Act
+boolean wasCheckedOut = classUnderTest.checkOutBook(book, librarian);
+boolean wasReturned = classUnderTest.checkInBook(book, librarian);
+//Assert
+assertThat(wasCheckedOut).isTrue();
+assertThat( wasReturned) .isTrue();
+assertThat ( classUnderTest.isCheckedOut(book)) .isFalse();
+assertThat( librarian.getCheckedOutBooks().contains(book))isFalse();
+  }
 }
