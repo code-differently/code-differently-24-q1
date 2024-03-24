@@ -32,7 +32,7 @@ public class Book extends MediaItem {
    */
   @Override
   public String getId() {
-    return this.isbn;
+    return this.title;
   }
 
   /** Get the title of the book. */

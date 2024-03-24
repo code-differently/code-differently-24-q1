@@ -45,7 +45,7 @@ class BookTest {
     // Act & Assert
     assertThatThrownBy(() -> classUnderTest.setLibrary(otherLibrary))
         .isInstanceOf(WrongLibraryException.class)
-        .hasMessageContaining("Item 978-0061120084 is not in library Library 2");
+        .hasMessageContaining("Item To Kill a Mockingbird is not in library Library 2");
   }
 
   @Test
@@ -56,7 +56,7 @@ class BookTest {
     // Act & Assert
     assertThatThrownBy(() -> classUnderTest.isCheckedOut())
         .isInstanceOf(LibraryNotSetException.class)
-        .hasMessageContaining("Library not set for item 978-0061120084");
+        .hasMessageContaining("Library not set for item To Kill a Mockingbird");
   }
 
   @Test
@@ -81,6 +81,6 @@ class BookTest {
   void testToString() {
     // Act & Assert
     assertThat(classUnderTest.toString())
-        .isEqualTo("Book{id='978-0061120084', title='To Kill a Mockingbird'}");
+        .isEqualTo("Book{id='To Kill a Mockingbird', title='To Kill a Mockingbird'}");
   }
 }

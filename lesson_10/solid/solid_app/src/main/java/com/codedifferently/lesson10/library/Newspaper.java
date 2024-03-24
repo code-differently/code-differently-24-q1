@@ -1,7 +1,7 @@
 package com.codedifferently.lesson10.library;
 
 public class Newspaper extends MediaItem {
-  private String headline;
+  private String title;
 
   /**
    * Get the id of the newspaper.
@@ -10,7 +10,7 @@ public class Newspaper extends MediaItem {
    */
   @Override
   public String getId() {
-    return this.headline;
+    return this.title;
   }
 
   @Override
