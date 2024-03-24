@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 /** Represents a book. */
-public class Book {
+public class Book implements LibraryitemsInterface{
   private Library library;
   private String title;
   private String isbn;

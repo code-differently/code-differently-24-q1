@@ -147,4 +147,10 @@ class LibraryTest {
         .isInstanceOf(BookCheckedOutException.class)
         .hasMessage("Cannot remove checked out book.");
   }
+
+  @Test
+
+ void testLibrary_canCheckoutBook
+
+
 }
