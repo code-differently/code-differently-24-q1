@@ -8,7 +8,7 @@ import java.util.Set;
 
 /** Represents a library. */
 public class Library {
-  private Set<String> itemIds = new HashSet<>();
+  private Map<String, LibraryAsset> itemByIds = new HashMap<>();
   private Set<String> checkedOutIsbns = new HashSet<>();
   private Map<String, Set<LibraryAsset>> checkedOutItemsByPatron = new HashMap<>();
   private Set<String> patronIds = new HashSet<>();
@@ -39,7 +39,7 @@ public class Library {
    * @param asset The book to add.
    */
   public void addAsset(Librarian librarian, LibraryAsset asset) {
-    this.itemIds.add(asset.getIsbn());
+    this.itemByIds.put(asset.getIsbn(), asset);
     asset.setLibrary(this);
   }
 
@@ -53,7 +53,7 @@ public class Library {
     if (this.isCheckedOut(asset)) {
       throw new BookCheckedOutException("Cannot remove checked out book.");
     }
-    this.itemIds.remove(asset.getIsbn());
+    this.itemByIds.remove(asset.getIsbn());
     asset.setLibrary(null);
   }
 
@@ -98,6 +98,10 @@ public class Library {
     return true;
   }
 
+  public LibraryAsset assetSearch(LibraryAsset asset) {
+    return this.itemByIds.get(asset.getIsbn());
+  }
+
   private boolean canCheckOutAsset(LibraryAsset asset, Patron patron) {
     if (!this.hasAsset(asset)) {
       return false;
@@ -121,7 +125,7 @@ public class Library {
    * @return True if the library has the item, false otherwise.
    */
   public boolean hasAsset(LibraryAsset asset) {
-    return this.itemIds.contains(asset.getIsbn());
+    return this.itemByIds.containsKey(asset.getIsbn());
   }
 
   /**
@@ -173,8 +177,8 @@ public class Library {
   @Override
   public String toString() {
     return "Library{"
-        + "ItemIds="
-        + itemIds
+        + "itemByIds="
+        + itemByIds
         + ", checkedOutIsbns="
         + checkedOutIsbns
         + ", checkedOutItemsByPatron="

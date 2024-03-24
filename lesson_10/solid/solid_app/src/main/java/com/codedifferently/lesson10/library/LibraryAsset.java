@@ -26,24 +26,22 @@ public abstract class LibraryAsset {
     this.library = library;
   }
 
-  /** Get the title of the item.
-   * 
+  /**
+   * Get the title of the item.
+   *
    * @return String The title of the item.
    */
   public String getTitle() {
     return title;
   }
 
-  /** Get the ISBN of the book. 
-   * 
+  /**
+   * Get the ISBN of the book.
+   *
    * @return String The Isbn of an item.
-  */
+   */
   public String getIsbn() {
     return isbn;
-  }
-
-  public Boolean isAbleToCheckOut(){
-    return true;
   }
 
   /**
@@ -57,6 +55,10 @@ public abstract class LibraryAsset {
       throw new LibraryNotSetException("Library not set for item " + this.getIsbn());
     }
     return library.isCheckedOut(this);
+  }
+
+  public boolean isAbleToCheckOut() {
+    return true;
   }
 
   @Override

@@ -10,10 +10,12 @@ public class Magazine extends LibraryAsset {
     this.title = title;
     this.isbn = isbn;
   }
+
   @Override
-    public Boolean isAbleToCheckOut(){
-      return false;
-    }
+  public boolean isAbleToCheckOut() {
+    return false;
+  }
+
   @Override
   public boolean isCheckedOut() throws LibraryNotSetException {
     throw new ItemCantBeCheckOutException("This Item Cant Be Checked Out.");

@@ -11,7 +11,7 @@ public class Newspaper extends LibraryAsset {
   }
 
   @Override
-  public Boolean isAbleToCheckOut(){
+  public boolean isAbleToCheckOut() {
     return false;
   }
 

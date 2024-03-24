@@ -147,4 +147,15 @@ class LibraryTest {
         .isInstanceOf(BookCheckedOutException.class)
         .hasMessage("Cannot remove checked out book.");
   }
+
+  @Test
+  void testLibrary_Search() {
+    // Arrange
+    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    Book book1 = new Book("Book", "978-0743273566", List.of("John Book"), 3000);
+    classUnderTest.addAsset(librarian, book);
+    classUnderTest.addAsset(librarian, book1);
+    // Act
+    assertThat(classUnderTest.assetSearch(book1).toString().equals(book1.toString()));
+  }
 }
