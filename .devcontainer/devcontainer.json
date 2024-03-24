@@ -13,7 +13,8 @@
 		},
 		"ghcr.io/devcontainers/features/node:1": {},
 		"ghcr.io/devcontainers/features/python:1": {},
-		"ghcr.io/devcontainers-contrib/features/ts-node:1": {}
+		"ghcr.io/devcontainers-contrib/features/ts-node:1": {},
+		"ghcr.io/devcontainers/features/sshd:1": {}
 	},
 	"portsAttributes": {
 	  "80": {
@@ -25,7 +26,7 @@
 		"vscode": {
 			"extensions": [
 				"vscjava.vscode-gradle",
-				"vscjava.vscode-java-pack",
+				"Oracle.oracle-java",
 				"esbenp.prettier-vscode",
 				"donjayamanne.python-extension-pack",
 				"ms-vscode.vscode-typescript-next",

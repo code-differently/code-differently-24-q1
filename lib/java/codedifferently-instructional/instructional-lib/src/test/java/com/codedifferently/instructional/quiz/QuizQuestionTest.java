@@ -27,7 +27,8 @@ class QuizQuestionTest {
     int questionNumber = 2;
     String expectedQuestionPrompt = "What is the largest planet in our solar system?";
     String correctAnswer = "Jupiter";
-    QuizQuestion quizQuestion = new QuizQuestion(questionNumber, expectedQuestionPrompt, correctAnswer);
+    QuizQuestion quizQuestion =
+        new QuizQuestion(questionNumber, expectedQuestionPrompt, correctAnswer);
 
     // Act
     String actualQuestionPrompt = quizQuestion.getQuestionPrompt();

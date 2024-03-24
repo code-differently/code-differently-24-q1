@@ -1,0 +1,56 @@
+spring:
+  profiles:
+    active: dev
+quiz:
+  answers:
+    kenricksutherland:
+     - $2y$10$UaUgisFsIHm9WlhdpI1pTuwb7ArlzFDouZb7PbMcgukf66/InLJs.
+     - $2y$10$mmKQ0mNUJ6wfGOgKfJH7a.6vBZon2j3r.cnAaI7lAu8pAIZ7JO3v.
+    brooklyn:
+     - $2y$10$.mMoSMt3GJ8RQUGigwrbfei0r3ax2Gnn3R6TbUNOaGe6L7YBruehO
+     - $2y$10$5PaRHu4pigJBwuinPkwxCOhk/j86xTFlLo8A2HhQZ3sEJoRbVMhdy
+    richhawkins:
+     - $2y$10$RXLPI31gEjCF1tkZ.nS20.sPOb9SFXrPeVZv0Ezg.YD/hlcAVpDoK
+     - $2y$10$27WkeXYw4lCbtqCGFh/afeX75BoSTaLVsL6eSKT8CJgcDE.z//mH2
+    anthonymays:
+     - $2y$10$8eHSzy3aCu4Ry3LzO9nWCeGpofSxsNVbnF.wCfn3ZADwQ6MEtN/KK
+     - $2y$10$55EXRjF26JIgebtoH800ZOJecfefvMgHicuxf/rwTENuxiUaFQcNe
+    moibrahi7:
+     - $2y$10$qMRtpEAfuW9e5WyZv5qzxuTj3JDO4xuOrNwm1FZuQ9uGcm3NHZMC.
+     - $2y$10$VOND8Wn7DA7DHPhJWmyMqurfRkjWZv3m3VnG29TfTOTRusxTNKa6q
+    kevinmason:
+    - $2y$10$5IHG1ZkSy1azMHk5kyDJs.hJsFnCIgIjBlO5HHyzO7V/HHRy3Fiom
+    - $2y$10$VXpnjqFukTTi1p4i7KyY3Oyjm1mKYfnzo6VZUZNIyX7J6vNDTLAyy
+    javyenware:
+     - $2y$10$BeOZiGHEZhPmVsDZctelR.MoJM.d958.kQNXUbU8wv9YJv6y5LCyi
+     - $2y$10$7ME1EOl6VP35kEiUc4YFG.ZOgOcfmoOrsvgjsoGY9xoVPdlH3uK8K
+    jadawhite:
+     - $2y$10$w1XGxEj5H14aw8rP5hBHO.YnffYQ/7il5NXtFNPcTXSbXWVeP5FBK
+     - $2y$10$4ctg3vPGw8BJBzGFE59Ode2cS1oPzb7wA5nXT/Ci5QfhoHr2XenG2
+    jordaneldridge:
+     - $2y$10$1.1MtWYxD3gDw6VOmRot6OA.TQcPc1FzenesnN.RJn.6EYD.eG0s6
+     - $2y$10$C39zXtqTtYWE63Xb9av72evDs8U1ErCu30T5a4YGztaCJTbrjL7fC
+    natayaprice:
+      - $2y$10$6w0xRxY6E5rxLdyAMUxx9uPG99NfeO1CvzXYN7lV2byuXZR80IViq
+      - $2y$10$CboWGiUM5PlkHOkOL96IGuFhSs4yZweZA.6wVHOCYCX87eGOamq26
+    vicentevigueras:
+     - $2y$10$ZvHv8epqQTKiHglU62V5YOAT0gMAgzkikkabDH56gY3oqeFpK0uKC
+     - $2y$10$VIQxIQCzXdOYgiYfJ62.luYL5DFu34tU0HbqlawoH2LAOYCbT.Bky
+    randycastro:
+     - $2y$10$JDR92zWPkVIhw5.ipD3Tye6rJctiwGiNDL/QV1bZBY9OqH569SUmG
+     - $2y$10$Bc8KTSlblvafPd3Jskm4l.g1CAEgG4k5m/LPa99D3U3uHXwiLF1.e
+    kyvonthompson:
+     - $2y$10$1HELIO6MiQIwOJhE0D2UWuoLCgfNk5H0VCBMp1Q75vmvCRVeElKqm
+     - $2y$10$F9WPv2rClYgTwVYBwkMz6u1TK36.3hY5qRQGBNFsrjE0FtubSpKka
+    sherllint:
+     - $2y$10$t.Bp0AznB1y1OuzyLD5y1eBHI3uGhzDGZAYmGmhQ7KevnafFbzgey
+     - $2y$10$ixh3kgGd8tFk0fBH4sr2JO87LncX88lqJGwVauc182Nug8IeHaJ7i
+    jamirabailey:
+     - $2y$10$aJtp4qJqWNrm6K.RXYv9uOByboSWbCqEKOrOHS8S/nP8zjn96LnEG
+     - $2y$10$37XykzTG1nmwxZOjOwIBJ.QehwGuIsEPOjrl5FNEhk2ZWBwrJmitm
+    mekhiwilliams: 
+     - $2y$10$LJMoAo2n0KtfU37Ulqalc.CF5CgXRD7Njp5UL6O7jH3.71q6Iu28u
+     - $2y$10$bnBo4IRqGodV5lHFSsMbcOTTfZrxSwwR2hTp1ft4sD8b9dNbJcBjO 
+    aaronsantiago:
+     - $2y$10$QFzEBrwDmU2HP42i4fhcH.XKXHb5hw56bpQJ1l23LsgZqtMjptCdm
+     - $2y$10$vldOhuX/.5WcqZRxQiilAeeDsyNGqFGE.zl1Fd22Nx.baomFvgbV6
