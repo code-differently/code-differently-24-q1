@@ -11,7 +11,7 @@ public class Librarian implements Member  {
   public  Library library;
   private String name;
   private String id;
-  private Set<LibraryitemInterface> checkedOutBooks;
+  private Set<Media> checkedOutBooks;
 
 // constructor 
 public Librarian ( String name, String id ){
@@ -22,11 +22,8 @@ this.checkedOutBooks = new HashSet<>();
 
 }
 
-    Object getCheckedOutBooks() {
+    Object getCheckedOutMedia() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    Object getCheckedOutBooks() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 }

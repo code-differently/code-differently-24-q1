@@ -42,12 +42,12 @@ class PatronTest {
   }
 
   @Test
-  void testGetCheckedOutBooks_LibraryNotSet() {
+  void testGetCheckedOutMedia_LibraryNotSet() {
     // Arrange
     classUnderTest.setLibrary(null);
 
     // Act & Assert
-    assertThatThrownBy(() -> classUnderTest.getCheckedOutBooks())
+    assertThatThrownBy(() -> classUnderTest.getCheckedOutMedia())
         .isInstanceOf(LibraryNotSetException.class)
         .hasMessageContaining("Library not set for patron johndoe@example.com");
   }

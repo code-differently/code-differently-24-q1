@@ -1,6 +1,6 @@
 package com.codedifferently.lesson10.library;
 
-public class Dvd implements LibraryitemsInterface {
+public class Dvd implements Media {
 
   private String title;
   private String director;

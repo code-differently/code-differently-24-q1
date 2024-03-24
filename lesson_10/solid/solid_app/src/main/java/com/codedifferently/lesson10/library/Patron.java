@@ -4,7 +4,7 @@ import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 import java.util.Objects;
 import java.util.Set;
-import main.java.com.codedifferently.lesson10.library.Member;
+import main.java.com.codedifferently.lesson10.library;
 
 /** Represents a patron of a library. */
 public class Patron implements Member {
@@ -62,7 +62,7 @@ public class Patron implements Member {
    * @return The books currently checked out to the patron.
    * @throws LibraryNotSetException If the library is not set for the patron.
    */
-  public Set<Book> getCheckedOutBooks() throws LibraryNotSetException {
+  public Set<Book> getCheckedOut() throws LibraryNotSetException {
     if (this.library == null) {
       throw new LibraryNotSetException("Library not set for patron " + this.getId());
     }
