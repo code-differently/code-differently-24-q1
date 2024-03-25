@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,13 +30,13 @@ public class MediaItemTest {
 
   private static class MockMediaItem extends MediaItem {
     @Override
-    boolean canOrCantCheckOut() {
+    boolean canCheckOut() {
       return true; // Override for testing purposes
     }
 
     @Override
-    String getId() {
-      return "123"; // Override for testing purposes
+    public UUID getId() {
+      return UUID.randomUUID(); // Override for testing purposes
     }
   }
 }

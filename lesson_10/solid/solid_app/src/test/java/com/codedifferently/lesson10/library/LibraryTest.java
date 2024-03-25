@@ -3,7 +3,7 @@ package com.codedifferently.lesson10.library;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import com.codedifferently.lesson10.library.exceptions.BookCheckedOutException;
+import com.codedifferently.lesson10.library.exceptions.ItemCheckedOutException;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -136,7 +136,7 @@ class LibraryTest {
     classUnderTest.checkOutMediaItem(book, patron);
     // Act
     assertThatThrownBy(() -> classUnderTest.removePatron(patron))
-        .isInstanceOf(BookCheckedOutException.class)
+        .isInstanceOf(ItemCheckedOutException.class)
         .hasMessage("Cannot remove patron with checked out media.");
   }
 
@@ -151,7 +151,7 @@ class LibraryTest {
     classUnderTest.checkOutMediaItem(book, patron);
     // Act
     assertThatThrownBy(() -> classUnderTest.removeMediaItem(book, librarian))
-        .isInstanceOf(BookCheckedOutException.class)
+        .isInstanceOf(ItemCheckedOutException.class)
         .hasMessage("Cannot remove checked out media.");
   }
 }

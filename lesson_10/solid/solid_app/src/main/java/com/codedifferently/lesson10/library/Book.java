@@ -5,7 +5,6 @@ import java.util.Objects;
 
 /** Represents a book. */
 public class Book extends MediaItem {
-  private String title;
   private String isbn;
   private List<String> authors;
   private int numberOfPages;
@@ -25,21 +24,6 @@ public class Book extends MediaItem {
     this.numberOfPages = numberOfPages;
   }
 
-  /**
-   * Get the id of the book.
-   *
-   * @return The id of the book.
-   */
-  @Override
-  public String getId() {
-    return this.title;
-  }
-
-  /** Get the title of the book. */
-  public String getTitle() {
-    return title;
-  }
-
   /** Get the ISBN of the book. */
   public String getIsbn() {
     return isbn;
@@ -56,7 +40,7 @@ public class Book extends MediaItem {
   }
 
   @Override
-  public boolean canOrCantCheckOut() {
+  public boolean canCheckOut() {
     System.out.println("Enjoy your book!");
     return true;
   }

@@ -2,13 +2,22 @@ package com.codedifferently.lesson10.library;
 
 import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
+import java.util.UUID;
 
 public abstract class MediaItem {
   public Library library;
+  public String title;
+  public UUID id;
 
-  abstract boolean canOrCantCheckOut();
+  public MediaItem() {
+    this.id = UUID.randomUUID();
+  }
 
-  abstract String getId();
+  abstract boolean canCheckOut();
+
+  public UUID getId() {
+    return this.id;
+  }
 
   public void setLibrary(Library library) throws WrongLibraryException {
     if (library != null && !library.hasMediaItem(this)) {
@@ -16,6 +25,11 @@ public abstract class MediaItem {
           "Item " + this.getId() + " is not in library " + library.getId());
     }
     this.library = library;
+  }
+
+  /** Get the title of the book. */
+  public String getTitle() {
+    return title;
   }
 
   /**

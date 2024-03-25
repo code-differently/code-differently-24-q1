@@ -1,15 +1,16 @@
 package com.codedifferently.lesson10.library;
 
-import com.codedifferently.lesson10.library.exceptions.BookCheckedOutException;
+import com.codedifferently.lesson10.library.exceptions.ItemCheckedOutException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 /** Represents a library. */
 public class Library {
-  private Set<String> mediaIds = new HashSet<>();
-  private Set<String> checkedOutId = new HashSet<>();
+  private Set<UUID> mediaIds = new HashSet<>();
+  private Set<UUID> checkedOutId = new HashSet<>();
   private Map<String, Set<MediaItem>> checkedOutMediaByPatron = new HashMap<>();
   private Set<String> patronIds = new HashSet<>();
   private String id;
@@ -21,6 +22,10 @@ public class Library {
    */
   public Library(String id) {
     this.id = id;
+  }
+
+  public Set<UUID> getMediaIds() {
+    return this.mediaIds;
   }
 
   /**
@@ -53,9 +58,9 @@ public class Library {
    * @param item The item to remove.
    * @param librarian The librarian removing item.
    */
-  public void removeMediaItem(MediaItem item, Librarian librarian) throws BookCheckedOutException {
+  public void removeMediaItem(MediaItem item, Librarian librarian) throws ItemCheckedOutException {
     if (this.isCheckedOut(item)) {
-      throw new BookCheckedOutException("Cannot remove checked out media.");
+      throw new ItemCheckedOutException("Cannot remove checked out media.");
     }
     if (librarian == null) {
       throw new IllegalArgumentException("Librarian needed to remove media.");
@@ -80,9 +85,9 @@ public class Library {
    *
    * @param patron The patron to remove.
    */
-  public void removePatron(Patron patron) throws BookCheckedOutException {
+  public void removePatron(Patron patron) throws ItemCheckedOutException {
     if (this.checkedOutMediaByPatron.get(patron.getId()).size() > 0) {
-      throw new BookCheckedOutException("Cannot remove patron with checked out media.");
+      throw new ItemCheckedOutException("Cannot remove patron with checked out media.");
     }
     this.patronIds.remove(patron.getId());
     this.checkedOutMediaByPatron.remove(patron.getId());
@@ -106,7 +111,7 @@ public class Library {
   }
 
   private boolean canCheckOutMediaItem(MediaItem item, Patron patron) {
-    return item.canOrCantCheckOut()
+    return item.canCheckOut()
         && this.hasMediaItem(item)
         && !this.isCheckedOut(item)
         && this.hasPatron(patron);

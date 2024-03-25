@@ -16,6 +16,7 @@ public class Patron {
    *
    * @param name The name of the patron.
    * @param email The email of the patron.
+   * @param library The library patron is registered at.
    */
   public Patron(String name, String email, Library library) {
     this.name = name;
