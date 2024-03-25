@@ -1,14 +1,5 @@
 package com.codedifferently.lesson12;
 
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
-
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Configuration;
-
 import com.codedifferently.lesson12.cli.LibraryCommand;
 import com.codedifferently.lesson12.cli.LibrarySearchCommand;
 import com.codedifferently.lesson12.factory.LibraryDataLoader;
@@ -19,6 +10,13 @@ import com.codedifferently.lesson12.library.Library;
 import com.codedifferently.lesson12.library.LibraryInfo;
 import com.codedifferently.lesson12.library.MediaItem;
 import com.codedifferently.lesson12.library.search.SearchCriteria;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @SpringBootApplication(scanBasePackages = "com.codedifferently")
@@ -31,6 +29,10 @@ public class Lesson12 implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
+    if (isJUnitTest()) {
+      return;
+    }
+
     LibraryDataLoader loader = new LibraryJsonDataLoader();
     Library library = LibraryFactory.createWithLoader(loader);
 
@@ -55,6 +57,15 @@ public class Lesson12 implements CommandLineRunner {
         }
       }
     }
+  }
+
+  private static boolean isJUnitTest() {
+    for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+      if (element.getClassName().startsWith("org.junit.")) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private static LibraryCommand promptForCommand(Scanner scanner) {
