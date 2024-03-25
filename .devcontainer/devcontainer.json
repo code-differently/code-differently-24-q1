@@ -31,7 +31,8 @@
 				"donjayamanne.python-extension-pack",
 				"ms-vscode.vscode-typescript-next",
 				"ms-dotnettools.csdevkit",
-				"ritwickdey.LiveServer"
+				"ritwickdey.LiveServer",
+				"mechatroner.rainbow-csv"
 			]
 		}
 	}
