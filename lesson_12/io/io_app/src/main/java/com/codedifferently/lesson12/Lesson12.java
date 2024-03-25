@@ -13,6 +13,13 @@ import com.codedifferently.lesson12.library.search.SearchCriteria;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,27 +36,21 @@ public class Lesson12 implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
+    // Don't run as an app if we're running as a JUnit test.
     if (isJUnitTest()) {
       return;
     }
 
-    LibraryDataLoader loader = new LibraryJsonDataLoader();
+    // Load the library using the specified loader from the command line or the default.
+    LibraryDataLoader loader = getLoader(args);
     Library library = LibraryFactory.createWithLoader(loader);
 
-    LibraryInfo info = library.getInfo();
-    Map<String, Set<MediaItem>> checkedOutItemsByGuest = info.getCheckedOutItemsByGuest();
-    var numCheckedOutItems = checkedOutItemsByGuest.values().stream().mapToInt(Set::size).sum();
-    System.out.println();
-    System.out.println("========================================");
-    System.out.println("Library id: " + library.getId());
-    System.out.println("Number of items: " + info.getItems().size());
-    System.out.println("Number of guests: " + info.getGuests().size());
-    System.out.println("Number of checked out items: " + numCheckedOutItems);
-    System.out.println("========================================");
-    System.out.println();
+    // Show stats about the loaded library to the user.
+    printLibraryInfo(library);
 
     try (var scanner = new Scanner(System.in)) {
       LibraryCommand command;
+      // Main application loop.
       while ((command = promptForCommand(scanner)) != LibraryCommand.EXIT) {
         switch (command) {
           case SEARCH -> doSearch(scanner, library);
@@ -66,6 +67,51 @@ public class Lesson12 implements CommandLineRunner {
       }
     }
     return false;
+  }
+
+  private void printLibraryInfo(Library library) {
+    LibraryInfo info = library.getInfo();
+    Map<String, Set<MediaItem>> checkedOutItemsByGuest = info.getCheckedOutItemsByGuest();
+    var numCheckedOutItems = checkedOutItemsByGuest.values().stream().mapToInt(Set::size).sum();
+    System.out.println();
+    System.out.println("========================================");
+    System.out.println("Library id: " + library.getId());
+    System.out.println("Number of items: " + info.getItems().size());
+    System.out.println("Number of guests: " + info.getGuests().size());
+    System.out.println("Number of checked out items: " + numCheckedOutItems);
+    System.out.println("========================================");
+    System.out.println();
+  }
+
+  private static LibraryDataLoader getLoader(String[] args) throws Exception {
+    String loaderType = getLoaderFromCommandLine(args);
+    return loaderType == null
+        ? new LibraryJsonDataLoader()
+        : Class.forName(loaderType)
+            .asSubclass(LibraryDataLoader.class)
+            .getDeclaredConstructor()
+            .newInstance();
+  }
+
+  private static String getLoaderFromCommandLine(String[] args) throws IllegalArgumentException {
+    Options options = new Options();
+    Option input = new Option("l", "loader", true, "data loader type");
+    input.setRequired(false);
+    options.addOption(input);
+    CommandLineParser parser = new DefaultParser();
+    HelpFormatter formatter = new HelpFormatter();
+    CommandLine cmd = null;
+    try {
+      cmd = parser.parse(options, args);
+    } catch (ParseException e) {
+      System.out.println();
+      System.out.println(e.getMessage());
+      formatter.printHelp("utility-name", options);
+
+      System.exit(1);
+    }
+    String loaderType = cmd.getOptionValue("loader");
+    return loaderType;
   }
 
   private static LibraryCommand promptForCommand(Scanner scanner) {

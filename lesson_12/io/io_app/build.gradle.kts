@@ -27,6 +27,7 @@ dependencies {
     implementation("com.codedifferently.instructional:instructional-lib")
     implementation("com.google.guava:guava:31.1-jre")
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation("commons-cli:commons-cli:1.6.0")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.3")
