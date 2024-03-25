@@ -75,11 +75,12 @@ class LibraryTest {
   }
 
   @Test
-  void testLibrary_allowsPatronToCheckoutBook() {
+  void testLibrary_allowsPatronOrLibrarianToCheckoutBook() {
     // Arrange
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com");
-    classUnderTest.addBook(book);
+    Librarian librarian = new Librarian("Jane Smith", "jane@example.com");
+    classUnderTest.addBook(book, librarian); // Adding book with librarian
     classUnderTest.addPatron(patron);
     // Act
     boolean wasCheckedOut = classUnderTest.checkOutBook(book, patron);
@@ -87,14 +88,15 @@ class LibraryTest {
     assertThat(wasCheckedOut).isTrue();
     assertThat(classUnderTest.isCheckedOut(book)).isTrue();
     assertThat(patron.getCheckedOutBooks().contains(book)).isTrue();
-  }
+}
 
-  @Test
-  void testLibrary_allowPatronToCheckInBook() {
+ @Test
+void testLibrary_allowPatronOrLibrarianToCheckInBook() {
     // Arrange
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com");
-    classUnderTest.addBook(book);
+    Librarian librarian = new Librarian("Jane Smith", "jane@example.com");
+    classUnderTest.addBook(book, librarian); // Adding book with librarian
     classUnderTest.addPatron(patron);
     classUnderTest.checkOutBook(book, patron);
     // Act
@@ -103,7 +105,7 @@ class LibraryTest {
     assertThat(wasReturned).isTrue();
     assertThat(classUnderTest.isCheckedOut(book)).isFalse();
     assertThat(patron.getCheckedOutBooks().contains(book)).isFalse();
-  }
+}
 
   @Test
   void testLibrary_preventsMultipleCheckouts() {

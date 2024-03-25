@@ -51,6 +51,15 @@ public class Book {
     this.library = library;
   }
 
+  /**
+   * Get the library that the book belongs to.
+   *
+   * @return The library that the book belongs to.
+   */
+  public Library getLibrary() {
+    return this.library;
+  }
+
   /** Get the title of the book. */
   public String getTitle() {
     return title;

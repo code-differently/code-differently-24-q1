@@ -33,23 +33,28 @@ public class Library {
   }
 
   /**
-   * Add a book to the library.
+   * Add a book to the library. Only librarians can add books.
    *
    * @param book The book to add.
+   * @param librarian The librarian performing the action.
    */
-  public void addBook(Book book) {
+  public void addBook(Book book, Librarian librarian) {
+    if (librarian == null) {
+      throw new IllegalArgumentException("A librarian is required to add a book.");
+    }
     this.bookIds.add(book.getId());
     book.setLibrary(this);
   }
 
   /**
-   * Remove a book from the library.
+   * Remove a book from the library. Only librarians can remove books.
    *
    * @param book The book to remove.
+   * @param librarian The librarian performing the action.
    */
-  public void removeBook(Book book) throws BookCheckedOutException {
-    if (this.isCheckedOut(book)) {
-      throw new BookCheckedOutException("Cannot remove checked out book.");
+  public void removeBook(Book book, Librarian librarian) {
+    if (librarian == null) {
+      throw new IllegalArgumentException("A librarian is required to remove a book.");
     }
     this.bookIds.remove(book.getId());
     book.setLibrary(null);
@@ -81,18 +86,18 @@ public class Library {
   }
 
   /**
-   * Check out a book to a patron.
+   * Check out a book to a patron or librarian.
    *
    * @param book The book to check out.
-   * @param patron The patron to check out the book to.
+   * @param borrower The borrower (patron or librarian) checking out the book.
    * @return True if the book was checked out, false otherwise.
    */
-  public boolean checkOutBook(Book book, Patron patron) {
-    if (!this.canCheckOutBook(book, patron)) {
+  public boolean checkOutBook(Book book, Patron borrower) {
+    if (!this.canCheckOutBook(book, borrower)) {
       return false;
     }
     this.checkedOutIsbns.add(book.getIsbn());
-    this.checkedOutBooksByPatron.get(patron.getId()).add(book);
+    this.checkedOutBooksByPatron.get(borrower.getId()).add(book);
     return true;
   }
 
@@ -140,18 +145,18 @@ public class Library {
   }
 
   /**
-   * Return a book to the library.
+   * Return a book to the library. Available to patrons and librarians.
    *
    * @param book The book to return.
-   * @param patron The patron returning the book.
+   * @param borrower The borrower (patron or librarian) returning the book.
    * @return True if the book was returned, false otherwise.
    */
-  public boolean checkInBook(Book book, Patron patron) {
+  public boolean checkInBook(Book book, Patron borrower) {
     if (!this.hasBook(book)) {
       return false;
     }
     this.checkedOutIsbns.remove(book.getIsbn());
-    this.checkedOutBooksByPatron.get(patron.getId()).remove(book);
+    this.checkedOutBooksByPatron.get(borrower.getId()).remove(book);
     return true;
   }
 
