@@ -9,22 +9,12 @@ import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 /** Represents a book. */
 public class Book implements Media {
 
-  @Override
-  public void checkOutItem() {
-      // Implementation for checking out a book
-  }
-
-  @Override
-  public void returnItem() {
-      // Implementation for returning a book
-  }
-
-
   private Library library;
   private String title;
   private String isbn;
   private List<String> authors;
   private int numberOfPages;
+private boolean checkedOut;
 
   /**
    * Create a new book with the given title, ISBN, authors, and number of pages.
@@ -39,6 +29,7 @@ public class Book implements Media {
     this.isbn = isbn;
     this.authors = authors;
     this.numberOfPages = numberOfPages;
+    this.checkedOut = false;
   }
 
   /**
@@ -94,8 +85,26 @@ public class Book implements Media {
     if (this.library == null) {
       throw new LibraryNotSetException("Library not set for book " + this.getId());
     }
-    return library.isCheckedOut(this);
+    return checkedOut;
   }
+@Override
+  public boolean checkOut ( Librarian librarian) {
+    if (!checkedOut && librarian != null) { // If not already checked out and librarian is present
+      checkedOut = true; // Check out the book
+      return true; // Return true to indicate successful checkout
+    } else {
+      return false; // Return false to indicate unsuccessful checkout
+    }
+  }
+  @Override
+  public boolean returnItem() {
+    if (checkedOut) {
+      checkedOut = false;
+      return true;
+    } else  {
+      return false;
+    }
+    }
 
   @Override
   public boolean equals(Object o) {
