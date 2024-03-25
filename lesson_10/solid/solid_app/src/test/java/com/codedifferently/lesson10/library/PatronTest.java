@@ -8,6 +8,7 @@ import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -57,8 +58,19 @@ class PatronTest {
     // Arrange
     Librarian librarian = new Librarian("Rich", "Rich@mail.com", library);
     Book book1 =
-        new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
+        new Book(
+            "The Great Gatsby",
+            "978-0743273565",
+            List.of("F. Scott Fitzgerald"),
+            180,
+            UUID.randomUUID());
+    Book book2 =
+        new Book(
+            "To Kill a Mockingbird",
+            "978-0061120084",
+            List.of("Harper Lee"),
+            281,
+            UUID.randomUUID());
     Set<MediaItem> expectedMedia = new HashSet<>();
     expectedMedia.add(book1);
     expectedMedia.add(book2);

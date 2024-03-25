@@ -1,8 +1,10 @@
 package com.codedifferently.lesson10.library;
 
 import com.codedifferently.lesson10.library.exceptions.ItemCheckedOutException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -11,6 +13,7 @@ import java.util.UUID;
 public class Library {
   private Set<UUID> mediaIds = new HashSet<>();
   private Set<UUID> checkedOutId = new HashSet<>();
+  private Map<UUID, MediaItem> mediaItemsMap = new HashMap<>();
   private Map<String, Set<MediaItem>> checkedOutMediaByPatron = new HashMap<>();
   private Set<String> patronIds = new HashSet<>();
   private String id;
@@ -38,6 +41,31 @@ public class Library {
   }
 
   /**
+   * Returns media item based off id
+   *
+   * @param id unique id of item
+   * @return media item.
+   */
+  public MediaItem getMediaItemById(UUID id) {
+    return mediaItemsMap.get(id);
+  }
+
+  /**
+   * @param title title of item.
+   * @return list of items based off title.
+   */
+  public List<MediaItem> searchByTitle(String title) {
+    List<MediaItem> foundItems = new ArrayList<>();
+    for (UUID id : mediaIds) {
+      MediaItem item = getMediaItemById(id);
+      if (item != null && item.getTitle().equalsIgnoreCase(title)) {
+        foundItems.add(item);
+      }
+    }
+    return foundItems;
+  }
+
+  /**
    * Add a book to the library.
    *
    * @param librarian The librarian adding book.
@@ -50,6 +78,7 @@ public class Library {
 
     this.mediaIds.add(item.getId());
     item.setLibrary(this);
+    mediaItemsMap.put(item.getId(), item);
   }
 
   /**
@@ -67,6 +96,7 @@ public class Library {
     }
     this.mediaIds.remove(item.getId());
     item.setLibrary(null);
+    mediaItemsMap.remove(item.getId(), item);
   }
 
   /**

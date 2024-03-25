@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 import java.util.List;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +20,12 @@ class BookTest {
   @BeforeEach
   void setUp() {
     classUnderTest =
-        new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
+        new Book(
+            "To Kill a Mockingbird",
+            "978-0061120084",
+            List.of("Harper Lee"),
+            281,
+            UUID.randomUUID());
     library = mock(Library.class);
     when(library.getId()).thenReturn("Library 1");
     when(library.hasMediaItem(classUnderTest)).thenReturn(true);

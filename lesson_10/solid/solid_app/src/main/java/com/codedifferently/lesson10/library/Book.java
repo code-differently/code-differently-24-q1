@@ -2,6 +2,7 @@ package com.codedifferently.lesson10.library;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 /** Represents a book. */
 public class Book extends MediaItem {
@@ -16,12 +17,14 @@ public class Book extends MediaItem {
    * @param isbn The ISBN of the book.
    * @param authors The authors of the book.
    * @param numberOfPages The number of pages in the book.
+   * @param id The unique id for the book.
    */
-  public Book(String title, String isbn, List<String> authors, int numberOfPages) {
+  public Book(String title, String isbn, List<String> authors, int numberOfPages, UUID id) {
     this.title = title;
     this.isbn = isbn;
     this.authors = authors;
     this.numberOfPages = numberOfPages;
+    this.id = UUID.randomUUID();
   }
 
   /** Get the ISBN of the book. */
