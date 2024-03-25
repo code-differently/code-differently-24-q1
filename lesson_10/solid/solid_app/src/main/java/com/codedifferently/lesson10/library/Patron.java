@@ -76,4 +76,14 @@ public class Patron {
   public String toString() {
     return "Patron{" + "id='" + getId() + '\'' + ", name='" + getName() + '\'' + '}';
   }
+
+  public void removeCheckedOutBook(Book book) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'removeCheckedOutBook'");
+  }
+
+public void addCheckedOutBook(Book book) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'addCheckedOutBook'");
+}
 }

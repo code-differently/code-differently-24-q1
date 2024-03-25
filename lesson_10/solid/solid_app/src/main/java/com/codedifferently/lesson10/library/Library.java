@@ -1,6 +1,13 @@
 package com.codedifferently.lesson10.library;
 
 import com.codedifferently.lesson10.library.exceptions.BookCheckedOutException;
+
+import main.java.com.codedifferently.lesson10.library.Librarian;
+import main.java.com.codedifferently.lesson10.library.Magazine;
+import main.java.com.codedifferently.lesson10.library.MediaItem;
+import main.java.com.codedifferently.lesson10.library.Newspaper;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -178,4 +185,33 @@ public class Library {
         + patronIds
         + '}';
   }
+private List<MediaItem> items;
+    private Librarian librarian;
+
+    public Library() {
+        this.items = new ArrayList<>();
+        this.librarian = new Librarian();
+    }
+
+    public void addMediaItem(MediaItem item) {
+        items.add(item);
+    }
+
+    public void removeMediaItem(MediaItem item) {
+        items.remove(item);
+    }
+
+    public void checkOutItem(MediaItem item, Patron patron) {
+        // Check if the patron is eligible to borrow the item
+        if (patron instanceof Patron && !(item instanceof Magazine || item instanceof Newspaper)) {
+            item.setCheckedOut(true);
+            patron.addCheckedOutItem(item);
+        }
+    }
+
+    public void checkInItem(MediaItem item) {
+        item.setCheckedOut(false);
+    }
 }
+
+
