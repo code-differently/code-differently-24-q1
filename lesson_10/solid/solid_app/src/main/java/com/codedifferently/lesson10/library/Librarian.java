@@ -1,6 +1,4 @@
-import com.codedifferently.lesson10.library.Book;
-import com.codedifferently.lesson10.library.Library;
-import com.codedifferently.lesson10.library.Patron;
+package com.codedifferently.lesson10.library;
 
 public class Librarian extends Patron {
   private Library library;
