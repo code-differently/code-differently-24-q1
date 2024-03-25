@@ -7,7 +7,7 @@ import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 
 /** Represents a book. */
-public class Book implements Media {
+public abstract class Book implements Media {
 
   private Library library;
   private String title;

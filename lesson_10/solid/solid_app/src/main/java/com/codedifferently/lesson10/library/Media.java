@@ -6,8 +6,8 @@ import java.util.List;
 public interface Media {
 String getTitle();
 boolean isCheckedOut();
-void checkOut( Librarian librarian);
-void returnItem();
+boolean checkOut( Librarian librarian);
+boolean returnItem();
 }
 // Dvd class
 

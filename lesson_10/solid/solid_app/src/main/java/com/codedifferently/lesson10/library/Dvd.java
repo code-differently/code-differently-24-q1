@@ -1,11 +1,11 @@
 package com.codedifferently.lesson10.library;
 
-public class Dvd implements Media {
+public abstract class Dvd implements Media {
 
   private String title;
   private String director;
   private Boolean checkedOut;
-
+  private Boolean returnItem;
   // constructor
   public Dvd(String title, String director, Boolean checkedOut) {
     this.title = title;
@@ -16,7 +16,7 @@ public class Dvd implements Media {
   public String getTitle(){
   return title;
   }
-  @Override
+  
 public String getDirector() {
   return director;
 }
@@ -25,6 +25,10 @@ public boolean isCheckedOut(){
   return checkedOut;
 }
 
+public boolean isReturned(){
+      boolean returned;
+  return returned;
+}
 @Override
 public boolean checkOut(Librarian librarian) {
     if (!checkedOut && librarian != null) { // If not already checked out and librarian is present
