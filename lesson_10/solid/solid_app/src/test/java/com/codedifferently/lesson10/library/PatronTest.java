@@ -1,16 +1,15 @@
 package com.codedifferently.lesson10.library;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class PatronTest {
 
@@ -71,18 +70,17 @@ class PatronTest {
     // Act & Assert
     assertThat(classUnderTest.getCheckedOutBooks(library)).isEqualTo(expectedBooks);
   }
-  
+
   @Test
-  void testMultipleLibraries(){
-    //Arrange
+  void testMultipleLibraries() {
+    // Arrange
     Library library1 = new Library("other library1");
     Library library2 = new Library("other library2");
     classUnderTest.addLibrary(library);
     classUnderTest.addLibrary(library1);
     classUnderTest.addLibrary(library2);
 
-
-    //Assert
+    // Assert
     assertThat(classUnderTest.libraries.containsValue(library1));
     assertThat(classUnderTest.libraries.containsValue(library2));
   }
