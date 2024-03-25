@@ -1,12 +1,13 @@
 package com.codedifferently.lesson10.library;
 
-import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
-import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 import java.util.List;
 import java.util.Objects;
 
+import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
+import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
+
 /** Represents a book. */
-public abstract class Book implements Media {
+public class Book implements Media {
 
   private Library library;
   private String title;

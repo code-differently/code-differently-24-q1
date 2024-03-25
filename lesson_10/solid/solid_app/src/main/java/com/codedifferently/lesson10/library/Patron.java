@@ -5,7 +5,6 @@ import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 import java.util.Objects;
 import java.util.Set;
 
-
 /** Represents a patron of a library. */
 public class Patron implements Member {
 

@@ -40,9 +40,8 @@ public class Dvd implements Media {
     return checkedOut;
   }
 
-  @Override
   public boolean checkedOut(Librarian librarian) {
-    // if librarian is not not there then checkedOut is true 
+    // if librarian is not not there then checkedOut is true
     if (librarian = !null) {
       checkedOut = true;
       return true;
@@ -80,8 +79,7 @@ public class Dvd implements Media {
       return checkedOut;
     }
 
-    @Override
-    public void checkOut(Librarian librarian) {
+    public boolean checkOut(Librarian librarian) {
       // Implement logic to check out the book if librarian is present
       if (librarian != null) {
         checkedOut = true;
@@ -91,7 +89,7 @@ public class Dvd implements Media {
     }
 
     @Override
-    public void returnItem() {
+    public boolean returnItem() {
       checkedOut = false;
     }
   }

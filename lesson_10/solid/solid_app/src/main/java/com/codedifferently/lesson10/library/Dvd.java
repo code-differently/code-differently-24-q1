@@ -37,20 +37,20 @@ public class Dvd implements Media {
   public boolean checkOut(Librarian librarian) {
     if (!checkedOut && librarian != null) { // If not already checked out and librarian is present
       checkedOut = true; // Check out the DVD
-      return true; 
+      return true;
     } else {
-      return false; 
-    }
-  }
-    @Override 
-    public boolean returnItem(){
-    
-      if (checkedOut) { // If the DVD is checked out
-        checkedOut = false; // Return the DVD
-        return true;
-       } else {
-        return false; 
-      }
+      return false;
     }
   }
 
+  @Override
+  public boolean returnItem() {
+
+    if (checkedOut) { // If the DVD is checked out
+      checkedOut = false; // Return the DVD
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
