@@ -1,18 +1,18 @@
 package com.codedifferently.lesson10.library;
 
+// Dvd class
+
 public class Dvd implements Media {
 
   private String title;
   private String director;
-  private Boolean checkedOut;
-  private Boolean returnItem;
+  private boolean checkedOut;
 
-  // constructor
-  public Dvd(String title, String director, Boolean checkedOut) {
+  public Dvd(String title, String director) {
+
     this.title = title;
     this.director = director;
     this.checkedOut = false;
-    this.returnItem = returnItem;
   }
 
   @Override
@@ -24,32 +24,18 @@ public class Dvd implements Media {
     return director;
   }
 
-  @Override
   public boolean isCheckedOut() {
     return checkedOut;
   }
 
-  public boolean isReturned() {
-    return returnItem;
-  }
 
-  @Override
-  public boolean checkOut(Librarian librarian) {
-    if (!checkedOut && librarian != null) { // If not already checked out and librarian is present
-      checkedOut = true; // Check out the DVD
+  public boolean checkedOut(Librarian librarian) {
+    // if librarian is not not there then checkedOut is true
+    if (librarian = !null) {
+      checkedOut = true;
       return true;
     } else {
-      return false;
-    }
-  }
-
-  @Override
-  public boolean returnItem() {
-
-    if (checkedOut) { // If the DVD is checked out
-      checkedOut = false; // Return the DVD
-      return true;
-    } else {
+      System.out.println("A librarian must be present to check out the Dvd.");
       return false;
     }
   }
