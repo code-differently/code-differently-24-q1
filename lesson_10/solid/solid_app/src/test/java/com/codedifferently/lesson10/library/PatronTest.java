@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -61,9 +62,10 @@ class PatronTest {
     Set<Book> expectedBooks = new HashSet<>();
     expectedBooks.add(book1);
     expectedBooks.add(book2);
+    Librarian librarian;
 
-    library.addBook(book1);
-    library.addBook(book2);
+    library.addBook(book1, librarian);
+    library.addBook(book2, librarian);
     library.checkOutBook(book1, classUnderTest);
     library.checkOutBook(book2, classUnderTest);
 
@@ -76,5 +78,46 @@ class PatronTest {
     // Act & Assert
     assertThat(classUnderTest.toString())
         .isEqualTo("Patron{id='johndoe@example.com', name='John Doe'}");
+  }
+
+  @Test
+  void testPatron_canCheckOutBook() {
+    // Arrange
+    Library library = new Library("Test Library");
+    Patron patron = new Patron("John Doe", "john@example.com");
+    Librarian librarian = new Librarian("Librarian Name", "librarian@example.com");
+    Book book =
+        new Book("Test Book", "978-1234567890", Collections.singletonList("Test Author"), 200);
+
+    library.addBook(book, librarian); // Adding book with librarian
+
+    // Act
+    boolean wasCheckedOut = patron.checkOutBook(book, library);
+
+    // Assert
+    assertThat(wasCheckedOut).isTrue();
+    assertThat(patron.getCheckedOutBooks()).contains(book);
+    assertThat(library.isCheckedOut(book)).isTrue();
+  }
+
+  @Test
+  void testPatron_canReturnBook() {
+    // Arrange
+    Library library = new Library("Test Library");
+    Patron patron = new Patron("John Doe", "john@example.com");
+    Librarian librarian = new Librarian("Librarian Name", "librarian@example.com");
+    Book book =
+        new Book("Test Book", "978-1234567890", Collections.singletonList("Test Author"), 200);
+
+    library.addBook(book, librarian); // Adding book with librarian
+    patron.checkOutBook(book, library);
+
+    // Act
+    boolean wasReturned = patron.returnBook(book, library);
+
+    // Assert
+    assertThat(wasReturned).isTrue();
+    assertThat(patron.getCheckedOutBooks()).doesNotContain(book);
+    assertThat(library.isCheckedOut(book)).isFalse();
   }
 }

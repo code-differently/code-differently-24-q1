@@ -22,9 +22,10 @@ class LibraryTest {
     Book book1 =
         new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
+    Librarian librarian = new Librarian("Librarian Name", "librarian@example.com");
     // Act
-    classUnderTest.addBook(book1);
-    classUnderTest.addBook(book2);
+    classUnderTest.addBook(book1, librarian);
+    classUnderTest.addBook(book2, librarian);
     // Assert
     assertThat(classUnderTest.hasBook(book1)).isTrue();
     assertThat(classUnderTest.hasBook(book2)).isTrue();
@@ -36,11 +37,12 @@ class LibraryTest {
     Book book1 =
         new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
-    classUnderTest.addBook(book1);
-    classUnderTest.addBook(book2);
+    Librarian librarian = new Librarian("Librarian Name", "librarian@example.com");
+    classUnderTest.addBook(book1, librarian);
+    classUnderTest.addBook(book2, librarian);
     // Act
-    classUnderTest.removeBook(book1);
-    classUnderTest.removeBook(book2);
+    classUnderTest.removeBook(book1, librarian);
+    classUnderTest.removeBook(book2, librarian);
     // Assert
     assertThat(classUnderTest.hasBook(book1)).isFalse();
     assertThat(classUnderTest.hasBook(book2)).isFalse();
@@ -88,10 +90,10 @@ class LibraryTest {
     assertThat(wasCheckedOut).isTrue();
     assertThat(classUnderTest.isCheckedOut(book)).isTrue();
     assertThat(patron.getCheckedOutBooks().contains(book)).isTrue();
-}
+  }
 
- @Test
-void testLibrary_allowPatronOrLibrarianToCheckInBook() {
+  @Test
+  void testLibrary_allowPatronOrLibrarianToCheckInBook() {
     // Arrange
     Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com");
@@ -105,7 +107,7 @@ void testLibrary_allowPatronOrLibrarianToCheckInBook() {
     assertThat(wasReturned).isTrue();
     assertThat(classUnderTest.isCheckedOut(book)).isFalse();
     assertThat(patron.getCheckedOutBooks().contains(book)).isFalse();
-}
+  }
 
   @Test
   void testLibrary_preventsMultipleCheckouts() {
