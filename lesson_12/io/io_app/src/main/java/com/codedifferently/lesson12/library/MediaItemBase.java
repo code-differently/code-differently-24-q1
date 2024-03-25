@@ -70,7 +70,10 @@ public abstract class MediaItemBase implements MediaItem {
     if (query.type != null && !this.getType().equalsIgnoreCase(query.type)) {
       return false;
     }
-    return this.matchesAuthor(query.author);
+    if (query.author != null && !this.matchesAuthor(query.author)) {
+      return false;
+    }
+    return true;
   }
 
   @Override

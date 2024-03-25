@@ -39,6 +39,10 @@ application {
     mainClass.set("com.codedifferently.lesson12.Lesson12")
 }
 
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}
+
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
