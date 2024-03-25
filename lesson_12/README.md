@@ -11,7 +11,7 @@ We've got everything we need to manage our library except for one important thin
 
 * Create a unique folder created in the [factory/][factory-folder] directory.
 * Provide a concrete implementation of the [LibraryCsvDataLoader][csv-data-loader] interface that loads data from CSV files in the app's [resources/csv][csv-resources] directory.
-* You must also use the `org.springframework.stereotype.service` annotation on your implementation (see [this example][example-service] back in Lesson 03) in order for it to be included in the tests. 
+* You must also use the `org.springframework.stereotype.Service` annotation on your implementation (see [this example][example-service] back in Lesson 03) in order for it to be included in the tests. 
 
 To run the app using the default [data loader][json-loader], use the following command (only supports search at the moment):
 
