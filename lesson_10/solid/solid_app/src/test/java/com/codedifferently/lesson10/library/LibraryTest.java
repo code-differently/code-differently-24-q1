@@ -86,7 +86,7 @@ class LibraryTest {
     // Assert
     assertThat(wasCheckedOut).isTrue();
     assertThat(classUnderTest.isCheckedOut(book)).isTrue();
-    assertThat(patron.getCheckedOutBooks().contains(book)).isTrue();
+    assertThat(patron.getCheckedOutBooks(classUnderTest).contains(book)).isTrue();
   }
 
   @Test
@@ -102,7 +102,7 @@ class LibraryTest {
     // Assert
     assertThat(wasReturned).isTrue();
     assertThat(classUnderTest.isCheckedOut(book)).isFalse();
-    assertThat(patron.getCheckedOutBooks().contains(book)).isFalse();
+    assertThat(patron.getCheckedOutBooks(classUnderTest).contains(book)).isFalse();
   }
 
   @Test

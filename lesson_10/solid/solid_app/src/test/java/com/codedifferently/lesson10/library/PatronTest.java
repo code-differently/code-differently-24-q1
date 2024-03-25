@@ -1,15 +1,16 @@
 package com.codedifferently.lesson10.library;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
-import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
-import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import org.junit.jupiter.api.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
+import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 
 class PatronTest {
 
@@ -47,7 +48,7 @@ class PatronTest {
     classUnderTest.setLibrary(null);
 
     // Act & Assert
-    assertThatThrownBy(() -> classUnderTest.getCheckedOutBooks())
+    assertThatThrownBy(() -> classUnderTest.getCheckedOutBooks(library))
         .isInstanceOf(LibraryNotSetException.class)
         .hasMessageContaining("Library not set for patron johndoe@example.com");
   }
@@ -68,7 +69,22 @@ class PatronTest {
     library.checkOutItem(book2, classUnderTest);
 
     // Act & Assert
-    assertThat(classUnderTest.getCheckedOutBooks()).isEqualTo(expectedBooks);
+    assertThat(classUnderTest.getCheckedOutBooks(library)).isEqualTo(expectedBooks);
+  }
+  
+  @Test
+  void testMultipleLibraries(){
+    //Arrange
+    Library library1 = new Library("other library1");
+    Library library2 = new Library("other library2");
+    classUnderTest.addLibrary(library);
+    classUnderTest.addLibrary(library1);
+    classUnderTest.addLibrary(library2);
+
+
+    //Assert
+    assertThat(classUnderTest.libraries.containsValue(library1));
+    assertThat(classUnderTest.libraries.containsValue(library2));
   }
 
   @Test

@@ -66,6 +66,7 @@ public class Library {
     this.patronIds.add(patron.getId());
     this.checkedOutItemsByPatron.put(patron.getId(), new HashSet<>());
     patron.setLibrary(this);
+    patron.addLibrary(this);
   }
 
   /**
@@ -79,7 +80,7 @@ public class Library {
     }
     this.patronIds.remove(patron.getId());
     this.checkedOutItemsByPatron.remove(patron.getId());
-    patron.setLibrary(null);
+    patron.removeLibrary(this);
   }
 
   /**

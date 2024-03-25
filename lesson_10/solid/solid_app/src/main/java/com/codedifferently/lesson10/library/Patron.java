@@ -2,12 +2,14 @@ package com.codedifferently.lesson10.library;
 
 import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
 /** Represents a patron of a library. */
 public class Patron {
-  protected Library library;
+  protected Map<String, Library> libraries = new HashMap<>();
   protected String name;
   private String email;
 
@@ -35,7 +37,11 @@ public class Patron {
       throw new WrongLibraryException(
           "Patron " + this.getId() + " is not in library " + library.getId());
     }
-    this.library = library;
+    if (library == null) {
+      this.libraries.clear();
+    } else {
+      this.libraries.put(library.getId(), library);
+    }
   }
 
   /**
@@ -62,11 +68,21 @@ public class Patron {
    * @return The books currently checked out to the patron.
    * @throws LibraryNotSetException If the library is not set for the patron.
    */
-  public Set<LibraryAsset> getCheckedOutBooks() throws LibraryNotSetException {
-    if (this.library == null) {
+  public Set<LibraryAsset> getCheckedOutBooks(Library library) throws LibraryNotSetException {
+    if (!libraries.containsKey(library.getId())) {
+      System.out.println("smelly");
       throw new LibraryNotSetException("Library not set for patron " + this.getId());
     }
-    return this.library.getCheckedOutByPatron(this);
+    System.out.println("stinker");
+    return this.libraries.get(library.getId()).getCheckedOutByPatron(this);
+  }
+
+  public void addLibrary(Library library) {
+    this.libraries.put(library.getId(), library);
+  }
+
+  public void removeLibrary(Library library) {
+    this.libraries.remove(library.getId());
   }
 
   @Override
