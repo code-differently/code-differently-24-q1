@@ -19,6 +19,12 @@ To run the app using the default [data loader][json-loader], use the following c
 ./gradlew run --console=plain
 ```
 
+To try out the app with your loader instead, you can run the following command. An example loader called `MyCsvLoader` in package `mypackage` is used for illustration purposes.
+
+```java
+./gradlew run --console=plain --args="--loader=com.codedifferently.lesson12.factory.mypackage.MyCsvLoader"
+```
+
 [csv-data-loader]: ./io/io_app/src/main/java/com/codedifferently/lesson12/factory/LibraryCsvDataLoader.java
 [json-loader]: ./io/io_app/src/main/java/com/codedifferently/lesson12/factory/LibraryJsonDataLoader.java
 [factory-folder]: ./io/io_app/src/main/java/com/codedifferently/lesson12/factory/
