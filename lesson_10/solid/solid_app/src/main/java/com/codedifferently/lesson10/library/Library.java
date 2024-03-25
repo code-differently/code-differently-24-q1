@@ -72,7 +72,7 @@ public class Library {
    * @param patron The patron to remove.
    */
   public void removePatron(Patron patron) throws BookCheckedOutException {
-    if (this.checkedOutBooksByPatron.get(patron.getId()).size() > 0) {
+    if (!this.checkedOutBooksByPatron.get(patron.getId()).isEmpty()) {
       throw new BookCheckedOutException("Cannot remove patron with checked out books.");
     }
     this.patronIds.remove(patron.getId());
