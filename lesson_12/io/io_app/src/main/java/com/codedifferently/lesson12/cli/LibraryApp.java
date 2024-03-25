@@ -1,17 +1,5 @@
 package com.codedifferently.lesson12.cli;
 
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
-
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
-
 import com.codedifferently.lesson12.factory.LibraryDataLoader;
 import com.codedifferently.lesson12.factory.LibraryFactory;
 import com.codedifferently.lesson12.factory.LibraryJsonDataLoader;
@@ -20,6 +8,16 @@ import com.codedifferently.lesson12.library.Library;
 import com.codedifferently.lesson12.library.LibraryInfo;
 import com.codedifferently.lesson12.library.MediaItem;
 import com.codedifferently.lesson12.library.search.SearchCriteria;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 
 public final class LibraryApp {
 
@@ -74,9 +72,9 @@ public final class LibraryApp {
     options.addOption(input);
     CommandLineParser parser = new DefaultParser();
     HelpFormatter formatter = new HelpFormatter();
-    CommandLine cmd = null;
     try {
-      cmd = parser.parse(options, args);
+      CommandLine cmd = parser.parse(options, args);
+      return cmd.getOptionValue("loader");
     } catch (ParseException e) {
       System.out.println();
       System.out.println(e.getMessage());
@@ -84,8 +82,7 @@ public final class LibraryApp {
 
       System.exit(1);
     }
-    String loaderType = cmd.getOptionValue("loader");
-    return loaderType;
+    return null;
   }
 
   private static LibraryCommand promptForCommand(Scanner scanner) {
@@ -188,5 +185,6 @@ public final class LibraryApp {
       System.out.println("TYPE: " + item.getType().toUpperCase());
       System.out.println();
     }
+    System.out.println("Found " + results.size() + " result(s).\n");
   }
 }
