@@ -1,50 +1,56 @@
 package com.codedifferently.lesson10.library;
 
-public abstract class Dvd implements Media {
+public class Dvd implements Media {
 
   private String title;
   private String director;
   private Boolean checkedOut;
   private Boolean returnItem;
+
   // constructor
   public Dvd(String title, String director, Boolean checkedOut) {
     this.title = title;
     this.director = director;
     this.checkedOut = false;
+    this.returnItem = returnItem;
   }
-@Override
-  public String getTitle(){
-  return title;
-  }
-  
-public String getDirector() {
-  return director;
-}
-@Override
-public boolean isCheckedOut(){
-  return checkedOut;
-}
 
-public boolean isReturned(){
-      boolean returned;
-  return returned;
-}
-@Override
-public boolean checkOut(Librarian librarian) {
+  @Override
+  public String getTitle() {
+    return title;
+  }
+
+  public String getDirector() {
+    return director;
+  }
+
+  @Override
+  public boolean isCheckedOut() {
+    return checkedOut;
+  }
+
+  public boolean isReturned() {
+    return returnItem;
+  }
+
+  @Override
+  public boolean checkOut(Librarian librarian) {
     if (!checkedOut && librarian != null) { // If not already checked out and librarian is present
-        checkedOut = true; // Check out the DVD
-        return true; // Return true to indicate successful checkout
+      checkedOut = true; // Check out the DVD
+      return true; 
     } else {
-        return false; // Return false to indicate unsuccessful checkout
+      return false; 
     }
-    @Override
-    public boolean returnItem() {
-        if (checkedOut) { // If the DVD is checked out
-            checkedOut = false; // Return the DVD
-            return true; // Return true to indicate successful return
-        } else {
-            return false; // Return false to indicate unsuccessful return (DVD was not checked out)
-        }
+  }
+    @Override 
+    public boolean returnItem(){
+    
+      if (checkedOut) { // If the DVD is checked out
+        checkedOut = false; // Return the DVD
+        return true;
+       } else {
+        return false; 
+      }
     }
-}
-}
+  }
+

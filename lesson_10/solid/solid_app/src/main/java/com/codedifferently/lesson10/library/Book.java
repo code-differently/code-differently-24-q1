@@ -1,10 +1,9 @@
 package com.codedifferently.lesson10.library;
 
-import java.util.List;
-import java.util.Objects;
-
 import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
+import java.util.List;
+import java.util.Objects;
 
 /** Represents a book. */
 public abstract class Book implements Media {
@@ -14,7 +13,7 @@ public abstract class Book implements Media {
   private String isbn;
   private List<String> authors;
   private int numberOfPages;
-private boolean checkedOut;
+  private boolean checkedOut;
 
   /**
    * Create a new book with the given title, ISBN, authors, and number of pages.
@@ -87,8 +86,9 @@ private boolean checkedOut;
     }
     return checkedOut;
   }
-@Override
-  public boolean checkOut ( Librarian librarian) {
+
+  @Override
+  public boolean checkOut(Librarian librarian) {
     if (!checkedOut && librarian != null) { // If not already checked out and librarian is present
       checkedOut = true; // Check out the book
       return true; // Return true to indicate successful checkout
@@ -96,15 +96,16 @@ private boolean checkedOut;
       return false; // Return false to indicate unsuccessful checkout
     }
   }
+
   @Override
   public boolean returnItem() {
     if (checkedOut) {
       checkedOut = false;
       return true;
-    } else  {
+    } else {
       return false;
     }
-    }
+  }
 
   @Override
   public boolean equals(Object o) {
