@@ -14,16 +14,14 @@ class LibraryTest {
   @Test
   void testLibrary_canAddBooks() {
     // Arrange
-    LibraryAsset book1 =
-        new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    LibraryAsset book2 =
-        new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
+    LibraryAsset newspaper = new Newspaper("New Hit! The Great Gatsby", "978-73565");
+    LibraryAsset magazine = new Magazine("Behind the creator of Magazine the Movie", "978-00084");
     // Act
-    classUnderTest.addAsset(librarian, book1);
-    classUnderTest.addAsset(librarian, book2);
+    classUnderTest.addAsset(librarian, newspaper);
+    classUnderTest.addAsset(librarian, magazine);
     // Assert
-    assertThat(classUnderTest.hasAsset(book1)).isTrue();
-    assertThat(classUnderTest.hasAsset(book2)).isTrue();
+    assertThat(classUnderTest.hasAsset(newspaper)).isTrue();
+    assertThat(classUnderTest.hasAsset(magazine)).isTrue();
   }
 
   @Test
