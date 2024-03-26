@@ -27,5 +27,6 @@ public abstract class MediaItem {
   public String getTitle() {
     return title;
   }
+
   // public abstract void setCheckedOut(boolean c);
 }

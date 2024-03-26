@@ -2,6 +2,7 @@ package com.codedifferently.lesson10.library;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.codedifferently.lesson10.library.exceptions.BookCheckedOutException;
 import java.util.List;
@@ -10,10 +11,20 @@ import org.junit.jupiter.api.Test;
 
 class LibraryTest {
   private Library classUnderTest;
+  private Library libraryUnderTest;
+  private MediaItem mediaItem;
 
   @BeforeEach
   void setUp() {
     classUnderTest = new Library("compton-library");
+    libraryUnderTest = new Library("example-library");
+    mediaItem = new Newspaper("Newspaper", null);
+  }
+
+  @Test
+  void testAddMediaItem() {
+    libraryUnderTest.addMediaItem(mediaItem);
+    assertTrue(libraryUnderTest.hasMediaItem(mediaItem), "Media item was not added to the library");
   }
 
   @Test

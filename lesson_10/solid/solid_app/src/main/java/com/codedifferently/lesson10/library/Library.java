@@ -8,6 +8,7 @@ import java.util.Set;
 
 /** Represents a library. */
 public class Library {
+  private Set mediaItems = new HashSet<>();
   private Set<String> bookIds = new HashSet<>();
   private Set<String> checkedOutIsbns = new HashSet<>();
   private Map<String, Set<Book>> checkedOutBooksByPatron = new HashMap<>();
@@ -30,6 +31,18 @@ public class Library {
    */
   public String getId() {
     return this.id;
+  }
+
+  public void addMediaItem(MediaItem mediaItem) {
+    mediaItems.add(mediaItem);
+  }
+
+  public void removeMediaItem(MediaItem mediaItem) {
+    mediaItems.remove(mediaItem);
+  }
+
+  public boolean hasMediaItem(MediaItem mediaItem) {
+    return mediaItems.contains(mediaItem);
   }
 
   /**
