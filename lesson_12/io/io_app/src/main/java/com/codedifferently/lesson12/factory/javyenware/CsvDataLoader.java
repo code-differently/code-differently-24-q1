@@ -33,11 +33,10 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
 
     private List<MediaItemModel> readMediaItems(String path){
         var items = new ArrayList<MediaItemModel>();
-            for (string row : readCsvfile(path)) {
+            for (String row : readCsvfile(path)) {
                 var item = new MediaItemModel();
-                
+
             }
     }
-
 
 }
