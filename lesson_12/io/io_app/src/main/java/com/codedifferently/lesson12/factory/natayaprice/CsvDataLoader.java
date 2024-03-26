@@ -1,4 +1,4 @@
-package com.codedifferently.lesson12.factory;
+package com.codedifferently.lesson12.factory.natayaprice;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -49,7 +50,7 @@ var parts = line.split(",");
 var item = new MediaItemModel();
 
 item.type = parts[0];
-item.id = parts[1];
+item.id = UUID.fromString(parts[1]);
 item.title = parts[2];
 item.type = parts[3];
 items.add(item);
