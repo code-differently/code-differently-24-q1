@@ -14,7 +14,7 @@ public class Magazine extends LibraryAsset {
   }
 
   @Override
-  public boolean isCheckedOut(){
+  public boolean isCheckedOut() {
     return false;
   }
 }

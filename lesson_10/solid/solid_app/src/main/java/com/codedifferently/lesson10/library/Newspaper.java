@@ -1,7 +1,5 @@
 package com.codedifferently.lesson10.library;
 
-import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
-
 public class Newspaper extends LibraryAsset {
 
   public Newspaper(String title, String isbn) {
@@ -15,7 +13,7 @@ public class Newspaper extends LibraryAsset {
   }
 
   @Override
-  public boolean isCheckedOut(){
+  public boolean isCheckedOut() {
     return false;
   }
 }

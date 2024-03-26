@@ -14,9 +14,10 @@ class LibraryTest {
   @Test
   void testLibrary_canAddBooks() {
     // Arrange
-    Book book1 =
+    LibraryAsset book1 =
         new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
+    LibraryAsset book2 =
+        new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
     // Act
     classUnderTest.addAsset(librarian, book1);
     classUnderTest.addAsset(librarian, book2);
@@ -28,17 +29,16 @@ class LibraryTest {
   @Test
   void testLibrary_canRemoveBooks() {
     // Arrange
-    Book book1 =
-        new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
-    classUnderTest.addAsset(librarian, book1);
-    classUnderTest.addAsset(librarian, book2);
+    LibraryAsset dvd1 = new Dvd("The Great Gatsby", "978-0743273565");
+    LibraryAsset dvd2 = new Dvd("To Kill a Mockingbird", "978-0061120084");
+    classUnderTest.addAsset(librarian, dvd1);
+    classUnderTest.addAsset(librarian, dvd2);
     // Act
-    classUnderTest.removeAsset(librarian, book1);
-    classUnderTest.removeAsset(librarian, book2);
+    classUnderTest.removeAsset(librarian, dvd1);
+    classUnderTest.removeAsset(librarian, dvd2);
     // Assert
-    assertThat(classUnderTest.hasAsset(book1)).isFalse();
-    assertThat(classUnderTest.hasAsset(book2)).isFalse();
+    assertThat(classUnderTest.hasAsset(dvd1)).isFalse();
+    assertThat(classUnderTest.hasAsset(dvd2)).isFalse();
   }
 
   @Test
@@ -72,7 +72,8 @@ class LibraryTest {
   @Test
   void testLibrary_allowsPatronToCheckoutBook() {
     // Arrange
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    LibraryAsset book =
+        new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com");
     classUnderTest.addAsset(librarian, book);
     classUnderTest.addPatron(patron);
@@ -87,38 +88,39 @@ class LibraryTest {
   @Test
   void testLibrary_allowPatronToCheckInBook() {
     // Arrange
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    LibraryAsset dvd = new Dvd("DVD", "978-0743273");
     Patron patron = new Patron("John Doe", "john@example.com");
-    classUnderTest.addAsset(librarian, book);
+    classUnderTest.addAsset(librarian, dvd);
     classUnderTest.addPatron(patron);
-    classUnderTest.checkOutItem(book, patron);
+    classUnderTest.checkOutItem(dvd, patron);
     // Act
-    boolean wasReturned = classUnderTest.checkInItem(book, patron);
+    boolean wasReturned = classUnderTest.checkInItem(dvd, patron);
     // Assert
     assertThat(wasReturned).isTrue();
-    assertThat(classUnderTest.isCheckedOut(book)).isFalse();
-    assertThat(patron.getCheckedOutBooks(classUnderTest).contains(book)).isFalse();
+    assertThat(classUnderTest.isCheckedOut(dvd)).isFalse();
+    assertThat(patron.getCheckedOutBooks(classUnderTest).contains(dvd)).isFalse();
   }
 
   @Test
   void testLibrary_preventsMultipleCheckouts() {
     // Arrange
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    LibraryAsset dvd = new Dvd("DVD 2, Dvd is not done", "978-0743565");
     Patron patron = new Patron("John Doe", "john@example.com");
-    classUnderTest.addAsset(librarian, book);
+    classUnderTest.addAsset(librarian, dvd);
     classUnderTest.addPatron(patron);
-    classUnderTest.checkOutItem(book, patron);
+    classUnderTest.checkOutItem(dvd, patron);
     // Act
-    boolean wasCheckedOut = classUnderTest.checkOutItem(book, patron);
+    boolean wasCheckedOut = classUnderTest.checkOutItem(dvd, patron);
     // Assert
     assertThat(wasCheckedOut).isFalse();
-    assertThat(classUnderTest.isCheckedOut(book)).isTrue();
+    assertThat(classUnderTest.isCheckedOut(dvd)).isTrue();
   }
 
   @Test
   void testLibrary_preventsRemovingPatronWithCheckedOutBooks() {
     // Arrange
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    LibraryAsset book =
+        new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("John Doe", "john@example.com");
     classUnderTest.addAsset(librarian, book);
     classUnderTest.addPatron(patron);
@@ -132,7 +134,8 @@ class LibraryTest {
   @Test
   void testLibrary_preventsRemovingCheckedOutBooks() {
     // Arrange
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    LibraryAsset book =
+        new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
     Patron patron = new Patron("Jane Doe", "jane@example.com");
     classUnderTest.addAsset(librarian, book);
     classUnderTest.addPatron(patron);
@@ -146,8 +149,9 @@ class LibraryTest {
   @Test
   void testLibrary_Search() {
     // Arrange
-    Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Book book1 = new Book("Book", "978-0743273566", List.of("John Book"), 3000);
+    LibraryAsset book =
+        new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    LibraryAsset book1 = new Book("Book", "978-0743273566", List.of("John Book"), 3000);
     classUnderTest.addAsset(librarian, book);
     classUnderTest.addAsset(librarian, book1);
     // Act
