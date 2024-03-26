@@ -11,11 +11,6 @@ class LibraryTest {
   private Library classUnderTest = new Library("12342");
   private Librarian librarian = new Librarian("John Book", "0");
 
-  // @BeforeEach
-  // void setUp() {
-  //   classUnderTest = new Library("compton-library");
-  // }
-
   @Test
   void testLibrary_canAddBooks() {
     // Arrange
