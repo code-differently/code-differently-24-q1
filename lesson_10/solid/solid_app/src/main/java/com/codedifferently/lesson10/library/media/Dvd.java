@@ -1,25 +1,11 @@
 package com.codedifferently.lesson10.library.media;
 
-public class Dvd {
-  private String title;
-  private String director;
-  private int duration;
+import com.codedifferently.lesson10.library.Book;
+import java.util.List;
 
-  public Dvd(String title, String director, int duration) {
-    this.title = title;
-    this.director = director;
-    this.duration = duration;
+public class Dvd extends Book {
+  public Dvd(String id, String title, List<String> authors, int year) {
+    super(id, title, authors, year); // Updated constructor call with four arguments
   }
 
-  public String getTitle() {
-    return title;
-  }
-
-  public String getDirector() {
-    return director;
-  }
-
-  public int getDuration() {
-    return duration;
-  }
 }

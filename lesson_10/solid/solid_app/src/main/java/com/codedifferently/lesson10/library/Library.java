@@ -12,6 +12,7 @@ public class Library {
   private Set<String> checkedOutIsbns = new HashSet<>();
   private Map<String, Set<Book>> checkedOutBooksByPatron = new HashMap<>();
   private Set<String> patronIds = new HashSet<>();
+  private Set<String> dvdIds = new HashSet<>(); // Added for DVDs
   private String id;
 
   /**
@@ -176,6 +177,6 @@ public class Library {
         + checkedOutBooksByPatron
         + ", patronIds="
         + patronIds
-        + '}';
+        + "}";
   }
 }
