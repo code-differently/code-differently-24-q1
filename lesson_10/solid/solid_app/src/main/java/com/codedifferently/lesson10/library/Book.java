@@ -101,4 +101,9 @@ public class Book {
   public String toString() {
     return "Book{" + "id='" + getId() + '\'' + ", title='" + getTitle() + '\'' + '}';
   }
+
+public void setCheckedOut(boolean b) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'setCheckedOut'");
+}
 }
