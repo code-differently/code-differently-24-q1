@@ -1,8 +1,5 @@
 package com.codedifferently.lesson10.library;
 
-import com.codedifferently.lesson10.library.exceptions.ItemCantBeCheckOutException;
-import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
-
 /** Magazine */
 public class Magazine extends LibraryAsset {
 
@@ -17,7 +14,7 @@ public class Magazine extends LibraryAsset {
   }
 
   @Override
-  public boolean isCheckedOut() throws LibraryNotSetException {
-    throw new ItemCantBeCheckOutException("This Item Cant Be Checked Out.");
+  public boolean isCheckedOut(){
+    return false;
   }
 }
