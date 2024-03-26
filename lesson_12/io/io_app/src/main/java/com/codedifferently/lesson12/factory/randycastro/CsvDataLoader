@@ -13,12 +13,20 @@ import com.codedifferently.lesson12.models.LibraryDataModel;
 import com.codedifferently.lesson12.models.LibraryGuestModel;
 import com.codedifferently.lesson12.models.MediaItemModel;
 
+
+// create a path for each file 
 @Service
-public class CvsDataLoader implements LibraryCsvDataLoader{
+public class CsvDataLoader implements LibraryCsvDataLoader{
 
-
-
+    List<MediaItemModel> mediaItems = readMediaItems("path/to/media_items.csv");
+    List<LibraryGuestModel> guests = readGuests("path/to/guests.csv");
+    Map<String, List<CheckoutModel>> checkoutsByGuestEmail = getCheckedOutItems("path/to/checked_out_items.csv");
     
+// combine checkouts with guests.
+
+
+
+
 }
 
 
