@@ -1,0 +1,36 @@
+package com.codedifferently.lesson12.factory.randycastro;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import com.codedifferently.lesson12.factory.LibraryCsvDataLoader;
+import com.codedifferently.lesson12.models.CheckoutModel;
+import com.codedifferently.lesson12.models.LibraryDataModel;
+import com.codedifferently.lesson12.models.LibraryGuestModel;
+import com.codedifferently.lesson12.models.MediaItemModel;
+
+@Service
+public class CvsDataLoader implements LibraryCsvDataLoader{
+
+
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
