@@ -81,6 +81,10 @@ jobs:
       working-directory: ./lesson_10/solid
       run: ./gradlew check
 
+    - name: Build Lesson 12 Solid with Gradle Wrapper
+      working-directory: ./lesson_12/io
+      run: ./gradlew assemble && ./gradlew spotlessCheck
+
     - name: Build Shared Lib with Gradle Wrapper
       working-directory: ./lib/java/codedifferently-instructional
       run: ./gradlew check
