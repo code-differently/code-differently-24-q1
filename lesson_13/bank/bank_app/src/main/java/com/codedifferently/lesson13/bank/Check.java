@@ -2,18 +2,31 @@ package com.codedifferently.lesson13.bank;
 
 import com.codedifferently.lesson13.bank.exceptions.CheckVoidedException;
 
+/** Represents a check. */
 public class Check {
   private final String checkNumber;
   private final double amount;
   private final CheckingAccount account;
   private boolean isVoided = false;
 
+  /**
+   * Creates a new check.
+   *
+   * @param checkNumber The check number.
+   * @param amount The amount of the check.
+   * @param account The account the check is drawn on.
+   */
   public Check(String checkNumber, double amount, CheckingAccount account) {
     this.checkNumber = checkNumber;
     this.amount = amount;
     this.account = account;
   }
 
+  /**
+   * Deposits the check into an account.
+   *
+   * @param toAccount The account to deposit the check into.
+   */
   public void depositFunds(CheckingAccount toAccount) {
     if (isVoided) {
       throw new CheckVoidedException("Check is voided");

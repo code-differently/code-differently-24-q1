@@ -34,34 +34,46 @@ class BankAtmTest {
 
   @Test
   void testAddAccount() {
+    // Arrange
     Customer customer3 = new Customer(UUID.randomUUID(), "Alice Johnson");
     CheckingAccount account3 = new CheckingAccount("555555555", Set.of(customer3), 300.0);
     customer3.addAccount(account3);
 
+    // Act
     bankAtm.addAccount(account3);
 
+    // Assert
     Set<CheckingAccount> accounts = bankAtm.findAccountsByCustomerId(customer3.getId());
     assertThat(accounts).containsOnly(account3);
   }
 
   @Test
   void testFindAccountsByCustomerId() {
+    // Act
     Set<CheckingAccount> accounts = bankAtm.findAccountsByCustomerId(customer1.getId());
+
+    // Assert
     assertThat(accounts).containsOnly(account1, account2);
   }
 
   @Test
   void testDepositFunds() {
+    // Act
     bankAtm.depositFunds(account1.getAccountNumber(), 50.0);
+
+    // Assert
     assertThat(account1.getBalance()).isEqualTo(150.0);
   }
 
   @Test
   void testDepositFunds_Check() {
+    // Arrange
     Check check = new Check("987654321", 100.0, account1);
 
+    // Act
     bankAtm.depositFunds("987654321", check);
 
+    // Assert
     assertThat(account1.getBalance()).isEqualTo(0);
     assertThat(account2.getBalance()).isEqualTo(300.0);
   }
@@ -79,7 +91,10 @@ class BankAtmTest {
 
   @Test
   void testWithdrawFunds() {
+    // Act
     bankAtm.withdrawFunds(account2.getAccountNumber(), 50.0);
+
+    // Assert
     assertThat(account2.getBalance()).isEqualTo(150.0);
   }
 
@@ -87,6 +102,7 @@ class BankAtmTest {
   void testWithdrawFunds_AccountNotFound() {
     String nonExistingAccountNumber = "999999999";
 
+    // Act & Assert
     assertThatExceptionOfType(AccountNotFoundException.class)
         .isThrownBy(() -> bankAtm.withdrawFunds(nonExistingAccountNumber, 50.0))
         .withMessage("Account not found");
