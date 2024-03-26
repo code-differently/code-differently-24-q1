@@ -17,9 +17,26 @@ public class Check {
    * @param account The account the check is drawn on.
    */
   public Check(String checkNumber, double amount, CheckingAccount account) {
+    if (amount < 0) {
+      throw new IllegalArgumentException("Check amount must be positive");
+    }
     this.checkNumber = checkNumber;
     this.amount = amount;
     this.account = account;
+  }
+
+  /**
+   * Gets the voided status of the check.
+   *
+   * @return True if the check is voided, and false otherwise.
+   */
+  public boolean getIsVoided() {
+    return isVoided;
+  }
+
+  /** Voids the check. */
+  public void voidCheck() {
+    isVoided = true;
   }
 
   /**
@@ -33,7 +50,7 @@ public class Check {
     }
     account.withdraw(amount);
     toAccount.deposit(amount);
-    this.isVoided = true;
+    voidCheck();
   }
 
   @Override
