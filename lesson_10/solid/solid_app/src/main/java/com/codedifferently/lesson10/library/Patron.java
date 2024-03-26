@@ -59,6 +59,11 @@ public class Patron {
     return this.library.getCheckedOutByPatron(this);
   }
 
+  /**
+   * Get the library that the patron is in.
+   *
+   * @return The library that the patron is in.
+   */
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -67,11 +72,13 @@ public class Patron {
     return Objects.equals(getId(), patron.getId());
   }
 
+  /** Get the hash code of the patron. */
   @Override
   public int hashCode() {
     return Objects.hash(getId());
   }
 
+  /** Get a string representation of the patron. */
   @Override
   public String toString() {
     return "Patron{" + "id='" + getId() + '\'' + ", name='" + getName() + '\'' + '}';
