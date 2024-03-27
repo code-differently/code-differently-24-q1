@@ -155,4 +155,16 @@ class LibraryTest {
     // Act
     assertThat(classUnderTest.assetSearch(book1).toString().equals(book1.toString()));
   }
+
+  @Test
+  void testAssets_ThatCantBeCheckOut() {
+    // Arrange
+    LibraryAsset magazine = new Magazine("title", "986-0743273565");
+    LibraryAsset newspaper = new Newspaper("title of today", "986-0743273565");
+    classUnderTest.addAsset(librarian, magazine);
+    classUnderTest.addAsset(librarian, newspaper);
+    // Act
+    assertThat(classUnderTest.checkOutItem(newspaper, librarian)).isFalse();
+    assertThat(classUnderTest.checkOutItem(newspaper, librarian)).isFalse();
+  }
 }
