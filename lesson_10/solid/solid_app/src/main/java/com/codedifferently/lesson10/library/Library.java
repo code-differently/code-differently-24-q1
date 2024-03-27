@@ -1,181 +1,209 @@
 package com.codedifferently.lesson10.library;
 
-import com.codedifferently.lesson10.library.exceptions.BookCheckedOutException;
+import com.codedifferently.lesson10.library.exceptions.MediaItemCheckedOutException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 /** Represents a library. */
 public class Library {
-  private Set<String> bookIds = new HashSet<>();
-  private Set<String> checkedOutIsbns = new HashSet<>();
-  private Map<String, Set<Book>> checkedOutBooksByPatron = new HashMap<>();
-  private Set<String> patronIds = new HashSet<>();
-  private String id;
+  private Set<UUID> mediaIds = new HashSet<>();
+  private Set<UUID> checkedOutId = new HashSet<>();
+  private Map<UUID, MediaItem> mediaItemsMap = new HashMap<>();
+  private Map<Patron, Set<MediaItem>> checkedOutMediaByPatron = new HashMap<>();
+  private Set<Patron> patrons = new HashSet<>();
+  private Librarian librarian;
 
   /**
-   * Create a new library with the given id.
+   * Sets the librarian of the library.
    *
-   * @param id The id of the library.
+   * @param librarian the librarian of the library
    */
-  public Library(String id) {
-    this.id = id;
+  public void setLibrarian(Librarian librarian) {
+    this.librarian = librarian;
   }
 
   /**
-   * Get the id of the library.
+   * Gets the librarian of the library.
    *
-   * @return The id of the library.
+   * @return the librarian of the library
    */
-  public String getId() {
-    return this.id;
+  public Librarian getLibrarian() {
+    return this.librarian;
   }
 
   /**
-   * Add a book to the library.
+   * Adds a media item to the library.
    *
-   * @param book The book to add.
+   * @param item the media item to add
    */
-  public void addBook(Book book) {
-    this.bookIds.add(book.getId());
-    book.setLibrary(this);
-  }
-
-  /**
-   * Remove a book from the library.
-   *
-   * @param book The book to remove.
-   */
-  public void removeBook(Book book) throws BookCheckedOutException {
-    if (this.isCheckedOut(book)) {
-      throw new BookCheckedOutException("Cannot remove checked out book.");
+  public void addMediaItem(MediaItem item) {
+    if (librarian == null) {
+      throw new RuntimeException("Librarian not present.");
     }
-    this.bookIds.remove(book.getId());
-    book.setLibrary(null);
+    mediaIds.add(item.getUUID());
+    mediaItemsMap.put(item.getUUID(), item);
   }
 
   /**
-   * Add a patron to the library.
+   * Removes a media item from the library.
    *
-   * @param patron The patron to add.
+   * @param item the media item to remove
+   */
+  public void removeMediaItem(MediaItem item) {
+    if (librarian == null) {
+      throw new RuntimeException("Librarian not present.");
+    }
+    mediaIds.remove(item.getUUID());
+    mediaItemsMap.remove(item.getUUID());
+  }
+
+  /**
+   * Adds a patron to the library.
+   *
+   * @param patron the patron to add
    */
   public void addPatron(Patron patron) {
-    this.patronIds.add(patron.getId());
-    this.checkedOutBooksByPatron.put(patron.getId(), new HashSet<>());
-    patron.setLibrary(this);
+    if (librarian == null) {
+      throw new RuntimeException("Librarian not present.");
+    }
+    patrons.add(patron);
+    checkedOutMediaByPatron.put(patron, new HashSet<>());
   }
 
   /**
-   * Remove a patron from the library.
+   * Removes a patron from the library.
    *
-   * @param patron The patron to remove.
+   * @param patron the patron to remove
+   * @throws MediaItemCheckedOutException if the patron has checked out media
    */
-  public void removePatron(Patron patron) throws BookCheckedOutException {
-    if (this.checkedOutBooksByPatron.get(patron.getId()).size() > 0) {
-      throw new BookCheckedOutException("Cannot remove patron with checked out books.");
+  public void removePatron(Patron patron) throws MediaItemCheckedOutException {
+    if (librarian == null) {
+      throw new RuntimeException("Librarian not present.");
     }
-    this.patronIds.remove(patron.getId());
-    this.checkedOutBooksByPatron.remove(patron.getId());
-    patron.setLibrary(null);
+    if (!checkedOutMediaByPatron.get(patron).isEmpty()) {
+      throw new MediaItemCheckedOutException("Cannot remove patron with checked out media.");
+    }
+    patrons.remove(patron);
+    checkedOutMediaByPatron.remove(patron);
   }
 
   /**
-   * Check out a book to a patron.
+   * Checks out a media item to a patron.
    *
-   * @param book The book to check out.
-   * @param patron The patron to check out the book to.
-   * @return True if the book was checked out, false otherwise.
+   * @param item the media item to check out
+   * @param patron the patron to check out the media item to
+   * @return true if the media item was checked out, false otherwise
    */
-  public boolean checkOutBook(Book book, Patron patron) {
-    if (!this.canCheckOutBook(book, patron)) {
-      return false;
+  public boolean checkOutMediaItem(MediaItem item, Patron patron) {
+    if (canCheckOutMediaItem(item, patron)) {
+      checkedOutId.add(item.getUUID());
+      checkedOutMediaByPatron.get(patron).add(item);
+      return true;
     }
-    this.checkedOutIsbns.add(book.getIsbn());
-    this.checkedOutBooksByPatron.get(patron.getId()).add(book);
-    return true;
-  }
-
-  private boolean canCheckOutBook(Book book, Patron patron) {
-    if (!this.hasBook(book)) {
-      return false;
-    }
-    if (this.isCheckedOut(book)) {
-      return false;
-    }
-    if (!this.hasPatron(patron)) {
-      return false;
-    }
-    return true;
+    return false;
   }
 
   /**
-   * Check if the library has the given book.
+   * Checks in a media item from a patron.
    *
-   * @param book The book to check for.
-   * @return True if the library has the book, false otherwise.
+   * @param item the media item to check in
+   * @param patron the patron to check in the media item from
+   * @return true if the media item was checked in, false otherwise
    */
-  public boolean hasBook(Book book) {
-    return this.bookIds.contains(book.getId());
+  private boolean canCheckOutMediaItem(MediaItem item, Patron patron) {
+    return !isCheckedOut(item) && hasMediaItem(item) && hasPatron(patron);
   }
 
   /**
-   * Check if the given book is checked out.
+   * Checks in a media item from a patron.
    *
-   * @param book The book to check.
-   * @return True if the book is checked out, false otherwise.
+   * @param item the media item to check in
+   * @param patron the patron to check in the media item from
+   * @return true if the media item was checked in, false otherwise
    */
-  public boolean isCheckedOut(Book book) {
-    return this.checkedOutIsbns.contains(book.getIsbn());
+  public boolean isCheckedOut(MediaItem item) {
+    return checkedOutId.contains(item.getUUID());
   }
 
   /**
-   * Check if the library has the given patron.
+   * Checks in a media item from a patron.
    *
-   * @param patron The patron to check for.
-   * @return True if the library has the patron, false otherwise.
+   * @param item the media item to check in
+   * @param patron the patron to check in the media item from
+   * @return true if the media item was checked in, false otherwise
    */
+  public boolean hasMediaItem(MediaItem item) {
+    return mediaIds.contains(item.getUUID());
+  }
+
+  /** checks for Patron */
   public boolean hasPatron(Patron patron) {
-    return this.patronIds.contains(patron.getId());
+    return patrons.contains(patron);
   }
 
-  /**
-   * Return a book to the library.
-   *
-   * @param book The book to return.
-   * @param patron The patron returning the book.
-   * @return True if the book was returned, false otherwise.
-   */
-  public boolean checkInBook(Book book, Patron patron) {
-    if (!this.hasBook(book)) {
-      return false;
+  /** searches for media item by type */
+  public List<MediaItem> searchByType(String type) {
+    List<MediaItem> foundItems = new ArrayList<>();
+    for (MediaItem item : mediaItemsMap.values()) {
+      if (item.getType().equalsIgnoreCase(type)) {
+        foundItems.add(item);
+      }
     }
-    this.checkedOutIsbns.remove(book.getIsbn());
-    this.checkedOutBooksByPatron.get(patron.getId()).remove(book);
-    return true;
+    return foundItems;
   }
 
-  /**
-   * Get the books checked out by a patron.
-   *
-   * @param patron The patron to get the books for.
-   * @return The books checked out by the patron.
-   */
-  public Set<Book> getCheckedOutByPatron(Patron patron) {
-    return this.checkedOutBooksByPatron.get(patron.getId());
+  /** searches for media item by title */
+  public Book searchByISBN(String isbn) {
+    for (MediaItem item : mediaItemsMap.values()) {
+      if (item instanceof Book && ((Book) item).getIsbn().equals(isbn)) {
+        return (Book) item;
+      }
+    }
+    return null;
   }
 
-  @Override
-  public String toString() {
-    return "Library{"
-        + "bookIds="
-        + bookIds
-        + ", checkedOutIsbns="
-        + checkedOutIsbns
-        + ", checkedOutBooksByPatron="
-        + checkedOutBooksByPatron
-        + ", patronIds="
-        + patronIds
-        + '}';
+  /** searches for media item by author */
+  public List<MediaItem> searchByAuthor(String author) {
+    List<MediaItem> foundItems = new ArrayList<>();
+    for (MediaItem item : mediaItemsMap.values()) {
+      if (item instanceof Book) {
+        Book book = (Book) item;
+        if (book.getAuthors().contains(author)) {
+          foundItems.add(item);
+        }
+      }
+    }
+    return foundItems;
+  }
+
+  /** searches for media item by UUID */
+  public MediaItem searchByUUID(UUID uuid) {
+    return mediaItemsMap.get(uuid);
+  }
+
+  /** searches for media item by title */
+  public MediaItem searchByTitle(String title) {
+    for (MediaItem item : mediaItemsMap.values()) {
+      if (item.getTitle().equalsIgnoreCase(title)) {
+        return item;
+      }
+    }
+    return null;
+  }
+
+  /** checks for media item */
+  public boolean hasBook(MediaItem item) {
+    return mediaItemsMap.containsValue(item);
+  }
+
+  /** gets checked out media by patron */
+  public Set<MediaItem> getCheckedOutByPatron(Patron patron) {
+    return checkedOutMediaByPatron.getOrDefault(patron, Collections.emptySet());
   }
 }

@@ -3,78 +3,115 @@ package com.codedifferently.lesson10.library;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
-import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
-import java.util.HashSet;
+import com.codedifferently.lesson10.library.exceptions.BookCheckedOutException;
 import java.util.List;
-import java.util.Set;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class PatronTest {
+/**
+ * @author vscode
+ */
+public class PatronTest {
 
-  private Patron classUnderTest;
-  private Library library;
+  private Patron patron;
 
   @BeforeEach
   void setUp() {
-    classUnderTest = new Patron("John Doe", "johndoe@example.com");
-    library = new Library("Library 1");
-    library.addPatron(classUnderTest);
+    patron = new Patron("Mark Wang", "markw@egmail.com");
   }
 
   @Test
-  void testPatron_created() {
+  void testGetName() {
+    assertThat(patron.getName()).isEqualTo("Mark Wang");
+  }
+
+  @Test
+  void testGetEmail() {
+    assertThat(patron.getEmail()).isEqualTo("markw@egmail.com");
+  }
+
+  @Test
+  void testCheckOut() {
+    // Arrange
+    Book book =
+        new Book(
+            UUID.randomUUID(),
+            "The Catcher in the Rye",
+            List.of("J.D. Salinger"),
+            224,
+            "9780316769488");
+
+    // Act
+    patron.checkOut(book);
+
     // Assert
-    assertThat(classUnderTest.getName()).isEqualTo("John Doe");
-    assertThat(classUnderTest.getId()).isEqualTo("johndoe@example.com");
+    assertThat(patron.getCheckedOutItems()).contains(book);
   }
 
   @Test
-  void testSetLibrary_WrongLibrary() {
+  void testCheckOut_AlreadyCheckedOut() {
     // Arrange
-    Library otherLibrary = new Library("Library 2");
+    Book book =
+        new Book(
+            UUID.randomUUID(),
+            "The Great Gatsby",
+            List.of("F. Scott Fitzgerald"),
+            180,
+            "9780743273565");
 
-    // Act & Assert
-    assertThatThrownBy(() -> classUnderTest.setLibrary(otherLibrary))
-        .isInstanceOf(WrongLibraryException.class)
-        .hasMessageContaining("Patron johndoe@example.com is not in library Library 2");
+    // Act
+    patron.checkOut(book);
+
+    // Assert
+    assertThatThrownBy(() -> patron.checkOut(book)).isInstanceOf(BookCheckedOutException.class);
   }
 
   @Test
-  void testGetCheckedOutBooks_LibraryNotSet() {
+  void testCheckIn() {
     // Arrange
-    classUnderTest.setLibrary(null);
+    Book book =
+        new Book(
+            UUID.randomUUID(),
+            "To Kill a Mockingbird",
+            List.of("Harper Lee"),
+            281,
+            "978-0061120084");
+    patron.checkOut(book);
 
-    // Act & Assert
-    assertThatThrownBy(() -> classUnderTest.getCheckedOutBooks())
-        .isInstanceOf(LibraryNotSetException.class)
-        .hasMessageContaining("Library not set for patron johndoe@example.com");
+    // Act
+    patron.checkIn(book);
+
+    // Assert
+    assertThat(patron.getCheckedOutItems()).doesNotContain(book);
   }
 
   @Test
-  void testGetCheckedOutBooks() {
+  void testAddLibrary() {
     // Arrange
-    Book book1 =
-        new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
-    Set<Book> expectedBooks = new HashSet<>();
-    expectedBooks.add(book1);
-    expectedBooks.add(book2);
+    Library library1 = new Library();
+    Library library2 = new Library();
 
-    library.addBook(book1);
-    library.addBook(book2);
-    library.checkOutBook(book1, classUnderTest);
-    library.checkOutBook(book2, classUnderTest);
+    // Act
+    patron.addLibrary(library1);
+    patron.addLibrary(library2);
 
-    // Act & Assert
-    assertThat(classUnderTest.getCheckedOutBooks()).isEqualTo(expectedBooks);
+    // Assert
+    assertThat(patron.getLibraries()).contains(library1, library2);
   }
 
   @Test
-  void testToString() {
-    // Act & Assert
-    assertThat(classUnderTest.toString())
-        .isEqualTo("Patron{id='johndoe@example.com', name='John Doe'}");
+  void testRemoveLibrary() {
+    // Arrange
+    Library library1 = new Library();
+    Library library2 = new Library();
+    patron.addLibrary(library1);
+    patron.addLibrary(library2);
+
+    // Act
+    patron.removeLibrary(library1);
+
+    // Assert
+    assertThat(patron.getLibraries()).containsOnly(library2);
   }
 }
