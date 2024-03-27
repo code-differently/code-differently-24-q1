@@ -2,6 +2,7 @@ package com.codedifferently.lesson12.factory.vicentevigueras;
 
 import com.codedifferently.lesson12.factory.LibraryCsvDataLoader;
 import com.codedifferently.lesson12.models.LibraryDataModel;
+import com.codedifferently.lesson12.models.LibraryGuestModel;
 import com.codedifferently.lesson12.models.MediaItemModel;
 import java.io.File;
 import java.io.IOException;
@@ -21,15 +22,17 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
   public static void main(String[] args) throws IOException {
     CsvDataLoader csvDataLoader = new CsvDataLoader();
     csvDataLoader.loadData();
-   
   }
 
   @Override
   public LibraryDataModel loadData() throws IOException {
     // Create object named model that is an instance of LibraryDataModel
     var model = new LibraryDataModel();
-    // Creates a list and assigns it everything inside of file path
+    // Creates a list and loads with everything inside of file path
     model.mediaItems = readMediaItems("csv/media_items.csv");
+    model.guests = readGuests("csv/guests.csv");
+
+    
     return model;
   }
 
@@ -52,10 +55,9 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
       System.out.println("part4:" + parts[4]);
       System.out.println("part5:" + parts[5]);
       System.out.println("part6:" + parts[6]);
-      System.out.println("part6:" + parts[7]);
+      System.out.println("part7:" + parts[7]);
       var item = new MediaItemModel();
 
-      System.out.println("printing line: i:" + i + " line:" + eachLine[i]);
       // Parse as proper data types
       item.type = parts[0];
       item.id = UUID.fromString(parts[1]);
@@ -75,13 +77,31 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
 
       if (parts.length > 7) {
         item.edition = parts[7];
-      } else {
-        item.edition = "";
       }
 
       items.add(item);
     }
     System.out.println(items);
     return items;
+  }
+
+
+  private List<LibraryGuestModel> readGuests(String filePath) throws IOException {
+    File myResource = new ClassPathResource(filePath).getFile();
+    String fileContent = new String(Files.readAllBytes(myResource.toPath()));
+    System.out.println("print guest csv: " + fileContent);
+
+    var guests = new ArrayList<LibraryGuestModel>();
+    String[] eachLine = fileContent.split("\n");
+
+    for (int i = 1; i < eachLine.length; i++) {
+      String[] parts = eachLine[i].split(",", -1);
+      var guest = new LibraryGuestModel();
+      guest.type = parts[0];
+      guest.name = parts[1];
+      guest.email = parts[2];
+      guests.add(guest);
+    }
+    return guests;
   }
 }
