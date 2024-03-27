@@ -59,6 +59,36 @@ public class Patron {
     return this.library.getCheckedOutByPatron(this);
   }
 
+  /**
+   * Check out a book from the library.
+   *
+   * @param book The book to check out.
+   * @return True if the book was successfully checked out, false otherwise.
+   */
+  public boolean checkOutBook(Book book) {
+    try {
+      return this.library.checkOutBook(book, this);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+      return false;
+    }
+  }
+
+  /**
+   * Return a book to the library.
+   *
+   * @param book The book to return.
+   * @return True if the book was successfully returned, false otherwise.
+   */
+  public boolean checkInBook(Book book) {
+    try {
+      return this.library.checkInBook(book, this);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+      return false;
+    }
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
