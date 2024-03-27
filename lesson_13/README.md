@@ -6,7 +6,7 @@
 
 ## Applying SOLID Principles (Bank ATM)
 
-Your task for this assignment is add enhancements to an ATM simulator. The [BankAtm][bankatm-file] is at the center of the model, allowing us to add one or more `CheckingAccount` instances and make withdrawals or deposits via cash or check. You will need to implement at least two of the following enhancements to the `BankAtm` class WITHOUT adding a new method. Note that you can update existing methods, however.
+Your task for this assignment is add enhancements to an ATM simulator. The [BankAtm][bankatm-file] is at the center of the model, allowing us to add one or more `CheckingAccount` instances and make withdrawals or deposits via cash or check. You will need to implement at least two of the following functional enhancements to the `BankAtm` class WITHOUT adding a new method. Note that you can update existing methods, however.
 
 ### Functional Requirements
 
@@ -20,7 +20,7 @@ Your task for this assignment is add enhancements to an ATM simulator. The [Bank
 
 * You must integrate new features into the `BankAtm` without adding a new public method. Existing public methods may be modified without breaking existing functionality.
 * You must update the `BankAtm` tests and may modify or add other applicable tests.
-* Feel free to add the minimal number of interfaces, abstract classes, or classes needed to fulfill each requirement.
+* Feel free to add the minimal number of classes, interfaces, or abstract classes needed to fulfill each requirement.
 * You must update existing javadocs and may add new documentation for new types and methods you introduce.
 
 [bank-folder]: ./bank/
