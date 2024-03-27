@@ -8,8 +8,8 @@ import java.util.Set;
 /** Represents a patron of a library. */
 public class Patron {
   private Library library;
-  private String name;
-  private String email;
+  protected String name;
+  protected String email;
 
   /**
    * Create a new patron with the given name and email.
