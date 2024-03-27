@@ -25,13 +25,12 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     var model = new LibraryDataModel();
     model.mediaItems =
         readMediaItems(
-            "/workspaces/code-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/media_items.csv");
+            this.getClass().getClassLoader().getResource("csv/media_items.csv").getFile());
     model.guests =
-        readGuests(
-            "/workspaces/code-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/guests.csv");
+        readGuests(this.getClass().getClassLoader().getResource("csv/guests.csv").getFile());
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail =
         getCheckedOutItems(
-            "/workspaces/code-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/checked_out_items.csv");
+            this.getClass().getClassLoader().getResource("csv/checked_out_items.csv").getFile());
 
     // Combine checkouts with guests
     model.guests.forEach(
