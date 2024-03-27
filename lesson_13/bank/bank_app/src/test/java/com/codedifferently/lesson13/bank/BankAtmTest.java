@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 class BankAtmTest {
 
-  private BankAtm bankAtm;
+  private BankAtm classUnderTest;
   private CheckingAccount account1;
   private CheckingAccount account2;
   private Customer customer1;
@@ -20,7 +20,7 @@ class BankAtmTest {
 
   @BeforeEach
   void setUp() {
-    bankAtm = new BankAtm();
+    classUnderTest = new BankAtm();
     customer1 = new Customer(UUID.randomUUID(), "John Doe");
     customer2 = new Customer(UUID.randomUUID(), "Jane Smith");
     account1 = new CheckingAccount("123456789", Set.of(customer1), 100.0);
@@ -28,8 +28,8 @@ class BankAtmTest {
     customer1.addAccount(account1);
     customer1.addAccount(account2);
     customer2.addAccount(account2);
-    bankAtm.addAccount(account1);
-    bankAtm.addAccount(account2);
+    classUnderTest.addAccount(account1);
+    classUnderTest.addAccount(account2);
   }
 
   @Test
@@ -40,17 +40,17 @@ class BankAtmTest {
     customer3.addAccount(account3);
 
     // Act
-    bankAtm.addAccount(account3);
+    classUnderTest.addAccount(account3);
 
     // Assert
-    Set<CheckingAccount> accounts = bankAtm.findAccountsByCustomerId(customer3.getId());
+    Set<CheckingAccount> accounts = classUnderTest.findAccountsByCustomerId(customer3.getId());
     assertThat(accounts).containsOnly(account3);
   }
 
   @Test
   void testFindAccountsByCustomerId() {
     // Act
-    Set<CheckingAccount> accounts = bankAtm.findAccountsByCustomerId(customer1.getId());
+    Set<CheckingAccount> accounts = classUnderTest.findAccountsByCustomerId(customer1.getId());
 
     // Assert
     assertThat(accounts).containsOnly(account1, account2);
@@ -59,7 +59,7 @@ class BankAtmTest {
   @Test
   void testDepositFunds() {
     // Act
-    bankAtm.depositFunds(account1.getAccountNumber(), 50.0);
+    classUnderTest.depositFunds(account1.getAccountNumber(), 50.0);
 
     // Assert
     assertThat(account1.getBalance()).isEqualTo(150.0);
@@ -71,7 +71,7 @@ class BankAtmTest {
     Check check = new Check("987654321", 100.0, account1);
 
     // Act
-    bankAtm.depositFunds("987654321", check);
+    classUnderTest.depositFunds("987654321", check);
 
     // Assert
     assertThat(account1.getBalance()).isEqualTo(0);
@@ -82,17 +82,17 @@ class BankAtmTest {
   void testDepositFunds_DoesntDepositCheckTwice() {
     Check check = new Check("987654321", 100.0, account1);
 
-    bankAtm.depositFunds("987654321", check);
+    classUnderTest.depositFunds("987654321", check);
 
     assertThatExceptionOfType(CheckVoidedException.class)
-        .isThrownBy(() -> bankAtm.depositFunds("987654321", check))
+        .isThrownBy(() -> classUnderTest.depositFunds("987654321", check))
         .withMessage("Check is voided");
   }
 
   @Test
   void testWithdrawFunds() {
     // Act
-    bankAtm.withdrawFunds(account2.getAccountNumber(), 50.0);
+    classUnderTest.withdrawFunds(account2.getAccountNumber(), 50.0);
 
     // Assert
     assertThat(account2.getBalance()).isEqualTo(150.0);
@@ -104,7 +104,7 @@ class BankAtmTest {
 
     // Act & Assert
     assertThatExceptionOfType(AccountNotFoundException.class)
-        .isThrownBy(() -> bankAtm.withdrawFunds(nonExistingAccountNumber, 50.0))
+        .isThrownBy(() -> classUnderTest.withdrawFunds(nonExistingAccountNumber, 50.0))
         .withMessage("Account not found");
   }
 }
