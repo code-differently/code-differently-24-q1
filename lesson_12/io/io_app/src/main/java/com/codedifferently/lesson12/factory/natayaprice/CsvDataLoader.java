@@ -14,11 +14,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
-import com.opencsv.CSVReader;
-
 
 @Service
 public class CsvDataLoader implements LibraryCsvDataLoader {
+  public static void main(String[] args) {
+    readMediaItems(
+        "/workspaces/NatayaPcode-differently-24-q1/lesson_12/io/io_app/src/main/java/com/codedifferently/lesson12/models/MediaItemModel.java");
+  }
+
   @Override
   public LibraryDataModel loadData() {
     var model = new LibraryDataModel();
@@ -27,13 +30,13 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
 
     List<MediaItemModel> mediaItems =
         readMediaItems(
-            "/workspaces/NatayaPcode-differently-24-q1/lesson_12/io/io_app/src/main/java/com/codedifferently/lesson12/models/MediaItemModel.java");
-        List<LibraryGuestModel> guests =
+            "/workspaces/NatayaPcode-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/media_items.csv");
+    List<LibraryGuestModel> guests =
         readGuests(
-            "/workspaces/NatayaPcode-differently-24-q1/lesson_12/io/io_app/src/main/java/com/codedifferently/lesson12/models/LibraryGuestModel.java");
+            "/workspaces/NatayaPcode-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/guests.csv");
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail =
         readCheckoutsByGuestEmail(
-            "/workspaces/NatayaPcode-differently-24-q1/lesson_12/io/io_app/src/main/java/com/codedifferently/lesson12/models/CheckoutModel.java");
+            "/workspaces/NatayaPcode-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/checked_out_items.csv");
 
     // STEP 2: Combine checkouts with guests.
     for (var guest : guests) {
@@ -46,23 +49,36 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     return model;
   }
 
-  private List<MediaItemModel> readMediaItems(String string) {
+  public static List<MediaItemModel> readMediaItems(String string) {
     try (var reader = new BufferedReader(new FileReader(string))) {
       var items = new ArrayList<MediaItemModel>();
       String line;
       while ((line = reader.readLine()) != null) {
-        String[] parts = line.split(",", 8);
+        var parts = line.split(",", 8);
         var item = new MediaItemModel();
 
         if (parts.length >= 4) {
           item.type = parts[0];
           item.id = UUID.fromString(parts[1]);
           item.title = parts[2];
-          item.type = parts[3];
+          item.isbn = parts[3];
+          item.authors = List.of(parts[4]);
+          item.pages = Integer.parseInt(parts[5]);
+          item.runtime = Integer.parseInt(parts[6]);
+          item.edition = parts[7];
         } else {
           System.err.println("Skipping line due to missing fields: " + line);
           continue;
         }
+
+        // Checks if the index for this variable is empty and sets it to 0.
+        if (parts[5].equals("")) item.pages = 0;
+        else item.pages = Integer.parseInt(parts[5]);
+
+        if (parts[6].equals("")) item.runtime = 0;
+        else item.runtime = Integer.parseInt(parts[6]);
+        item.edition = parts[7];
+
         items.add(item);
       }
       return items;
@@ -103,7 +119,10 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
         if (line.trim().isEmpty()) {
           continue;
         }
-        var parts = line.split(",", 8);
+        var parts = line.split(",");
+        var item = new CheckoutModel();
+        // item.itemId = UUID.fromString(parts[1]);
+        // item.dueDate = Instant.parse(parts[2]);
 
         if (parts.length < 2) {
 
