@@ -18,11 +18,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CsvDataLoader implements LibraryCsvDataLoader {
-
   public static void main(String[] args) throws IOException {
     CsvDataLoader csvDataLoader = new CsvDataLoader();
     csvDataLoader.loadData();
-    System.out.println("ente");
+   
   }
 
   @Override
