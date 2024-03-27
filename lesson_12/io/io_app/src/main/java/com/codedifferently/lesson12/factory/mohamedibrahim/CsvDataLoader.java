@@ -36,7 +36,7 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail =
         readCheckedOutByEmail(
             this.getClass().getClassLoader().getResource("csv/checked_out_items.csv").getFile());
-    //Gives each guest a list of their checked out books.
+    // Gives each guest a list of their checked out books.
     for (var guest : libraryData.guests) {
       var checkouts = checkoutsByGuestEmail.get(guest.email);
       if (checkouts != null) {
@@ -51,34 +51,35 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
 
   /**
    * Gets data from csv file and makes a list of all media items in the library.
+   *
    * @param path The file path
    * @return
    */
   public static List<MediaItemModel> readMediaItems(String path) {
     try (var reader = new BufferedReader(new FileReader(path))) {
-      //The list that will be returned at the end of the function.
+      // The list that will be returned at the end of the function.
       var items = new ArrayList<MediaItemModel>();
       String line;
-      //Skips the headers in the csv file.
+      // Skips the headers in the csv file.
       line = reader.readLine();
       while ((line = reader.readLine()) != null) {
-        //Puts the line read from the csv in an array.
+        // Puts the line read from the csv in an array.
         var parts = line.split(",", 8);
-        //Temp item that will latter be added to a list.
+        // Temp item that will latter be added to a list.
         var item = new MediaItemModel();
 
-        //Puts data in the temp item.
+        // Puts data in the temp item.
         item.type = parts[0];
         item.id = UUID.fromString(parts[1]);
         item.title = parts[2];
         item.isbn = parts[3];
         item.authors = List.of(parts[4]);
 
-        //Checks if the index for this variable is empty and sets it to 0.
+        // Checks if the index for this variable is empty and sets it to 0.
         if (parts[5].equals("")) item.pages = 0;
         else item.pages = Integer.parseInt(parts[5]);
 
-        //Checks if the index for this variable is empty and sets it to 0.
+        // Checks if the index for this variable is empty and sets it to 0.
         if (parts[6].equals("")) item.runtime = 0;
         else item.runtime = Integer.parseInt(parts[6]);
         item.edition = parts[7];
@@ -91,25 +92,27 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
       throw new RuntimeException("Failed to read media items", e);
     }
   }
+
   /**
    * Gets data from csv file and makes list of guests in the library.
+   *
    * @param path The file path
    * @return
    */
   private List<LibraryGuestModel> readGuestList(String path) {
     try (var reader = new BufferedReader(new FileReader(path))) {
-      //The list that will be returned at the end of the function.
+      // The list that will be returned at the end of the function.
       var guests = new ArrayList<LibraryGuestModel>();
       String line;
-      //Skips the headers in the csv file.
+      // Skips the headers in the csv file.
       line = reader.readLine();
       while ((line = reader.readLine()) != null) {
-        //Puts the line read from the csv in an array.
+        // Puts the line read from the csv in an array.
         var parts = line.split(",");
-        //Temp guest that will latter be added to a list.
+        // Temp guest that will latter be added to a list.
         var guest = new LibraryGuestModel();
-                
-        //Puts data in the guest item.
+
+        // Puts data in the guest item.
         guest.type = parts[0];
         guest.name = parts[1];
         guest.email = parts[2];
@@ -122,28 +125,30 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
       throw new RuntimeException("Failed to read media items", e);
     }
   }
+
   /**
    * Gets data from csv file and makes a map of items checked out by guest email.
+   *
    * @param path The file path.
    * @return
    */
   private static Map<String, List<CheckoutModel>> readCheckedOutByEmail(String path) {
     try (var reader = new BufferedReader(new FileReader(path))) {
-      //The hashmap that will be returned at the end of the function.
+      // The hashmap that will be returned at the end of the function.
       var checkedOutItems = new HashMap<String, List<CheckoutModel>>();
       String line;
-      //Skips the headers in the csv file.
+      // Skips the headers in the csv file.
       line = reader.readLine();
       while ((line = reader.readLine()) != null) {
-        //Puts the line read from the csv in an array.
+        // Puts the line read from the csv in an array.
         var parts = line.split(",");
-        //Temp item that will latter be added to a list.
+        // Temp item that will latter be added to a list.
         var item = new CheckoutModel();
 
-        //Puts data in the temp item.
+        // Puts data in the temp item.
         item.itemId = UUID.fromString(parts[1]);
         item.dueDate = Instant.parse(parts[2]);
-        //Checks if the map already had this email.
+        // Checks if the map already had this email.
         if (checkedOutItems.containsKey(parts[0])) {
           checkedOutItems.get(parts[0]).add(item);
         } else {
