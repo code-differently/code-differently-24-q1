@@ -1,0 +1,110 @@
+package com.codedifferently.lesson12.factory.richhawkins;
+
+import com.codedifferently.lesson12.factory.LibraryCsvDataLoader;
+import com.codedifferently.lesson12.models.CheckoutModel;
+import com.codedifferently.lesson12.models.LibraryDataModel;
+import com.codedifferently.lesson12.models.LibraryGuestModel;
+import com.codedifferently.lesson12.models.MediaItemModel;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CsvDataLoader implements LibraryCsvDataLoader {
+  @Override
+  public LibraryDataModel loadData() {
+    var model = new LibraryDataModel();
+    model.mediaItems =
+        readMediaItems(
+            "/workspaces/code-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/media_items.csv");
+    model.guests =
+        readGuests(
+            "/workspaces/code-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/guests.csv");
+    Map<String, List<CheckoutModel>> checkoutsByGuestEmail =
+        getCheckedOutItems(
+            "/workspaces/code-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/checked_out_items.csv");
+
+    // Combine checkouts with guests
+    model.guests.forEach(
+        guest -> {
+          List<CheckoutModel> checkouts = checkoutsByGuestEmail.get(guest.email);
+          if (checkouts != null) {
+            guest.checkedOutItems = checkouts;
+          }
+        });
+
+    return model;
+  }
+
+  private List<MediaItemModel> readMediaItems(String filePath) {
+    List<MediaItemModel> items = new ArrayList<>();
+    try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
+      // Skip the header
+      String[] header = reader.readNext();
+      String[] line;
+      while ((line = reader.readNext()) != null) {
+        MediaItemModel item = new MediaItemModel();
+        item.type = line[0];
+        item.id = UUID.fromString(line[1]);
+        item.authors = Arrays.asList(line[2].split("\\s*,\\s*"));
+        items.add(item);
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Failed to read CSV file", e);
+    } catch (CsvException e) {
+      throw new RuntimeException("Error parsing CSV file", e);
+    }
+    return items;
+  }
+
+  private List<LibraryGuestModel> readGuests(String filePath) {
+    List<LibraryGuestModel> guests = new ArrayList<>();
+    try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
+      // Skip the header
+      String[] header = reader.readNext();
+      String[] line;
+      while ((line = reader.readNext()) != null) {
+        LibraryGuestModel guest = new LibraryGuestModel();
+        guest.type = line[0];
+        guest.name = line[1];
+        guest.email = line[2];
+        guests.add(guest);
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Failed to read CSV file", e);
+    } catch (CsvException e) {
+      throw new RuntimeException("Error parsing CSV file", e);
+    }
+    return guests;
+  }
+
+  private Map<String, List<CheckoutModel>> getCheckedOutItems(String filePath) {
+    Map<String, List<CheckoutModel>> checkoutsByGuestEmail = new HashMap<>();
+    try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
+      // Skip the header
+      String[] header = reader.readNext();
+      String[] line;
+      while ((line = reader.readNext()) != null) {
+        String email = line[0];
+        CheckoutModel item = new CheckoutModel();
+        item.itemId = UUID.fromString(line[1]);
+        item.dueDate = Instant.parse(line[2]);
+        checkoutsByGuestEmail.computeIfAbsent(email, k -> new ArrayList<>()).add(item);
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Failed to read checked out items", e);
+    } catch (CsvException e) {
+      throw new RuntimeException("Error parsing CSV file", e);
+    }
+    return checkoutsByGuestEmail;
+  }
+}
