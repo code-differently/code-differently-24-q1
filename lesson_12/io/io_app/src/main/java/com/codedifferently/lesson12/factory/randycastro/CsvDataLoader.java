@@ -24,7 +24,6 @@ public class CsvDataLoader implements LibraryCsvDataLoader{
 List<MediaItemModel> mediaItems = readMediaItems("lesson_12/io/io_app/src/main/resources/csv/media_items.csv");
 
 
-@Override
 public List<MediaItemModel> readMediaItems(String filePath) {
 List<MediaItemModel> items = new ArrayList<>();
 try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
