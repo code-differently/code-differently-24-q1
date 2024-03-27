@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.core.io.ClassPathResource;
@@ -42,7 +43,7 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     String[] eachLine = fileContent.split("\n");
 
     for (int i = 1; i < eachLine.length; i++) {
-      String[] parts  = eachLine[i].split(",",-1);
+      String[] parts = eachLine[i].split(",", -1);
       System.out.println("size of line:" + parts.length);
       System.out.println("printing line: i:" + i + " line:" + eachLine[i]);
       System.out.println("part0:" + parts[0]);
@@ -52,24 +53,36 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
       System.out.println("part4:" + parts[4]);
       System.out.println("part5:" + parts[5]);
       System.out.println("part6:" + parts[6]);
+      System.out.println("part6:" + parts[7]);
       var item = new MediaItemModel();
 
+      System.out.println("printing line: i:" + i + " line:" + eachLine[i]);
       // Parse as proper data types
       item.type = parts[0];
       item.id = UUID.fromString(parts[1]);
       item.title = parts[2];
-      item.isbn = parts[3];
-      //item.authors = parts[4];
-      
-      
-      //item.pages = Integer.parseInt(parts[5]);
-      //item.runtime = Integer.parseInt(parts[6]);
-      item.edition = parts[6];
+      if (parts.length > 3) {
+        item.isbn = parts[3];
+      }
+      if (parts.length > 4) {
+        item.authors = Arrays.asList(parts[4]);
+      }
+      if (parts.length > 5) {
+        item.pages = Integer.parseInt(parts[5].isEmpty() ? "0" : parts[5]);
+      }
+      if (parts.length > 6) {
+        item.runtime = Integer.parseInt(parts[6].isEmpty() ? "0" : parts[6]);
+      }
+
+      if (parts.length > 7) {
+        item.edition = parts[7];
+      } else {
+        item.edition = "";
+      }
 
       items.add(item);
     }
     System.out.println(items);
     return items;
   }
-
 }
