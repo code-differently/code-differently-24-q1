@@ -59,6 +59,18 @@ public class Patron {
     return this.library.getCheckedOutByPatron(this);
   }
 
+<<<<<<< HEAD
+  /**
+   * Get the library associated with the patron.
+   *
+   * @return The library associated with the patron.
+   */
+  public Library getLibrary() {
+    return this.library;
+  }
+
+=======
+>>>>>>> 22ce3dee9fbec444ab04ff845cb6c7fdd2f19932
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
