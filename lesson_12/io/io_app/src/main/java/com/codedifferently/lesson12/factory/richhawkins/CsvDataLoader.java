@@ -33,13 +33,16 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
             this.getClass().getClassLoader().getResource("csv/checked_out_items.csv").getFile());
 
     // Combine checkouts with guests
-    model.guests.forEach(
-        guest -> {
-          List<CheckoutModel> checkouts = checkoutsByGuestEmail.get(guest.email);
-          if (checkouts != null) {
-            guest.checkedOutItems = checkouts;
-          }
-        });
+    for (LibraryGuestModel guest : model.guests) {
+      List<CheckoutModel> checkouts = checkoutsByGuestEmail.get(guest.email);
+      if (checkouts != null) {
+        guest.checkedOutItems = checkouts;
+      } else {
+        guest.checkedOutItems = new ArrayList<>();
+      }
+    }
+
+    model.guests.forEach(guest -> {});
 
     return model;
   }
@@ -54,7 +57,16 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
         MediaItemModel item = new MediaItemModel();
         item.type = line[0];
         item.id = UUID.fromString(line[1]);
-        item.authors = Arrays.asList(line[2].split("\\s*,\\s*"));
+        item.title = line[2];
+        item.isbn = line[3];
+        item.authors = Arrays.asList(line[4].split("\\s*,\\s*"));
+        // checks for empty index and if empty sets to 0
+        if (line[5].equals("")) item.pages = 0;
+        else item.pages = Integer.parseInt(line[5]);
+        // checks for empty index and sets it to 0 if empty
+        if (line[6].equals("")) item.pages = 0;
+        else item.pages = Integer.parseInt(line[6]);
+        item.edition = line[7];
         items.add(item);
       }
     } catch (IOException e) {
