@@ -31,7 +31,6 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     // Creates a list and loads with everything inside of file path
     model.mediaItems = readMediaItems("csv/media_items.csv");
     model.guests = readGuests("csv/guests.csv");
-
     return model;
   }
 
@@ -77,7 +76,6 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
   private List<LibraryGuestModel> readGuests(String filePath) throws IOException {
     File myResource = new ClassPathResource(filePath).getFile();
     String fileContent = new String(Files.readAllBytes(myResource.toPath()));
-    System.out.println("print guest csv: " + fileContent);
 
     var guests = new ArrayList<LibraryGuestModel>();
     String[] eachLine = fileContent.split("\n");
