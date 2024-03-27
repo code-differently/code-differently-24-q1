@@ -32,13 +32,12 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     model.mediaItems = readMediaItems("csv/media_items.csv");
     model.guests = readGuests("csv/guests.csv");
 
-    
     return model;
   }
 
   // Read data after loading it.
-  private List<MediaItemModel> readMediaItems(String resource) throws IOException {
-    File myResource = new ClassPathResource(resource).getFile();
+  private List<MediaItemModel> readMediaItems(String filePath) throws IOException {
+    File myResource = new ClassPathResource(filePath).getFile();
     String fileContent = new String(Files.readAllBytes(myResource.toPath()));
 
     var items = new ArrayList<MediaItemModel>();
@@ -46,19 +45,10 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
 
     for (int i = 1; i < eachLine.length; i++) {
       String[] parts = eachLine[i].split(",", -1);
-      System.out.println("size of line:" + parts.length);
-      System.out.println("printing line: i:" + i + " line:" + eachLine[i]);
-      System.out.println("part0:" + parts[0]);
-      System.out.println("part1:" + parts[1]);
-      System.out.println("part2:" + parts[2]);
-      System.out.println("part3:" + parts[3]);
-      System.out.println("part4:" + parts[4]);
-      System.out.println("part5:" + parts[5]);
-      System.out.println("part6:" + parts[6]);
-      System.out.println("part7:" + parts[7]);
       var item = new MediaItemModel();
 
       // Parse as proper data types
+      // if else statements to handle empty spots
       item.type = parts[0];
       item.id = UUID.fromString(parts[1]);
       item.title = parts[2];
@@ -81,10 +71,8 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
 
       items.add(item);
     }
-    System.out.println(items);
     return items;
   }
-
 
   private List<LibraryGuestModel> readGuests(String filePath) throws IOException {
     File myResource = new ClassPathResource(filePath).getFile();
