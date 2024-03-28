@@ -1,61 +1,130 @@
 package com.codedifferently.lesson12.factory.kevinmason;
 
-import com.codedifferently.lesson12.factory.LibraryDataLoader;
+import com.codedifferently.lesson12.factory.LibraryCsvDataLoader;
+import com.codedifferently.lesson12.models.CheckoutModel;
 import com.codedifferently.lesson12.models.LibraryDataModel;
+import com.codedifferently.lesson12.models.LibraryGuestModel;
 import com.codedifferently.lesson12.models.MediaItemModel;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-/**
- * A concrete implementation of the LibraryDataLoader interface that loads data from CSV files in
- * the app's resources/csv directory.
- */
-@Service // Annotation for Spring to recognize this class as a service component
-public class CsvDataLoader implements LibraryDataLoader {
-
-  // CSV file name
-  private static final String CSV_FILE_NAME = "data.csv";
+@Service
+public class CsvDataLoader implements LibraryCsvDataLoader {
+  public static void main(String[] args) throws IOException {
+    new CsvDataLoader().loadData();
+  }
 
   @Override
   public LibraryDataModel loadData() throws IOException {
-    LibraryDataModel libraryDataModel = new LibraryDataModel();
-    libraryDataModel.mediaItems = loadMediaItemsFromCsv();
-    // Load other data if needed
-    return libraryDataModel;
-  }
+    LibraryDataModel libraryData = new LibraryDataModel();
 
-  // Method to load media items from CSV
-  private List<MediaItemModel> loadMediaItemsFromCsv() throws IOException {
-    List<MediaItemModel> mediaItems = new ArrayList<>();
-    try (InputStream inputStream =
-            getClass().getClassLoader().getResourceAsStream("csv/" + CSV_FILE_NAME);
-        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
-      String line;
-      // Skip header line if present
-      br.readLine();
-      while ((line = br.readLine()) != null) {
-        String[] data = line.split(",");
-        MediaItemModel mediaItem = createMediaItemFromCsvData(data);
-        mediaItems.add(mediaItem);
+    libraryData.guests = readGuestList("csv/guests.csv");
+    libraryData.mediaItems = readMediaItems("csv/media_items.csv");
+    Map<String, List<CheckoutModel>> checkoutsByGuestEmail =
+        readCheckedOutByEmail("csv/checked_out_items.csv");
+
+    for (LibraryGuestModel guest : libraryData.guests) {
+      List<CheckoutModel> checkouts = checkoutsByGuestEmail.get(guest.email);
+      if (checkouts != null) {
+        guest.checkedOutItems = checkouts;
+      } else {
+        guest.checkedOutItems = new ArrayList<>();
       }
     }
-    return mediaItems;
+
+    return libraryData;
   }
 
-  // Method to create a MediaItemModel object from CSV data
-  private MediaItemModel createMediaItemFromCsvData(String[] data) {
-    MediaItemModel mediaItem = new MediaItemModel();
-    mediaItem.type = data[0];
-    mediaItem.id = UUID.fromString(data[1]);
-    mediaItem.title = data[2];
-    mediaItem.isbn = data[3];
-    // Set other attributes as needed
-    return mediaItem;
+  public static List<MediaItemModel> readMediaItems(String path) {
+    try (BufferedReader reader =
+        new BufferedReader(new FileReader(new ClassPathResource(path).getFile()))) {
+      List<MediaItemModel> items = new ArrayList<>();
+      String line;
+      // Skip headers
+      reader.readLine();
+      for (line = reader.readLine(); line != null; line = reader.readLine()) {
+        String[] parts = line.split(",", 8);
+        MediaItemModel item = new MediaItemModel();
+        item.type = parts[0];
+        item.id = UUID.fromString(parts[1]);
+        item.title = parts[2];
+        item.isbn = parts[3];
+        item.authors = List.of(parts[4]);
+
+        if (parts[5].equals("")) {
+          item.pages = 0;
+        } else {
+          item.pages = Integer.parseInt(parts[5]);
+        }
+
+        if (parts[6].equals("")) {
+          item.runtime = 0;
+        } else {
+          item.runtime = Integer.parseInt(parts[6]);
+        }
+        item.edition = parts[7];
+
+        items.add(item);
+      }
+      return items;
+    } catch (IOException e) {
+      throw new RuntimeException("Failed to read media items", e);
+    }
+  }
+
+  private List<LibraryGuestModel> readGuestList(String path) {
+    try (BufferedReader reader =
+        new BufferedReader(new FileReader(new ClassPathResource(path).getFile()))) {
+      List<LibraryGuestModel> guests = new ArrayList<>();
+      String line;
+      // Skip headers
+      reader.readLine();
+      for (line = reader.readLine(); line != null; line = reader.readLine()) {
+        String[] parts = line.split(",");
+        LibraryGuestModel guest = new LibraryGuestModel();
+        guest.type = parts[0];
+        guest.name = parts[1];
+        guest.email = parts[2];
+        guests.add(guest);
+      }
+      return guests;
+    } catch (IOException e) {
+      throw new RuntimeException("Failed to read media items", e);
+    }
+  }
+
+  private static Map<String, List<CheckoutModel>> readCheckedOutByEmail(String path) {
+    try (BufferedReader reader =
+        new BufferedReader(new FileReader(new ClassPathResource(path).getFile()))) {
+      Map<String, List<CheckoutModel>> checkedOutItems = new HashMap<>();
+      String line;
+      // Skip headers
+      reader.readLine();
+      for (line = reader.readLine(); line != null; line = reader.readLine()) {
+        String[] parts = line.split(",");
+        CheckoutModel item = new CheckoutModel();
+        item.itemId = UUID.fromString(parts[1]);
+        item.dueDate = Instant.parse(parts[2]);
+        if (checkedOutItems.containsKey(parts[0])) {
+          checkedOutItems.get(parts[0]).add(item);
+        } else {
+          List<CheckoutModel> checkOut = new ArrayList<>();
+          checkOut.add(item);
+          checkedOutItems.put(parts[0], checkOut);
+        }
+      }
+      return checkedOutItems;
+    } catch (IOException e) {
+      throw new RuntimeException("Failed to read media items", e);
+    }
   }
 }
