@@ -35,7 +35,7 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     libraryData.mediaItems = readMediaItems(MEDIA_ITEMS_FILE_PATH);
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail =
         readCheckedOutByEmail(CHECKED_OUT_ITEMS_FILE_PATH);
-    
+
     for (var guest : libraryData.guests) {
       var checkouts = checkoutsByGuestEmail.getOrDefault(guest.email, Collections.emptyList());
       guest.checkedOutItems = new ArrayList<>(checkouts);
@@ -48,7 +48,7 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     try (var reader = Files.newBufferedReader(Path.of(new ClassPathResource(path).getURI()))) {
       var items = new ArrayList<MediaItemModel>();
       String line;
-      reader.readLine(); 
+      reader.readLine();
       while ((line = reader.readLine()) != null) {
         var parts = line.split(",", MEDIA_ITEM_FIELDS_COUNT);
         var item = new MediaItemModel();
@@ -75,7 +75,7 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     try (var reader = Files.newBufferedReader(Path.of(new ClassPathResource(path).getURI()))) {
       var guests = new ArrayList<LibraryGuestModel>();
       String line;
-      reader.readLine(); 
+      reader.readLine();
       while ((line = reader.readLine()) != null) {
         var parts = line.split(",");
         var guest = new LibraryGuestModel();
@@ -96,7 +96,7 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     try (var reader = Files.newBufferedReader(Path.of(new ClassPathResource(path).getURI()))) {
       var checkedOutItems = new HashMap<String, List<CheckoutModel>>();
       String line;
-      reader.readLine(); 
+      reader.readLine();
       while ((line = reader.readLine()) != null) {
         var parts = line.split(",");
         var item = new CheckoutModel();
