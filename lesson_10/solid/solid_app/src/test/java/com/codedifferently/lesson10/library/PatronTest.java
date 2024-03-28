@@ -8,6 +8,7 @@ import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +19,7 @@ class PatronTest {
 
   @BeforeEach
   void setUp() {
-    classUnderTest = new Patron("John Doe", "johndoe@example.com");
+    classUnderTest = new Patron("John Doe", "johndoe@example.com", library);
     library = new Library("Library 1");
     library.addPatron(classUnderTest);
   }
@@ -42,33 +43,45 @@ class PatronTest {
   }
 
   @Test
-  void testGetCheckedOutBooks_LibraryNotSet() {
+  void testGetCheckedOutMedia_LibraryNotSet() {
     // Arrange
     classUnderTest.setLibrary(null);
 
     // Act & Assert
-    assertThatThrownBy(() -> classUnderTest.getCheckedOutBooks())
+    assertThatThrownBy(() -> classUnderTest.getCheckedOutMedia())
         .isInstanceOf(LibraryNotSetException.class)
         .hasMessageContaining("Library not set for patron johndoe@example.com");
   }
 
   @Test
-  void testGetCheckedOutBooks() {
+  void testGetCheckedOutMedia() {
     // Arrange
+    Librarian librarian = new Librarian("Rich", "Rich@mail.com", library);
     Book book1 =
-        new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
-    Book book2 = new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
-    Set<Book> expectedBooks = new HashSet<>();
-    expectedBooks.add(book1);
-    expectedBooks.add(book2);
+        new Book(
+            "The Great Gatsby",
+            "978-0743273565",
+            List.of("F. Scott Fitzgerald"),
+            180,
+            UUID.randomUUID());
+    Book book2 =
+        new Book(
+            "To Kill a Mockingbird",
+            "978-0061120084",
+            List.of("Harper Lee"),
+            281,
+            UUID.randomUUID());
+    Set<MediaItem> expectedMedia = new HashSet<>();
+    expectedMedia.add(book1);
+    expectedMedia.add(book2);
 
-    library.addBook(book1);
-    library.addBook(book2);
-    library.checkOutBook(book1, classUnderTest);
-    library.checkOutBook(book2, classUnderTest);
+    library.addMedia(book1, librarian);
+    library.addMedia(book2, librarian);
+    library.checkOutMediaItem(book1, classUnderTest);
+    library.checkOutMediaItem(book2, classUnderTest);
 
     // Act & Assert
-    assertThat(classUnderTest.getCheckedOutBooks()).isEqualTo(expectedBooks);
+    assertThat(classUnderTest.getCheckedOutMedia()).isEqualTo(expectedMedia);
   }
 
   @Test

@@ -1,14 +1,11 @@
 package com.codedifferently.lesson10.library;
 
-import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
-import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 /** Represents a book. */
-public class Book {
-  private Library library;
-  private String title;
+public class Book extends MediaItem {
   private String isbn;
   private List<String> authors;
   private int numberOfPages;
@@ -20,40 +17,14 @@ public class Book {
    * @param isbn The ISBN of the book.
    * @param authors The authors of the book.
    * @param numberOfPages The number of pages in the book.
+   * @param id The unique id for the book.
    */
-  public Book(String title, String isbn, List<String> authors, int numberOfPages) {
+  public Book(String title, String isbn, List<String> authors, int numberOfPages, UUID id) {
     this.title = title;
     this.isbn = isbn;
     this.authors = authors;
     this.numberOfPages = numberOfPages;
-  }
-
-  /**
-   * Get the id of the book.
-   *
-   * @return The id of the book.
-   */
-  public String getId() {
-    return this.isbn;
-  }
-
-  /**
-   * Get the library that the book is in.
-   *
-   * @param library The library that the book is in.
-   * @throws WrongLibraryException If the book is not in the library.
-   */
-  public void setLibrary(Library library) throws WrongLibraryException {
-    if (library != null && !library.hasBook(this)) {
-      throw new WrongLibraryException(
-          "Book " + this.getId() + " is not in library " + library.getId());
-    }
-    this.library = library;
-  }
-
-  /** Get the title of the book. */
-  public String getTitle() {
-    return title;
+    this.id = UUID.randomUUID();
   }
 
   /** Get the ISBN of the book. */
@@ -71,17 +42,10 @@ public class Book {
     return numberOfPages;
   }
 
-  /**
-   * Check if the book is checked out.
-   *
-   * @return True if the book is checked out, false otherwise.
-   * @throws LibraryNotSetException If the library is not set for the book.
-   */
-  public boolean isCheckedOut() throws LibraryNotSetException {
-    if (this.library == null) {
-      throw new LibraryNotSetException("Library not set for book " + this.getId());
-    }
-    return library.isCheckedOut(this);
+  @Override
+  public boolean canCheckOut() {
+    System.out.println("Enjoy your book!");
+    return true;
   }
 
   @Override

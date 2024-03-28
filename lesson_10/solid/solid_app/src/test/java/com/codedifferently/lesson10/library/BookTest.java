@@ -2,11 +2,13 @@ package com.codedifferently.lesson10.library;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
 import java.util.List;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,10 +20,15 @@ class BookTest {
   @BeforeEach
   void setUp() {
     classUnderTest =
-        new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
+        new Book(
+            "To Kill a Mockingbird",
+            "978-0061120084",
+            List.of("Harper Lee"),
+            281,
+            UUID.randomUUID());
     library = mock(Library.class);
     when(library.getId()).thenReturn("Library 1");
-    when(library.hasBook(classUnderTest)).thenReturn(true);
+    when(library.hasMediaItem(classUnderTest)).thenReturn(true);
     classUnderTest.setLibrary(library);
   }
 
@@ -38,13 +45,13 @@ class BookTest {
   void testSetLibrary_WrongLibrary() {
     // Arrange
     Library otherLibrary = mock(Library.class);
-    when(otherLibrary.hasBook(classUnderTest)).thenReturn(false);
+    when(otherLibrary.hasMediaItem(classUnderTest)).thenReturn(false);
     when(otherLibrary.getId()).thenReturn("Library 2");
 
     // Act & Assert
     assertThatThrownBy(() -> classUnderTest.setLibrary(otherLibrary))
         .isInstanceOf(WrongLibraryException.class)
-        .hasMessageContaining("Book 978-0061120084 is not in library Library 2");
+        .hasMessageContaining("Item " + classUnderTest.getId() + " is not in library Library 2");
   }
 
   @Test
@@ -55,7 +62,7 @@ class BookTest {
     // Act & Assert
     assertThatThrownBy(() -> classUnderTest.isCheckedOut())
         .isInstanceOf(LibraryNotSetException.class)
-        .hasMessageContaining("Library not set for book 978-0061120084");
+        .hasMessageContaining("Library not set for item " + classUnderTest.getId());
   }
 
   @Test
@@ -80,6 +87,6 @@ class BookTest {
   void testToString() {
     // Act & Assert
     assertThat(classUnderTest.toString())
-        .isEqualTo("Book{id='978-0061120084', title='To Kill a Mockingbird'}");
+        .isEqualTo("Book{id='" + classUnderTest.getId() + "', title='To Kill a Mockingbird'}");
   }
 }
