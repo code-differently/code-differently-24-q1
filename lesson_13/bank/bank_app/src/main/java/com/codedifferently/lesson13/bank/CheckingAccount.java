@@ -1,10 +1,17 @@
 package com.codedifferently.lesson13.bank;
 
-import java.util.Set;
 
+import com.codedifferently.lesson13.bank.exceptions.AccountNotFoundException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 /** Represents a checking account. */
-public class CheckingAccount {
+public class CheckingAccount extends BankAccountBase implements BankAccounts{
 
   // constructor
-  public CheckingAccount(String accountNumber, Set<Customer> owners, double initialBalance) {}
+  public CheckingAccount(String accountNumber, Set<Customer> owners, double initialBalance) {
+  super(accountNumber,owners,initialBalance);
+ 
+  }
 }
