@@ -37,7 +37,7 @@ public class Library {
    *
    * @param book The book to add.
    */
-  public void addBook(Book book) {
+  void addBook(Book book) {
     this.bookIds.add(book.getId());
     book.setLibrary(this);
   }
@@ -47,7 +47,7 @@ public class Library {
    *
    * @param book The book to remove.
    */
-  public void removeBook(Book book) throws BookCheckedOutException {
+  void removeBook(Book book) throws BookCheckedOutException {
     if (this.isCheckedOut(book)) {
       throw new BookCheckedOutException("Cannot remove checked out book.");
     }
@@ -72,7 +72,7 @@ public class Library {
    * @param patron The patron to remove.
    */
   public void removePatron(Patron patron) throws BookCheckedOutException {
-    if (this.checkedOutBooksByPatron.get(patron.getId()).size() > 0) {
+    if (!this.checkedOutBooksByPatron.get(patron.getId()).isEmpty()) {
       throw new BookCheckedOutException("Cannot remove patron with checked out books.");
     }
     this.patronIds.remove(patron.getId());
