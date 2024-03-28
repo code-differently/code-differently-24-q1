@@ -1,17 +1,16 @@
 package com.codedifferently.lesson12.factory.kevinmason;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-import org.springframework.stereotype.Service;
-
 import com.codedifferently.lesson12.factory.LibraryDataLoader;
 import com.codedifferently.lesson12.models.LibraryDataModel;
 import com.codedifferently.lesson12.models.MediaItemModel;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import org.springframework.stereotype.Service;
 
 /**
  * A concrete implementation of the LibraryDataLoader interface that loads data from CSV files in
@@ -20,8 +19,8 @@ import com.codedifferently.lesson12.models.MediaItemModel;
 @Service // Annotation for Spring to recognize this class as a service component
 public class CsvDataLoader implements LibraryDataLoader {
 
-  // CSV file path
-  private static final String CSV_FILE_PATH = "src/main/resources/csv/data.csv";
+  // CSV file name
+  private static final String CSV_FILE_NAME = "data.csv";
 
   @Override
   public LibraryDataModel loadData() throws IOException {
@@ -34,7 +33,9 @@ public class CsvDataLoader implements LibraryDataLoader {
   // Method to load media items from CSV
   private List<MediaItemModel> loadMediaItemsFromCsv() throws IOException {
     List<MediaItemModel> mediaItems = new ArrayList<>();
-    try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
+    try (InputStream inputStream =
+            getClass().getClassLoader().getResourceAsStream("csv/" + CSV_FILE_NAME);
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
       String line;
       // Skip header line if present
       br.readLine();
