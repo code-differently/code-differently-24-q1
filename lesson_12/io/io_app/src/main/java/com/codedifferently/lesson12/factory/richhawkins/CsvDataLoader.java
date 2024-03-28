@@ -19,7 +19,7 @@ import java.util.UUID;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("RichLibraryCsvDataLoader")
 public class CsvDataLoader implements LibraryCsvDataLoader {
   @Override
   public LibraryDataModel loadData() {
