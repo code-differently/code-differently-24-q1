@@ -6,14 +6,15 @@ public class SavingsAccount extends BankAccountBase {
   public SavingsAccount(String accountNumber, Set<Customer> owners, double initialBalance) {
     super(accountNumber, owners, initialBalance);
   }
-   @Override
+
+  @Override
   public int hashCode() {
     return accountNumber.hashCode();
   }
 
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof CheckingAccount other) {
+    if (obj instanceof SavingsAccount other) {
       return accountNumber.equals(other.accountNumber);
     }
     return false;
@@ -21,7 +22,7 @@ public class SavingsAccount extends BankAccountBase {
 
   @Override
   public String toString() {
-    return "CheckingAccount{"
+    return "SavingsAccount{"
         + "accountNumber='"
         + accountNumber
         + '\''

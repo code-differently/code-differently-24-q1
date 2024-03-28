@@ -2,10 +2,8 @@ package com.codedifferently.lesson13.bank;
 
 import java.util.Set;
 
-import main.java.com.codedifferently.lesson13.bank.BankAccountBase;
-
 /** Represents a checking account. */
-public class CheckingAccount extends BankAccountBase implements BankAccount {
+public class CheckingAccount extends BankAccountBase {
 
   /**
    * Creates a new checking account.
@@ -18,7 +16,7 @@ public class CheckingAccount extends BankAccountBase implements BankAccount {
     super(accountNumber, owners, initialBalance);
   }
 
-    @Override
+  @Override
   public int hashCode() {
     return accountNumber.hashCode();
   }

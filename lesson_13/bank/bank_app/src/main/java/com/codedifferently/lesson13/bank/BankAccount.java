@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
-
 package com.codedifferently.lesson13.bank;
 
 import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;

@@ -1,28 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package com.codedifferently.lesson13.bank;
 
 import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
 import java.util.Set;
 
-/**
- * @author vscode
- */
-public abstract class BankAccountBase {
-
+/** Represents a checking account. */
+public class BankAccountBase implements BankAccount {
   protected final Set<Customer> owners;
   protected final String accountNumber;
   protected double balance;
-  protected double initialBalance;
   protected boolean isActive;
 
+  /**
+   * Creates a new checking account.
+   *
+   * @param accountNumber The account number.
+   * @param owners The owners of the account.
+   * @param initialBalance The initial balance of the account.
+   */
   public BankAccountBase(String accountNumber, Set<Customer> owners, double initialBalance) {
     this.accountNumber = accountNumber;
     this.owners = owners;
-    this.initialBalance = initialBalance;
+    this.balance = initialBalance;
+    isActive = true;
   }
 
   /**
@@ -30,7 +29,7 @@ public abstract class BankAccountBase {
    *
    * @return The account number.
    */
- 
+  @Override
   public String getAccountNumber() {
     return accountNumber;
   }
@@ -40,7 +39,7 @@ public abstract class BankAccountBase {
    *
    * @return The owners of the account.
    */
- 
+  @Override
   public Set<Customer> getOwners() {
     return owners;
   }
@@ -50,7 +49,7 @@ public abstract class BankAccountBase {
    *
    * @param amount The amount to deposit.
    */
- 
+  @Override
   public void deposit(double amount) throws IllegalStateException {
     if (isClosed()) {
       throw new IllegalStateException("Cannot deposit to a closed account");
@@ -67,7 +66,7 @@ public abstract class BankAccountBase {
    * @param amount
    * @throws InsufficientFundsException
    */
-  
+  @Override
   public void withdraw(double amount) throws InsufficientFundsException {
     if (isClosed()) {
       throw new IllegalStateException("Cannot withdraw from a closed account");
@@ -86,13 +85,13 @@ public abstract class BankAccountBase {
    *
    * @return The balance of the account.
    */
-  
+  @Override
   public double getBalance() {
     return balance;
   }
 
   /** Closes the account. */
-  
+  @Override
   public void closeAccount() throws IllegalStateException {
     if (balance > 0) {
       throw new IllegalStateException("Cannot close account with a positive balance");
@@ -105,7 +104,7 @@ public abstract class BankAccountBase {
    *
    * @return True if the account is closed, otherwise false.
    */
-
+  @Override
   public boolean isClosed() {
     return !isActive;
   }
@@ -125,7 +124,7 @@ public abstract class BankAccountBase {
 
   @Override
   public String toString() {
-    return "CheckingAccount{"
+    return "BankAccountBase{"
         + "accountNumber='"
         + accountNumber
         + '\''
