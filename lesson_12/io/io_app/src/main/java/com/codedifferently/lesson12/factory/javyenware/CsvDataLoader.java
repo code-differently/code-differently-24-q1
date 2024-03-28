@@ -85,12 +85,21 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
         // Map<String, List<CheckoutModel>> checkoutsByGuestEmail = new HashMap<>(); starts a new hashmap (a hashmap is data strcuture used to store data as a key value pair.)
         // The difference between a hashmap and a map is that a hashmap is less flexible and uses a hashtable for fast access)( a hashtable is a collection of key-value pairs, for each value you have a unique key for it)
         // try keyword allows you to run and test a block of code for errors while said code block is being executed
-        
+        // try (CSVReader reader = new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) this block of code initializes a Csv reader named reader then it reads from a Csv file. And it knows to read from it because of the (filePath) 
+        // the (new ClassPathResource(filePath).getFile() is used to obtain a file object from path.
+        // the new keyword in java creates a new object. Csvreader, FileReader and ClassPathResource are all creating a new object. The reason for this is because a object represensts a real world entity or data structure. 
+        // We have to do represent a real world entity or data strcuture because the purpose of this assignment is to provide a implementation of the LibraryCsvDataLoader which will load data from the Csv files in the app's resource directory. 
+        // reader.skip(numberOfLInesToSkip) reader is an instance of the CSVReader class is purpose is to read the data from the csv files 
+        // .skip(1) is a method calling on the CsvReader Object. The (1) is saying skip line one. 
+        // The reason we are skipping line one because the first line provides the structure of the rest of the data set. It only provides and serves as a guide for how to understand and parse the data on the rest of the rows below.
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail = new HashMap<>();
     try (CSVReader reader =
-        new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
+      new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
       reader.skip(1);
       String[] line;
+      // ((line = reader. reader.readNext()) != null) this is the start off the while loop. Its saying keep reading each line untill its not equal to null.
+      // ! means not and = means equal, and null meaning returning nothing 
+      //  while ((line = reader.readNext()) != null) loop through each line untill there are no more lines left. 
       while ((line = reader.readNext()) != null) {
         String email = line[0];
         CheckoutModel checkout = new CheckoutModel();
