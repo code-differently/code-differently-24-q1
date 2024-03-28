@@ -1,22 +1,22 @@
 package com.codedifferently.lesson12.factory;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import com.codedifferently.lesson12.Lesson12;
-import com.codedifferently.lesson12.library.LibraryGuest;
-import com.codedifferently.lesson12.library.MediaItem;
-import com.codedifferently.lesson12.models.CheckoutModel;
-import com.codedifferently.lesson12.models.LibraryDataModel;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
+
+import com.codedifferently.lesson12.Lesson12;
+import com.codedifferently.lesson12.library.LibraryGuest;
+import com.codedifferently.lesson12.library.MediaItem;
+import com.codedifferently.lesson12.models.CheckoutModel;
+import com.codedifferently.lesson12.models.LibraryDataModel;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -42,16 +42,7 @@ class LibraryCsvDataLoaderTest {
       LibraryDataModel libraryDataModel = entry.getValue();
       Map<String, List<CheckoutModel>> checkedOutItemsByGuest =
           libraryDataModel.getCheckoutsByEmail();
-      // var numCheckedOutItems =
-      // checkedOutItemsByGuest.values().stream().mapToInt(List::size).sum();
-
-      int numCheckedOutItems = 0;
-      for (Entry<String, List<CheckoutModel>> entry2 : checkedOutItemsByGuest.entrySet()) {
-        System.out.print("entry2:" + entry2);
-        if (entry2.getValue() != null) {
-          numCheckedOutItems += entry2.getValue().size();
-        }
-      }
+      var numCheckedOutItems = checkedOutItemsByGuest.values().stream().mapToInt(List::size).sum();
       assertThat(numCheckedOutItems)
           .describedAs("Loader %s should load checked out items", className)
           .isEqualTo(4);
