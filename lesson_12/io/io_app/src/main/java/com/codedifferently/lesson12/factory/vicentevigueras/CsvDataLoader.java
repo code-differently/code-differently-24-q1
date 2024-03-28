@@ -1,16 +1,21 @@
 package com.codedifferently.lesson12.factory.vicentevigueras;
 
 import com.codedifferently.lesson12.factory.LibraryCsvDataLoader;
+import com.codedifferently.lesson12.models.CheckoutModel;
 import com.codedifferently.lesson12.models.LibraryDataModel;
 import com.codedifferently.lesson12.models.LibraryGuestModel;
 import com.codedifferently.lesson12.models.MediaItemModel;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +24,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CsvDataLoader implements LibraryCsvDataLoader {
+
   public static void main(String[] args) throws IOException {
-    CsvDataLoader csvDataLoader = new CsvDataLoader();
-    csvDataLoader.loadData();
+    new CsvDataLoader().loadData();
   }
 
   @Override
@@ -31,16 +36,24 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     // Creates a list and loads with everything inside of file path
     model.mediaItems = readMediaItems("csv/media_items.csv");
     model.guests = readGuests("csv/guests.csv");
+    Map<String, List<CheckoutModel>> checkoutsByGuestEmail = getCheckedOutItems("csv/checked_out_items.csv");
+    for (var guest : model.guests) {
+      var checkouts = checkoutsByGuestEmail.get(guest.email);
+      if (checkouts != null) {
+        guest.checkedOutItems = checkouts;
+      }
+    }
+
+    
+    
     return model;
   }
 
   // Read data after loading it.
   private List<MediaItemModel> readMediaItems(String filePath) throws IOException {
-    File myResource = new ClassPathResource(filePath).getFile();
-    String fileContent = new String(Files.readAllBytes(myResource.toPath()));
+    String[] eachLine = getFileContent(filePath).split("\n");
 
     var items = new ArrayList<MediaItemModel>();
-    String[] eachLine = fileContent.split("\n");
 
     for (int i = 1; i < eachLine.length; i++) {
       String[] parts = eachLine[i].split(",", -1);
@@ -63,23 +76,19 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
       if (parts.length > 6) {
         item.runtime = Integer.parseInt(parts[6].isEmpty() ? "0" : parts[6]);
       }
-
       if (parts.length > 7) {
         item.edition = parts[7];
       }
-
       items.add(item);
     }
     return items;
   }
 
   private List<LibraryGuestModel> readGuests(String filePath) throws IOException {
-    File myResource = new ClassPathResource(filePath).getFile();
-    String fileContent = new String(Files.readAllBytes(myResource.toPath()));
+    String[] eachLine = getFileContent(filePath).split("\n");
 
     var guests = new ArrayList<LibraryGuestModel>();
-    String[] eachLine = fileContent.split("\n");
-
+    
     for (int i = 1; i < eachLine.length; i++) {
       String[] parts = eachLine[i].split(",", -1);
       var guest = new LibraryGuestModel();
@@ -89,5 +98,28 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
       guests.add(guest);
     }
     return guests;
+  }
+
+  private Map<String, List<CheckoutModel>> getCheckedOutItems(String filePath) throws IOException {
+    String fileContent = getFileContent(filePath); 
+    System.out.println(fileContent);
+
+    Map<String, List<CheckoutModel>> checkedOutItems = new HashMap<>();
+    String[] eachLine = fileContent.split("\n");
+    
+    for (int i = 1; i < eachLine.length; i++) {
+      //String[] parts = eachLine[i].split(",", -1);
+      checkedOutItems.put(i+"", new ArrayList<>());
+
+
+
+    }
+    System.out.println("map:"+checkedOutItems);
+    return checkedOutItems;
+  }
+
+  private String getFileContent(String filePath) throws IOException {
+    File myResource = new ClassPathResource(filePath).getFile();
+    return new String(Files.readAllBytes(myResource.toPath()));
   }
 }
