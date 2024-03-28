@@ -5,17 +5,16 @@ import com.codedifferently.lesson12.models.CheckoutModel;
 import com.codedifferently.lesson12.models.LibraryDataModel;
 import com.codedifferently.lesson12.models.LibraryGuestModel;
 import com.codedifferently.lesson12.models.MediaItemModel;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +35,8 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     // Creates a list and loads with everything inside of file path
     model.mediaItems = readMediaItems("csv/media_items.csv");
     model.guests = readGuests("csv/guests.csv");
-    Map<String, List<CheckoutModel>> checkoutsByGuestEmail = getCheckedOutItems("csv/checked_out_items.csv");
+    Map<String, List<CheckoutModel>> checkoutsByGuestEmail =
+        getCheckedOutItems("csv/checked_out_items.csv");
     for (var guest : model.guests) {
       var checkouts = checkoutsByGuestEmail.get(guest.email);
       if (checkouts != null) {
@@ -44,8 +44,6 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
       }
     }
 
-    
-    
     return model;
   }
 
@@ -88,7 +86,7 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     String[] eachLine = getFileContent(filePath).split("\n");
 
     var guests = new ArrayList<LibraryGuestModel>();
-    
+
     for (int i = 1; i < eachLine.length; i++) {
       String[] parts = eachLine[i].split(",", -1);
       var guest = new LibraryGuestModel();
@@ -101,20 +99,32 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
   }
 
   private Map<String, List<CheckoutModel>> getCheckedOutItems(String filePath) throws IOException {
-    String fileContent = getFileContent(filePath); 
-    System.out.println(fileContent);
+    String fileContent = getFileContent(filePath);
 
     Map<String, List<CheckoutModel>> checkedOutItems = new HashMap<>();
     String[] eachLine = fileContent.split("\n");
-    
+
     for (int i = 1; i < eachLine.length; i++) {
-      //String[] parts = eachLine[i].split(",", -1);
-      checkedOutItems.put(i+"", new ArrayList<>());
+      // separate elements
+      String[] parts = eachLine[i].split(",", -1);
 
+      // read parts of the line
+      String email = parts[0];
 
+      CheckoutModel newCheckoutModel = new CheckoutModel();
+      newCheckoutModel.itemId = UUID.fromString(parts[1]);
+      newCheckoutModel.dueDate = Instant.parse(parts[2]);
 
+      List<CheckoutModel> existingCheckoutModel = checkedOutItems.get(email);
+      // validate there is not checkout items in the map
+      if (existingCheckoutModel == null) {
+        existingCheckoutModel = new ArrayList<>();
+      }
+      existingCheckoutModel.add(newCheckoutModel);
+      // store full thing in the map
+      checkedOutItems.put(email, existingCheckoutModel);
     }
-    System.out.println("map:"+checkedOutItems);
+
     return checkedOutItems;
   }
 
