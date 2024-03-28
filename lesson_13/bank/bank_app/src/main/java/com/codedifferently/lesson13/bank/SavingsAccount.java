@@ -17,6 +17,8 @@ public class SavingsAccount implements BankAccounts {
    * @param owners The owners of the account.
    * @param initialBalance The initial balance of the account.
    */
+
+  // Constructor
   public SavingsAccount(String accountNumber, Set<Customer> owners, double initialBalance) {
     this.accountNumber = accountNumber;
     this.owners = owners;

@@ -1,6 +1,5 @@
 package com.codedifferently.lesson13.bank;
 
-import com.codedifferently.lesson13.bank.exceptions.IllegalStateException;
 import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
 import java.util.Set;
 
