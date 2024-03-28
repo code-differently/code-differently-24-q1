@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 /** LibraryCsvDataLoaderSolid */
@@ -28,14 +29,10 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
   public LibraryDataModel loadData() throws IOException {
     LibraryDataModel libraryData = new LibraryDataModel();
 
-    libraryData.guests =
-        readGuestList((this.getClass().getClassLoader().getResource("csv/guests.csv").getFile()));
-    libraryData.mediaItems =
-        readMediaItems(
-            this.getClass().getClassLoader().getResource("csv/media_items.csv").getFile());
+    libraryData.guests = readGuestList("csv/guests.csv");
+    libraryData.mediaItems = readMediaItems("csv/media_items.csv");
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail =
-        readCheckedOutByEmail(
-            this.getClass().getClassLoader().getResource("csv/checked_out_items.csv").getFile());
+        readCheckedOutByEmail("csv/checked_out_items.csv");
     // Gives each guest a list of their checked out books.
     for (var guest : libraryData.guests) {
       var checkouts = checkoutsByGuestEmail.get(guest.email);
@@ -56,7 +53,7 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
    * @return
    */
   public static List<MediaItemModel> readMediaItems(String path) {
-    try (var reader = new BufferedReader(new FileReader(path))) {
+    try (var reader = new BufferedReader(new FileReader(new ClassPathResource(path).getFile()))) {
       // The list that will be returned at the end of the function.
       var items = new ArrayList<MediaItemModel>();
       String line;
@@ -100,7 +97,7 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
    * @return
    */
   private List<LibraryGuestModel> readGuestList(String path) {
-    try (var reader = new BufferedReader(new FileReader(path))) {
+    try (var reader = new BufferedReader(new FileReader(new ClassPathResource(path).getFile()))) {
       // The list that will be returned at the end of the function.
       var guests = new ArrayList<LibraryGuestModel>();
       String line;
@@ -133,7 +130,7 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
    * @return
    */
   private static Map<String, List<CheckoutModel>> readCheckedOutByEmail(String path) {
-    try (var reader = new BufferedReader(new FileReader(path))) {
+    try (var reader = new BufferedReader(new FileReader(new ClassPathResource(path).getFile()))) {
       // The hashmap that will be returned at the end of the function.
       var checkedOutItems = new HashMap<String, List<CheckoutModel>>();
       String line;
