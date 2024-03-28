@@ -1,32 +1,58 @@
 package com.codedifferently.lesson12.factory.kevinmason;
 
-import com.codedifferently.lesson12.library.Book;
-import com.codedifferently.lesson12.library.MediaItem;
+import com.codedifferently.lesson12.factory.LibraryDataLoader;
+import com.codedifferently.lesson12.models.LibraryDataModel;
 import com.codedifferently.lesson12.models.MediaItemModel;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import org.springframework.stereotype.Service;
 
-public class CsvDataLoader {
+/**
+ * A concrete implementation of the LibraryDataLoader interface that loads data from CSV files in
+ * the app's resources/csv directory.
+ */
+@Service // Annotation for Spring to recognize this class as a service component
+public class CsvDataLoader implements LibraryDataLoader {
 
-  // Method to load data for various media items
-  public List<MediaItem> loadData(List<MediaItemModel> items) {
-    List<MediaItem> results = new ArrayList<>();
-    for (MediaItemModel item : items) {
-      switch (item.type) {
-        case "book" -> {
-          List<String> authors = item.authors; // Extract authors from the MediaItemModel
-          int numberOfPages = item.pages; // Extract number of pages from the MediaItemModel
+  // CSV file path
+  private static final String CSV_FILE_PATH = "src/main/resources/csv/data.csv";
 
-          // Create a new Book object and add it to the results list
-          results.add(new Book(item.title, item.isbn, Double.parseDouble(item.additionalData)));
-        }
-          // Handle other media types similarly
-          // case "dvd" -> { /* Handle DVDs */ }
-          // case "magazine" -> { /* Handle magazines */ }
-          // case "newspaper" -> { /* Handle newspapers */ }
-          // Add more cases for other media types as needed
+  @Override
+  public LibraryDataModel loadData() throws IOException {
+    LibraryDataModel libraryDataModel = new LibraryDataModel();
+    libraryDataModel.mediaItems = loadMediaItemsFromCsv();
+    // Load other data if needed
+    return libraryDataModel;
+  }
+
+  // Method to load media items from CSV
+  private List<MediaItemModel> loadMediaItemsFromCsv() throws IOException {
+    List<MediaItemModel> mediaItems = new ArrayList<>();
+    try (BufferedReader br = new BufferedReader(new FileReader(CSV_FILE_PATH))) {
+      String line;
+      // Skip header line if present
+      br.readLine();
+      while ((line = br.readLine()) != null) {
+        String[] data = line.split(",");
+        MediaItemModel mediaItem = createMediaItemFromCsvData(data);
+        mediaItems.add(mediaItem);
       }
     }
-    return results;
+    return mediaItems;
+  }
+
+  // Method to create a MediaItemModel object from CSV data
+  private MediaItemModel createMediaItemFromCsvData(String[] data) {
+    MediaItemModel mediaItem = new MediaItemModel();
+    mediaItem.type = data[0];
+    mediaItem.id = UUID.fromString(data[1]);
+    mediaItem.title = data[2];
+    mediaItem.isbn = data[3];
+    // Set other attributes as needed
+    return mediaItem;
   }
 }
