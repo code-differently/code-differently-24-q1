@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,14 +24,10 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
   @Override
   public LibraryDataModel loadData() {
     var model = new LibraryDataModel();
-    model.mediaItems =
-        readMediaItems(
-            this.getClass().getClassLoader().getResource("csv/media_items.csv").getFile());
-    model.guests =
-        readGuests(this.getClass().getClassLoader().getResource("csv/guests.csv").getFile());
+    model.mediaItems = readMediaItems(("csv/media_items.csv"));
+    model.guests = readGuests(("csv/guests.csv"));
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail =
-        getCheckedOutItems(
-            this.getClass().getClassLoader().getResource("csv/checked_out_items.csv").getFile());
+        getCheckedOutItems(("csv/checked_out_items.csv"));
 
     // Combine checkouts with guests
     for (LibraryGuestModel guest : model.guests) {
@@ -49,8 +46,9 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
 
   private List<MediaItemModel> readMediaItems(String filePath) {
     List<MediaItemModel> items = new ArrayList<>();
-    try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
-      // Skip the header
+    try (CSVReader reader =
+        new CSVReader(
+            new FileReader(new ClassPathResource(filePath).getFile()))) { // Skip the header
       String[] header = reader.readNext();
       String[] line;
       while ((line = reader.readNext()) != null) {
@@ -79,8 +77,9 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
 
   private List<LibraryGuestModel> readGuests(String filePath) {
     List<LibraryGuestModel> guests = new ArrayList<>();
-    try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
-      // Skip the header
+    try (CSVReader reader =
+        new CSVReader(
+            new FileReader(new ClassPathResource(filePath).getFile()))) { // Skip the header
       String[] header = reader.readNext();
       String[] line;
       while ((line = reader.readNext()) != null) {
@@ -100,7 +99,8 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
 
   private Map<String, List<CheckoutModel>> getCheckedOutItems(String filePath) {
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail = new HashMap<>();
-    try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
+    try (CSVReader reader =
+        new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
       // Skip the header
       String[] header = reader.readNext();
       String[] line;
