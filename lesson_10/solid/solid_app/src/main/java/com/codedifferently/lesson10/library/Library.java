@@ -178,4 +178,8 @@ public class Library {
         + patronIds
         + '}';
   }
+
+  void addLibrarian(Librarian librarian) {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
 }

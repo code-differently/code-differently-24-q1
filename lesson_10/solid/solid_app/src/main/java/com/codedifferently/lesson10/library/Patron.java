@@ -6,7 +6,16 @@ import java.util.Objects;
 import java.util.Set;
 
 /** Represents a patron of a library. */
-public class Patron {
+public class Patron implements Member {
+
+  public void checkOutItem() {
+    System.out.println("Patron is checking out");
+  }
+
+  public void returnItem() {
+    System.out.println("Patron is returning");
+  }
+
   private Library library;
   private String name;
   private String email;

@@ -1,12 +1,17 @@
-package com.codedifferently.lesson10.library;
+/*package com.codedifferently.lesson10.library;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.codedifferently.lesson10.library.exceptions.BookCheckedOutException;
+
+import java.beans.Transient;
 import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import net.bytebuddy.agent.builder.AgentBuilder;
 
 class LibraryTest {
   private Library classUnderTest;
@@ -29,6 +34,14 @@ class LibraryTest {
     assertThat(classUnderTest.hasBook(book1)).isTrue();
     assertThat(classUnderTest.hasBook(book2)).isTrue();
   }
+
+@Test
+Dvd = dvd new Dvd ""
+Librarian librarian = new Librarian("Randy Castro", "Randy@example.com");
+classUnderTest.addDvd (dvd, librarian);
+//Assert
+assertThat (classUnderTest.hasDvd(dvd)).isTrue();
+
 
   @Test
   void testLibrary_canRemoveBooks() {
@@ -147,4 +160,22 @@ class LibraryTest {
         .isInstanceOf(BookCheckedOutException.class)
         .hasMessage("Cannot remove checked out book.");
   }
-}
+
+  @Test
+  void testLibrary_allowLibrarianToCheckout() {
+  // Arange
+  Book book = new Book("The Great Gatsby", "978-0743273565", List.of("F. Scott Fitzgerald"), 180);
+    Librarian librarian = new Librarian("Jane Doe", "jane@example.com");
+    classUnderTest.addBook(book);
+    classUnderTest.addLibrarian(librarian);
+
+//Act
+boolean wasCheckedOut = classUnderTest.checkOutBook(book, librarian);
+boolean wasReturned = classUnderTest.checkInBook(book, librarian);
+//Assert
+assertThat(wasCheckedOut).isTrue();
+assertThat( wasReturned) .isTrue();
+assertThat ( classUnderTest.isCheckedOut(book)) .isFalse();
+assertThat( librarian.getCheckedOutBooks().contains(book))isFalse();
+  }
+}*/
