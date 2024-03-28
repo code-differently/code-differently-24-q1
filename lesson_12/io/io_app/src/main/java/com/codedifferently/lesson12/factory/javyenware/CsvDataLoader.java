@@ -75,8 +75,17 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     return guests;
   }
 
+  //  populatGuestsWithCheckouts is a method taking two parameters. String filePath is representing the path to the csv file. 
+  // And <List<LibraryGuestModel> guests is the second parameter and this parameter is a list of LibraryGuestModel objects which represent guests in a library system. 
+  // A object represents a real world entity or data structure (it can hold both variable and methods)
+  // throw keyword in java is used to throw an exception from a method. And the throws IOException, CsvValidationException means that if theres any difficultiy reading the csv file or verifying the information within the csv file this method will then throw a exception 
   private void populateGuestsWithCheckouts(String filePath, List<LibraryGuestModel> guests)
       throws IOException, CsvValidationException {
+
+        // Map<String, List<CheckoutModel>> checkoutsByGuestEmail = new HashMap<>(); starts a new hashmap (a hashmap is data strcuture used to store data as a key value pair.)
+        // The difference between a hashmap and a map is that a hashmap is less flexible and uses a hashtable for fast access)( a hashtable is a collection of key-value pairs, for each value you have a unique key for it)
+        // try keyword allows you to run and test a block of code for errors while said code block is being executed
+        
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail = new HashMap<>();
     try (CSVReader reader =
         new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
