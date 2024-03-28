@@ -35,10 +35,11 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
         getCheckedOutItems("csv/checked_out_items.csv");
     for (var guest : model.guests) {
       var checkouts = checkoutsByGuestEmail.get(guest.email);
-      if (checkouts != null) {
+      if (checkouts == null) {
+        checkouts = new ArrayList<>();
+          }
         guest.checkedOutItems = checkouts;
       }
-    }
 
     return model;
   }
