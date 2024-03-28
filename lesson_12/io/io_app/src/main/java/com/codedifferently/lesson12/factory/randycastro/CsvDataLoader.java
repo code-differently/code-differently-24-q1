@@ -20,11 +20,57 @@ import com.codedifferently.lesson12.models.MediaItemModel;
 // create a path for each file 
 @Service
 public class CsvDataLoader implements LibraryCsvDataLoader{
+    @Override
+    public LibraryDataModel loadData() {
+    var model = new LibraryDataModel();
+    model.mediaItems = new ArrayList<>(); // You load this from the file
+    model.guests = new ArrayList<>(); // You also load this from the file.
 
 List<MediaItemModel> mediaItems = readMediaItems("lesson_12/io/io_app/src/main/resources/csv/media_items.csv");
+List<LibraryGuestModel> guests = readGuests("path/to/guests.csv");
+Map<String, List<CheckoutModel>> checkoutsByGuestEmail = getCheckedOutItems("path/to/checked_out_items.csv");
+
+for (var guest : guests) {
+    var checkouts = checkoutsByGuestEmail.get(guest.email);
+    if (checkouts != null) {
+    guest.checkedOutItems = checkouts;
+    }
+    }
+    
+    return model;
+    }
+    private List<MediaItemModel> readMediaItems(String filePath) {
+        try (var reader = new BufferedReader(new FileReader(filePath))) {
+        var items = new ArrayList<MediaItemModel>();
+        String line;
+        while ((line = reader.readLine()) != null) {
+        var parts = line.split(",");
+        var item = new MediaItemModel();
+        
+        item.type = parts[0];
+        item.id = parts[1];
+        item.author = parts[2];
+        item.type = parts[3];
+        items.add(item);
+        }
+        return items;
+        } catch (IOException e) {
+        throw new RuntimeException("Failed to read media items", e);
+        }
+        }
+        
+        }
 
 
-public List<MediaItemModel> readMediaItems(String filePath) {
+
+
+
+
+
+
+
+
+ /*List<MediaItemModel> readMediaItems(String filePath) {
 List<MediaItemModel> items = new ArrayList<>();
 try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
     String line;
@@ -43,8 +89,7 @@ try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
         }
         return items;
     }
-
-}
+}*/
 
 
 
