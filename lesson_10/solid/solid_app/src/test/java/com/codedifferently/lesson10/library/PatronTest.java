@@ -47,7 +47,7 @@ class PatronTest {
     classUnderTest.setLibrary(null);
 
     // Act & Assert
-    assertThatThrownBy(() -> classUnderTest.getCheckedOutBooks())
+    assertThatThrownBy(() -> classUnderTest.getCheckedOutBooks(library))
         .isInstanceOf(LibraryNotSetException.class)
         .hasMessageContaining("Library not set for patron johndoe@example.com");
   }
@@ -62,13 +62,27 @@ class PatronTest {
     expectedBooks.add(book1);
     expectedBooks.add(book2);
 
-    library.addBook(book1);
-    library.addBook(book2);
-    library.checkOutBook(book1, classUnderTest);
-    library.checkOutBook(book2, classUnderTest);
+    library.addAsset(new Librarian("Jane", "A12342"), book1);
+    library.addAsset(new Librarian("Jane", "A12342"), book2);
+    library.checkOutItem(book1, classUnderTest);
+    library.checkOutItem(book2, classUnderTest);
 
     // Act & Assert
-    assertThat(classUnderTest.getCheckedOutBooks()).isEqualTo(expectedBooks);
+    assertThat(classUnderTest.getCheckedOutBooks(library)).isEqualTo(expectedBooks);
+  }
+
+  @Test
+  void testMultipleLibraries() {
+    // Arrange
+    Library library1 = new Library("other library1");
+    Library library2 = new Library("other library2");
+    classUnderTest.addLibrary(library);
+    classUnderTest.addLibrary(library1);
+    classUnderTest.addLibrary(library2);
+
+    // Assert
+    assertThat(classUnderTest.libraries.containsValue(library1));
+    assertThat(classUnderTest.libraries.containsValue(library2));
   }
 
   @Test

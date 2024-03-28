@@ -6,19 +6,17 @@ import static org.mockito.Mockito.*;
 
 import com.codedifferently.lesson10.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson10.library.exceptions.WrongLibraryException;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class BookTest {
+class DvdTest {
 
-  private Book classUnderTest;
+  private Dvd classUnderTest;
   private Library library;
 
   @BeforeEach
   void setUp() {
-    classUnderTest =
-        new Book("To Kill a Mockingbird", "978-0061120084", List.of("Harper Lee"), 281);
+    classUnderTest = new Dvd("Book 2, Books Revenge The Movie", "978-0061620084");
     library = mock(Library.class);
     when(library.getId()).thenReturn("Library 1");
     when(library.hasAsset(classUnderTest)).thenReturn(true);
@@ -26,12 +24,10 @@ class BookTest {
   }
 
   @Test
-  void testBook_created() {
+  void testDvd_created() {
     // Assert
-    assertThat(classUnderTest.getTitle()).isEqualTo("To Kill a Mockingbird");
-    assertThat(classUnderTest.getIsbn()).isEqualTo("978-0061120084");
-    assertThat(classUnderTest.getAuthors()).isEqualTo(List.of("Harper Lee"));
-    assertThat(classUnderTest.getNumberOfPages()).isEqualTo(281);
+    assertThat(classUnderTest.getTitle()).isEqualTo("Book 2, Books Revenge The Movie");
+    assertThat(classUnderTest.getIsbn()).isEqualTo("978-0061620084");
   }
 
   @Test
@@ -44,7 +40,7 @@ class BookTest {
     // Act & Assert
     assertThatThrownBy(() -> classUnderTest.setLibrary(otherLibrary))
         .isInstanceOf(WrongLibraryException.class)
-        .hasMessageContaining("Item 978-0061120084 is not in library Library 2");
+        .hasMessageContaining("Item 978-0061620084 is not in library Library 2");
   }
 
   @Test
@@ -55,7 +51,7 @@ class BookTest {
     // Act & Assert
     assertThatThrownBy(() -> classUnderTest.isCheckedOut())
         .isInstanceOf(LibraryNotSetException.class)
-        .hasMessageContaining("Library not set for item 978-0061120084");
+        .hasMessageContaining("Library not set for item 978-0061620084");
   }
 
   @Test
@@ -80,6 +76,6 @@ class BookTest {
   void testToString() {
     // Act & Assert
     assertThat(classUnderTest.toString())
-        .isEqualTo("Item{id='978-0061120084', title='To Kill a Mockingbird'}");
+        .isEqualTo("Item{id='978-0061620084', title='Book 2, Books Revenge The Movie'}");
   }
 }
