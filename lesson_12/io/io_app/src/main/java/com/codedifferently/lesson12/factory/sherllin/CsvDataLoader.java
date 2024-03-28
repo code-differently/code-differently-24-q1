@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,19 +24,14 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
   @Override
   public LibraryDataModel loadData() {
     // Read media items
-    List<MediaItemModel> mediaItems =
-        readMediaItems(
-            "/workspaces/code-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/media_items.csv");
+    List<MediaItemModel> mediaItems = readMediaItems("csv/media_items.csv");
 
     // Read guests
-    List<LibraryGuestModel> guests =
-        readGuests(
-            "/workspaces/code-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/guests.csv");
+    List<LibraryGuestModel> guests = readGuests("csv/guests.csv");
 
     // Read checked-out items
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail =
-        readCheckoutItems(
-            "/workspaces/code-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/checked_out_items.csv");
+        readCheckoutItems("csv/checked_out_items.csv");
 
     for (LibraryGuestModel guest : guests) {
       List<CheckoutModel> checkouts =
@@ -52,7 +48,8 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
   }
 
   private List<MediaItemModel> readMediaItems(String filePath) {
-    try (var reader = new BufferedReader(new FileReader(filePath))) {
+    try (var reader =
+        new BufferedReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
       var items = new ArrayList<MediaItemModel>();
       String line;
       boolean isFirstLine = true;
@@ -80,7 +77,8 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
   }
 
   private List<LibraryGuestModel> readGuests(String filePath) {
-    try (var reader = new BufferedReader(new FileReader(filePath))) {
+    try (var reader =
+        new BufferedReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
       var items = new ArrayList<LibraryGuestModel>();
       String line;
       boolean isFirstLine = true;
@@ -103,7 +101,8 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
   }
 
   private Map<String, List<CheckoutModel>> readCheckoutItems(String filePath) {
-    try (var reader = new BufferedReader(new FileReader(filePath))) {
+    try (var reader =
+        new BufferedReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
       var checkoutMap = new HashMap<String, List<CheckoutModel>>();
       String line;
       boolean isFirstLine = true;
