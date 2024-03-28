@@ -5,63 +5,94 @@ import com.codedifferently.lesson12.models.CheckoutModel;
 import com.codedifferently.lesson12.models.LibraryDataModel;
 import com.codedifferently.lesson12.models.LibraryGuestModel;
 import com.codedifferently.lesson12.models.MediaItemModel;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 import org.springframework.stereotype.Service;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.codedifferently.lesson12.library.LibraryGuestBase;
+import java.util.UUID;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CsvDataLoader implements LibraryCsvDataLoader {
 
-    @Override
-    public LibraryDataModel loadData() {
-        var model = new LibraryDataModel();
-        model.mediaItems = new ArrayList<>(); // loading this from the file
-        model.guests = new ArrayList<>(); // also gets loaded from the original file
-
-        List<MediaItemModel> mediaItems = readMediaItems("/workspaces/code-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/media_items.csv");
-        List<LibraryGuestModel> guests = getGuestitems("/workspaces/code-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/guests.csv");
-        Map<String, List<CheckoutModel>> checkoutByGuestEmail = getCheckedoutItems("/workspaces/code-differently-24-q1/lesson_12/io/io_app/src/main/resources/csv/checked_out_items.csv");
-
-        for (LibraryGuestModel guest : guests) {
-            var checkouts = checkoutByGuestEmail.get(guest.email);
-            if (checkouts != null) {
-                guest.checkedOutItems = checkouts;
-            }
-        }
-
-        return model;
+  @Override
+  public LibraryDataModel loadData() {
+    LibraryDataModel libraryDataModel = new LibraryDataModel();
+    try {
+      libraryDataModel.mediaItems = readMediaItemsFromCsv("csv/media_items.csv");
+      libraryDataModel.guests = readGuestsFromCsv("csv/guests.csv");
+      populateGuestsWithCheckouts("csv/checked_out_items.csv", libraryDataModel.guests);
+    } catch (IOException | CsvValidationException e) {
+      throw new RuntimeException("Failed to load data from CSV files", e);
     }
+    return libraryDataModel;
+  }
 
-    private List<MediaItemModel> readMediaItems(String path) {
-        var items = new ArrayList<MediaItemModel>();
-        for (String row : readCsvfile(path)) {
-            var item = new MediaItemModel();
-            item.id = row.get();
-            item.title = row.get();
-            item.type = row.get();
-            items.add(item);
-        }
-        return items;
+  private List<MediaItemModel> readMediaItemsFromCsv(String filePath)
+      throws IOException, CsvValidationException {
+    List<MediaItemModel> mediaItems = new ArrayList<>();
+    try (CSVReader reader =
+        new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
+      reader.skip(1);
+      String[] line;
+      while ((line = reader.readNext()) != null) {
+        MediaItemModel mediaItem = new MediaItemModel();
+        mediaItem.type = line[0];
+        mediaItem.id = UUID.fromString(line[1]);
+        mediaItem.title = line[2];
+        mediaItem.isbn = line[3];
+        mediaItem.authors = List.of(line[4].split("\\s*,\\s*"));
+        mediaItem.pages = line[5].isEmpty() ? 0 : Integer.parseInt(line[5]);
+        mediaItem.runtime = line[6].isEmpty() ? 0 : Integer.parseInt(line[6]);
+        mediaItem.edition = line[7];
+        mediaItems.add(mediaItem);
+      }
     }
+    return mediaItems;
+  }
 
-
-    private List<LibraryGuestModel> readguestList(String path) {
-        var item = new ArrayList<LibraryGuestModel>();
-        for (String row : readCsvfile(path)){
-            var item = new LibraryDataModel();
-        }
+  private List<LibraryGuestModel> readGuestsFromCsv(String filePath)
+      throws IOException, CsvValidationException {
+    List<LibraryGuestModel> guests = new ArrayList<>();
+    try (CSVReader reader =
+        new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
+      reader.skip(1);
+      String[] line;
+      while ((line = reader.readNext()) != null) {
+        LibraryGuestModel guest = new LibraryGuestModel();
+        guest.type = line[0];
+        guest.name = line[1];
+        guest.email = line[2];
+        guests.add(guest);
+      }
     }
+    return guests;
+  }
 
-
-    private List<checkoutByGuestEmail> checkoutByGuestEmails(String path) {
-        var itmes = new ArrayList<CheckoutModel>();
-        for (String row : readCsvfile(path)){
-            var item = new checkout
-        }
+  private void populateGuestsWithCheckouts(String filePath, List<LibraryGuestModel> guests)
+      throws IOException, CsvValidationException {
+    Map<String, List<CheckoutModel>> checkoutsByGuestEmail = new HashMap<>();
+    try (CSVReader reader =
+        new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
+      reader.skip(1);
+      String[] line;
+      while ((line = reader.readNext()) != null) {
+        String email = line[0];
+        CheckoutModel checkout = new CheckoutModel();
+        checkout.itemId = UUID.fromString(line[1]);
+        checkout.dueDate = Instant.parse(line[2]);
+        checkoutsByGuestEmail.computeIfAbsent(email, k -> new ArrayList<>()).add(checkout);
+      }
     }
-
-
-
+    guests.forEach(guest -> guest.setCheckedOutItems(
+    checkoutsByGuestEmail.getOrDefault(guest.getEmail(), new ArrayList<>())
+));
+  }
 }
