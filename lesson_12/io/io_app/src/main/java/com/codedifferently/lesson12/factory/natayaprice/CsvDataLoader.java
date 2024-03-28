@@ -18,7 +18,11 @@ import java.util.UUID;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
 @Service
+=======
+@Service("NatayaLibraryCsvDataLoader")
+>>>>>>> 8d7366971ed9f4331e24ee291eb234ffa7a5b250
 public class CsvDataLoader implements LibraryCsvDataLoader {
 
   @Override
