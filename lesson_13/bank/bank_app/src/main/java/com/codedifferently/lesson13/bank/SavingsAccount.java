@@ -1,10 +1,10 @@
 package com.codedifferently.lesson13.bank;
 
-public class SavingsAccount{
+public class SavingsAccount implements BankAccounts{
 
 
 
 
 
-    
+
 }
