@@ -24,10 +24,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CsvDataLoader implements LibraryCsvDataLoader {
 
-  public static void main(String[] args) throws IOException {
-    new CsvDataLoader().loadData();
-  }
-
   @Override
   public LibraryDataModel loadData() throws IOException {
     // Create object named model that is an instance of LibraryDataModel
