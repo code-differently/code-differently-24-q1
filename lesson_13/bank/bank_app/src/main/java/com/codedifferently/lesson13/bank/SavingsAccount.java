@@ -1,9 +1,9 @@
 package com.codedifferently.lesson13.bank;
-import java.util.Set;
 
 import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
+import java.util.Set;
 
-public class SavingsAccount implements BankAccounts{
+public class SavingsAccount implements BankAccounts {
 
   private final Set<Customer> owners;
   private final String accountNumber;
@@ -24,17 +24,17 @@ public class SavingsAccount implements BankAccounts{
     isActive = true;
   }
 
-@Override
+  @Override
   public String getAccountNumber() {
     return accountNumber;
   }
 
- @Override
+  @Override
   public Set<Customer> getOwners() {
     return owners;
   }
 
- @Override
+  @Override
   public void deposit(double amount) throws IllegalStateException {
     if (isClosed()) {
       throw new IllegalStateException("Cannot deposit to a closed account");
@@ -59,12 +59,12 @@ public class SavingsAccount implements BankAccounts{
     balance -= amount;
   }
 
- @Override
+  @Override
   public double getBalance() {
     return balance;
   }
 
- @Override
+  @Override
   public void closeAccount() throws IllegalStateException {
     if (balance > 0) {
       throw new IllegalStateException("Cannot close account with a positive balance");
@@ -72,7 +72,7 @@ public class SavingsAccount implements BankAccounts{
     isActive = false;
   }
 
-@Override
+  @Override
   public boolean isClosed() {
     return !isActive;
   }
@@ -103,7 +103,3 @@ public class SavingsAccount implements BankAccounts{
         + '}';
   }
 }
-
-
-
-
