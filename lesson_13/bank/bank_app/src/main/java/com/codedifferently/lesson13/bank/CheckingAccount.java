@@ -6,7 +6,5 @@ import java.util.Set;
 public class CheckingAccount {
 
   // constructor
-  public CheckingAccount(String accountNumber, Set<Customer> owners, double initialBalance) {
-  
-  }
+  public CheckingAccount(String accountNumber, Set<Customer> owners, double initialBalance) {}
 }
