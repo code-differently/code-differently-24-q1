@@ -12,9 +12,9 @@ import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CheckingAccountTest {
+class SavingsAccountTest {
 
-  private CheckingAccount classUnderTest;
+  private SavingsAccount classUnderTest;
   private Set<Customer> owners;
 
   @BeforeEach
@@ -22,7 +22,7 @@ class CheckingAccountTest {
     owners = new HashSet<>();
     owners.add(new Customer(UUID.randomUUID(), "John Doe"));
     owners.add(new Customer(UUID.randomUUID(), "Jane Smith"));
-    classUnderTest = new CheckingAccount("123456789", owners, 100.0, true);
+    classUnderTest = new SavingsAccount("123456789", owners, 100.0);
   }
 
   @Test
@@ -74,35 +74,42 @@ class CheckingAccountTest {
 
   @Test
   void closeAccount_withPositiveBalance() {
+    assertThatExceptionOfType(IllegalStateException.class)
+        .isThrownBy(() -> classUnderTest.closeAccount());
+  }
+
+  @Test
+  void isClosed() {
+    assertFalse(classUnderTest.isClosed());
     classUnderTest.withdraw(100);
     classUnderTest.closeAccount();
     assertTrue(classUnderTest.isClosed());
   }
 
   @Test
-  void isClosed() {
-    assertFalse(classUnderTest.isClosed()); // Account should initially be open
-    classUnderTest.withdraw(100.0); // Withdraw to make balance non-positive
-    classUnderTest.closeAccount(); // Close the account
-    assertTrue(classUnderTest.isClosed()); // Account should now be closed
-  }
-
-  @Test
   void equals() {
-    CheckingAccount otherAccount = new CheckingAccount("123456789", owners, 200.0, true);
+    SavingsAccount otherAccount = new SavingsAccount("123456789", owners, 200.0);
     assertEquals(classUnderTest, otherAccount);
   }
 
   @Test
   void hashCodeTest() {
-    CheckingAccount otherAccount = new CheckingAccount("123456789", owners, 200.0, true);
+    SavingsAccount otherAccount = new SavingsAccount("123456789", owners, 200.0);
     assertEquals(classUnderTest.hashCode(), otherAccount.hashCode());
   }
 
   @Test
   void toStringTest() {
+    // Arrange
     String expected =
-        "CheckingAccount{accountNumber='123456789', balance=100.0, isActive=true, canWriteChecks=true}";
-    assertEquals(expected, classUnderTest.toString());
+        String.format(
+            "SavingsAccount{accountNumber='123456789', balance=%.2f, isActive=true}",
+            classUnderTest.getBalance());
+
+    // Act
+    String actual = classUnderTest.toString();
+
+    // Assert
+    assertEquals(expected, actual);
   }
 }

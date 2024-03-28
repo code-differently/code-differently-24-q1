@@ -23,11 +23,15 @@ class BankAtmTest {
     classUnderTest = new BankAtm();
     customer1 = new Customer(UUID.randomUUID(), "John Doe");
     customer2 = new Customer(UUID.randomUUID(), "Jane Smith");
-    account1 = new CheckingAccount("123456789", Set.of(customer1), 100.0);
-    account2 = new CheckingAccount("987654321", Set.of(customer1, customer2), 200.0);
-    customer1.addAccount(account1);
-    customer1.addAccount(account2);
-    customer2.addAccount(account2);
+    account1 =
+        new CheckingAccount(
+            "123456789", Set.of(customer1), 100.0, true); // Provide fourth parameter
+    account2 =
+        new CheckingAccount(
+            "987654321", Set.of(customer1, customer2), 200.0, false); // Provide fourth parameter
+    customer1.addCheckingAccount(account1); // Use addCheckingAccount instead of addAccount
+    customer1.addCheckingAccount(account2); // Use addCheckingAccount instead of addAccount
+    customer2.addCheckingAccount(account2); // Use addCheckingAccount instead of addAccount
     classUnderTest.addAccount(account1);
     classUnderTest.addAccount(account2);
   }
@@ -36,8 +40,10 @@ class BankAtmTest {
   void testAddAccount() {
     // Arrange
     Customer customer3 = new Customer(UUID.randomUUID(), "Alice Johnson");
-    CheckingAccount account3 = new CheckingAccount("555555555", Set.of(customer3), 300.0);
-    customer3.addAccount(account3);
+    CheckingAccount account3 =
+        new CheckingAccount(
+            "555555555", Set.of(customer3), 300.0, true); // Provide fourth parameter
+    customer3.addCheckingAccount(account3); // Use addCheckingAccount instead of addAccount
 
     // Act
     classUnderTest.addAccount(account3);
