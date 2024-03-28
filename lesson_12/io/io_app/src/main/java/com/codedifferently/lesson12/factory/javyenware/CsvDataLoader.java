@@ -7,7 +7,6 @@ import com.codedifferently.lesson12.models.LibraryGuestModel;
 import com.codedifferently.lesson12.models.MediaItemModel;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import org.springframework.stereotype.Service;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Instant;
@@ -91,8 +90,9 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
         checkoutsByGuestEmail.computeIfAbsent(email, k -> new ArrayList<>()).add(checkout);
       }
     }
-    guests.forEach(guest -> guest.setCheckedOutItems(
-    checkoutsByGuestEmail.getOrDefault(guest.getEmail(), new ArrayList<>())
-));
+    guests.forEach(
+        guest ->
+            guest.setCheckedOutItems(
+                checkoutsByGuestEmail.getOrDefault(guest.getEmail(), new ArrayList<>())));
   }
 }
