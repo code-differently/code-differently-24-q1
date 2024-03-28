@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 /**
  * @author vscode
  */
-@Service
+@Service("VicenteLibraryCsvDataLoader")
 public class CsvDataLoader implements LibraryCsvDataLoader {
 
   @Override
