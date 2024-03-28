@@ -37,9 +37,9 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
       var checkouts = checkoutsByGuestEmail.get(guest.email);
       if (checkouts == null) {
         checkouts = new ArrayList<>();
-          }
-        guest.checkedOutItems = checkouts;
       }
+      guest.checkedOutItems = checkouts;
+    }
 
     return model;
   }
