@@ -90,29 +90,44 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
 
   private void populateGuestsWithCheckouts(String filePath, List<LibraryGuestModel> guests)
       throws IOException, CsvValidationException {
+         // Create a map to store checkout information for each guest
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail = new HashMap<>();
+    // Read the CSV file located at the specified filePath
     try (CSVReader reader =
         new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
+           // Read the header line from the CSV file and skip it
       String[] header = reader.readNext(); // Skip header
       String[] line;
+       // Loop through each line of the CSV file
       while ((line = reader.readNext()) != null) {
+        // Extract the email of the guest from the current line
         String email = line[0];
+        // Parse the checkout information from the current line and create a CheckoutModel object
         CheckoutModel checkout = parseCheckout(line);
+        // Add the checkout information to the map, associating it with the guest's email
         checkoutsByGuestEmail.computeIfAbsent(email, k -> new ArrayList<>()).add(checkout);
       }
     }
     // Assign checked-out items to respective guests
+    // Loop through each guest in the provided list of guests
     for (LibraryGuestModel guest : guests) {
+       // Retrieve the list of checkouts associated with the guest's email from the map
       List<CheckoutModel> checkouts =
           checkoutsByGuestEmail.getOrDefault(guest.email, new ArrayList<>());
+          // Assign the list of checkouts to the guest's checkedOutItems property
       guest.checkedOutItems = checkouts;
     }
   }
 
+// Parse the checkout information from a line of the CSV file and create a CheckoutModel object
   private CheckoutModel parseCheckout(String[] line) {
+     // Create a new CheckoutModel object
     CheckoutModel checkout = new CheckoutModel();
+     // Set the itemId property of the checkout object using the UUID from the second element of the line
     checkout.itemId = UUID.fromString(line[1]);
+     // Set the dueDate property of the checkout object using the Instant parsed from the third element of the line
     checkout.dueDate = Instant.parse(line[2]);
+    // Return the created CheckoutModel object
     return checkout;
   }
 }
