@@ -1,22 +1,21 @@
 package com.codedifferently.lesson12.factory;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 
 import com.codedifferently.lesson12.Lesson12;
 import com.codedifferently.lesson12.library.LibraryGuest;
 import com.codedifferently.lesson12.library.MediaItem;
 import com.codedifferently.lesson12.models.CheckoutModel;
 import com.codedifferently.lesson12.models.LibraryDataModel;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
