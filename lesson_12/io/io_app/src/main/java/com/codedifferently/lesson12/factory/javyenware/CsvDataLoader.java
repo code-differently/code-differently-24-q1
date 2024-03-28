@@ -126,3 +126,7 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
                 checkoutsByGuestEmail.getOrDefault(guest.getEmail(), new ArrayList<>())));
   }
 }
+// forEach() is a method that allows you to iterate over each element in a collection. 
+// guests.forEach() starts a loop that iterates over each element in the guests collection 
+// guest -> is a lambda expression. I forgot what these are used for, I remember you saying something about them in the lecture on Wednesday, 
+// However I looked them up and it says lamdba expressions represent Instances of functional interfaces.
