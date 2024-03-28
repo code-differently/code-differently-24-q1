@@ -56,7 +56,7 @@ public class BankAtm {
    * @param check The check to deposit.
    */
   public void depositFunds(String accountNumber, Check check) {
-    BankAccounts account = getAccountOrThrow(accountNumber);
+    CheckingAccount = getAccountOrThrow(accountNumber);
     check.depositFunds(account);
   }
 
