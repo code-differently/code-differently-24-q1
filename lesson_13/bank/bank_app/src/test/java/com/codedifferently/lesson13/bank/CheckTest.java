@@ -15,8 +15,8 @@ class CheckTest {
 
   @BeforeEach
   void setUp() {
-    account1 = new CheckingAccount("123456789", null, 100.0);
-    account2 = new CheckingAccount("987654321", null, 200.0);
+    account1 = new CheckingAccount("123456789", null, 100.0, true);
+    account2 = new CheckingAccount("987654321", null, 200.0, true);
     classUnderTest = new Check("123456789", 50.0, account1);
   }
 

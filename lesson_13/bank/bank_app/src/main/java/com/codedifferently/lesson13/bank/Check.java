@@ -53,11 +53,22 @@ public class Check {
     voidCheck();
   }
 
+  /**
+   * Gets the check number.
+   *
+   * @return The check number.
+   */
   @Override
   public int hashCode() {
     return checkNumber.hashCode();
   }
 
+  /**
+   * Checks if the check is equal to another object.
+   *
+   * @param obj The object to compare.
+   * @return True if the check is equal to the other object, and false otherwise.
+   */
   @Override
   public boolean equals(Object obj) {
     if (obj instanceof Check other) {
@@ -66,6 +77,11 @@ public class Check {
     return false;
   }
 
+  /**
+   * Gets the string representation of the check.
+   *
+   * @return The string representation of the check.
+   */
   @Override
   public String toString() {
     return "Check{"

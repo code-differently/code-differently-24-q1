@@ -2,6 +2,7 @@ package com.codedifferently.lesson13.bank;
 
 import com.codedifferently.lesson13.bank.exceptions.AccountNotFoundException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -33,9 +34,16 @@ public class BankAtm {
    * @return The unique set of accounts owned by the customer.
    */
   public Set<CheckingAccount> findAccountsByCustomerId(UUID customerId) {
-    return customerById.containsKey(customerId)
-        ? customerById.get(customerId).getAccounts()
-        : Set.of();
+    Set<CheckingAccount> customerAccounts = new HashSet<>();
+    Customer customer = customerById.get(customerId);
+    if (customer != null) {
+      for (CheckingAccount account : accountByNumber.values()) {
+        if (account.getOwners().contains(customer)) {
+          customerAccounts.add(account);
+        }
+      }
+    }
+    return customerAccounts;
   }
 
   /**
