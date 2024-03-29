@@ -11,8 +11,9 @@ public class MoneyOrder {
 
   public MoneyOrder(String orderNumber, double amount, BankAccountBase account) {
     this.orderNumber = orderNumber;
-    if (amount >= 1000.0 && amount <= 0.0) {
-      throw new IllegalArgumentException("This Amount is greater than 1000$ or less than 0$.");
+    if (amount > 1000.0 || amount <= 0.0) {
+      throw new IllegalArgumentException(
+          "This Amount is greater than 1000$ or less than or equal to 0$.");
     }
     account.withdraw(amount);
     if (amount > 500.0) this.amount = amount - 3.00;
