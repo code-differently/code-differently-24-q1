@@ -18,7 +18,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 /** LibraryCsvDataLoaderSolid */
-@Service
+@Service("MohamedLibraryCsvDataLoader")
 public class CsvDataLoader implements LibraryCsvDataLoader {
   public static void main(String[] args) throws IOException {
 

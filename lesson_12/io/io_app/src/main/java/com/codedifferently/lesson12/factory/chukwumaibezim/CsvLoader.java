@@ -1,4 +1,4 @@
-package com.codedifferently.lesson12.factory.natayaprice;
+package com.codedifferently.lesson12.factory.chukwumaibezim;
 
 import com.codedifferently.lesson12.factory.LibraryCsvDataLoader;
 import com.codedifferently.lesson12.models.CheckoutModel;
@@ -18,8 +18,8 @@ import java.util.UUID;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-@Service("NatayaLibraryCsvDataLoader")
-public class CsvDataLoader implements LibraryCsvDataLoader {
+@Service("ChukwumaLibraryCsvDataLoader")
+public class CsvLoader implements LibraryCsvDataLoader {
 
   @Override
   public LibraryDataModel loadData() {
@@ -28,8 +28,9 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
       libraryDataModel.mediaItems = readMediaItemsFromCsv("csv/media_items.csv");
       libraryDataModel.guests = readGuestsFromCsv("csv/guests.csv");
       populateGuestsWithCheckouts("csv/checked_out_items.csv", libraryDataModel.guests);
-    } catch (IOException | CsvValidationException e) {
+    } catch (IOException e) {
       throw new RuntimeException("Failed to load data from CSV files", e);
+    } catch (CsvValidationException ex) {
     }
     return libraryDataModel;
   }
@@ -39,35 +40,22 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     List<MediaItemModel> mediaItems = new ArrayList<>();
     try (CSVReader reader =
         new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
-      String[] header = reader.readNext(); // Skip header
+      reader.skip(1); // Skip header
       String[] line;
       while ((line = reader.readNext()) != null) {
-        MediaItemModel mediaItem = parseMediaItem(line);
+        MediaItemModel mediaItem = new MediaItemModel();
+        mediaItem.type = line[0];
+        mediaItem.id = UUID.fromString(line[1]);
+        mediaItem.title = line[2];
+        mediaItem.isbn = line[3];
+        mediaItem.authors = List.of(line[4].split("\\s*,\\s*"));
+        mediaItem.pages = line[5].isEmpty() ? 0 : Integer.parseInt(line[5]);
+        mediaItem.runtime = line[6].isEmpty() ? 0 : Integer.parseInt(line[6]);
+        mediaItem.edition = line[7];
         mediaItems.add(mediaItem);
       }
     }
     return mediaItems;
-  }
-
-  private MediaItemModel parseMediaItem(String[] line) {
-    MediaItemModel mediaItem = new MediaItemModel();
-    mediaItem.type = line[0];
-    mediaItem.id = UUID.fromString(line[1]);
-    mediaItem.title = line[2];
-    mediaItem.isbn = line[3];
-    mediaItem.authors = List.of(line[4].split("\\s*,\\s*"));
-    mediaItem.pages = parseInteger(line[5]);
-    mediaItem.runtime = parseInteger(line[6]);
-    mediaItem.edition = line[7];
-    return mediaItem;
-  }
-
-  private int parseInteger(String value) {
-    try {
-      return Integer.parseInt(value);
-    } catch (NumberFormatException e) {
-      return 0;
-    }
   }
 
   private List<LibraryGuestModel> readGuestsFromCsv(String filePath)
@@ -75,7 +63,7 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     List<LibraryGuestModel> guests = new ArrayList<>();
     try (CSVReader reader =
         new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
-      String[] header = reader.readNext(); // Skip header
+      reader.skip(1); // Skip header
       String[] line;
       while ((line = reader.readNext()) != null) {
         LibraryGuestModel guest = new LibraryGuestModel();
@@ -93,11 +81,13 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail = new HashMap<>();
     try (CSVReader reader =
         new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
-      String[] header = reader.readNext(); // Skip header
+      reader.skip(1); // Skip header
       String[] line;
       while ((line = reader.readNext()) != null) {
         String email = line[0];
-        CheckoutModel checkout = parseCheckout(line);
+        CheckoutModel checkout = new CheckoutModel();
+        checkout.itemId = UUID.fromString(line[1]);
+        checkout.dueDate = Instant.parse(line[2]);
         checkoutsByGuestEmail.computeIfAbsent(email, k -> new ArrayList<>()).add(checkout);
       }
     }
@@ -107,12 +97,5 @@ public class CsvDataLoader implements LibraryCsvDataLoader {
           checkoutsByGuestEmail.getOrDefault(guest.email, new ArrayList<>());
       guest.checkedOutItems = checkouts;
     }
-  }
-
-  private CheckoutModel parseCheckout(String[] line) {
-    CheckoutModel checkout = new CheckoutModel();
-    checkout.itemId = UUID.fromString(line[1]);
-    checkout.dueDate = Instant.parse(line[2]);
-    return checkout;
   }
 }
