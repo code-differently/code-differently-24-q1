@@ -2,11 +2,11 @@ package com.codedifferently.lesson13.bank;
 
 import java.util.Set;
 
-/** Represents a checking account. */
+/** Represents a Savings account. */
 public class SavingsAccount extends BankAccountBase {
 
   /**
-   * Creates a new checking account.
+   * Creates a new savings account.
    *
    * @param accountNumber The account number.
    * @param owners The owners of the account.

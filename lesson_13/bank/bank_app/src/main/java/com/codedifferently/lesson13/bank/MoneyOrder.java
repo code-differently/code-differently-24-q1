@@ -1,7 +1,11 @@
 package com.codedifferently.lesson13.bank;
 
 import com.codedifferently.lesson13.bank.exceptions.IsVoidedException;
-
+/**
+ * Represents a money order.
+ * 
+ * @author mohamedibrahim
+ */
 public class MoneyOrder {
 
   private String orderNumber;
@@ -9,6 +13,14 @@ public class MoneyOrder {
   private BankAccountBase account;
   private boolean isVoided = false;
 
+
+    /**
+     * Creates a money order. 
+     * 
+     * @param orderNumber Order number for the money order
+     * @param amount Amount the money oorder is taken out for.
+     * @param account The account the money is coming from. 
+     */
   public MoneyOrder(String orderNumber, double amount, BankAccountBase account) {
     this.orderNumber = orderNumber;
     if (amount > 1000.0 || amount <= 0.0) {
@@ -22,9 +34,9 @@ public class MoneyOrder {
   }
 
   /**
-   * Gets the voided status of the check.
+   * Gets the voided status of the money order.
    *
-   * @return True if the check is voided, and false otherwise.
+   * @return True if the money order is voided, and false otherwise.
    */
   public boolean getIsVoided() {
     return isVoided;
@@ -36,9 +48,9 @@ public class MoneyOrder {
   }
 
   /**
-   * Deposits the check into an account.
+   * Deposits the money order into an account.
    *
-   * @param toAccount The account to deposit the check into.
+   * @param toAccount The account to deposit the money order into.
    */
   public void depositFunds(BankAccount toAccount) {
     if (isVoided) {

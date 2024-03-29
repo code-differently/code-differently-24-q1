@@ -4,7 +4,8 @@ import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
 import java.util.Set;
 
 /**
- * @author vscode
+ * represents the interface of bank accounts.
+ * @author mohamedibrahim
  */
 public interface BankAccount {
 

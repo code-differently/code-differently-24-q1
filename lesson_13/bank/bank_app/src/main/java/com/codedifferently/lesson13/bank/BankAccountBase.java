@@ -4,6 +4,7 @@ import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
 import java.util.Set;
 
 /**
+ * represents the parent class for all bank accounts.
  * @author vscode
  */
 public abstract class BankAccountBase implements BankAccount {
