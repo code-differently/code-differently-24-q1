@@ -19,7 +19,7 @@ public class Customer {
   public boolean getIsBusiness() {
 
     for (BankAccounts account : accounts) {
-      if (account instanceof BusinessCheckingAccount) {
+      if (account instanceof CustomerTest) {
         return true;
       }
     }
