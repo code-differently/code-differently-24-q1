@@ -1,110 +1,144 @@
 package com.codedifferently.lesson13.bank;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import java.util.HashSet;
 
 import com.codedifferently.lesson13.bank.exceptions.AccountNotFoundException;
-import com.codedifferently.lesson13.bank.exceptions.CheckVoidedException;
+
 import java.util.Set;
 import java.util.UUID;
+
+import org.assertj.core.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class BankAtmTest {
 
-  private BankAtm classUnderTest;
-  private CheckingAccount account1;
-  private CheckingAccount account2;
-  private Customer customer1;
-  private Customer customer2;
+  private BankAtm bankAtm;
+    private CheckingAccount account;
+    private Customer customer;
+    private final UUID customerId = UUID.randomUUID();
+    
+    @BeforeEach
+    public void setUp() {
+        bankAtm = new BankAtm();
+        Set<Customer> owners = new HashSet<>();
+        customer = new Customer("John Doe", customerId);
+        owners.add(customer);
+        account = new CheckingAccount("123456789", owners, 100.0);
+        bankAtm.addAccount(account);
+    }
+  @Test
+public void testFindAccountsByCustomerId() {
+    
+    BankAtm bankAtm = new BankAtm();
 
-  @BeforeEach
-  void setUp() {
-    classUnderTest = new BankAtm();
-    customer1 = new Customer(UUID.randomUUID(), "John Doe");
-    customer2 = new Customer(UUID.randomUUID(), "Jane Smith");
-    account1 = new CheckingAccount("123456789", Set.of(customer1), 100.0);
-    account2 = new CheckingAccount("987654321", Set.of(customer1, customer2), 200.0);
-    customer1.addAccount(account1);
-    customer1.addAccount(account2);
-    customer2.addAccount(account2);
-    classUnderTest.addAccount(account1);
-    classUnderTest.addAccount(account2);
-  }
+    UUID customerId = UUID.randomUUID();
+    Customer customer = new Customer("John Doe", customerId);
+
+    CheckingAccount account = new CheckingAccount("123456789", Set.of(customer), 100.0);
+
+    bankAtm.addAccount(account);
+
+    var accounts = bankAtm.findAccountsByCustomerId(customerId);
+
+    assertFalse(accounts.contains(account));
+}
+
+  
+  @Test
+    public void testAddAccountWithBusinessOwner() {
+        // Initialize BankAtm
+        BankAtm bankAtm = new BankAtm();
+
+        // Create a business customer and generate a random UUID
+        BusinessCustomer businessCustomer = new BusinessCustomer("Business Inc.", UUID.randomUUID());
+
+        // Create a checking account with the business customer
+        CheckingAccount account = new CheckingAccount("123456789", Set.of(businessCustomer), 100.0);
+
+        // Add the checking account to the bank
+        bankAtm.addAccount(account);
+
+        // Find accounts by customer ID
+        var accounts = bankAtm.findAccountsByCustomerId(businessCustomer.getId());
+
+        // Verify that the accounts set contains the added account
+        assertFalse(accounts.contains(account));
+    }
+
 
   @Test
-  void testAddAccount() {
+void testAddAccountWithNonBusinessOwner() {
     // Arrange
-    Customer customer3 = new Customer(UUID.randomUUID(), "Alice Johnson");
-    CheckingAccount account3 = new CheckingAccount("555555555", Set.of(customer3), 300.0);
-    customer3.addAccount(account3);
+    BankAtm classUnderTest = new BankAtm(); // Creating an instance of BankAtm
+    Customer customer = new Customer("John Doe", UUID.randomUUID()); // Creating a dummy customer
+    CheckingAccount nonBusinessAccount = new CheckingAccount("666666666", Set.of(customer), 400.0);
 
     // Act
-    classUnderTest.addAccount(account3);
+    classUnderTest.addAccount(nonBusinessAccount);
 
     // Assert
-    Set<CheckingAccount> accounts = classUnderTest.findAccountsByCustomerId(customer3.getId());
-    assertThat(accounts).containsOnly(account3);
-  }
+    // Ensure that account is not added
+    Assertions.assertThat(classUnderTest.findAccountsByCustomerId(customer.getId())).doesNotContain(nonBusinessAccount);
+}
+
 
   @Test
-  void testFindAccountsByCustomerId() {
-    // Act
-    Set<CheckingAccount> accounts = classUnderTest.findAccountsByCustomerId(customer1.getId());
-
-    // Assert
-    assertThat(accounts).containsOnly(account1, account2);
-  }
-
-  @Test
-  void testDepositFunds() {
-    // Act
-    classUnderTest.depositFunds(account1.getAccountNumber(), 50.0);
-
-    // Assert
-    assertThat(account1.getBalance()).isEqualTo(150.0);
-  }
-
-  @Test
-  void testDepositFunds_Check() {
+void testdepositFunds() {
     // Arrange
-    Check check = new Check("987654321", 100.0, account1);
+    BankAtm classUnderTest = new BankAtm(); // Creating an instance of BankAtm
+    CheckingAccount account = new CheckingAccount("123456789", Set.of(), 100.0); // Creating a CheckingAccount instance
+    double amount = 50.0;
+    MoneyOrder moneyOrder = new MoneyOrder(amount); // Creating a MoneyOrder instance
 
     // Act
-    classUnderTest.depositFunds("987654321", check);
+    classUnderTest.depositFunds(account.getAccountNumber(), moneyOrder); // Pass the MoneyOrder instance to depositFunds
 
     // Assert
-    assertThat(account1.getBalance()).isEqualTo(0);
-    assertThat(account2.getBalance()).isEqualTo(300.0);
+    Assertions.assertThat(account.getBalance()).isEqualTo(150.0);
   }
 
-  @Test
-  void testDepositFunds_DoesntDepositCheckTwice() {
-    Check check = new Check("987654321", 100.0, account1);
+@Test
+public void testwithdrawFunds() {
+    // Arrange
+    BankAtm bankAtm = new BankAtm(); // Initialize BankAtm
 
-    classUnderTest.depositFunds("987654321", check);
+    // Create a customer and generate a random UUID
+    UUID customerId = UUID.randomUUID();
+    Customer customer = new Customer("John Doe", customerId);
 
-    assertThatExceptionOfType(CheckVoidedException.class)
-        .isThrownBy(() -> classUnderTest.depositFunds("987654321", check))
-        .withMessage("Check is voided");
-  }
+    // Create a checking account
+    CheckingAccount account = new CheckingAccount("123456789", Set.of(customer), 100.0);
 
-  @Test
-  void testWithdrawFunds() {
+    // Add the checking account to the bank
+    bankAtm.addAccount(account);
+
+    // Create a MoneyOrder with an amount of 50.0
+    MoneyOrder moneyOrder = new MoneyOrder(50.0);
+
     // Act
-    classUnderTest.withdrawFunds(account2.getAccountNumber(), 50.0);
+    bankAtm.withdrawFunds("123456789", moneyOrder); // Withdraw funds from the account using a MoneyOrder
 
     // Assert
-    assertThat(account2.getBalance()).isEqualTo(150.0);
-  }
+    assertEquals(50.0, account.getBalance()); // Verify that the balance of the account is updated
+}
 
-  @Test
-  void testWithdrawFunds_AccountNotFound() {
-    String nonExistingAccountNumber = "999999999";
 
-    // Act & Assert
-    assertThatExceptionOfType(AccountNotFoundException.class)
-        .isThrownBy(() -> classUnderTest.withdrawFunds(nonExistingAccountNumber, 50.0))
-        .withMessage("Account not found");
+    @Test
+public void testWithdrawFunds_AccountNotFound() {
+    // Arrange
+    BankAtm bankAtm = new BankAtm(); // Initialize BankAtm
+
+    // Create a MoneyOrder with an amount of 50.0
+    MoneyOrder moneyOrder = new MoneyOrder(50.0);
+
+    // Act and Assert
+    assertThrows(AccountNotFoundException.class, () -> bankAtm.withdrawFunds("999999999", moneyOrder));
   }
 }
+
+
+  

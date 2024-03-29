@@ -1,6 +1,7 @@
 package com.codedifferently.lesson13.bank;
 
 import com.codedifferently.lesson13.bank.exceptions.AccountNotFoundException;
+import com.codedifferently.lesson13.bank.BusinessCustomer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -17,14 +18,21 @@ public class BankAtm {
    * @param account The account to add.
    */
   public void addAccount(CheckingAccount account) {
-    accountByNumber.put(account.getAccountNumber(), account);
-    account
-        .getOwners()
-        .forEach(
-            owner -> {
-              customerById.put(owner.getId(), owner);
-            });
+    boolean isBusinessAccount = false;
+    for (Customer owner : account.getOwners()) {
+        if (owner instanceof BusinessCustomer) {
+            isBusinessAccount = true;
+            break;
+        }
+    }
+    if (isBusinessAccount) {
+        accountByNumber.put(account.getAccountNumber(), account);
+        account.getOwners().forEach(owner -> customerById.put(owner.getId(), owner));
+    } else {
+        System.out.println("At least one owner of a BusinessCheckingAccount must be a business entity.");
+    }
   }
+
 
   /**
    * Finds all accounts owned by a customer.
@@ -38,38 +46,37 @@ public class BankAtm {
         : Set.of();
   }
 
+
   /**
-   * Deposits funds into an account.
-   *
-   * @param accountNumber The account number.
-   * @param amount The amount to deposit.
-   */
-  public void depositFunds(String accountNumber, double amount) {
+     * Deposits funds into an account using a financial instrument (e.g., Check or MoneyOrder).
+     *
+     * @param accountNumber The account number.
+     * @param financialInstrument The financial instrument (e.g., Check or MoneyOrder).
+     */
+    public void depositFunds(String accountNumber, MoneyOrder moneyOrder) {
     CheckingAccount account = getAccountOrThrow(accountNumber);
+    double amount = moneyOrder.getAmount();
     account.deposit(amount);
-  }
+    System.out.println("Funds deposited successfully using money order.");
+}
+
+
 
   /**
-   * Deposits funds into an account using a check.
-   *
-   * @param accountNumber The account number.
-   * @param check The check to deposit.
-   */
-  public void depositFunds(String accountNumber, Check check) {
+     * Withdraws funds from an account using a financial instrument (e.g., Check or MoneyOrder).
+     *
+     * @param accountNumber The account number.
+     * @param financialInstrument The financial instrument (e.g., Check or MoneyOrder).
+     */
+    public void withdrawFunds(String accountNumber, FinancialInstrument financialInstrument) {
     CheckingAccount account = getAccountOrThrow(accountNumber);
-    check.depositFunds(account);
-  }
-
-  /**
-   * Withdraws funds from an account.
-   *
-   * @param accountNumber
-   * @param amount
-   */
-  public void withdrawFunds(String accountNumber, double amount) {
-    CheckingAccount account = getAccountOrThrow(accountNumber);
+    double amount = financialInstrument.withdrawFunds();
     account.withdraw(amount);
-  }
+    
+    System.out.println("Funds withdrawn successfully using financial instrument.");
+}
+
+
 
   /**
    * Gets an account by its number or throws an exception if not found.
@@ -83,5 +90,7 @@ public class BankAtm {
       throw new AccountNotFoundException("Account not found");
     }
     return account;
-  }
-}
+    }
+
+}      
+

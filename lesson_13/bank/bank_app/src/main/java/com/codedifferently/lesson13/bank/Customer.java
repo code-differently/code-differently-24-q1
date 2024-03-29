@@ -16,7 +16,7 @@ public class Customer {
    * @param id The ID of the customer.
    * @param name The name of the customer.
    */
-  public Customer(UUID id, String name) {
+  public Customer(String name, UUID id) {
     this.id = id;
     this.name = name;
   }
