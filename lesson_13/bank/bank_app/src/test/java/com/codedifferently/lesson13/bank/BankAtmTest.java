@@ -44,7 +44,7 @@ class BankAtmTest {
     // Assert
 
     Set<BankAccounts> accounts = classUnderTest.findAccountsByCustomerId(customer3.getId());
-    assertThat(accouznts).containsOnly(account3);
+    assertThat(accounts).containsOnly(account3);
   }
 
   @Test
