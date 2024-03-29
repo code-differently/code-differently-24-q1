@@ -2,6 +2,8 @@ package com.codedifferently.lesson13.bank;
 
 import java.util.Set;
 
+import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
+
 public abstract class BankAccountBase implements BankAccounts {
 
   protected final Set<Customer> owners;
@@ -24,5 +26,32 @@ public abstract class BankAccountBase implements BankAccounts {
   @Override
   public Set<Customer> getOwners() {
     return owners;
+  }
+
+  @Override
+  public void deposit(double amount) throws IllegalStateException {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
+  @Override
+  public void withdraw(double amount) throws InsufficientFundsException {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
+  @Override
+  public double getBalance() {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
+  @Override
+  public void closeAccount() throws IllegalStateException {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+@Override
+  public boolean isClosed() {
+    // Provide implementation for isClosed() method
+    // For example, if you have a field indicating whether the account is closed:
+    // return closed;
+    return false; // Placeholder return value, change as per your logic
   }
 }

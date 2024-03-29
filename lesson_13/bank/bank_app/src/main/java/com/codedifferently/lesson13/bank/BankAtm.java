@@ -1,10 +1,11 @@
 package com.codedifferently.lesson13.bank;
 
-import com.codedifferently.lesson13.bank.exceptions.AccountNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+
+import com.codedifferently.lesson13.bank.exceptions.AccountNotFoundException;
 
 /** Represents a bank ATM. */
 public class BankAtm {
@@ -57,8 +58,15 @@ public class BankAtm {
    */
   public void depositFunds(String accountNumber, Check check) {
     BankAccounts account = getAccountOrThrow(accountNumber);
-    check.depositFunds(account);
+    if (account instanceof CheckingAccount checkingAccount) {
+      check.depositFunds(checkingAccount);
+  } else if (account instanceof SavingsAccount) {
+      throw new IllegalArgumentException("Cannot deposit check into savings account.");
+  } else {
+      throw new IllegalArgumentException("Unsupported account type.");
   }
+}
+  
 
   /**
    * Withdraws funds from an account.
