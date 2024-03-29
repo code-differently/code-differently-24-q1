@@ -53,23 +53,25 @@ public class BankAtm {
    */
   public void depositFunds(String accountNumber, MoneyOrder moneyOrder) {
     CheckingAccount account = getAccountOrThrow(accountNumber);
-    double amount = moneyOrder.getAmount();
-    account.deposit(amount);
-    System.out.println("Funds deposited successfully using money order.");
+    if (account != null) {
+        double amount = moneyOrder.getAmount();
+        account.deposit(amount);
+        System.out.println("Funds deposited successfully using money order.");
+    } else {
+        throw new AccountNotFoundException("Account not found");
+    }
   }
-
   /**
    * Withdraws funds from an account using a financial instrument (e.g., Check or MoneyOrder).
    *
    * @param accountNumber The account number.
    * @param financialInstrument The financial instrument (e.g., Check or MoneyOrder).
    */
-  public void withdrawFunds(String accountNumber, MoneyOrder moneyOrder) {
+  public void withdrawFunds(String accountNumber, double withdrawalAmount) {
     CheckingAccount account = getAccountOrThrow(accountNumber);
     if (account != null) {
-      double amount = moneyOrder.getAmount();
-      account.withdraw(amount);
-      System.out.println("Funds withdrawn successfully using money order.");
+      account.withdraw(withdrawalAmount);
+      System.out.println("Funds withdrawn successfully.");
     } else {
       throw new AccountNotFoundException("Account not found");
     }

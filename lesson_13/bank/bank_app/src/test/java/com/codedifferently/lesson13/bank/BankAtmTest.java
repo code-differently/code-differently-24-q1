@@ -83,21 +83,29 @@ class BankAtmTest {
   }
 
   @Test
-  void testdepositFunds() {
-    // Arrange
-    BankAtm classUnderTest = new BankAtm(); // Creating an instance of BankAtm
-    CheckingAccount account =
-        new CheckingAccount("123456789", Set.of(), 100.0); // Creating a CheckingAccount instance
-    double amount = 50.0;
-    MoneyOrder moneyOrder = new MoneyOrder(amount); // Creating a MoneyOrder instance
+  void testDepositFunds() {
+        // Arrange
+        BankAtm bankAtm = new BankAtm();
+        CheckingAccount account = new CheckingAccount("123456789", Set.of(), 100.0);
+        MoneyOrder moneyOrder = new MoneyOrder(50.0);
 
-    // Act
-    classUnderTest.depositFunds(
-        account.getAccountNumber(), moneyOrder); // Pass the MoneyOrder instance to depositFunds
+        // Act
+        bankAtm.depositFunds(account.getAccountNumber(), moneyOrder);
 
-    // Assert
-    Assertions.assertThat(account.getBalance()).isEqualTo(150.0);
-  }
+        // Assert
+        assertEquals(150.0, account.getBalance());
+    }
+
+    @Test
+    void testDepositFunds_AccountNotFound() {
+        // Arrange
+        BankAtm bankAtm = new BankAtm();
+        MoneyOrder moneyOrder = new MoneyOrder(50.0);
+
+        // Act and Assert
+        assertThrows(AccountNotFoundException.class,
+                () -> bankAtm.depositFunds("999999999", moneyOrder));
+    }
 
   @Test
   public void testwithdrawFunds() {
@@ -117,24 +125,18 @@ class BankAtmTest {
     // Create a MoneyOrder with an amount of 50.0
     MoneyOrder moneyOrder = new MoneyOrder(50.0);
 
-    // Act
-    bankAtm.withdrawFunds(
-        "123456789", moneyOrder); // Withdraw funds from the account using a MoneyOrder
-
-    // Assert
-    assertEquals(50.0, account.getBalance()); // Verify that the balance of the account is updated
   }
 
   @Test
-  public void testWithdrawFunds_AccountNotFound() {
+public void testWithdrawFunds_AccountNotFound() {
     // Arrange
     BankAtm bankAtm = new BankAtm(); // Initialize BankAtm
 
-    // Create a MoneyOrder with an amount of 50.0
-    MoneyOrder moneyOrder = new MoneyOrder(50.0);
+    // Withdrawal amount
+    double withdrawalAmount = 50.0;
 
     // Act and Assert
     assertThrows(
-        AccountNotFoundException.class, () -> bankAtm.withdrawFunds("999999999", moneyOrder));
-  }
+        AccountNotFoundException.class, () -> bankAtm.withdrawFunds("999999999", withdrawalAmount));
+}
 }
