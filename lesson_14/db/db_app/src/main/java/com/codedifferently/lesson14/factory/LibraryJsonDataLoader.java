@@ -5,8 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.File;
 import java.io.IOException;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Service;
 
 /** Loads data from a JSON file and returns a LibraryDataModel object. */
+@Service
 public class LibraryJsonDataLoader implements LibraryDataLoader {
   @Override
   public LibraryDataModel loadData() throws IOException {
@@ -14,7 +17,7 @@ public class LibraryJsonDataLoader implements LibraryDataLoader {
     objectMapper.registerModule(new JavaTimeModule());
 
     // Load data from data.json file
-    File file = new File(this.getClass().getClassLoader().getResource("json/data.json").getFile());
+    File file = new ClassPathResource("json/data.json").getFile();
     return objectMapper.readValue(file, LibraryDataModel.class);
   }
 }

@@ -15,8 +15,10 @@ import java.util.UUID;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Service;
 
 /** An object that loads data from a CSV and returns a LibraryDataModel object. */
+@Service
 public class LibraryCsvDataLoader implements LibraryDataLoader {
   @Override
   public LibraryDataModel loadData() throws IOException {

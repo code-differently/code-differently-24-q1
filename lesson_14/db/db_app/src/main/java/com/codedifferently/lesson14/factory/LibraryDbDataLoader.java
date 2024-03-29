@@ -7,11 +7,11 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/** A data loader that loads library data from a database. */
 @Service
 public class LibraryDbDataLoader implements LibraryDataLoader {
 
   @Autowired private MediaItemRepository mediaItemsRepository;
-
   @Autowired private LibraryGuestRepository libraryGuestRepository;
 
   @Override
