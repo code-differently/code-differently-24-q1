@@ -2,8 +2,10 @@ package com.codedifferently.lesson13.bank;
 
 import java.util.Set;
 
-public class SavingsAccount extends BankAccountBase {
-  public SavingsAccount(String accountNumber, Set<Customer> owners, double initialBalance) {
+public class BusinessCheckingAccount extends BankAccountBase {
+
+  public BusinessCheckingAccount(
+      String accountNumber, Set<Customer> owners, double initialBalance) {
     super(accountNumber, owners, initialBalance);
   }
 
@@ -14,7 +16,7 @@ public class SavingsAccount extends BankAccountBase {
 
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof SavingsAccount other) {
+    if (obj instanceof BusinessCheckingAccount other) {
       return accountNumber.equals(other.accountNumber);
     }
     return false;
