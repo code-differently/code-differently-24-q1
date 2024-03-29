@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /** A factory class that creates a Library object with a LibraryDataLoader object. */
-public class LibraryFactory {
+public final class LibraryFactory {
 
   /**
    * Create a Library object with a LibraryDataLoader object.

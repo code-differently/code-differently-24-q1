@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 /** Loads data from a JSON file and returns a LibraryDataModel object. */
 @Service
-public class LibraryJsonDataLoader implements LibraryDataLoader {
+public final class LibraryJsonDataLoader implements LibraryDataLoader {
   @Override
   public LibraryDataModel loadData() throws IOException {
     ObjectMapper objectMapper = new ObjectMapper();

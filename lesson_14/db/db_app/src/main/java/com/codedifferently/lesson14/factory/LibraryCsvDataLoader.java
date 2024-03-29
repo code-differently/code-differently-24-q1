@@ -19,12 +19,16 @@ import org.springframework.stereotype.Service;
 
 /** An object that loads data from a CSV and returns a LibraryDataModel object. */
 @Service
-public class LibraryCsvDataLoader implements LibraryDataLoader {
+public final class LibraryCsvDataLoader implements LibraryDataLoader {
+  private static final String MEDIA_ITEMS_CSV_PATH = "csv/media_items.csv";
+  private static final String GUESTS_CSV_PATH = "csv/guests.csv";
+  private static final String CHECKED_OUT_ITEMS_CSV_PATH = "csv/checked_out_items.csv";
+
   @Override
   public LibraryDataModel loadData() throws IOException {
     var model = new LibraryDataModel();
-    model.mediaItems = loadMediaItemsFromCsv("csv/media_items.csv");
-    model.guests = loadGuestsFromCsv("csv/guests.csv", "csv/checked_out_items.csv");
+    model.mediaItems = loadMediaItemsFromCsv(MEDIA_ITEMS_CSV_PATH);
+    model.guests = loadGuestsFromCsv(GUESTS_CSV_PATH, CHECKED_OUT_ITEMS_CSV_PATH);
     return model;
   }
 

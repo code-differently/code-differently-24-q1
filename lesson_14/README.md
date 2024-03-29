@@ -7,7 +7,7 @@
 
 ## Loading The Library, Part II
 
-Instead of loading our library data from JSON or CSV files, we now want to load data from a proper database. A new implementation of the `LibraryDbDataLoader` data loader has been provided to accomplish this task.
+Instead of loading our library data from JSON or CSV files, we now want to load data from a proper database. A new implementation of the `LibraryDbDataLoader` data loader has been provided to accomplish this task and is now the [default data loader][library-app] for the app.
 
 To build familiarity in working with databases, you are charged with the following tasks:
 
@@ -17,5 +17,12 @@ To build familiarity in working with databases, you are charged with the followi
     * A `SELECT` query that shows all 5 guests and any corresponding records in the `checked_out_items` table.
 * Add a new table called `library_users` to the SQLite database that stores a user's id (UUID formatted string), email, first name, last name, and a password (bcrypt encoded string). Add a model and repository that loads the users into the LibraryDataModel. Populate the database with a few users.
 
+As before, you can run the app from the console using the following command:
+
+```bash
+./gradlew run --console=plain
+```
+
 [algos-app]: ./algos/algos_app/src/main/java/com/codedifferently/lesson14/Lesson14.java
 [queries-dir]: ./db/db_app/src/main/resources/queries/
+[library-app]: ./db/db_app/src/main/java/com/codedifferently/lesson14/cli/LibraryApp.java#L26
