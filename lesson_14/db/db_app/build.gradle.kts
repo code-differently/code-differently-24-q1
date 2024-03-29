@@ -29,10 +29,13 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("commons-cli:commons-cli:1.6.0")
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.3")
     implementation("com.opencsv:opencsv:5.9")
     implementation("org.apache.commons:commons-csv:1.10.0")
+    implementation("org.xerial:sqlite-jdbc:3.36.0")
+    implementation("org.hibernate.orm:hibernate-community-dialects:6.2.7.Final") 
 }
 
 application {

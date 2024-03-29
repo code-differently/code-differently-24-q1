@@ -1,6 +1,7 @@
 package com.codedifferently.lesson14;
 
 import com.codedifferently.lesson14.cli.LibraryApp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @SpringBootApplication(scanBasePackages = "com.codedifferently")
 public class Lesson14 implements CommandLineRunner {
+  @Autowired private LibraryApp libraryApp;
 
   public static void main(String[] args) {
     var application = new SpringApplication(Lesson14.class);
@@ -22,7 +24,7 @@ public class Lesson14 implements CommandLineRunner {
       return;
     }
 
-    new LibraryApp().run(args);
+    libraryApp.run(args);
   }
 
   private static boolean isJUnitTest() {

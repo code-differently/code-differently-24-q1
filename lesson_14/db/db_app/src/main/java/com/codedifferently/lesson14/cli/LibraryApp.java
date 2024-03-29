@@ -1,8 +1,8 @@
 package com.codedifferently.lesson14.cli;
 
 import com.codedifferently.lesson14.factory.LibraryDataLoader;
+import com.codedifferently.lesson14.factory.LibraryDbDataLoader;
 import com.codedifferently.lesson14.factory.LibraryFactory;
-import com.codedifferently.lesson14.factory.LibraryJsonDataLoader;
 import com.codedifferently.lesson14.library.Book;
 import com.codedifferently.lesson14.library.Library;
 import com.codedifferently.lesson14.library.LibraryInfo;
@@ -18,12 +18,16 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public final class LibraryApp {
+  @Autowired private LibraryDbDataLoader defaultLibraryDataLoader;
 
   public void run(String[] args) throws Exception {
     // Load the library using the specified loader from the command line or the default.
-    LibraryDataLoader loader = getLoader(args);
+    LibraryDataLoader loader = getLoaderOrDefault(args, defaultLibraryDataLoader);
     Library library = LibraryFactory.createWithLoader(loader);
 
     // Show stats about the loaded library to the user.
@@ -55,10 +59,11 @@ public final class LibraryApp {
     System.out.println();
   }
 
-  private static LibraryDataLoader getLoader(String[] args) throws Exception {
+  private static LibraryDataLoader getLoaderOrDefault(
+      String[] args, LibraryDataLoader defaultLoader) throws Exception {
     String loaderType = getLoaderFromCommandLine(args);
     return loaderType == null
-        ? new LibraryJsonDataLoader()
+        ? defaultLoader
         : Class.forName(loaderType)
             .asSubclass(LibraryDataLoader.class)
             .getDeclaredConstructor()
