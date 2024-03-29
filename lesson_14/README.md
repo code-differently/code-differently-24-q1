@@ -9,7 +9,7 @@
 
 Instead of loading our library data from JSON or CSV files, we now want to load data from a proper database. A new implementation of the `LibraryDbDataLoader` data loader has been provided to accomplish this task.
 
-To build familiarity in working with the databases, you are charged with the following tasks:
+To build familiarity in working with databases, you are charged with the following tasks:
 
 * Write queries that retrieves the following data and store them in a `.sql` file with your unique name in the [queries][queries-dir] directory of the resources folder:
     * A `SELECT` query that returns the counts of media items by type
