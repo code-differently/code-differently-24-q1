@@ -1,8 +1,8 @@
 package com.codedifferently.lesson13.bank;
 
+import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
 import java.util.Set;
 
-import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
 /** Represents a checking account. */
 public class CheckingAccount implements BankAccount {
   private final Set<Customer> owners;
@@ -29,7 +29,7 @@ public class CheckingAccount implements BankAccount {
    *
    * @return The account number.
    */
-    @Override
+  @Override
   public String getAccountNumber() {
     return accountNumber;
   }
@@ -39,7 +39,7 @@ public class CheckingAccount implements BankAccount {
    *
    * @return The owners of the account.
    */
-    @Override
+  @Override
   public Set<Customer> getOwners() {
     return owners;
   }
@@ -49,7 +49,7 @@ public class CheckingAccount implements BankAccount {
    *
    * @param amount The amount to deposit.
    */
-    @Override
+  @Override
   public void deposit(double amount) throws IllegalStateException {
     if (isClosed()) {
       throw new IllegalStateException("Cannot deposit to a closed account");
@@ -66,7 +66,7 @@ public class CheckingAccount implements BankAccount {
    * @param amount
    * @throws InsufficientFundsException
    */
-    @Override
+  @Override
   public void withdraw(double amount) throws InsufficientFundsException {
     if (isClosed()) {
       throw new IllegalStateException("Cannot withdraw from a closed account");
@@ -85,13 +85,13 @@ public class CheckingAccount implements BankAccount {
    *
    * @return The balance of the account.
    */
-    @Override
+  @Override
   public double getBalance() {
     return balance;
   }
 
   /** Closes the account. */
-    @Override
+  @Override
   public void closeAccount() throws IllegalStateException {
     if (balance > 0) {
       throw new IllegalStateException("Cannot close account with a positive balance");
@@ -104,7 +104,7 @@ public class CheckingAccount implements BankAccount {
    *
    * @return True if the account is closed, otherwise false.
    */
-    @Override
+  @Override
   public boolean isClosed() {
     return !isActive;
   }
