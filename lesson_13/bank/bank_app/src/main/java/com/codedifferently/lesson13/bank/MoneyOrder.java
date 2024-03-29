@@ -2,26 +2,21 @@ package com.codedifferently.lesson13.bank;
 
 import com.codedifferently.lesson13.bank.exceptions.IsVoidedException;
 
-/** Represents a check. */
-public class Check {
-  private final String checkNumber;
-  private final double amount;
-  private final CheckingAccount account;
+public class MoneyOrder {
+
+  private String orderNumber;
+  private double amount;
+  private BankAccountBase account;
   private boolean isVoided = false;
 
-  /**
-   * Creates a new check.
-   *
-   * @param checkNumber The check number.
-   * @param amount The amount of the check.
-   * @param account The account the check is drawn on.
-   */
-  public Check(String checkNumber, double amount, CheckingAccount account) {
-    if (amount < 0) {
-      throw new IllegalArgumentException("Check amount must be positive");
+  public MoneyOrder(String orderNumber, double amount, BankAccountBase account) {
+    this.orderNumber = orderNumber;
+    if (amount >= 1000.0 && amount <= 0.0) {
+      throw new IllegalArgumentException("This Amount is greater than 1000$ or less than 0$.");
     }
-    this.checkNumber = checkNumber;
-    this.amount = amount;
+    account.withdraw(amount);
+    if (amount > 500.0) this.amount = amount - 3.00;
+    else this.amount = amount - 2.10;
     this.account = account;
   }
 
@@ -35,7 +30,7 @@ public class Check {
   }
 
   /** Voids the check. */
-  public void voidCheck() {
+  public void voidOrder() {
     isVoided = true;
   }
 
@@ -46,31 +41,30 @@ public class Check {
    */
   public void depositFunds(BankAccount toAccount) {
     if (isVoided) {
-      throw new IsVoidedException("Check is voided");
+      throw new IsVoidedException("Order is voided");
     }
-    account.withdraw(amount);
     toAccount.deposit(amount);
-    voidCheck();
+    voidOrder();
   }
 
   @Override
   public int hashCode() {
-    return checkNumber.hashCode();
+    return orderNumber.hashCode();
   }
 
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof Check other) {
-      return checkNumber.equals(other.checkNumber);
+    if (obj instanceof MoneyOrder other) {
+      return orderNumber.equals(other.orderNumber);
     }
     return false;
   }
 
   @Override
   public String toString() {
-    return "Check{"
-        + "checkNumber='"
-        + checkNumber
+    return "MoneyOrder{"
+        + "orderNumber='"
+        + orderNumber
         + '\''
         + ", amount="
         + amount
