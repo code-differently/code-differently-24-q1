@@ -6,9 +6,9 @@ import java.util.UUID;
 
 /** Represents a customer of the bank. */
 public class Customer {
-  private final UUID id;
-  private final String name;
-  private final Set<BankAccount> accounts = new HashSet<>();
+  protected final UUID id;
+  protected final String name;
+  protected final Set<BankAccount> accounts = new HashSet<>();
 
   /**
    * Creates a new customer.
