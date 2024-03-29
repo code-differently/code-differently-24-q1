@@ -11,28 +11,20 @@ public class Customer {
   private final Set<BankAccounts> accounts = new HashSet<>();
   private boolean isBusiness;
 
+  /**
+   * Constructor for isBusiness
+   *
+   * @return true or false if the account is businesss
+   */
+  public boolean getIsBusiness() {
 
-
-
-  /** Constructor for isBusiness
-     * @return true or false if the account is businesss
-  */
-
-public boolean getIsBusiness() {
-
-  for ( BankAccounts account : accounts){
-    if (account instanceof BusinessCheckingAccount) {
-      return  true;
-  
+    for (BankAccounts account : accounts) {
+      if (account instanceof BusinessCheckingAccount) {
+        return true;
+      }
     }
-  }
     return false;
-  
-
-
-}
-
-
+  }
 
   /**
    * Creates a new customer.

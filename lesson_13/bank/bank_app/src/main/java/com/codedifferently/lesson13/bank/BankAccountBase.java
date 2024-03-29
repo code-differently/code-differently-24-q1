@@ -1,8 +1,7 @@
 package com.codedifferently.lesson13.bank;
 
-import java.util.Set;
-
 import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
+import java.util.Set;
 
 public abstract class BankAccountBase implements BankAccounts {
 
@@ -47,7 +46,8 @@ public abstract class BankAccountBase implements BankAccounts {
   public void closeAccount() throws IllegalStateException {
     throw new UnsupportedOperationException("Not supported yet.");
   }
-@Override
+
+  @Override
   public boolean isClosed() {
     // Provide implementation for isClosed() method
     // For example, if you have a field indicating whether the account is closed:
