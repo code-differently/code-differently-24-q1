@@ -9,6 +9,30 @@ public class Customer {
   private final UUID id;
   private final String name;
   private final Set<BankAccounts> accounts = new HashSet<>();
+  private boolean isBusiness;
+
+
+
+
+  /** Constructor for isBusiness
+     * @return true or false if the account is businesss
+  */
+
+public boolean getIsBusiness() {
+
+  for ( BankAccounts account : accounts){
+    if (account instanceof BusinessCheckingAccount) {
+      return  true;
+  
+    }
+  }
+    return false;
+  
+
+
+}
+
+
 
   /**
    * Creates a new customer.
