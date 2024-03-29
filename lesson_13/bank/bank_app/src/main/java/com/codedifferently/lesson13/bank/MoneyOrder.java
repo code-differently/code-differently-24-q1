@@ -1,9 +1,10 @@
 package com.codedifferently.lesson13.bank;
 
 import com.codedifferently.lesson13.bank.exceptions.IsVoidedException;
+
 /**
  * Represents a money order.
- * 
+ *
  * @author mohamedibrahim
  */
 public class MoneyOrder {
@@ -13,14 +14,13 @@ public class MoneyOrder {
   private BankAccountBase account;
   private boolean isVoided = false;
 
-
-    /**
-     * Creates a money order. 
-     * 
-     * @param orderNumber Order number for the money order
-     * @param amount Amount the money oorder is taken out for.
-     * @param account The account the money is coming from. 
-     */
+  /**
+   * Creates a money order.
+   *
+   * @param orderNumber Order number for the money order
+   * @param amount Amount the money oorder is taken out for.
+   * @param account The account the money is coming from.
+   */
   public MoneyOrder(String orderNumber, double amount, BankAccountBase account) {
     this.orderNumber = orderNumber;
     if (amount > 1000.0 || amount <= 0.0) {

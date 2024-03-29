@@ -5,6 +5,7 @@ import java.util.Set;
 
 /**
  * represents the interface of bank accounts.
+ *
  * @author mohamedibrahim
  */
 public interface BankAccount {
