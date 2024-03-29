@@ -1,12 +1,5 @@
 package com.codedifferently.lesson12.factory.jadalibrarycsv;
 
-import com.codedifferently.lesson12.factory.LibraryCsvDataLoader;
-import com.codedifferently.lesson12.models.CheckoutModel;
-import com.codedifferently.lesson12.models.LibraryDataModel;
-import com.codedifferently.lesson12.models.LibraryGuestModel;
-import com.codedifferently.lesson12.models.MediaItemModel;
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvValidationException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Instant;
@@ -15,8 +8,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+
+import com.codedifferently.lesson12.factory.LibraryCsvDataLoader;
+import com.codedifferently.lesson12.models.CheckoutModel;
+import com.codedifferently.lesson12.models.LibraryDataModel;
+import com.codedifferently.lesson12.models.LibraryGuestModel;
+import com.codedifferently.lesson12.models.MediaItemModel;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 
 @Service
 public class LibraryCsvDataLoaderImpl implements LibraryCsvDataLoader {
@@ -39,7 +41,7 @@ public class LibraryCsvDataLoaderImpl implements LibraryCsvDataLoader {
     List<MediaItemModel> mediaItems = new ArrayList<>();
     try (CSVReader reader =
         new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
-      reader.skip(1);
+      reader.skip(1); 
       String[] line;
       while ((line = reader.readNext()) != null) {
         MediaItemModel mediaItem = new MediaItemModel();
@@ -62,7 +64,7 @@ public class LibraryCsvDataLoaderImpl implements LibraryCsvDataLoader {
     List<LibraryGuestModel> guests = new ArrayList<>();
     try (CSVReader reader =
         new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
-      reader.skip(1);
+      reader.skip(1); 
       String[] line;
       while ((line = reader.readNext()) != null) {
         LibraryGuestModel guest = new LibraryGuestModel();
@@ -80,7 +82,7 @@ public class LibraryCsvDataLoaderImpl implements LibraryCsvDataLoader {
     Map<String, List<CheckoutModel>> checkoutsByGuestEmail = new HashMap<>();
     try (CSVReader reader =
         new CSVReader(new FileReader(new ClassPathResource(filePath).getFile()))) {
-      reader.skip(1);
+      reader.skip(1); 
       String[] line;
       while ((line = reader.readNext()) != null) {
         String email = line[0];
