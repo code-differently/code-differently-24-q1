@@ -7,7 +7,7 @@ import com.codedifferently.lesson13.bank.exceptions.IsVoidedException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class MoneOrderTest {
+class MoneyOrderTest {
 
   private BankAccountBase account1;
   private BankAccountBase account2;
