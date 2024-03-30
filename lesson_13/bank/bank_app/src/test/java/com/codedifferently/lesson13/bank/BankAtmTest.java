@@ -1,20 +1,21 @@
 package com.codedifferently.lesson13.bank;
 
+import java.util.Set;
+import java.util.UUID;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.codedifferently.lesson13.bank.exceptions.AccountNotFoundException;
 import com.codedifferently.lesson13.bank.exceptions.CheckVoidedException;
-import java.util.Set;
-import java.util.UUID;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 class BankAtmTest {
 
   private BankAtm classUnderTest;
-  private CheckingAccount account1;
-  private CheckingAccount account2;
+  private BankAccountBase account1;
+  private BankAccountBase account2;
   private Customer customer1;
   private Customer customer2;
 
@@ -36,7 +37,7 @@ class BankAtmTest {
   void testAddAccount() {
     // Arrange
     Customer customer3 = new Customer(UUID.randomUUID(), "Alice Johnson");
-    CheckingAccount account3 = new CheckingAccount("555555555", Set.of(customer3), 300.0);
+    BankAccountBase account3 = new SavingsAccount("555555555", Set.of(customer3), 300.0);
     customer3.addAccount(account3);
 
     // Act
@@ -49,7 +50,7 @@ class BankAtmTest {
 
   @Test
   void testFindAccountsByCustomerId() {
-    Set<BankAccounts> accounts = classUnderTest.findAccountsByCustomerId(customer1.getId());
+    Set<BankAccountBase> accounts = classUnderTest.findAccountsByCustomerId(customer1.getId());
 
     // Assert
     assertThat(accounts).containsOnly(account1, account2);

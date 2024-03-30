@@ -6,20 +6,19 @@ import java.util.UUID;
 
 /** Represents a customer of the bank. */
 public class Customer {
-  private final UUID id;
-  private final String name;
-  private final Set<BankAccounts> accounts = new HashSet<>();
-  private boolean isBusiness;
+  protected  final UUID id;
+  protected  final String name;
+  protected  final Set<BankAccounts> accounts = new HashSet<>();
+  protected  boolean isBusiness = false;
 
   /**
    * Constructor for isBusiness
    *
    * @return true or false if the account is businesss
    */
-  public boolean getIsBusiness() {
-
+  public boolean IsCustomerABusiness() {
     for (BankAccounts account : accounts) {
-      if (account instanceof CustomerTest) {
+      if (account instanceof BusinessCheckingAccount) {
         return true;
       }
     }

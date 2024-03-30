@@ -2,9 +2,42 @@ package com.codedifferently.lesson13.bank;
 
 import java.util.Set;
 
+import javax.naming.spi.DirStateFactory;
+
+import com.codedifferently.lesson13.bank.exceptions.NoBusinessOwnersException;
 import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
 
-public class BusinessCheckingAccount implements BankAccounts {
+public class BusinessCheckingAccount extends CheckingAccount {
+    
+    public BusinessCheckingAccount(
+      String accountNumber, Set<Customer> owners, double initialBalance) {
+    super(accountNumber, owners, initialBalance);
+    if (checkOwners(owners) == 0) {
+      throw new NoBusinessOwnersException();
+    }
+    private int checkOwners(Set<Customer> owners) {
+        // Implement logic to check if any of the owners are business owners
+        // Return the number of business owners found
+        // Example:
+        int businessOwnersCount = 0;
+        for (Customer customer : owners) {
+          if (customer.isCustomerBusiness()) { int result;
+// Assuming isBusiness() method exists in Customer class
+            result ++;
+          }
+        }
+        return businessOwnersCount;
+
+
+
+
+
+
+    this.accountNumber = accountNumber;
+    this.owners = owners;
+    this.balance = initialBalance;
+    isActive = true;
+  }
 
 @Override
 public boolean isClosed() {
