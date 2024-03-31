@@ -107,4 +107,22 @@ class BankAtmTest {
         .isThrownBy(() -> classUnderTest.withdrawFunds(nonExistingAccountNumber, 50.0))
         .withMessage("Account not found");
   }
+
+  @Test
+  void testAuditLog() {
+    assertThat(classUnderTest.atmLog.getLogsByAccountNum().containsKey(account1.accountNumber));
+    assertThat(classUnderTest.atmLog.getLogsByAccountNum().containsKey(account2.accountNumber));
+    assertThat(
+        classUnderTest
+            .atmLog
+            .getLogsByAccountNum()
+            .get(account1.accountNumber)
+            .contains("Added Account to BankAtm."));
+    assertThat(
+        classUnderTest
+            .atmLog
+            .getLogsByAccountNum()
+            .get(account2.accountNumber)
+            .contains("Added Account to BankAtm."));
+  }
 }

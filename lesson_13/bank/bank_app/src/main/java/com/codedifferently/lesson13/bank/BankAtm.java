@@ -8,6 +8,7 @@ import java.util.UUID;
 
 /** Represents a bank ATM. */
 public class BankAtm {
+  public AuditLog atmLog = new AuditLog();
   private final Map<UUID, Customer> customerById = new HashMap<>();
   private final Map<String, BankAccountBase> accountByNumber = new HashMap<>();
 
@@ -17,6 +18,7 @@ public class BankAtm {
    * @param account The account to add.
    */
   public void addAccount(BankAccountBase account) {
+    atmLog.document(account, "Added Account to BankAtm.");
     accountByNumber.put(account.getAccountNumber(), account);
     account
         .getOwners()
@@ -46,6 +48,7 @@ public class BankAtm {
    */
   public void depositFunds(String accountNumber, double amount) {
     BankAccountBase account = getAccountOrThrow(accountNumber);
+    atmLog.document(account, "Deposited " + amount + " into account.");
     account.deposit(amount);
   }
 
@@ -57,6 +60,7 @@ public class BankAtm {
    */
   public void depositFunds(String accountNumber, Check check) {
     BankAccountBase account = getAccountOrThrow(accountNumber);
+    atmLog.document(account, "Deposited " + check.toString() + " into account.");
     check.depositFunds(account);
   }
 
@@ -68,6 +72,7 @@ public class BankAtm {
    */
   public void withdrawFunds(String accountNumber, double amount) {
     BankAccountBase account = getAccountOrThrow(accountNumber);
+    atmLog.document(account, "Withdrawn " + amount + " from account.");
     account.withdraw(amount);
   }
 
