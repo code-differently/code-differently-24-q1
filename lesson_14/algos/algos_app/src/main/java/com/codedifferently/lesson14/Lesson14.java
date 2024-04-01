@@ -7,7 +7,7 @@ public class Lesson14 {
     printPermutations("abc", "");
 
     System.out.println();
-    System.out.print("The reverse of 'abcd' is: ");
+    System.out.print("The reverse of 'abc' is: ");
     System.out.println(reverseString("abc"));
   }
 
