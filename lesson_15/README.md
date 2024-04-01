@@ -1,5 +1,9 @@
 # Lesson 15
 
+## Lecture Resources
+
+* [What is the OSI Model and Is It Still Relevant?](https://youtu.be/qiHCdgSo9zs)
+
 ## Homework
 
 * Read HFDP 9
