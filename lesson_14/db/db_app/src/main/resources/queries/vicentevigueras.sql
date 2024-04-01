@@ -21,7 +21,22 @@ ON G.email = CO.email;
 CREATE TABLE library_users (
 users_id CHAR(36) PRIMARY KEY, 
 email CHAR(320),
-first_name VARCHAR(400),
-last_name VARCHAR(400),
-password VARCHAR(300)
+first_name VARCHAR(40),
+last_name VARCHAR(40),
+password VARCHAR(72)
 );
+
+-- Populating database
+INSERT INTO library_users
+  (users_id, email, first_name, last_name, password )
+VALUES
+  ('0bbb0342-9680-4404-aa95-d3ef4ebcd4bb','vicente@example.com', 'vicente', 'vigueras', '$2a$12$6IEd/gKoNPlZeRCQ5X.rdu280m2ZBeyXzufBj2qre7YF.SoFzWfAa'),
+  ('3ccf8b0a-bdc4-42c1-9869-afeffbd0b02f','alexa@example.com', 'alexa', 'amazon', '$2a$12$Lp0AOZQcwl49sDrldcCXX.DZ2fEIVvAaL2Jm5pEIl.zXL7OywFIEm'),
+  ('376bad7a-b9b8-405d-93e2-1841101990fd','siri@example.com', 'siri', 'apple', '$2a$12$EyzJ3cb70TT2aihi3zRb0e.g8xk9p8mMjFR3Zcy36ly/KWBtUYf1G');
+
+-- Check if database was populated
+SELECT * FROM library_users;
+  
+
+
+
