@@ -36,7 +36,3 @@ VALUES
 
 -- Check if database was populated
 SELECT * FROM library_users;
-  
-
-
-
