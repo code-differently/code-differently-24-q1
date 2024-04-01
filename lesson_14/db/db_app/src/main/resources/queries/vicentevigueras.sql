@@ -1,4 +1,3 @@
-
 -- Count of media items by type
 SELECT type, COUNT() AS item_count
 FROM media_items
@@ -15,13 +14,18 @@ GROUP BY MI.type;
 SELECT G.name, CO.*  FROM guests G LEFT JOIN checked_out_items CO 
 ON G.email = CO.email;
 
+CREATE TABLE library_users (
+users_id CHAR(36) PRIMARY KEY, 
+email CHAR(320),
+first_name VARCHAR(400),
+last_name VARCHAR(400),
+password VARCHAR(300)
+);
 
 
 
 
-
-
-
+ 
 
 
 
