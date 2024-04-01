@@ -12,10 +12,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class LibraryDataModel {
   public List<MediaItemModel> mediaItems;
   public List<LibraryGuestModel> guests;
+  public List<LibraryUserModel> users;
 
   public List<MediaItem> getMediaItems() {
     List<MediaItem> results = new ArrayList<>();
@@ -57,5 +59,17 @@ public class LibraryDataModel {
       results.put(guest.email, guest.checkedOutItems);
     }
     return results;
+  }
+
+  public void loadUsers(List<LibraryUserModel> users) {
+    this.users = new ArrayList<>();
+    for (LibraryUserModel user : users) {
+      UUID id = user.getId();
+      String email = user.getEmail();
+      String firstName = user.getFirstName();
+      String lastName = user.getLastName();
+      String password = user.getPassword();
+      this.users.add(new LibraryUserModel(id, email, firstName, lastName, password));
+    }
   }
 }
