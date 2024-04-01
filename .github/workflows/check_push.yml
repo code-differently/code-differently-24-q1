@@ -16,6 +16,10 @@ on:
       - "lesson_10/examples/**"
       - "lesson_10/quiz/**"
       - "lesson_10/solid/**"
+      - "lesson_12/io/**"
+      - "lesson_13/bank/**"
+      - "lesson_14/algos/**"
+      - "lesson_14/db/**"
 
 jobs:
   build:
@@ -84,6 +88,18 @@ jobs:
     - name: Build Lesson 12 Solid with Gradle Wrapper
       working-directory: ./lesson_12/io
       run: ./gradlew assemble && ./gradlew spotlessCheck
+
+    - name: Build Lesson 13 with Gradle Wrapper
+      working-directory: ./lesson_13/bank
+      run: ./gradlew check
+
+    - name: Build Lesson 14 Algos with Gradle Wrapper
+      working-directory: ./lesson_14/algos
+      run: ./gradlew check
+
+    - name: Build Lesson 14 DB with Gradle Wrapper
+      working-directory: ./lesson_14/db
+      run: ./gradlew check
 
     - name: Build Shared Lib with Gradle Wrapper
       working-directory: ./lib/java/codedifferently-instructional
