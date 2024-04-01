@@ -6,9 +6,10 @@ import java.util.UUID;
 
 /** Represents a customer of the bank. */
 public class Customer {
-  private final UUID id;
-  private final String name;
-  private final Set<CheckingAccount> accounts = new HashSet<>();
+  protected final UUID id;
+  protected final String name;
+  protected final Set<BankAccountBase> accounts = new HashSet<>();
+  protected boolean isBusiness = false;
 
   /**
    * Creates a new customer.
@@ -19,6 +20,19 @@ public class Customer {
   public Customer(UUID id, String name) {
     this.id = id;
     this.name = name;
+  }
+
+  /**
+   * Creates a new customer with the ablility to add if it is a busness.
+   *
+   * @param id The ID of the customer.
+   * @param name The name of the customer.
+   * @param isBusiness The status of if it is a business
+   */
+  public Customer(UUID id, String name, boolean isBusiness) {
+    this.id = id;
+    this.name = name;
+    this.isBusiness = isBusiness;
   }
 
   /**
@@ -44,7 +58,7 @@ public class Customer {
    *
    * @param account The account to add.
    */
-  public void addAccount(CheckingAccount account) {
+  public void addAccount(BankAccountBase account) {
     accounts.add(account);
   }
 
@@ -53,8 +67,12 @@ public class Customer {
    *
    * @return The unique set of accounts owned by the customer.
    */
-  public Set<CheckingAccount> getAccounts() {
+  public Set<BankAccountBase> getAccounts() {
     return accounts;
+  }
+
+  public boolean isCustomerABusiness() {
+    return isBusiness;
   }
 
   @Override

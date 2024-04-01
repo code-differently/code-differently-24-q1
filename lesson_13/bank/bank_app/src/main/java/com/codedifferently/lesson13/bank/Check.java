@@ -1,6 +1,6 @@
 package com.codedifferently.lesson13.bank;
 
-import com.codedifferently.lesson13.bank.exceptions.CheckVoidedException;
+import com.codedifferently.lesson13.bank.exceptions.IsVoidedException;
 
 /** Represents a check. */
 public class Check {
@@ -44,9 +44,9 @@ public class Check {
    *
    * @param toAccount The account to deposit the check into.
    */
-  public void depositFunds(CheckingAccount toAccount) {
+  public void depositFunds(BankAccount toAccount) {
     if (isVoided) {
-      throw new CheckVoidedException("Check is voided");
+      throw new IsVoidedException("Check is voided");
     }
     account.withdraw(amount);
     toAccount.deposit(amount);
