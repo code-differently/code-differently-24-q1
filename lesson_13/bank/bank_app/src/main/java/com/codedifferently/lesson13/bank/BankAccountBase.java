@@ -1,8 +1,7 @@
 package com.codedifferently.lesson13.bank;
 
-import java.util.Set;
-
 import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
+import java.util.Set;
 
 /**
  * @author vscode
@@ -138,4 +137,4 @@ public class BankAccountBase implements BankAccount {
         + isActive
         + '}';
   }
-} 
+}

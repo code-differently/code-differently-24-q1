@@ -32,4 +32,4 @@ public class SavingsAccount extends BankAccountBase {
         + isActive
         + '}';
   }
-} 
+}
