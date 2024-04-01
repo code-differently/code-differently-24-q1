@@ -25,20 +25,3 @@ first_name VARCHAR(400),
 last_name VARCHAR(400),
 password VARCHAR(300)
 );
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
