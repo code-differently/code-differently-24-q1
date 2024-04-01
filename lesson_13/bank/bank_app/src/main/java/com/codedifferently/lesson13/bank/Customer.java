@@ -6,10 +6,14 @@ import java.util.UUID;
 
 /** Represents a customer of the bank. */
 public class Customer {
-  protected  final UUID id;
-  protected  final String name;
-  protected  final Set<BankAccounts> accounts = new HashSet<>();
-  protected  boolean isBusiness = false;
+  protected final UUID id;
+  protected final String name;
+  protected final Set<BankAccounts> accounts = new HashSet<>();
+  protected boolean isBusiness = false;
+
+    Customer(UUID randomUUID, String ith, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
   /**
    * Constructor for isBusiness
@@ -89,4 +93,8 @@ public class Customer {
   public String toString() {
     return "Customer{" + "id=" + id + ", name='" + name + '\'' + '}';
   }
+
+    boolean isCustomerBusiness() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

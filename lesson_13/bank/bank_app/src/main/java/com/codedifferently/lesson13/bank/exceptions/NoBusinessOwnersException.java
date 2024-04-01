@@ -5,7 +5,4 @@
 
 package com.codedifferently.lesson13.bank.exceptions;
 
-
-public class NoBusinessOwnersException {
-
-}
+public class NoBusinessOwnersException {}

@@ -1,20 +1,34 @@
 package com.codedifferently.lesson13.bank;
 
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+
+import com.codedifferently.lesson13.bank.exceptions.NoBusinessOwnersException;
+import java.util.Set;
+import java.util.UUID;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.codedifferently.lesson13.bank.BusinessCheckingAccount;
+class BusinessCheckingAccountTest {
+  private  BusinessCheckingAccount classUnderTest;
+  private Customer customer1;
+  private Customer customer2;
 
-public class CustomerTest {
+  @BeforeEach
+  void setUp() {
+    customer1 = new Customer(UUID.randomUUID(), "ith", true);
+    customer2 = new Customer(UUID.randomUUID(), "E Mh");
 
-    @Test
-    void testCustomserHasBusinessAccount() {
-Customer customer = new Customer();
-BusinessCheckingAccount businessCheckingAccount = new BusinessCheckingAccount(123fe32);
-customer.addAccount(businessCheckingAccount);
-boolean has BusinessCheckingAccount = customer.getIsBusiness();
+    classUnderTest = new BusinessCheckingAccount("1234232332", Set.of(customer2, customer1), 1000);
+  }
 
-assertTrue (hasBusinessAccount);
-    }
-
-    
+  @Test
+  void testConstructor_CantCreateCheckWithOutBusinessOwners() {
+    // Act
+    Customer customer3 = new Customer(UUID.randomUUID(), "Arron");
+    // Assert
+    assertThatExceptionOfType(NoBusinessOwnersException.class)
+        .isThrownBy(
+            () -> new BusinessCheckingAccount("123456889", Set.of(customer3, customer2), 100.0))
+        .withMessage("A business owner must be one of the customers opening a business account.");
+  }
 }

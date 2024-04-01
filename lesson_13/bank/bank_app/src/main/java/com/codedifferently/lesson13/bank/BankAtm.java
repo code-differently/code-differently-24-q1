@@ -48,6 +48,7 @@ public class BankAtm {
     BankAccountBase account = getAccountOrThrow(accountNumber);
     account.depositFunds(amount);
   }
+
   /**
    * Withdraws funds from an account.
    *
