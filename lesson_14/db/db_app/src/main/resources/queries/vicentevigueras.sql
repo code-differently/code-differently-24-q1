@@ -1,3 +1,6 @@
+-- Know which tables exist in database
+SELECT name FROM sqlite_master WHERE type='table';
+
 -- Count of media items by type
 SELECT type, COUNT() AS item_count
 FROM media_items
@@ -22,6 +25,9 @@ first_name VARCHAR(400),
 last_name VARCHAR(400),
 password VARCHAR(300)
 );
+
+
+
 
 
 
