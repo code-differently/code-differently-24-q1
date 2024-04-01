@@ -1,11 +1,17 @@
 package com.codedifferently.lesson13.bank;
 
+import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
 import java.util.Set;
 
-import com.codedifferently.lesson13.bank.exceptions.InsufficientFundsException;
-
+/**
+ * @author vscode
+ */
 /** Represents a checking account. */
-public class CheckingAccount extends BankAccountBase {
+public class BankAccountBase implements BankAccount {
+  protected final Set<Customer> owners;
+  protected final String accountNumber;
+  protected double balance;
+  protected boolean isActive;
 
   /**
    * Creates a new checking account.
@@ -14,8 +20,11 @@ public class CheckingAccount extends BankAccountBase {
    * @param owners The owners of the account.
    * @param initialBalance The initial balance of the account.
    */
-  public CheckingAccount(String accountNumber, Set<Customer> owners, double initialBalance) {
-    super(accountNumber, owners, initialBalance); // Call constructor of BankAccountBase
+  public BankAccountBase(String accountNumber, Set<Customer> owners, double initialBalance) {
+    this.accountNumber = accountNumber;
+    this.owners = owners;
+    this.balance = initialBalance;
+    isActive = true;
   }
 
   /**
@@ -118,7 +127,7 @@ public class CheckingAccount extends BankAccountBase {
 
   @Override
   public String toString() {
-    return "CheckingAccount{"
+    return "BankAccountBase{"
         + "accountNumber='"
         + accountNumber
         + '\''
