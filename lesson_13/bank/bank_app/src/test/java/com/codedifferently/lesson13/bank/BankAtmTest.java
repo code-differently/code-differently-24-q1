@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
 class BankAtmTest {
 
   private BankAtm classUnderTest;
-  private CheckingAccount account1;
-  private CheckingAccount account2;
+  private BankAccount account1;
+  private BankAccount account2;
   private Customer customer1;
   private Customer customer2;
 
@@ -23,8 +23,8 @@ class BankAtmTest {
     classUnderTest = new BankAtm();
     customer1 = new Customer(UUID.randomUUID(), "John Doe");
     customer2 = new Customer(UUID.randomUUID(), "Jane Smith");
-    account1 = new CheckingAccount("123456789", Set.of(customer1), 100.0);
-    account2 = new CheckingAccount("987654321", Set.of(customer1, customer2), 200.0);
+    account1 = new BankAccount("123456789", Set.of(customer1), 100.0);
+    account2 = new BankAccount("987654321", Set.of(customer1, customer2), 200.0);
     customer1.addAccount(account1);
     customer1.addAccount(account2);
     customer2.addAccount(account2);
