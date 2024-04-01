@@ -2,6 +2,7 @@
 
 ## Homework
 
+* Read HFDP 9
 * Complete the [Building a Web Server](#building-a-web-server) exercise.
 
 ## Building a Web Server
