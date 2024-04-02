@@ -3,7 +3,7 @@ package com.codedifferently.lesson13.bank;
 import java.util.Set;
 
 /** Represents a Savings account. */
-public class SavingsAccount extends BankAccount {
+public class SavingsAccount extends BankAccountBase {
 
   /**
    * Creates a new savings account.

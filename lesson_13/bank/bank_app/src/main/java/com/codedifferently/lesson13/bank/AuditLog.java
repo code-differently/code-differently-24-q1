@@ -10,10 +10,10 @@ class AuditLog {
   Map<String, List<String>> logsByAccountNum = new HashMap<>();
 
   public void document(BankAccount account, String action) {
-    if (!logsByAccountNum.containsKey(account.accountNumber)) {
-      logsByAccountNum.put(account.accountNumber, new ArrayList<>());
+    if (!logsByAccountNum.containsKey(account.getAccountNumber())) {
+      logsByAccountNum.put(account.getAccountNumber(), new ArrayList<>());
     }
-    logsByAccountNum.get(account.accountNumber).add(action);
+    logsByAccountNum.get(account.getAccountNumber()).add(action);
   }
 
   public Map<String, List<String>> getLogsByAccountNum() {
@@ -21,6 +21,6 @@ class AuditLog {
   }
 
   public List<String> getLogsForAccount(BankAccount account) {
-    return logsByAccountNum.get(account.accountNumber);
+    return logsByAccountNum.get(account.getAccountNumber());
   }
 }

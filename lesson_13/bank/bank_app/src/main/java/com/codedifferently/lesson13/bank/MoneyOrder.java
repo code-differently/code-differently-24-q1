@@ -52,7 +52,7 @@ public class MoneyOrder {
    *
    * @param toAccount The account to deposit the money order into.
    */
-  public void depositFunds(BankAccountBase toAccount) {
+  public void depositFunds(BankAccount toAccount) {
     if (isVoided) {
       throw new IsVoidedException("Order is voided");
     }

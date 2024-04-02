@@ -110,19 +110,21 @@ class BankAtmTest {
 
   @Test
   void testAuditLog() {
-    assertThat(classUnderTest.atmLog.getLogsByAccountNum().containsKey(account1.accountNumber));
-    assertThat(classUnderTest.atmLog.getLogsByAccountNum().containsKey(account2.accountNumber));
+    assertThat(
+        classUnderTest.atmLog.getLogsByAccountNum().containsKey(account1.getAccountNumber()));
+    assertThat(
+        classUnderTest.atmLog.getLogsByAccountNum().containsKey(account2.getAccountNumber()));
     assertThat(
         classUnderTest
             .atmLog
             .getLogsByAccountNum()
-            .get(account1.accountNumber)
+            .get(account1.getAccountNumber())
             .contains("Added Account to BankAtm."));
     assertThat(
         classUnderTest
             .atmLog
             .getLogsByAccountNum()
-            .get(account2.accountNumber)
+            .get(account2.getAccountNumber())
             .contains("Added Account to BankAtm."));
   }
 }

@@ -44,7 +44,7 @@ public class Check {
    *
    * @param toAccount The account to deposit the check into.
    */
-  public void depositFunds(BankAccountBase toAccount) {
+  public void depositFunds(BankAccount toAccount) {
     if (isVoided) {
       throw new IsVoidedException("Check is voided");
     }
