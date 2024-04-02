@@ -14,11 +14,3 @@ app.use(express.static('/workspaces/code-differently-24-q1/lesson_01/VicenteVigu
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
-
-
-
-
-
-
-
-
