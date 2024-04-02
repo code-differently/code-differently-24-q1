@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
-import path from 'path';
+import * as path from 'path';
 
 const app = express();
-const PORT = 3000;
+const PORT = 9000;
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -13,6 +13,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.use((err: any, req: Request, res: Response, next: Function) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
 });
