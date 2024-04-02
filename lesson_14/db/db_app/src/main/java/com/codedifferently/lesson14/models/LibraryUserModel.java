@@ -5,7 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "guests")
+@Table(name = "library_users")
 public class LibraryUserModel {
   @Id public String id;
   public String email;
