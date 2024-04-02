@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 
 class MoneyOrderTest {
 
-  private BankAccountBase account1;
-  private BankAccountBase account2;
+  private BankAccount account1;
+  private BankAccount account2;
   private MoneyOrder classUnderTest;
 
   @BeforeEach

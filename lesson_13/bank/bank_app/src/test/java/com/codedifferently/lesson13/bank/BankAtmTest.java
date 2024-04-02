@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
 class BankAtmTest {
 
   private BankAtm classUnderTest;
-  private BankAccountBase account1;
-  private BankAccountBase account2;
+  private BankAccount account1;
+  private BankAccount account2;
   private Customer customer1;
   private Customer customer2;
 
@@ -36,21 +36,21 @@ class BankAtmTest {
   void testAddAccount() {
     // Arrange
     Customer customer3 = new Customer(UUID.randomUUID(), "Alice Johnson");
-    BankAccountBase account3 = new SavingsAccount("555555555", Set.of(customer3), 300.0);
+    BankAccount account3 = new SavingsAccount("555555555", Set.of(customer3), 300.0);
     customer3.addAccount(account3);
 
     // Act
     classUnderTest.addAccount(account3);
 
     // Assert
-    Set<BankAccountBase> accounts = classUnderTest.findAccountsByCustomerId(customer3.getId());
+    Set<BankAccount> accounts = classUnderTest.findAccountsByCustomerId(customer3.getId());
     assertThat(accounts).containsOnly(account3);
   }
 
   @Test
   void testFindAccountsByCustomerId() {
     // Act
-    Set<BankAccountBase> accounts = classUnderTest.findAccountsByCustomerId(customer1.getId());
+    Set<BankAccount> accounts = classUnderTest.findAccountsByCustomerId(customer1.getId());
 
     // Assert
     assertThat(accounts).containsOnly(account1, account2);

@@ -10,14 +10,14 @@ import java.util.UUID;
 public class BankAtm {
   public AuditLog atmLog = new AuditLog();
   private final Map<UUID, Customer> customerById = new HashMap<>();
-  private final Map<String, BankAccountBase> accountByNumber = new HashMap<>();
+  private final Map<String, BankAccount> accountByNumber = new HashMap<>();
 
   /**
    * Adds a checking account to the bank. Adds a bank account to the bank.
    *
    * @param account The account to add.
    */
-  public void addAccount(BankAccountBase account) {
+  public void addAccount(BankAccount account) {
     atmLog.document(account, "Added Account to BankAtm.");
     accountByNumber.put(account.getAccountNumber(), account);
     account
@@ -34,7 +34,7 @@ public class BankAtm {
    * @param customerId The ID of the customer.
    * @return The unique set of accounts owned by the customer.
    */
-  public Set<BankAccountBase> findAccountsByCustomerId(UUID customerId) {
+  public Set<BankAccount> findAccountsByCustomerId(UUID customerId) {
     return customerById.containsKey(customerId)
         ? customerById.get(customerId).getAccounts()
         : Set.of();
@@ -47,7 +47,7 @@ public class BankAtm {
    * @param amount The amount to deposit.
    */
   public void depositFunds(String accountNumber, double amount) {
-    BankAccountBase account = getAccountOrThrow(accountNumber);
+    BankAccount account = getAccountOrThrow(accountNumber);
     atmLog.document(account, "Deposited " + amount + " into account.");
     account.deposit(amount);
   }
@@ -59,7 +59,7 @@ public class BankAtm {
    * @param check The check to deposit.
    */
   public void depositFunds(String accountNumber, Check check) {
-    BankAccountBase account = getAccountOrThrow(accountNumber);
+    BankAccount account = getAccountOrThrow(accountNumber);
     atmLog.document(account, "Deposited " + check.toString() + " into account.");
     check.depositFunds(account);
   }
@@ -71,7 +71,7 @@ public class BankAtm {
    * @param amount
    */
   public void withdrawFunds(String accountNumber, double amount) {
-    BankAccountBase account = getAccountOrThrow(accountNumber);
+    BankAccount account = getAccountOrThrow(accountNumber);
     atmLog.document(account, "Withdrawn " + amount + " from account.");
     account.withdraw(amount);
   }
@@ -82,8 +82,8 @@ public class BankAtm {
    * @param accountNumber The account number.
    * @return The account.
    */
-  private BankAccountBase getAccountOrThrow(String accountNumber) {
-    BankAccountBase account = accountByNumber.get(accountNumber);
+  private BankAccount getAccountOrThrow(String accountNumber) {
+    BankAccount account = accountByNumber.get(accountNumber);
     if (account == null || account.isClosed()) {
       throw new AccountNotFoundException("Account not found");
     }

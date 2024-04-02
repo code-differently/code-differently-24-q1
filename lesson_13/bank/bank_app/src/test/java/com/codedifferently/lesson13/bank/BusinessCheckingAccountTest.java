@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class BusinessCheckingAccountTest {
-  private BankAccount classUnderTest;
+  private BankAccountBase classUnderTest;
   private Customer customer1;
   private Customer customer2;
 

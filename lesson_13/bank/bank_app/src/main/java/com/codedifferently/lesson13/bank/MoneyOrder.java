@@ -11,7 +11,7 @@ public class MoneyOrder {
 
   private String orderNumber;
   private double amount;
-  private BankAccountBase account;
+  private BankAccount account;
   private boolean isVoided = false;
 
   /**
@@ -21,7 +21,7 @@ public class MoneyOrder {
    * @param amount Amount the money oorder is taken out for.
    * @param account The account the money is coming from.
    */
-  public MoneyOrder(String orderNumber, double amount, BankAccountBase account) {
+  public MoneyOrder(String orderNumber, double amount, BankAccount account) {
     this.orderNumber = orderNumber;
     if (amount > 1000.0 || amount <= 0.0) {
       throw new IllegalArgumentException(
@@ -52,7 +52,7 @@ public class MoneyOrder {
    *
    * @param toAccount The account to deposit the money order into.
    */
-  public void depositFunds(BankAccount toAccount) {
+  public void depositFunds(BankAccountBase toAccount) {
     if (isVoided) {
       throw new IsVoidedException("Order is voided");
     }

@@ -8,7 +8,7 @@ import java.util.UUID;
 public class Customer {
   protected final UUID id;
   protected final String name;
-  protected final Set<BankAccountBase> accounts = new HashSet<>();
+  protected final Set<BankAccount> accounts = new HashSet<>();
   protected boolean isBusiness = false;
 
   /**
@@ -58,7 +58,7 @@ public class Customer {
    *
    * @param account The account to add.
    */
-  public void addAccount(BankAccountBase account) {
+  public void addAccount(BankAccount account) {
     accounts.add(account);
   }
 
@@ -67,7 +67,7 @@ public class Customer {
    *
    * @return The unique set of accounts owned by the customer.
    */
-  public Set<BankAccountBase> getAccounts() {
+  public Set<BankAccount> getAccounts() {
     return accounts;
   }
 
