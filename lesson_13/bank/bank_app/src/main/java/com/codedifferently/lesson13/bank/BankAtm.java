@@ -10,6 +10,7 @@ import java.util.UUID;
 public class BankAtm {
   private final Map<UUID, Customer> customerById = new HashMap<>();
   private final Map<String, CheckingAccount> accountByNumber = new HashMap<>();
+  private final AuditLog auditLog = new AuditLog();
 
   /**
    * Adds a checking account to the bank.
@@ -17,13 +18,17 @@ public class BankAtm {
    * @param account The account to add.
    */
   public void addAccount(CheckingAccount account) {
+    validateBusinessAccount(account);
     accountByNumber.put(account.getAccountNumber(), account);
-    account
-        .getOwners()
-        .forEach(
-            owner -> {
-              customerById.put(owner.getId(), owner);
-            });
+    account.getOwners().forEach(owner -> customerById.put(owner.getId(), owner));
+  }
+
+  private void validateBusinessAccount(CheckingAccount account) {
+    if (account instanceof BusinessCheckingAccount) {
+      if (account.getOwners().stream().noneMatch(Customer::isBusiness)) {
+        throw new IllegalArgumentException("Business account requires at least one business owner");
+      }
+    }
   }
 
   /**
@@ -47,28 +52,19 @@ public class BankAtm {
   public void depositFunds(String accountNumber, double amount) {
     CheckingAccount account = getAccountOrThrow(accountNumber);
     account.deposit(amount);
-  }
-
-  /**
-   * Deposits funds into an account using a check.
-   *
-   * @param accountNumber The account number.
-   * @param check The check to deposit.
-   */
-  public void depositFunds(String accountNumber, Check check) {
-    CheckingAccount account = getAccountOrThrow(accountNumber);
-    check.depositFunds(account);
+    auditLog.logTransaction(accountNumber, amount, "Deposit");
   }
 
   /**
    * Withdraws funds from an account.
    *
-   * @param accountNumber
-   * @param amount
+   * @param accountNumber The account number.
+   * @param amount The amount to withdraw.
    */
   public void withdrawFunds(String accountNumber, double amount) {
     CheckingAccount account = getAccountOrThrow(accountNumber);
     account.withdraw(amount);
+    auditLog.logTransaction(accountNumber, -amount, "Withdrawal");
   }
 
   /**
