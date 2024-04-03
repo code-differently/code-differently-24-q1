@@ -24,7 +24,6 @@ public class MediaItemsController {
   public GetMediaItemsResponse getItems() {
     Set<MediaItem> items = library.search(SearchCriteria.builder().build());
     var response = GetMediaItemsResponse.builder().items(new ArrayList<>(items)).build();
-
     return response;
   }
 }
