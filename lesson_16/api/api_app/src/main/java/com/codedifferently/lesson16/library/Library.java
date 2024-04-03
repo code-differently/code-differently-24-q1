@@ -211,6 +211,17 @@ public class Library {
   }
 
   /**
+   * Check if the library has the given guest.
+   *
+   * @param emailAddress The email address to check for.
+   * @return True if the library has the guest, false otherwise.
+   */
+  public boolean hasLibraryGuest(String emailAddress) {
+    return this.guestsById.values().stream()
+        .anyMatch(g -> g.getEmail().equalsIgnoreCase(emailAddress));
+  }
+
+  /**
    * Return a item to the library.
    *
    * @param item The item to return.
