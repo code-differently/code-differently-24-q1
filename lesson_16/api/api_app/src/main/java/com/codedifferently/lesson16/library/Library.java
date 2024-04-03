@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /** Represents a library. */
 public class Library {
@@ -97,6 +98,13 @@ public class Library {
     this.guestsById.remove(guest.getId());
     this.checkedOutItemsByGuest.remove(guest.getId());
     guest.setLibrary(null);
+  }
+
+  public Set<Librarian> getLibrarians() {
+    return this.guestsById.values().stream()
+        .filter(g -> g instanceof Librarian)
+        .map(g -> (Librarian) g)
+        .collect(Collectors.toSet());
   }
 
   /**
