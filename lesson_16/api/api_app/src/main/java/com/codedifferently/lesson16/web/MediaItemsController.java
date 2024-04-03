@@ -5,9 +5,12 @@ import com.codedifferently.lesson16.library.Library;
 import com.codedifferently.lesson16.library.MediaItem;
 import com.codedifferently.lesson16.library.search.SearchCriteria;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -23,7 +26,14 @@ public class MediaItemsController {
   @GetMapping("/items")
   public GetMediaItemsResponse getItems() {
     Set<MediaItem> items = library.search(SearchCriteria.builder().build());
-    var response = GetMediaItemsResponse.builder().items(new ArrayList<>(items)).build();
+    List<MediaItemResponse> responseItems = items.stream().map(MediaItemResponse::from).toList();
+    var response = GetMediaItemsResponse.builder().items(responseItems).build();
     return response;
+  }
+
+  @PostMapping("/items")
+  public ResponseEntity<String> addItem(@RequestBody CreateMediaItemRequest request) {
+    System.out.println("This is a test!!!");
+    return ResponseEntity.ok("Item added");
   }
 }

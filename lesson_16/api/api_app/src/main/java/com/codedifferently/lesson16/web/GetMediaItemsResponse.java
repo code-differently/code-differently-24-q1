@@ -1,12 +1,12 @@
 package com.codedifferently.lesson16.web;
 
-import com.codedifferently.lesson16.library.MediaItem;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Singular;
 
 @Data
 @Builder
 public class GetMediaItemsResponse {
-  private List<MediaItem> items;
+  @Singular private List<MediaItemResponse> items;
 }
