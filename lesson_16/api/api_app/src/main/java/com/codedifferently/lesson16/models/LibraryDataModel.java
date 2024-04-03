@@ -21,7 +21,7 @@ public class LibraryDataModel {
     List<MediaItem> results = new ArrayList<>();
     for (MediaItemModel mediaItemModel : mediaItems) {
       switch (mediaItemModel.type) {
-        case "book" ->
+        case BOOK ->
             results.add(
                 new Book(
                     mediaItemModel.id,
@@ -29,9 +29,9 @@ public class LibraryDataModel {
                     mediaItemModel.isbn,
                     mediaItemModel.authors,
                     mediaItemModel.pages));
-        case "dvd" -> results.add(new Dvd(mediaItemModel.id, mediaItemModel.title));
-        case "magazine" -> results.add(new Magazine(mediaItemModel.id, mediaItemModel.title));
-        case "newspaper" -> results.add(new Newspaper(mediaItemModel.id, mediaItemModel.title));
+        case DVD -> results.add(new Dvd(mediaItemModel.id, mediaItemModel.title));
+        case MAGAZINE -> results.add(new Magazine(mediaItemModel.id, mediaItemModel.title));
+        case NEWSPAPER -> results.add(new Newspaper(mediaItemModel.id, mediaItemModel.title));
         default ->
             throw new IllegalArgumentException("Unknown media item type: " + mediaItemModel.type);
       }

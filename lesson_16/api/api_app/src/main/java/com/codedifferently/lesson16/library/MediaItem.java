@@ -12,7 +12,7 @@ public interface MediaItem extends Searchable {
    *
    * @return The type of the media item.
    */
-  public String getType();
+  public MediaType getType();
 
   /**
    * Get the id of the media item.

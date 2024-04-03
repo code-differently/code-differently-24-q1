@@ -9,8 +9,8 @@ public class Magazine extends MediaItemBase {
   }
 
   @Override
-  public String getType() {
-    return "magazine";
+  public MediaType getType() {
+    return MediaType.MAGAZINE;
   }
 
   @Override

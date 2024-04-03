@@ -2,6 +2,7 @@ package com.codedifferently.lesson16.web;
 
 import com.codedifferently.lesson16.library.Book;
 import com.codedifferently.lesson16.library.MediaItem;
+import com.codedifferently.lesson16.library.MediaType;
 import java.util.List;
 import java.util.UUID;
 import lombok.Builder;
@@ -10,7 +11,7 @@ import lombok.Data;
 @Data
 @Builder
 public class MediaItemResponse {
-  private String type;
+  private MediaType type;
   private UUID id;
   private String isbn;
   private String title;
@@ -24,7 +25,7 @@ public class MediaItemResponse {
         MediaItemResponse.builder().id(item.getId()).title(item.getTitle()).type(item.getType());
 
     switch (item.getType()) {
-      case "book" -> {
+      case BOOK -> {
         var book = (Book) item;
         result =
             result.isbn(book.getIsbn()).authors(book.getAuthors()).pages(book.getNumberOfPages());

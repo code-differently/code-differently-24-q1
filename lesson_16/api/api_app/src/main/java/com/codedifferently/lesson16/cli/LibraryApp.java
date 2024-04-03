@@ -181,7 +181,7 @@ public final class LibraryApp {
       if (item instanceof Book book) {
         System.out.println("AUTHOR(S): " + String.join(", ", book.getAuthors()));
       }
-      System.out.println("TYPE: " + item.getType().toUpperCase());
+      System.out.println("TYPE: " + item.getType().toString().toUpperCase());
       System.out.println();
     }
     System.out.println("Found " + results.size() + " result(s).\n");

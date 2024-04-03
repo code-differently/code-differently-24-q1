@@ -17,9 +17,10 @@ We are continuing to build atop the foundation of our library app. For this assi
 * You will implement the [MediaItemsController][controller-file] to enable the following API:
    * `GET /items` - Retrieves a list of media items
    * `POST /items` - Creates a new media item
-   * `GET /items/:id` - Retrieves a single media item
-   * `DELETE /items/:id` - Delete a single media item
+   * `GET /items/:id` - Retrieves a single media item with the given ID.
+   * `DELETE /items/:id` - Delete a single media item with the given ID.
 * Study the tests in [MediaItemsControllerTest][controller-test-file] to understand what you should accept and return in the API.
+* Anticipate needing to implement additional request and response data types to support your API implementation.
 
 ## Running the API
 

@@ -1,5 +1,6 @@
 package com.codedifferently.lesson16.factory;
 
+import com.codedifferently.lesson16.library.MediaType;
 import com.codedifferently.lesson16.models.CheckoutModel;
 import com.codedifferently.lesson16.models.LibraryDataModel;
 import com.codedifferently.lesson16.models.LibraryGuestModel;
@@ -40,7 +41,7 @@ public final class LibraryCsvDataLoader implements LibraryDataLoader {
       for (CSVRecord csvRecord : csvParser) {
         var item = new MediaItemModel();
 
-        item.type = csvRecord.get("type");
+        item.type = MediaType.fromString(csvRecord.get("type"));
         item.id = UUID.fromString(csvRecord.get("id"));
         item.title = csvRecord.get("title");
         item.isbn = csvRecord.get("isbn");

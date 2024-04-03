@@ -67,7 +67,7 @@ public abstract class MediaItemBase implements MediaItem {
     if (query.title != null && !this.getTitle().toLowerCase().contains(query.title.toLowerCase())) {
       return false;
     }
-    if (query.type != null && !this.getType().equalsIgnoreCase(query.type)) {
+    if (query.type != null && !this.getType().toString().equalsIgnoreCase(query.type)) {
       return false;
     }
     return query.author == null || this.matchesAuthor(query.author);

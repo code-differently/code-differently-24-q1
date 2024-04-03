@@ -1,16 +1,20 @@
 package com.codedifferently.lesson16.models;
 
+import com.codedifferently.lesson16.library.MediaType;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "media_items")
 public class MediaItemModel {
-  public String type;
+  @Enumerated(EnumType.STRING)
+  public MediaType type;
+
   @Id public UUID id;
   public String isbn;
   public String title;

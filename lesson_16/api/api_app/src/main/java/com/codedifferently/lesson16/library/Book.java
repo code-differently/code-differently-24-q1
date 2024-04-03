@@ -26,8 +26,8 @@ public class Book extends MediaItemBase {
   }
 
   @Override
-  public String getType() {
-    return "book";
+  public MediaType getType() {
+    return MediaType.BOOK;
   }
 
   /**

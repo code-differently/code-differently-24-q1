@@ -1,5 +1,6 @@
 package com.codedifferently.lesson16.web;
 
+import com.codedifferently.lesson16.library.MediaType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class MediaItemRequest {
-  private String type;
+  private MediaType type;
   private String isbn;
   private String title;
   private String[] authors;

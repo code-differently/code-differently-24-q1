@@ -37,7 +37,7 @@ class LibraryJsonDataLoaderTest {
             .reduce(
                 new HashMap<>(),
                 (hashMap, e) -> {
-                  hashMap.merge(e.getType(), 1, Integer::sum);
+                  hashMap.merge(e.getType().toString(), 1, Integer::sum);
                   return hashMap;
                 },
                 (m, m2) -> {

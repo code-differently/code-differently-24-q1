@@ -9,8 +9,8 @@ public class Dvd extends MediaItemBase {
   }
 
   @Override
-  public String getType() {
-    return "dvd";
+  public MediaType getType() {
+    return MediaType.DVD;
   }
 
   @Override

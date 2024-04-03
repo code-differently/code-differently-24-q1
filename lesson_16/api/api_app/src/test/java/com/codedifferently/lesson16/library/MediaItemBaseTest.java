@@ -22,8 +22,8 @@ class MediaItemBaseTest {
     }
 
     @Override
-    public String getType() {
-      return "mock";
+    public MediaType getType() {
+      return MediaType.MAGAZINE;
     }
   }
 

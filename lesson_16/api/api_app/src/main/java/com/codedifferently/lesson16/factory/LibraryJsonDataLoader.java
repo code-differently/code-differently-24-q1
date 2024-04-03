@@ -1,7 +1,9 @@
 package com.codedifferently.lesson16.factory;
 
 import com.codedifferently.lesson16.models.LibraryDataModel;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +15,11 @@ import org.springframework.stereotype.Service;
 public final class LibraryJsonDataLoader implements LibraryDataLoader {
   @Override
   public LibraryDataModel loadData() throws IOException {
-    ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.registerModule(new JavaTimeModule());
+    ObjectMapper objectMapper =
+        JsonMapper.builder()
+            .addModule(new JavaTimeModule())
+            .enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_ENUMS)
+            .build();
 
     // Load data from data.json file
     File file = new ClassPathResource("json/data.json").getFile();
