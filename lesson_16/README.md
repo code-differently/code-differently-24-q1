@@ -1,11 +1,5 @@
 # Lesson 16
 
-## Lecture Resources
-
-* [What are HTTP requests?](https://youtu.be/-Zea7GB2OwA)
-* [Build a REST API with Spring and Java Config](https://www.baeldung.com/building-a-restful-web-service-with-spring-and-java-based-configuration)
-* [Exploring REST APIs with Spring MVC](https://www.developer.com/java/exploring-rest-apis-with-spring-mvc/)
-
 ## Homework
 
 * Complete the [Creating the Books API](#create-the-books-api) exercise.
@@ -31,6 +25,13 @@ curl http://localhost:5000/items | json_pp
 ```
 
 Alternatively, you can test the API using the tool [Postman][postman-link]. I recommend installing this tool to make it easier to test things.
+
+## Additional Resources
+
+* [What are HTTP requests?](https://youtu.be/-Zea7GB2OwA)
+* [Build a REST API with Spring and Java Config](https://www.baeldung.com/building-a-restful-web-service-with-spring-and-java-based-configuration)
+* [Exploring REST APIs with Spring MVC](https://www.developer.com/java/exploring-rest-apis-with-spring-mvc/)
+* [Using Lombok’s @Builder Annotation](https://www.baeldung.com/lombok-builder)
 
 [controller-file]: ./api//api_app/src/main/java/com/codedifferently/lesson16/web/MediaItemsController.java
 [controller-test-file]: ./api/api_app/src/test/java/com/codedifferently/lesson16/web/MediaItemsControllerTest.java
