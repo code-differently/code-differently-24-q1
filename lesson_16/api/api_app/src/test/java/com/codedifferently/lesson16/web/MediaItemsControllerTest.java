@@ -66,7 +66,9 @@ class MediaItemsControllerTest {
 
     mockMvc
         .perform(post("/items").contentType(MediaType.APPLICATION_JSON).content(json))
-        .andExpect(status().isBadRequest());
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.errors").isArray())
+        .andExpect(jsonPath("$.errors.length()").value(1));
   }
 
   @Test
