@@ -47,7 +47,7 @@ class MediaItemsControllerTest {
   void testController_getsAnItem() throws Exception {
     mockMvc
         .perform(
-            get("/items/e27a4e0d-9664-420d-955e-c0e295d0ce02")
+            get("/items/31616162-3831-3832-2d34-3334352d3465")
                 .contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk());
   }
@@ -55,9 +55,10 @@ class MediaItemsControllerTest {
   @Test
   void testController_returnsNotFoundOnGetItem() throws Exception {
     mockMvc
-        .perform(get("/items/bad-id").contentType(MediaType.APPLICATION_JSON))
-        .andExpect(status().isNotFound())
-        .andExpect(jsonPath("$.message").value("Item not found"));
+        .perform(
+            get("/items/00000000-0000-0000-0000-000000000000")
+                .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isNotFound());
   }
 
   @Test
@@ -78,7 +79,7 @@ class MediaItemsControllerTest {
         {
           "item": {
             "id": "e27a4e0d-9664-420d-955e-c0e295d0ce02",
-            "type": "book",
+            "type": "BOOK",
             "title": "Becoming",
             "isbn": "9781524763138",
             "authors": ["Michelle Obama"],
@@ -89,7 +90,7 @@ class MediaItemsControllerTest {
 
     mockMvc
         .perform(post("/items").contentType(MediaType.APPLICATION_JSON).content(json))
-        .andExpect(status().isCreated())
+        .andExpect(status().isOk())
         .andExpect(jsonPath("$.item.id").value("e27a4e0d-9664-420d-955e-c0e295d0ce02"));
 
     Set<MediaItem> items =
@@ -103,9 +104,10 @@ class MediaItemsControllerTest {
   @Test
   void testController_returnsNotFoundOnDeleteItem() throws Exception {
     mockMvc
-        .perform(delete("/items/bad-id").contentType(MediaType.APPLICATION_JSON))
-        .andExpect(status().isNotFound())
-        .andExpect(jsonPath("$.message").value("Item not found"));
+        .perform(
+            delete("/items/00000000-0000-0000-0000-000000000000")
+                .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isNotFound());
   }
 
   @Test

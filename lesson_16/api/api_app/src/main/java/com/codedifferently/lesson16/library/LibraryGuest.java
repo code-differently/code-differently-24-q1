@@ -3,6 +3,7 @@ package com.codedifferently.lesson16.library;
 import com.codedifferently.lesson16.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson16.library.exceptions.WrongLibraryException;
 import java.util.Set;
+import java.util.UUID;
 
 public interface LibraryGuest {
   /**
@@ -32,7 +33,7 @@ public interface LibraryGuest {
    *
    * @return The id of the guest.
    */
-  public String getId();
+  public UUID getId();
 
   /**
    * Gets the items currently checked out to the guest.

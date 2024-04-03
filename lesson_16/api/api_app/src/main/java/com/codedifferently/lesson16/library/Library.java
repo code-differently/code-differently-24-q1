@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 public class Library {
   private final Map<UUID, MediaItem> itemsById = new HashMap<>();
   private final Set<UUID> checkedOutItemIds = new HashSet<>();
-  private final Map<String, Set<MediaItem>> checkedOutItemsByGuest = new HashMap<>();
-  private final Map<String, LibraryGuest> guestsById = new HashMap<>();
+  private final Map<UUID, Set<MediaItem>> checkedOutItemsByGuest = new HashMap<>();
+  private final Map<UUID, LibraryGuest> guestsById = new HashMap<>();
   private final String id;
   private final CatalogSearcher<MediaItem> searcher;
 
@@ -66,6 +66,17 @@ public class Library {
   }
 
   /**
+   * Remove a item from the library.
+   *
+   * @param id The ID of the item to remove.
+   * @param librarian The librarian removing the item.
+   */
+  public void removeMediaItem(UUID id, Librarian librarian) throws MediaItemCheckedOutException {
+    MediaItem item = this.itemsById.get(id);
+    this.removeMediaItem(item, librarian);
+  }
+
+  /**
    * Search the library for items matching the given query.
    *
    * @param query The query to search for.
@@ -89,15 +100,28 @@ public class Library {
   /**
    * Remove a guest from the library.
    *
-   * @param guest The guest to remove.
+   * @param id The ID of the guest to remove.
    */
-  public void removeLibraryGuest(LibraryGuest guest) throws MediaItemCheckedOutException {
+  public void removeLibraryGuest(UUID id) throws MediaItemCheckedOutException {
+    LibraryGuest guest = this.guestsById.get(id);
+    if (guest == null) {
+      return;
+    }
     if (!this.checkedOutItemsByGuest.get(guest.getId()).isEmpty()) {
       throw new MediaItemCheckedOutException("Cannot remove guest with checked out items.");
     }
     this.guestsById.remove(guest.getId());
     this.checkedOutItemsByGuest.remove(guest.getId());
     guest.setLibrary(null);
+  }
+
+  /**
+   * Remove a guest from the library.
+   *
+   * @param guest The guest to remove.
+   */
+  public void removeLibraryGuest(LibraryGuest guest) throws MediaItemCheckedOutException {
+    this.removeLibraryGuest(guest.getId());
   }
 
   public Set<Librarian> getLibrarians() {
@@ -143,7 +167,17 @@ public class Library {
    * @return True if the library has the item, false otherwise.
    */
   public boolean hasMediaItem(MediaItem item) {
-    return this.itemsById.containsKey(item.getId());
+    return this.hasMediaItem(item.getId());
+  }
+
+  /**
+   * Check if the library has the given item.
+   *
+   * @param id The ID of the item to check for.
+   * @return True if the library has the item, false otherwise.
+   */
+  public boolean hasMediaItem(UUID id) {
+    return this.itemsById.containsKey(id);
   }
 
   /**
@@ -163,7 +197,17 @@ public class Library {
    * @return True if the library has the guest, false otherwise.
    */
   public boolean hasLibraryGuest(LibraryGuest guest) {
-    return this.guestsById.containsKey(guest.getId());
+    return this.hasLibraryGuest(guest.getId());
+  }
+
+  /**
+   * Check if the library has the given guest.
+   *
+   * @param id The ID to check for.
+   * @return True if the library has the guest, false otherwise.
+   */
+  public boolean hasLibraryGuest(UUID id) {
+    return this.guestsById.containsKey(id);
   }
 
   /**
@@ -198,7 +242,7 @@ public class Library {
    * @return The library info.
    */
   public LibraryInfo getInfo() {
-    Map<String, Set<MediaItem>> itemsByGuest =
+    Map<UUID, Set<MediaItem>> itemsByGuest =
         this.checkedOutItemsByGuest.entrySet().stream()
             .collect(
                 HashMap::new,

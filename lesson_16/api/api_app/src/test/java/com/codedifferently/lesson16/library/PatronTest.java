@@ -28,7 +28,7 @@ class PatronTest {
   void testPatron_created() {
     // Assert
     assertThat(classUnderTest.getName()).isEqualTo("John Doe");
-    assertThat(classUnderTest.getId()).isEqualTo("johndoe@example.com");
+    assertThat(classUnderTest.getEmail()).isEqualTo("johndoe@example.com");
   }
 
   @Test

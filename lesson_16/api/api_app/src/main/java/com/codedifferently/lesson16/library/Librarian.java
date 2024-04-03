@@ -8,6 +8,6 @@ public class Librarian extends LibraryGuestBase {
 
   @Override
   public String toString() {
-    return "Librarian{" + "id='" + getId() + '\'' + ", name='" + getName() + '\'' + '}';
+    return "Librarian{" + "id='" + getEmail() + '\'' + ", name='" + getName() + '\'' + '}';
   }
 }

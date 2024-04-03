@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.codedifferently.lesson16.Lesson16;
 import com.codedifferently.lesson16.library.LibraryGuest;
 import com.codedifferently.lesson16.library.MediaItem;
+import com.codedifferently.lesson16.library.MediaType;
 import com.codedifferently.lesson16.models.CheckoutModel;
 import com.codedifferently.lesson16.models.LibraryDataModel;
 import java.util.HashMap;
@@ -40,22 +41,22 @@ class LibraryCsvDataLoaderTest {
   @Test
   void testDataLoader_loadsCorrectItemTypes() {
     List<MediaItem> items = libraryDataModel.getMediaItems();
-    Map<String, Integer> countByMediaType =
+    Map<MediaType, Integer> countByMediaType =
         items.stream()
             .reduce(
                 new HashMap<>(),
                 (hashMap, e) -> {
-                  hashMap.merge(e.getType().toString(), 1, Integer::sum);
+                  hashMap.merge(e.getType(), 1, Integer::sum);
                   return hashMap;
                 },
                 (m, m2) -> {
                   m.putAll(m2);
                   return m;
                 });
-    assertThat(countByMediaType.get("book")).isEqualTo(7);
-    assertThat(countByMediaType.get("magazine")).isEqualTo(8);
-    assertThat(countByMediaType.get("newspaper")).isEqualTo(8);
-    assertThat(countByMediaType.get("dvd")).isEqualTo(8);
+    assertThat(countByMediaType.get(MediaType.BOOK)).isEqualTo(7);
+    assertThat(countByMediaType.get(MediaType.MAGAZINE)).isEqualTo(8);
+    assertThat(countByMediaType.get(MediaType.NEWSPAPER)).isEqualTo(8);
+    assertThat(countByMediaType.get(MediaType.DVD)).isEqualTo(8);
     assertThat(items.stream().map(MediaItem::getId).distinct().count()).isEqualTo(31);
     assertThat(items.stream().map(MediaItem::getTitle).distinct().count()).isEqualTo(31);
   }

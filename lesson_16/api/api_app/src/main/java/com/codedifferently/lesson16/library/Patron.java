@@ -15,6 +15,6 @@ public class Patron extends LibraryGuestBase {
 
   @Override
   public String toString() {
-    return "Patron{" + "id='" + getId() + '\'' + ", name='" + getName() + '\'' + '}';
+    return "Patron{" + "id='" + getEmail() + '\'' + ", name='" + getName() + '\'' + '}';
   }
 }

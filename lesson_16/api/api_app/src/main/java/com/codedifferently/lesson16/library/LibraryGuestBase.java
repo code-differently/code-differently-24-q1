@@ -4,11 +4,13 @@ import com.codedifferently.lesson16.library.exceptions.LibraryNotSetException;
 import com.codedifferently.lesson16.library.exceptions.WrongLibraryException;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 /** Base implementation of a library guest. */
 public class LibraryGuestBase implements LibraryGuest {
 
   private Library library;
+  private final UUID id = UUID.randomUUID();
   private final String name;
   private final String email;
 
@@ -21,7 +23,7 @@ public class LibraryGuestBase implements LibraryGuest {
   public void setLibrary(Library library) throws WrongLibraryException {
     if (library != null && !library.hasLibraryGuest(this)) {
       throw new WrongLibraryException(
-          "Patron " + this.getId() + " is not in library " + library.getId());
+          "Patron " + this.getEmail() + " is not in library " + library.getId());
     }
     this.library = library;
   }
@@ -37,14 +39,14 @@ public class LibraryGuestBase implements LibraryGuest {
   }
 
   @Override
-  public String getId() {
-    return this.email;
+  public UUID getId() {
+    return this.id;
   }
 
   @Override
   public Set<MediaItem> getCheckedOutMediaItems() throws LibraryNotSetException {
     if (this.library == null) {
-      throw new LibraryNotSetException("Library not set for patron " + this.getId());
+      throw new LibraryNotSetException("Library not set for patron " + this.getEmail());
     }
     return this.library.getCheckedOutByGuest(this);
   }
@@ -58,7 +60,7 @@ public class LibraryGuestBase implements LibraryGuest {
       return false;
     }
     LibraryGuestBase guest = (LibraryGuestBase) o;
-    return Objects.equals(getId(), guest.getId());
+    return Objects.equals(getEmail(), guest.getEmail());
   }
 
   @Override
@@ -68,6 +70,6 @@ public class LibraryGuestBase implements LibraryGuest {
 
   @Override
   public String toString() {
-    return "LibraryGuestBase{" + "id='" + getId() + '\'' + ", name='" + getName() + '\'' + '}';
+    return "LibraryGuestBase{" + "id='" + getEmail() + '\'' + ", name='" + getName() + '\'' + '}';
   }
 }

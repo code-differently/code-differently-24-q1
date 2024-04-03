@@ -9,6 +9,7 @@ import com.codedifferently.lesson16.library.search.SearchCriteria;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.UUID;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -41,7 +42,7 @@ public final class LibraryApp {
 
   private void printLibraryInfo(Library library) {
     LibraryInfo info = library.getInfo();
-    Map<String, Set<MediaItem>> checkedOutItemsByGuest = info.getCheckedOutItemsByGuest();
+    Map<UUID, Set<MediaItem>> checkedOutItemsByGuest = info.getCheckedOutItemsByGuest();
     int numCheckedOutItems = checkedOutItemsByGuest.values().stream().mapToInt(Set::size).sum();
     System.out.println();
     System.out.println("========================================");
