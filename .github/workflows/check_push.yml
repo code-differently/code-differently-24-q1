@@ -20,6 +20,7 @@ on:
       - "lesson_13/bank/**"
       - "lesson_14/algos/**"
       - "lesson_14/db/**"
+      - "lesson_16/api/**"
 
 jobs:
   build:
@@ -100,6 +101,10 @@ jobs:
     - name: Build Lesson 14 DB with Gradle Wrapper
       working-directory: ./lesson_14/db
       run: ./gradlew check
+
+    - name: Build Lesson 16 with Gradle Wrapper
+      working-directory: ./lesson_16/api
+      run: ./gradlew assemble && ./gradlew spotlessCheck
 
     - name: Build Shared Lib with Gradle Wrapper
       working-directory: ./lib/java/codedifferently-instructional
