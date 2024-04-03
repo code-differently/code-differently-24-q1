@@ -6,7 +6,7 @@ import java.util.Set;
 /** Represents a checking account. */
 public class CheckingAccount {
   private final Set<Customer> owners;
-  private final String accountNumber;
+  final String accountNumber;
   private double balance;
   private boolean isActive;
 
