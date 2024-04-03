@@ -61,6 +61,15 @@ class MediaItemsControllerTest {
   }
 
   @Test
+  void testController_reportsBadRequestOnAddItem() throws Exception {
+    String json = "{}";
+
+    mockMvc
+        .perform(post("/items").contentType(MediaType.APPLICATION_JSON).content(json))
+        .andExpect(status().isBadRequest());
+  }
+
+  @Test
   void testController_addsItem() throws Exception {
     String json =
         """
