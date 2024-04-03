@@ -1,0 +1,47 @@
+
+  * {
+    font-family: sans-serif;
+    font-weight: 500;
+  }
+
+  .line{
+    border-bottom: 1px solid lightgray;
+  }
+
+  section, header{
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+
+  img{
+    padding-top: 20px;
+    max-width: 100%;
+  }
+
+  p, li{
+    font-weight: 300;
+    font-size: 16px;
+  }
+ 
+  @keyframes fadeInUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+  
+  .fadeInUp-animation {
+    animation: 2.5s fadeInUp;
+  }
+
+  @media(max-width: 500px){
+
+    section, header{
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+  }
