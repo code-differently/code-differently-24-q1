@@ -1,7 +1,7 @@
 {
-  "name": "ts-node-express",
+  "name": "lesson_15",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Lecture Resources",
   "main": "dist/index.js",
   "scripts": {
     "build": "npx tsc",
