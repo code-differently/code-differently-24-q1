@@ -1,0 +1,23 @@
+{
+  "name": "ts-node-express",
+  "version": "1.0.0",
+  "main": "dist/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+    "scripts": {
+      "build": "npx tsc",
+      "start": "node dist/index.js",
+      "dev": "nodemon src/index.ts"
+    }
+    
+  }
+
