@@ -1,19 +1,15 @@
-import express, { Request, Response } from 'express';
-import * as path from 'path';
+import express, { Express, Request, Response } from "express";
+import dotenv from "dotenv";
 
-const app = express();
-const PORT = 9000;
+dotenv.config();
 
-// Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+const app: Express = express();
+const port = process.env.PORT || 3000;
 
-// Define routes
-app.get('/', (req: Request, res: Response) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get("/", (req: Request, res: Response) => {
+  res.send("Express + TypeScript Server");
 });
 
-// Start the server
-app.use((err: any, req: Request, res: Response, next: Function) => {
-    console.error(err.stack);
-    res.status(500).send('Something broke!');
+app.listen(port, () => {
+  console.log(`[server]: Server is running at http://localhost:${port}`);
 });
