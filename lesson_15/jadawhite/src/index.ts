@@ -5,7 +5,7 @@ import { Domain } from "domain";
 dotenv.config();
 
 const app: Express = express();
-app.use(express.static('Public'));
+app.use(express.static('public'));
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
