@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app: Express = express();
+app.use(express.static('randycastro'))
 const port = process.env.PORT || 3000;
 
 app.get("/", (req: Request, res: Response) => {
