@@ -1,8 +1,6 @@
 package com.codedifferently.lesson16.cli;
 
 import com.codedifferently.lesson16.factory.LibraryDataLoader;
-import com.codedifferently.lesson16.factory.LibraryDbDataLoader;
-import com.codedifferently.lesson16.factory.LibraryFactory;
 import com.codedifferently.lesson16.library.Book;
 import com.codedifferently.lesson16.library.Library;
 import com.codedifferently.lesson16.library.LibraryInfo;
@@ -23,13 +21,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public final class LibraryApp {
-  @Autowired private LibraryDbDataLoader defaultLibraryDataLoader;
+  @Autowired private Library library;
 
   public void run(String[] args) throws Exception {
-    // Load the library using the specified loader from the command line or the default.
-    LibraryDataLoader loader = getLoaderOrDefault(args, defaultLibraryDataLoader);
-    Library library = LibraryFactory.createWithLoader(loader);
-
     // Show stats about the loaded library to the user.
     printLibraryInfo(library);
 
