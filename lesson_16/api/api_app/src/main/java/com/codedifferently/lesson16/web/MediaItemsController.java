@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
  * @author vscode
  */
 @RestController
@@ -48,8 +47,10 @@ public class MediaItemsController {
   }
 
   @GetMapping("/items/{id}")
-  public GetMediaItemsResponse getItemById(@PathVariable String id) {
-  MediaItem item = MediaItemRequest.asMediaItem();
-  return CreateMediaItemResponse.builder().item(MediaItemResponse.from(item)).build();
+  public ResponseEntity<MediaItemResponse> getMediaItem(@PathVariable UUID id) {
+   SearchCriteria criteria = SearchCriteria.builder.id(id.toString().build());
+   Set<MediaItem> 
+   
+   
   }
 }
