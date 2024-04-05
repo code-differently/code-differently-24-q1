@@ -4,10 +4,16 @@ import com.codedifferently.lesson16.library.Librarian;
 import com.codedifferently.lesson16.library.Library;
 import com.codedifferently.lesson16.library.MediaItem;
 import com.codedifferently.lesson16.library.search.SearchCriteria;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,4 +33,12 @@ public class MediaItemsController {
     var response = GetMediaItemsResponse.builder().items(responseItems).build();
     return response;
   }
+
+
+@DeleteMapping("/items/{id}")
+
+public ResponseEntity<Void> deleteItem(@PathVariable("id") UUID id) {
+library.removeMediaItem(id, librarian);
+return ResponseEntity.noContent().build();
+}
 }
