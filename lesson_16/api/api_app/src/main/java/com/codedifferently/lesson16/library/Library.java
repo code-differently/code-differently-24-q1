@@ -124,11 +124,25 @@ public class Library {
     this.removeLibraryGuest(guest.getId());
   }
 
+  /**
+   * Returns all librarians registered for this library.
+   *
+   * @return A unique set of librarians.
+   */
   public Set<Librarian> getLibrarians() {
     return this.guestsById.values().stream()
         .filter(g -> g instanceof Librarian)
         .map(g -> (Librarian) g)
         .collect(Collectors.toSet());
+  }
+
+  /**
+   * Returns all registered library patrons.
+   *
+   * @return A unique set of all Library patrons.
+   */
+  public Set<LibraryGuest> getPatrons() {
+    return this.guestsById.values().stream().collect(Collectors.toSet());
   }
 
   /**
