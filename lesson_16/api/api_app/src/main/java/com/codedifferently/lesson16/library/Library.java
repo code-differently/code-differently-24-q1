@@ -138,11 +138,11 @@ public class Library {
 
   /**
    * Returns all registered library patrons.
-   * 
+   *
    * @return A unique set of all Library patrons.
    */
   public Set<LibraryGuest> getPatrons() {
-      return this.guestsById.values().stream().collect(Collectors.toSet());
+    return this.guestsById.values().stream().collect(Collectors.toSet());
   }
 
   /**
