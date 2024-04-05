@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,12 +26,11 @@ public class MediaItemsController {
   }
 
   @GetMapping("/items")
-  public ResponseEntity<GetMediaItemsResponse> getItems() {
+  public GetMediaItemsResponse getItems() {
     Set<MediaItem> items = library.search(SearchCriteria.builder().build());
-    List<MediaItemResponse> responseItems =
-        items.stream().map(MediaItemResponse::from).collect(Collectors.toList());
-    GetMediaItemsResponse response = GetMediaItemsResponse.builder().items(responseItems).build();
-    return ResponseEntity.ok(response);
+    List<MediaItemResponse> responseItems = items.stream().map(MediaItemResponse::from).toList();
+    var response = GetMediaItemsResponse.builder().items(responseItems).build();
+    return response;
   }
 
   @PostMapping("/items")
