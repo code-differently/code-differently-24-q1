@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.codedifferently.lesson16.library.exceptions.MediaItemCheckedOutException;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -333,5 +334,20 @@ class LibraryTest {
     // Assert
     assertThat(wasCheckedOut).isFalse();
     assertThat(patron.getCheckedOutMediaItems().contains(newspaper)).isFalse();
+  }
+
+  @Test
+  void testLibrary_retrievesAllPatrons() {
+    // Arrange
+    Patron patron1 = new Patron("John Doe", "john@example.com");
+    Patron patron2 = new Patron("Jane Doe", "jane@example.com");
+    classUnderTest.addLibraryGuest(patron1);
+    classUnderTest.addLibraryGuest(patron2);
+
+    // Act
+    Set<LibraryGuest> guests = classUnderTest.getPatrons();
+
+    // Assert
+    assertThat(classUnderTest.getPatrons().size()).isEqualTo(2);
   }
 }
