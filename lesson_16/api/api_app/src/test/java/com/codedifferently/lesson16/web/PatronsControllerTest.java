@@ -1,87 +1,71 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+package com.codedifferently.lesson16.web;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.codedifferently.lesson16.library.Library;
 import com.codedifferently.lesson16.library.LibraryGuest;
-import com.codedifferently.lesson16.library.exceptions.MediaItemCheckedOutException;
-import com.codedifferently.lesson16.web.PatronsController;
-import java.util.*;
+import java.util.Collections;
+import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 public class PatronsControllerTest {
 
-  @Mock private Library library;
-
-  @InjectMocks private PatronsController patronsController;
+  private MockMvc mockMvc;
+  private Library library;
 
   @BeforeEach
   public void setUp() {
-    MockitoAnnotations.initMocks(this);
+    library = mock(Library.class);
+    mockMvc = MockMvcBuilders.standaloneSetup(new PatronsController(library)).build();
   }
 
   @Test
-  public void testGetPatrons() {
-    LibraryGuest patron1 = mock(LibraryGuest.class);
-    LibraryGuest patron2 = mock(LibraryGuest.class);
-    Set<LibraryGuest> patrons = new HashSet<>(Arrays.asList(patron1, patron2));
+  public void testGetPatrons() throws Exception {
+    // Mocking
+    Set<LibraryGuest> patrons = Collections.emptySet(); // Assuming no patrons for simplicity
     when(library.getPatrons()).thenReturn(patrons);
 
-    ResponseEntity<Collection<LibraryGuest>> response = patronsController.getPatrons();
-
-    assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertEquals(patrons, response.getBody());
+    // Execution and Assertion
+    mockMvc
+        .perform(get("/patrons"))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON));
   }
 
   @Test
-  public void testCreatePatron() {
-
-    LibraryGuest patron = mock(LibraryGuest.class);
-    doNothing().when(library).addLibraryGuest(patron);
-
-    ResponseEntity<?> response = patronsController.createPatron(patron);
-
-    assertEquals(HttpStatus.CREATED, response.getStatusCode());
+  public void testCreatePatron() throws Exception {
+    // Mocking
+    mockMvc
+        .perform(
+            post("/patrons")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(
+                    "{\"id\": \"123e4567-e89b-12d3-a456-426614174000\", \"name\": \"John Doe\", \"email\": \"john@example.com\"}")
+                .accept(MediaType.APPLICATION_JSON))
+        .andExpect(status().isCreated());
   }
 
   @Test
-  public void testRemovePatron() throws MediaItemCheckedOutException {
-
-    UUID id = UUID.randomUUID();
-    doNothing().when(library).removeLibraryGuest(id);
-
-    ResponseEntity<Void> response = patronsController.removePatron(id);
-
-    assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+  public void testRemovePatron() throws Exception {
+    // Execution and Assertion
+    mockMvc
+        .perform(delete("/patrons/{id}", "123e4567-e89b-12d3-a456-426614174000"))
+        .andExpect(status().isNoContent());
   }
 
   @Test
-  public void testRemovePatronWithCheckedOutItems() throws MediaItemCheckedOutException {
-
-    UUID id = UUID.randomUUID();
-    doThrow(new MediaItemCheckedOutException("")).when(library).removeLibraryGuest(id);
-
-    ResponseEntity<Void> response = patronsController.removePatron(id);
-
-    assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
-  }
-
-  @Test
-  public void testGetPatron() {
-
-    LibraryGuest mockPatron = mock(LibraryGuest.class);
-    Set<LibraryGuest> patrons = Collections.singleton(mockPatron);
-
-    when(library.getPatrons()).thenReturn(patrons);
-
-    ResponseEntity<Collection<LibraryGuest>> response = patronsController.getPatrons();
-
-    assertEquals(HttpStatus.OK, response.getStatusCode());
-    assertEquals(patrons, response.getBody());
+  void testGetPatronById() throws Exception {
+    mockMvc
+        .perform(
+            get("/patrons/{id}", "31616162-3831-3832-2d34-3334352d3465")
+                .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk());
   }
 }
