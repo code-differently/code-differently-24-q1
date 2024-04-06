@@ -3,10 +3,9 @@ package com.codedifferently.lesson16.web;
 import com.codedifferently.lesson16.library.Library;
 import com.codedifferently.lesson16.library.LibraryGuest;
 import com.codedifferently.lesson16.library.exceptions.MediaItemCheckedOutException;
-import com.codedifferently.lesson16.library.search.SearchCriteria;
+import jakarta.validation.Valid;
 import java.util.Collection;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,24 +27,16 @@ public class PatronsController {
   }
 
   @PostMapping
-  public ResponseEntity<?> createPatron(@RequestBody LibraryGuest patron) {
-    library.addLibraryGuest(patron);
+  public ResponseEntity<?> createPatron(@Valid @RequestBody PatronsRequest request) {
+    LibraryGuest guest = PatronsRequest.asLibraryGuest(request);
+    library.addLibraryGuest(guest);
     return ResponseEntity.status(HttpStatus.CREATED).build();
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<LibraryGuest> getPatron(@PathVariable UUID id) {
-    SearchCriteria query = SearchCriteria.builder().id(id.toString()).build();
-    Collection<LibraryGuest> patrons =
-        library.search(query).stream()
-            .filter(item -> item instanceof LibraryGuest)
-            .map(item -> (LibraryGuest) item)
-            .collect(Collectors.toList());
-    if (!patrons.isEmpty()) {
-      return ResponseEntity.ok(patrons.iterator().next());
-    } else {
-      return ResponseEntity.notFound().build();
-    }
+  public ResponseEntity<Collection<LibraryGuest>> getPatron() {
+    Collection<LibraryGuest> patron = library.getPatrons();
+    return ResponseEntity.ok(patron);
   }
 
   @DeleteMapping("/{id}")
