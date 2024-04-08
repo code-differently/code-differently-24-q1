@@ -45,17 +45,27 @@ public class MediaItemsController {
     return CreateMediaItemResponse.builder().item(MediaItemResponse.from(item)).build();
   }
 
-  // @GetMapping("/items")
-  // public GetMediaItemsResponse getSingleItem() {
-  //   Set<MediaItem> items = library.search(SearchCriteria.builder().build());
-  //   List<MediaItemResponse> responseItems = items.stream().map(MediaItemResponse::from).toList();
-  //   var response = GetMediaItemsResponse.builder().items(responseItems).build();
-  //   return response;
-  // }
+  @GetMapping("/items/{id}")
+  public ResponseEntity<MediaItemResponse> getItemById(@PathVariable UUID id) {
+    SearchCriteria criteria = SearchCriteria.builder().id(id.toString()).build();
+    Set<MediaItem> items = library.search(criteria);
 
-  @DeleteMapping("/item/{id}")
+    if (!items.isEmpty()) {
+      MediaItem item = items.iterator().next(); // Assuming the ID is unique
+      MediaItemResponse response = MediaItemResponse.from(item);
+      return ResponseEntity.ok(response);
+    } else {
+      return ResponseEntity.notFound().build();
+    }
+  }
+
+  @DeleteMapping("/items/{id}")
   public ResponseEntity<Void> deleteMediaItem(@PathVariable("id") UUID id) {
-    library.removeMediaItem(id, librarian);
-    return ResponseEntity.noContent().build();
+    try {
+      library.removeMediaItem(id, librarian);
+      return ResponseEntity.noContent().build(); // Successfully removed
+    } catch (Exception e) {
+      return ResponseEntity.notFound().build(); // MediaItem with given id not found
+    }
   }
 }
