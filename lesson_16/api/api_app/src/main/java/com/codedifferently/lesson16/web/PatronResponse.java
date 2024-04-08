@@ -1,7 +1,9 @@
 package com.codedifferently.lesson16.web;
 
-import com.codedifferently.lesson16.library.Patron;
 import java.util.UUID;
+
+import com.codedifferently.lesson16.library.LibraryGuest;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -19,7 +21,7 @@ public class PatronResponse {
    * @param patron The Patron object to convert.
    * @return The converted PatronResponse object.
    */
-  public static PatronResponse from(Patron patron) {
+  public static PatronResponse from(LibraryGuest patron) {
     return PatronResponse.builder()
         .id(patron.getId())
         .name(patron.getName())
