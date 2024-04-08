@@ -6,6 +6,7 @@ import com.codedifferently.lesson16.library.search.SearchCriteria;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -282,5 +283,37 @@ public class Library {
         + ", guestIds="
         + guestsById
         + '}';
+  }
+
+  public Set<MediaItem> getAllItems() {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
+  public MediaItem getItemById(String id) {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
+  public MediaItem addItem(MediaItem item) {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
+  public boolean deleteItem(String id) {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
+  public List<MediaItem> getAllMediaItems() {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
+  public MediaItem getMediaItemById(String id) {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
+  public MediaItem addMediaItem(MediaItem mediaItem) {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
+  public boolean deleteMediaItemById(String id) {
+    throw new UnsupportedOperationException("Not supported yet.");
   }
 }
