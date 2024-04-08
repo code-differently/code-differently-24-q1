@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CreatePatronRequest {
+public class CreatePatronsRequest {
   @NotNull(message = "patron is required") @Valid
   private PatronsRequest patron;
 }
