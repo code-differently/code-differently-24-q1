@@ -10,4 +10,3 @@ import lombok.Singular;
 public class GetMediaItemsResponse {
   @Singular private List<MediaItemResponse> items;
 }
- 
