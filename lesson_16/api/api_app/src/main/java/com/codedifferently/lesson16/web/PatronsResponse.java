@@ -1,14 +1,11 @@
 package com.codedifferently.lesson16.web;
 
-import java.util.UUID;
-
 import com.codedifferently.lesson16.library.Patron;
-
+import java.util.UUID;
 import lombok.Builder;
 import lombok.Data;
 
 /**
- *
  * @author vscode
  */
 @Data
@@ -18,7 +15,7 @@ public class PatronsResponse {
   private String name;
   private String email;
 
-    public static PatronsResponse from(Patron patron) {
+  public static PatronsResponse from(Patron patron) {
     return null;
   }
 }
