@@ -1,0 +1,42 @@
+{
+  "name": "ts-node-express",
+  "version": "1.0.0",
+<<<<<<< HEAD:lesson_15/jadawhite/package.json
+  "description": "",
+  "main": "dist/index.js",
+=======
+  "main": "src/index.js",
+>>>>>>> parent of ddd99a8 (feat: Changed/deleted files):lesson_15/ts-node-express/package.json
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+<<<<<<< HEAD:lesson_15/jadawhite/package.json
+=======
+  "description": "",
+>>>>>>> parent of ddd99a8 (feat: Changed/deleted files):lesson_15/ts-node-express/package.json
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+<<<<<<< HEAD:lesson_15/jadawhite/package.json
+    "@types/node": "^20.12.2",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  }
+}
+=======
+    "@types/node": "^20.10.3",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.2"
+  }
+}
+>>>>>>> parent of ddd99a8 (feat: Changed/deleted files):lesson_15/ts-node-express/package.json
