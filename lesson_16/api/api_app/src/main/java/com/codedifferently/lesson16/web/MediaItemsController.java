@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+// ___________________________________________________________
+// THIS CODE WAS MADE IN COLLABORATION WITH VICENTE AND RICH
+// ___________________________________________________________
+
 @RestController
 public class MediaItemsController {
   private final Library library;
@@ -45,8 +49,8 @@ public class MediaItemsController {
   }
 
   @GetMapping("/items/{id}")
-  public GetMediaItemsResponse getMediaItem(@PathVariable String id) {
-    Set<MediaItem> items = library.search(SearchCriteria.builder().id(id).build());
+  public GetMediaItemsResponse getItem(@PathVariable UUID id) {
+    Set<MediaItem> items = library.search(SearchCriteria.builder().id(id.toString()).build());
     if (items.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Media item not found");
     }
@@ -56,11 +60,11 @@ public class MediaItemsController {
   }
 
   @DeleteMapping("/items/{id}")
-  public ResponseEntity<Void> deleteMediaItem(@PathVariable String id) {
-    if (!library.hasMediaItem(UUID.fromString(id))) {
+  public ResponseEntity<Void> deleteItem(@PathVariable UUID id) {
+    if (!library.hasMediaItem(id)) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Media item not found");
     }
-    library.removeMediaItem(UUID.fromString(id), librarian);
+    library.removeMediaItem(id, librarian);
     return ResponseEntity.noContent().build();
   }
 }
