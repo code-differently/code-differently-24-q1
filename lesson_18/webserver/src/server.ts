@@ -10,12 +10,13 @@ app.post('/search', async (req: Request, res: Response) => {
 
     console.log("Server: Search for titles containing:", searchText || "<empty>");
 
+    // Invoke the items API to get the list of items and filter matching titles.
     const apiResponse = await fetch(`http://localhost:5000/items`);
     const apiData = await apiResponse.json();
-
     const filteredData = apiData.items
         .filter((item: any) => item.title.toLowerCase().includes(searchText.toLowerCase()));
     
+    // Dynamically build our response HTML character-by-character.
     let responseText = '<h1>Search Results</h1>';
     responseText += '<ul>';
     for (const item of filteredData) {
@@ -23,6 +24,7 @@ app.post('/search', async (req: Request, res: Response) => {
     }
     responseText += '</ul>';
 
+    // Send the response back to the client.
     res.status(200).send(responseText);
 });
 
