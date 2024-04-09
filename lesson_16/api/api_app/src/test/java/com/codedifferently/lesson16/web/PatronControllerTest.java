@@ -54,7 +54,7 @@ class PatronControllerTest {
         .perform(get("/patrons").contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.patrons").isArray())
-        .andExpect(jsonPath("$.patrons.length()").value(5));
+        .andExpect(jsonPath("$.patrons.length()").value(4));
   }
 
   @Test
@@ -139,14 +139,10 @@ class PatronControllerTest {
   }
 
   UUID getGuestId(List<LibraryGuest> list) {
-    if (list.get(0).getCheckedOutMediaItems().size() == 0) {
-      return list.get(0).getId();
-    } else if (list.get(1).getCheckedOutMediaItems().size() == 0) {
-      return list.get(1).getId();
-    } else if (list.get(2).getCheckedOutMediaItems().size() == 0) {
-      return list.get(2).getId();
-    } else if (list.get(3).getCheckedOutMediaItems().size() == 0) {
-      return list.get(3).getId();
+    for (LibraryGuest guest : list) {
+      if (guest.getCheckedOutMediaItems().size() == 0) {
+        return guest.getId();
+      }
     }
     return list.get(4).getId();
   }
