@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Web server demo</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.gif" alt="logo" />
+        </div>
+        <form action="/search" method="POST">
+            <div class="search-box">
+                <input name="searchText" class="search-text" type="text" placeholder="Search..." />
+            </div>
+            <div class="buttons">
+                <button class="search-button red-button">Google Search</button>
+                <button class="lucky-button red-button">I'm Feeling Lucky</button>
+            </div>
+        </form>
+    </div>
+    <div class="results"></div>
+    <script src="script.js"></script>
+</body>
+<footer>
+    <p>&copy; 2024 Web server demo</p>
+</footer>
+</html>
