@@ -1,6 +1,6 @@
 # Lesson 18
 
-## Lecture resources
+## Lecture Resources
 
 * [HTML Tutorial for Beginners: HTML Crash Course](https://youtu.be/qz0aGYrrlhU) **(1 hour)** - An introduction to HTML designed for folks who've never worked with it or would like a refresher.
 * [Client-side vs Server-side, Front-end vs Back-end? Beginner Explanation of JavaScript on the Web](https://youtu.be/7GRKUaQ8Spk) **(12 minutes)** - Check out this video to help understand the difference between the server-side and the client-side
