@@ -77,7 +77,7 @@ class PatronControllerTest {
   @Test
   void testController_addsPatron() throws Exception {
     String json =
-  """
+        """
     {
       "patron":{
             "name": "John Book",
