@@ -1,10 +1,13 @@
 package com.codedifferently.lesson16.web;
 
+import com.codedifferently.lesson16.library.Library;
+import com.codedifferently.lesson16.library.LibraryGuest;
+import com.codedifferently.lesson16.library.exceptions.MediaItemCheckedOutException;
+import jakarta.validation.Valid;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,12 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.codedifferently.lesson16.library.Library;
-import com.codedifferently.lesson16.library.LibraryGuest;
-import com.codedifferently.lesson16.library.exceptions.MediaItemCheckedOutException;
-
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/patrons")

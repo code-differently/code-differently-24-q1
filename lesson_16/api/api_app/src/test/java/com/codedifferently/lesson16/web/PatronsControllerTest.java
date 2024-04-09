@@ -1,23 +1,22 @@
 package com.codedifferently.lesson16.web;
 
-import java.util.Collections;
-import java.util.Set;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.codedifferently.lesson16.library.Library;
 import com.codedifferently.lesson16.library.LibraryGuest;
+import java.util.Collections;
+import java.util.Set;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 class PatronsControllerTest {
 
@@ -31,18 +30,17 @@ class PatronsControllerTest {
   }
 
   @Test
-public void testGetPatrons() throws Exception {
+  public void testGetPatrons() throws Exception {
     // Mocking
-    Set<LibraryGuest> patrons = Collections.emptySet(); 
+    Set<LibraryGuest> patrons = Collections.emptySet();
     when(library.getPatrons()).thenReturn(patrons);
 
     // Execution and Assertion
     mockMvc
         .perform(get("/patrons"))
-        .andExpect(status().isOk()) 
+        .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON));
-}
-
+  }
 
   @Test
   public void testCreatePatron() throws Exception {
