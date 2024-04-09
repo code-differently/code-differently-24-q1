@@ -12,6 +12,7 @@ import com.codedifferently.lesson16.library.Library;
 import com.codedifferently.lesson16.library.LibraryGuest;
 import com.codedifferently.lesson16.library.Patron;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeAll;
@@ -30,9 +31,21 @@ class PatronControllerTest {
   private static MockMvc mockMvc;
   @Autowired private Library library;
 
+  private Library lib = library;
+
   @BeforeAll
   static void setUp(WebApplicationContext wac) {
     mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+  }
+
+  @Test
+  void testController_getsAnPatron() throws Exception {
+    List<LibraryGuest> pat = library.getPatrons().stream().toList();
+    UUID ids = pat.get(3).getId();
+
+    mockMvc
+        .perform(get("/patrons/" + ids.toString()).contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk());
   }
 
   @Test
@@ -42,42 +55,6 @@ class PatronControllerTest {
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.patrons").isArray())
         .andExpect(jsonPath("$.patrons.length()").value(5));
-  }
-
-  @Test
-  void testController_deletesPatron() throws Exception {
-    Set<LibraryGuest> pat = library.getPatrons();
-    UUID ids = UUID.fromString("00000000-0000-0000-0000-000000000000");
-    for (LibraryGuest guest : pat) {
-      if (guest.getName() == "Alice Johnson") {
-        ids = guest.getId();
-      }
-    }
-
-    mockMvc
-        .perform(delete("/patrons/" + ids.toString()).contentType(MediaType.APPLICATION_JSON))
-        .andExpect(status().isNoContent());
-    int i = 0;
-    for (LibraryGuest guest : pat) {
-      if (guest.getName() == "Alice Johnson") {
-        i++;
-      }
-    }
-    assertThat(i).isEqualTo(0);
-  }
-
-  @Test
-  void testController_getsAnPatron() throws Exception {
-    Set<LibraryGuest> pat = library.getPatrons();
-    UUID ids = UUID.fromString("00000000-0000-0000-0000-000000000000");
-    for (LibraryGuest guest : pat) {
-      if (guest.getName() == "Bob Williams") {
-        ids = guest.getId();
-      }
-    }
-    mockMvc
-        .perform(get("/patrons/" + ids.toString()).contentType(MediaType.APPLICATION_JSON))
-        .andExpect(status().isOk());
   }
 
   @Test
@@ -139,5 +116,38 @@ class PatronControllerTest {
             delete("/patrons/00000000-0000-0000-0000-000000000000")
                 .contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isNotFound());
+  }
+
+  @Test
+  void testController_deletesPatron() throws Exception {
+    Library lib = library;
+    List<LibraryGuest> pat = library.getPatrons().stream().toList();
+    UUID ids = getGuestId(pat);
+
+    mockMvc
+        .perform(delete("/patrons/" + ids.toString()).contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isNoContent());
+    int i = 0;
+    pat = library.getPatrons().stream().toList();
+    for (LibraryGuest guest : pat) {
+      if (guest.getId() == ids) {
+        i++;
+      }
+    }
+    library = lib;
+    assertThat(i).isEqualTo(0);
+  }
+
+  UUID getGuestId(List<LibraryGuest> list) {
+    if (list.get(0).getCheckedOutMediaItems().size() == 0) {
+      return list.get(0).getId();
+    } else if (list.get(1).getCheckedOutMediaItems().size() == 0) {
+      return list.get(1).getId();
+    } else if (list.get(2).getCheckedOutMediaItems().size() == 0) {
+      return list.get(2).getId();
+    } else if (list.get(3).getCheckedOutMediaItems().size() == 0) {
+      return list.get(3).getId();
+    }
+    return list.get(4).getId();
   }
 }
