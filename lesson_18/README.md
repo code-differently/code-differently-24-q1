@@ -40,7 +40,7 @@ This time, instead of sending data to our web server, we'll keep the data in the
 
 1. For this part, we're going to make a single code change to the [script.js](./webserver/public/script.js#L4) file. Uncomment the code on [line 4](./webserver/public/script.js#L4) to get things wired up.
 2. Refresh or browse to the main page at https://localhost:4000/. Enter some text again and click search. Notice that instead of redirecting, results appear below the search buttons.
-3. Assuming you're using Google Chrome, Open the **Developer Tools** in the browser using `F12`. On the **Console** tab, you should see messages that start with `Client: Searching for titles containing`.
+3. Assuming you're using Google Chrome, Open the **Developer Tools** in the browser using `F12` or `Option ⌥ - Cmd ⌘ - J` on Mac. On the **Console** tab, you should see messages that start with `Client: Searching for titles containing`. Note that you may need to execute a new search in order to see the messages.
 
 There are several things in the `script.js` file that make this demo work. Let's discuss each part.
 
