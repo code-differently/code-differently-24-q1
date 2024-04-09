@@ -4,6 +4,7 @@ import com.codedifferently.lesson16.library.Librarian;
 import com.codedifferently.lesson16.library.Library;
 import com.codedifferently.lesson16.library.MediaItem;
 import com.codedifferently.lesson16.library.search.SearchCriteria;
+import jakarta.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
@@ -28,20 +29,30 @@ public class MediaItemsController {
     this.librarian = library.getLibrarians().stream().findFirst().orElseThrow();
   }
 
-  @GetMapping("/items")
-  public GetMediaItemsResponse getItems() {
+  @GetMapping("/items/{id}")
+  public ResponseEntity<GetMediaItemsResponse> getItem(@PathVariable("id") UUID id) {
+    if (!library.hasMediaItem(id)) {
+      return ResponseEntity.notFound().build(); // Return 404 Not Found
+    }
     Set<MediaItem> items = library.search(SearchCriteria.builder().build());
     List<MediaItemResponse> responseItems = items.stream().map(MediaItemResponse::from).toList();
     var response = GetMediaItemsResponse.builder().items(responseItems).build();
-    return response;
+    return ResponseEntity.ok(response);
   }
 
-  @GetMapping("/items/{id}")
-  public GetMediaItemsResponse getItem() {
-    Set<MediaItem> items = library.search(SearchCriteria.builder().build());
-    List<MediaItemResponse> responseItems = items.stream().map(MediaItemResponse::from).toList();
-    var response = GetMediaItemsResponse.builder().items(responseItems).build();
-    return response;
+  @GetMapping("/items")
+  public ResponseEntity<GetMediaItemsResponse> getItems() {
+    try {
+      Set<MediaItem> items = library.search(SearchCriteria.builder().build());
+      List<MediaItemResponse> responseItems = items.stream().map(MediaItemResponse::from).toList();
+      var response = GetMediaItemsResponse.builder().items(responseItems).build();
+      return ResponseEntity.ok(response);
+    } catch (Exception ex) {
+      // Log the exception for debugging purposes
+      ex.printStackTrace();
+      // Return an appropriate error response
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
   }
 
   @DeleteMapping("/items/{id}")
@@ -55,8 +66,7 @@ public class MediaItemsController {
   }
 
   @PostMapping("/items")
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
-  public CreateMediaItemResponse createItem(@RequestBody CreateMediaItemRequest request) {
+  public CreateMediaItemResponse createItem(@Valid @RequestBody CreateMediaItemRequest request) {
     MediaItem item = MediaItemRequest.asMediaItem(request.getItem());
     library.addMediaItem(item, librarian);
     var response = CreateMediaItemResponse.builder().item(MediaItemResponse.from(item)).build();
