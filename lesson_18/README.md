@@ -20,15 +20,16 @@ Let's add some interactivity to a web page by using what we've learned about HTM
 
 As demonstrated in lecture, we have a NodeJS web server implemented in TypeScript using the Express library (all files in the [webserver/](./webserver/) folder).
 
-1. We need to start both our web server and api servers. Our API server is implemented in Java, so get that started using `gradle run` in a terminal window. It should be running on port 5000.
-2. Once the API server is started, run the Node web server using NPM by executing `npm run dev` in a separate terminal. Confirm that it has started the server on port 4000.
+1. We need to start both our web server and api servers. Our API server is implemented in Java, so navigate into the [api/](./api/) folder to get that started using `gradle run` in a terminal window. It should be running on port 5000.
+2. Once the API server is started, run the Node web server using NPM by executing `npm run dev` in a separate terminal, this time navigating into the [webserver/] folder. Confirm that it has started the server on port 4000.
 3. Now, Open up the [public/index.html](./webserver/public/index.html) so that we can make some changes.
-4. Wrap the search box and buttons in a `<form>` element. Configure the `action` attribute on the form to specify `/search` as the target where we will send form data and the `method` attribute to the value `POST`.
+4. Wrap the search box and button `div` elements in a `<form>` element. Configure the `action` attribute on the form to specify `/search` as the target where we will send form data and the `method` attribute to the value `POST`.
 > [!NOTE]
 > Our web server that serves the HTML you're modifying is also listening for `POST` requests on the `/search` path and will [read the form data](./webserver/src/server.ts#L8) in order to figure out what text to use for search. It will call our Java-based API server to query for media items.  
 5. To configure which field data will get sent with the post data, we need to add a `name` attribute to the desired elements. For now, we just need to send the search text, so configure the `name` attribute to be `searchText`.
-> [!TIP] Note that we're using `camelCase` for the element name attribute and not `kebab-case` as we do with the `class` attribute. This is a convention used by some projects and isn't a mandatory rule.
-6. You should be able to view the page by visiting http://localhost:4000/. Try entering some text in the search box and clicking search. You should be redirected to the `/search` url and see results dynamically rendered.
+> [!NOTE]
+> Note that we're using `camelCase` for the element name attribute and not `kebab-case` as we do with the `class` attribute. This is a convention used by some projects and isn't a mandatory rule.
+6. You should be able to view the page by visiting http://localhost:4000/. Try entering some text in the search box and clicking the search button. You should be redirected to the `/search` url and see results dynamically rendered.
 7. Check the terminal where your web server is running. You should see messages prefixed with `Server: Search for titles containing` that confirm your requests have reached the server. 
 
 The look of the results page is very simple as we're generating the HTML the hard way—character by character. In real life, we would use template engines that help us generate dynamic HTML and describe how we want it to change based on data. We'll discuss this more in the next lecture.
@@ -46,5 +47,5 @@ There are several things in the `script.js` file that make this demo work. Let's
 1. First, the code in `listenForSearchButtonClick` searches for the search button using the css class selector `.search-button` and attaches an event handler that simply calls the `onSearchButtonClick` whenever the button is clicked.
 2. Once the button is clicked and the function is activated, we prevent the form from submitted data to the web server by using the provided `event` parameter and calling `event.preventDefault()` to stop the normal, default button behavior.
 3. Next we read the search text from the text box identify the term we want to search on.
-4. Lastly, we call the `performSearch` method with the search text which will intern use the `fetch` API in the browser to make a web request to our API server, parse the JSON response, and filter through the results to find matching titles. The code here is almost [exactly the same as the code](./webserver/src/server.ts) we were running in TypeScript on our web server.
+4. Lastly, we call the `performSearch` method with the search text which will, in turn, use the `fetch` API in the browser to make a web request to our API server, parse the JSON response, and filter through the results to find matching titles. The code here is almost [exactly the same as the code](./webserver/src/server.ts) we were running in TypeScript on our web server.
 
