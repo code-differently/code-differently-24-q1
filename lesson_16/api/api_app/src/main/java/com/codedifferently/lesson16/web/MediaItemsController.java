@@ -11,8 +11,8 @@ import java.util.Set;
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +34,6 @@ public class MediaItemsController {
     this.library = library;
     this.librarian = library.getLibrarians().stream().findFirst().orElseThrow();
   }
-
   @GetMapping("/items")
   public GetMediaItemsResponse getItems() {
     Set<MediaItem> items = library.search(SearchCriteria.builder().build());
@@ -42,7 +41,12 @@ public class MediaItemsController {
     var response = GetMediaItemsResponse.builder().items(responseItems).build();
     return response;
   }
-
+  /**
+   * Post an item to the specified endpoint.
+   *
+   * @param  req	the request object for creating a media item
+   * @return      the response object for creating a media item
+   */
   @PostMapping("/items")
   public CreateMediaItemResponse postItem(@Valid @RequestBody CreateMediaItemRequest req) {
     MediaItem media = MediaItemRequest.asMediaItem(req.getItem());
