@@ -10,7 +10,8 @@
 ## Homework
 
 * Go through the lecture resources to understand the basics of working with web clients and servers. Feel free to skip the HTML tutorial if you feel comfortable working with the basics already.
-* Complete the [Exploring the Client and Servers](#exploring-the-client-and-servers) walthrough.
+* Complete the [Exploring the Client and Servers](#exploring-the-client-and-servers) walkthrough. You will not need to submit a PR for this assignment.
+* Continue working on [lesson_16](/lesson_16/) PR submission.
 
 ## Exploring the Client and Servers
 
