@@ -1,13 +1,10 @@
 package com.codedifferently.lesson16.web;
 
-import com.codedifferently.lesson16.library.Library;
-import com.codedifferently.lesson16.library.LibraryGuest;
-import com.codedifferently.lesson16.library.Patron;
-import jakarta.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+
+import com.codedifferently.lesson16.library.Library;
+import com.codedifferently.lesson16.library.LibraryGuest;
+import com.codedifferently.lesson16.library.Patron;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class PatronsController {
@@ -44,14 +47,14 @@ public class PatronsController {
   }
 
   @GetMapping("/patrons/{id}")
-  public ResponseEntity<LibraryGuest> getPatronById(@PathVariable UUID id) {
+public GetPatronsResponse getPatronById(@PathVariable UUID id) {
     for (LibraryGuest patron : library.getPatrons()) {
-      if (patron.getId().equals(id)) {
-        return ResponseEntity.ok(patron);
-      }
+        if (patron.getId().equals(id)) {
+            return GetPatronsResponse.builder().patron(PatronResponse.from(patron)).build();
+        }
     }
-    return ResponseEntity.notFound().build();
-  }
+    throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Patron not found");
+}
 
   @DeleteMapping("/patrons/{id}")
   public ResponseEntity<Void> deleteItem(@PathVariable String id) {
