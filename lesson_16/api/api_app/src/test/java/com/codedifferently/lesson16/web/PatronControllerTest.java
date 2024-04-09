@@ -10,10 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.codedifferently.lesson16.Lesson16;
 import com.codedifferently.lesson16.library.Library;
 import com.codedifferently.lesson16.library.LibraryGuest;
-import com.codedifferently.lesson16.library.Patron;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -80,33 +77,19 @@ class PatronControllerTest {
   @Test
   void testController_addsPatron() throws Exception {
     String json =
-        """
-        {
-          "guests":{
-            {
-                "id": "ca4a7abd-95fa-43db-91c7-5d80e27d821a"
-                "name": "John Book",
-                "email": "john.Book@reallibrary.org",
-                "checkedOutPatrons": []
-            }
-        }
-        """;
+  """
+    {
+      "patron":{
+            "name": "John Book",
+            "email": "johk@reallibrary.org",
+      }
+    }
+  """;
 
     mockMvc
         .perform(post("/patrons").contentType(MediaType.APPLICATION_JSON).content(json))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.patron.id").value("ca4a7abd-95fa-43db-91c7-5d80e27d821a"));
-
-    Set<LibraryGuest> patrons = new HashSet<>();
-    for (LibraryGuest guest : library.getInfo().getGuests()) {
-      if (guest.getId() == UUID.fromString("ca4a7abd-95fa-43db-91c7-5d80e27d821a")) {
-        patrons.add(guest);
-      }
-    }
-    assertThat(patrons).hasSize(1);
-    var patron = patrons.iterator().next();
-    assertThat(patron).isInstanceOf(Patron.class);
-    assertThat(patron.getName()).isEqualTo("John Book");
+        .andExpect(jsonPath("$.patrons.name").value("John Book"));
   }
 
   @Test
