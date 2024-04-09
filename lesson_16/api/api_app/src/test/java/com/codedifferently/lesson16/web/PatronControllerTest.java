@@ -51,7 +51,7 @@ class PatronControllerTest {
         .perform(get("/patrons").contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.patrons").isArray())
-        .andExpect(jsonPath("$.patrons.length()").value(4));
+        .andExpect(jsonPath("$.patrons.length()").value(5));
   }
 
   @Test
@@ -78,18 +78,18 @@ class PatronControllerTest {
   void testController_addsPatron() throws Exception {
     String json =
         """
-    {
-      "patron":{
-            "name": "John Book",
-            "email": "johk@reallibrary.org",
-      }
-    }
-  """;
+          {
+            "patron":{
+                  "name": "John Book",
+                  "email": "johk@reallibrary.org"
+            }
+          }
+        """;
 
     mockMvc
         .perform(post("/patrons").contentType(MediaType.APPLICATION_JSON).content(json))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.patrons.name").value("John Book"));
+        .andExpect(jsonPath("$.patron.name").value("John Book"));
   }
 
   @Test
