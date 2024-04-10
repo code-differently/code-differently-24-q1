@@ -2,8 +2,8 @@ package com.codedifferently.lesson16.web;
 
 import com.codedifferently.lesson16.library.Librarian;
 import com.codedifferently.lesson16.library.Library;
+import com.codedifferently.lesson16.library.LibraryGuest;
 import com.codedifferently.lesson16.library.Patron;
-import com.codedifferently.lesson16.library.search.PatronSearchCriteria;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
@@ -23,18 +23,18 @@ public class PatronsController {
   }
 
   @GetMapping("/patrons")
- public ResponseEntity<List<Patron>> getPatrons() {
+  public ResponseEntity<GetPatronsResponse> getPatrons() {
     Set<LibraryGuest> guests = library.getPatrons();
-    List<Patron> patrons = new ArrayList<>(guests);
-    return ResponseEntity.ok(patrons);
-}
-
+    List<PatronResponse> patrons = guests.stream().map(PatronResponse::from).toList();
+    var response = GetPatronsResponse.builder().patrons(patrons).build();
+    return ResponseEntity.ok(response);
+  }
 
   @PostMapping("/patrons")
-  public ResponseEntity<GetPatronResponse> addPatron(@RequestBody PatronRequest patronRequest) {
+  public ResponseEntity<GetPatronsResponse> addPatron(@RequestBody PatronRequest patronRequest) {
     Patron patron = PatronRequest.toPatron(patronRequest);
     library.addLibraryGuest(patron);
-    return ResponseEntity.status(HttpStatus.CREATED).body(GetPatronResponse.from(patron));
+    return ResponseEntity.status(HttpStatus.CREATED).body(GetPatronsResponse.from(patron));
   }
 
   @GetMapping("/patrons/{id}")

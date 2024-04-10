@@ -6,6 +6,5 @@ import lombok.Data;
 @Data
 @Builder
 public class CreatePatronResponse {
-private PatronResponse patron;
-    
+  private PatronResponse patron;
 }

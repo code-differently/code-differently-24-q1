@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class CreatePatronRequest {
-    @NotNull(message = "item is required") @Valid
-    private PatronRequest patron;
-    
+  @NotNull(message = "item is required") @Valid
+  private PatronRequest patron;
 }
