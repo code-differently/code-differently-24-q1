@@ -6,6 +6,7 @@ import com.codedifferently.lesson16.library.MediaItem;
 import com.codedifferently.lesson16.library.search.SearchCriteria;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import org.springframework.http.ResponseEntity;
@@ -38,15 +39,18 @@ public class MediaItemsController {
   public CreateMediaItemResponse createItem(@RequestBody CreateMediaItemRequest request) {
     MediaItem item = MediaItemRequest.asMediaItem(request.getItem());
     library.addMediaItem(item, librarian);
-    return CreateMediaItemResponse.builder().items(responseItems).build();
+    return CreateMediaItemResponse.builder().item(MediaItemResponse.from(item)).build();
   }
 
   @GetMapping("/items/{id}")
-  public GetMediaItemsResponse getItem() {
-    Set<MediaItem> items = library.search(SearchCriteria.builder() @PathVariable("id").build());
-    List<MediaItemResponse> responseItems = items.stream().map(MediaItemResponse::from).toList();
-    var response = GetMediaItemsResponse.builder().items(responseItems).build();
-    return response;
+  public ResponseEntity<MediaItemResponse> getItem(@PathVariable UUID id) {
+    Optional<MediaItem> item =
+        library.search(SearchCriteria.builder().id(id.toString()).build()).stream().findFirst();
+
+    if (item.isEmpty()) {
+      return ResponseEntity.notFound().build();
+    }
+    return ResponseEntity.ok(MediaItemResponse.from(item.get()));
   }
 
   @DeleteMapping("/items/{id}")
