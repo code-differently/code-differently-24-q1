@@ -1,11 +1,11 @@
 package com.codedifferently.lesson16.web;
 
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static org.mockito.Mockito.when;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -21,7 +21,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.codedifferently.lesson16.Lesson16;
 import com.codedifferently.lesson16.library.Library;
-import com.codedifferently.lesson16.library.Patron;
+import com.codedifferently.lesson16.library.LibraryGuest;
 
 @SpringBootTest
 @ContextConfiguration(classes = Lesson16.class)
@@ -43,19 +43,16 @@ class PatronsControllerTest {
         .andExpect(jsonPath("$.patrons.length()").value(5));
   }
 
-  
+  // Got help from Mohamed on this one. Learned that .stream() is super useful.
   @Test
 void testGetPatronById() throws Exception {
-    // Given
-    UUID id = UUID.randomUUID();
-    Patron patron = new Patron("John Doe", "john.doe@example.com");
-    when(library.getPatrons()).thenReturn(Set.of(patron));
+  
+  List<LibraryGuest> patron = library.getPatrons().stream().toList();
+  UUID ids = patron.get(3).getId();
 
-    // When & Then
-    mockMvc.perform(get("/patrons/{id}", id))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.name").value("John Doe"))
-            .andExpect(jsonPath("$.email").value("john.doe@example.com"));
+  mockMvc
+      .perform(get("/patrons/" + ids.toString()).contentType(MediaType.APPLICATION_JSON))
+      .andExpect(status().isOk());
 }
 
   @Test
@@ -105,7 +102,34 @@ mockMvc
                 .contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isNotFound());
   }
-
+// Mo' also helped on this...didn't think of making a helper function. Kudos to him!
   @Test
-  void testController_deletesPatron() throws Exception {}
-}
+    void testController_deletesPatron() throws Exception {
+      Library lib = library;
+      List<LibraryGuest> pat = library.getPatrons().stream().toList();
+      UUID ids = getGuestId(pat);
+  
+      mockMvc
+          .perform(delete("/patrons/" + ids.toString()).contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isNoContent());
+      int i = 0;
+      pat = library.getPatrons().stream().toList();
+      for (LibraryGuest guest : pat) {
+        if (guest.getId() == ids) {
+          i++;
+        }
+      }
+      library = lib;
+      assertThat(i).isEqualTo(0);
+    }
+  
+    UUID getGuestId(List<LibraryGuest> list) {
+      for (LibraryGuest guest : list) {
+        if (guest.getCheckedOutMediaItems().isEmpty()) {
+          return guest.getId();
+        }
+      }
+      return list.get(4).getId();
+    }
+  }
+
