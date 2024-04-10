@@ -1,16 +1,13 @@
 package com.codedifferently.lesson16.web;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.Set;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.codedifferently.lesson16.Lesson16;
 import com.codedifferently.lesson16.library.Library;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,22 +17,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
-import com.codedifferently.lesson16.library.LibraryGuest;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import com.codedifferently.lesson16.library.Library;
-import com.codedifferently.lesson16.library.LibraryGuest;
-import java.util.Collections;
-import java.util.Set;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @SpringBootTest
 @ContextConfiguration(classes = Lesson16.class)
@@ -65,8 +46,7 @@ class PatronsControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk());
   }
-
-
+}
 //   @Test
 //   void testController_addsItem() throws Exception {
 //     String json =
@@ -79,7 +59,7 @@ class PatronsControllerTest {
 //           }
 //         }
 //         """;
-   
+
 //     mockMvc
 //         .perform(post("/patrons").contentType(MediaType.APPLICATION_JSON).content(json))
 //         .andExpect(status().isOk())
