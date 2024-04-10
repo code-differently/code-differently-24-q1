@@ -8,11 +8,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.codedifferently.lesson16.Lesson16;
-import com.codedifferently.lesson16.library.Book;
 import com.codedifferently.lesson16.library.Library;
-import com.codedifferently.lesson16.library.MediaItem;
-import com.codedifferently.lesson16.library.search.SearchCriteria;
-import java.util.Set;
+import com.codedifferently.lesson16.library.LibraryGuest;
+import java.util.List;
+import java.util.UUID;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest
 @ContextConfiguration(classes = Lesson16.class)
-class MediaItemsControllerTest {
+class PatronsControllerTest {
   private static MockMvc mockMvc;
   @Autowired private Library library;
 
@@ -35,28 +34,31 @@ class MediaItemsControllerTest {
   }
 
   @Test
-  void testController_getsAllItems() throws Exception {
+  void testController_getsAllPatrons() throws Exception {
     mockMvc
-        .perform(get("/items").contentType(MediaType.APPLICATION_JSON))
+        .perform(get("/patrons").contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.items").isArray())
-        .andExpect(jsonPath("$.items.length()").value(31));
+        .andExpect(jsonPath("$.patrons").isArray())
+        .andExpect(jsonPath("$.patrons.length()").value(5));
   }
 
+  // Got help from Mohamed on this one. Learned that .stream() is super useful.
   @Test
-  void testController_getsAnItem() throws Exception {
+  void testGetPatronById() throws Exception {
+
+    List<LibraryGuest> patron = library.getPatrons().stream().toList();
+    UUID ids = patron.get(3).getId();
+
     mockMvc
-        .perform(
-            get("/items/31616162-3831-3832-2d34-3334352d3465")
-                .contentType(MediaType.APPLICATION_JSON))
+        .perform(get("/patrons/" + ids.toString()).contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk());
   }
 
   @Test
-  void testController_returnsNotFoundOnGetItem() throws Exception {
+  void testController_returnsNotFoundOnGetPatron() throws Exception {
     mockMvc
         .perform(
-            get("/items/00000000-0000-0000-0000-000000000000")
+            get("/patrons/00000000-0000-0000-0000-000000000000")
                 .contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isNotFound());
   }
@@ -73,53 +75,59 @@ class MediaItemsControllerTest {
   }
 
   @Test
-  void testController_addsItem() throws Exception {
+  void testPostPatron() throws Exception {
     String json =
         """
-        {
-          "item": {
-            "id": "e27a4e0d-9664-420d-955e-c0e295d0ce02",
-            "type": "BOOK",
-            "title": "Becoming",
-            "isbn": "9781524763138",
-            "authors": ["Michelle Obama"],
-            "pages": 448
+      {
+        "patron": {
+              "name": "Rich Hawkins",
+              "email": "rich@email.com"
           }
-        }
-        """;
+      }
+    """;
 
     mockMvc
-        .perform(post("/items").contentType(MediaType.APPLICATION_JSON).content(json))
+        .perform(post("/patrons").contentType(MediaType.APPLICATION_JSON).content(json))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.item.id").value("e27a4e0d-9664-420d-955e-c0e295d0ce02"));
-
-    Set<MediaItem> items =
-        library.search(SearchCriteria.builder().id("e27a4e0d-9664-420d-955e-c0e295d0ce02").build());
-    assertThat(items).hasSize(1);
-    var item = items.iterator().next();
-    assertThat(item).isInstanceOf(Book.class);
-    assertThat(item.getTitle()).isEqualTo("Becoming");
+        .andExpect(jsonPath("$.patron.name").value("Rich Hawkins"));
   }
 
   @Test
-  void testController_returnsNotFoundOnDeleteItem() throws Exception {
+  void testController_returnsNotFoundOnDeletePatron() throws Exception {
     mockMvc
         .perform(
-            delete("/items/00000000-0000-0000-0000-000000000000")
+            delete("/patrons/00000000-0000-0000-0000-000000000000")
                 .contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isNotFound());
   }
 
+  // Mo' also helped on this...didn't think of making a helper function. Kudos to him!
   @Test
-  void testController_deletesItem() throws Exception {
-    mockMvc
-        .perform(
-            delete("/items/32623932-6566-3364-2d62-3232342d3435")
-                .contentType(MediaType.APPLICATION_JSON))
-        .andExpect(status().isNoContent());
+  void testController_deletesPatron() throws Exception {
+    Library lib = library;
+    List<LibraryGuest> pat = library.getPatrons().stream().toList();
+    UUID ids = getGuestId(pat);
 
-    Set<MediaItem> items =
-        library.search(SearchCriteria.builder().id("32623932-6566-3364-2d62-3232342d3435").build());
-    assertThat(items).hasSize(0);
+    mockMvc
+        .perform(delete("/patrons/" + ids.toString()).contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isNoContent());
+    int i = 0;
+    pat = library.getPatrons().stream().toList();
+    for (LibraryGuest guest : pat) {
+      if (guest.getId() == ids) {
+        i++;
+      }
+    }
+    library = lib;
+    assertThat(i).isEqualTo(0);
+  }
+
+  UUID getGuestId(List<LibraryGuest> list) {
+    for (LibraryGuest guest : list) {
+      if (guest.getCheckedOutMediaItems().isEmpty()) {
+        return guest.getId();
+      }
+    }
+    return list.get(4).getId();
   }
 }
