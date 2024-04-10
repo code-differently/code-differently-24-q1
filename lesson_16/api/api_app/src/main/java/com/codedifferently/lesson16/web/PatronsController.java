@@ -1,14 +1,11 @@
 package com.codedifferently.lesson16.web;
 
-import com.codedifferently.lesson16.library.Library;
-import com.codedifferently.lesson16.library.LibraryGuest;
-import com.codedifferently.lesson16.library.Patron;
-import jakarta.validation.Valid;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +15,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+
+import com.codedifferently.lesson16.library.Library;
+import com.codedifferently.lesson16.library.LibraryGuest;
+import com.codedifferently.lesson16.library.Patron;
+
+import jakarta.validation.Valid;
+
+// ___________________________________________________________
+// THIS CODE WAS MADE IN COLLABORATION WITH VICENTE AND RICH
+// ___________________________________________________________
 
 @RestController
 public class PatronsController {
