@@ -4,8 +4,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.Set;
-
 import com.codedifferently.lesson16.Lesson16;
 import com.codedifferently.lesson16.library.Library;
 import org.junit.jupiter.api.BeforeAll;
