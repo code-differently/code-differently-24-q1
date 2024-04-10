@@ -1,8 +1,18 @@
 package com.codedifferently.lesson16.web;
 
-import java.util.Set;
-
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import com.codedifferently.lesson16.Lesson16;
+import com.codedifferently.lesson16.library.Book;
+import com.codedifferently.lesson16.library.Library;
+import com.codedifferently.lesson16.library.MediaItem;
+import com.codedifferently.lesson16.library.search.SearchCriteria;
+import java.util.Set;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,19 +20,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
-import com.codedifferently.lesson16.Lesson16;
-import com.codedifferently.lesson16.library.Book;
-import com.codedifferently.lesson16.library.Library;
-import com.codedifferently.lesson16.library.MediaItem;
-import com.codedifferently.lesson16.library.search.SearchCriteria;
 
 @SpringBootTest
 @ContextConfiguration(classes = Lesson16.class)
@@ -95,8 +94,7 @@ class MediaItemsControllerTest {
         .andExpect(jsonPath("$.item.id").value("e27a4e0d-9664-420d-955e-c0e295d0ce02"));
 
     Set<MediaItem> items =
-    
-    library.search(SearchCriteria.builder().id("e27a4e0d-9664-420d-955e-c0e295d0ce02").build());
+        library.search(SearchCriteria.builder().id("e27a4e0d-9664-420d-955e-c0e295d0ce02").build());
     assertThat(items).hasSize(1);
     var item = items.iterator().next();
     assertThat(item).isInstanceOf(Book.class);
