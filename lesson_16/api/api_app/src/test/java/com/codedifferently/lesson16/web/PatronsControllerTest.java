@@ -2,7 +2,6 @@ package com.codedifferently.lesson16.web;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -30,7 +29,7 @@ class PatronsControllerTest {
   }
 
   @Test
-  void testController_getsAllPatrons() throws Exception {
+  void testController_getAllPatrons() throws Exception {
     mockMvc
         .perform(get("/patrons").contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
@@ -39,7 +38,7 @@ class PatronsControllerTest {
   }
 
   @Test
-  void testController_getsPatron() throws Exception {
+  void testController_getsPatronById() throws Exception {
     mockMvc
         .perform(
             get("/patrons/31616162-3831-3832-2d34-3334352d3465")
@@ -48,7 +47,7 @@ class PatronsControllerTest {
   }
 
   @Test
-  void testController_addsPatron() throws Exception {
+  void testController_createPatron() throws Exception {
     String json =
         """
          {
@@ -63,5 +62,14 @@ class PatronsControllerTest {
         .perform(post("/patrons").contentType(MediaType.APPLICATION_JSON).content(json))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.patron.name").value("vicente"));
+  }
+
+  @Test
+  void testController_deletePatron() throws Exception {
+    mockMvc
+        .perform(
+            delete("/patrons/32623932-6566-3364-2d62-3232342d3435")
+                .contentType(MediaType.APPLICATION_JSON))
+        .andExpect(status().isNoContent());
   }
 }

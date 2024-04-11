@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,7 +26,7 @@ public class PatronsController {
   }
 
   @GetMapping("/patrons")
-  public GetPatronsResponse getPatrons() {
+  public GetPatronsResponse getAllPatrons() {
     Set<LibraryGuest> patrons = library.getPatrons();
     List<PatronsResponse> responseItems =
         patrons.stream().map(PatronsResponse::from).collect(Collectors.toList());
@@ -46,11 +47,19 @@ public class PatronsController {
   }
 
   @PostMapping("/patrons")
-  public CreatePatronsResponse postPatron(@Valid @RequestBody CreatePatronsRequest request) {
+  public CreatePatronsResponse createPatron(@Valid @RequestBody CreatePatronsRequest request) {
     LibraryGuest patron = PatronsRequest.asLibraryGuest(request.getPatron());
     library.addLibraryGuest(patron);
     return CreatePatronsResponse.builder().patron(PatronsResponse.from(patron)).build();
   }
 
-  // @DeleteMapping("/{id}")
+  @DeleteMapping("/patrons/{id}")
+  public ResponseEntity<Void> deletePatron(@PathVariable("id") UUID id) {
+    try {
+      library.removeLibraryGuest(id);
+      return ResponseEntity.noContent().build();
+    } catch (Exception e) {
+      return ResponseEntity.notFound().build();
+    }
+  }
 }
