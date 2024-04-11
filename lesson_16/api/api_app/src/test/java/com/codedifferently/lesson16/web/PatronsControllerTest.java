@@ -35,7 +35,7 @@ class PatronsControllerTest {
         .perform(get("/patrons").contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.patrons").isArray())
-        .andExpect(jsonPath("$.patrons.length()").value(5));
+        .andExpect(jsonPath("$.patrons.length()").value(6));
   }
 
   @Test
@@ -46,29 +46,22 @@ class PatronsControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk());
   }
+
+  @Test
+  void testController_addsPatron() throws Exception {
+    String json =
+        """
+         {
+           "patron": {
+             "name": "vicente",
+             "email": "vicente@example.com"
+           }
+         }
+         """;
+
+    mockMvc
+        .perform(post("/patrons").contentType(MediaType.APPLICATION_JSON).content(json))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.patron.name").value("vicente"));
+  }
 }
-//   @Test
-//   void testController_addsItem() throws Exception {
-//     String json =
-//         """
-//         {
-//           "patron": {
-//             "type": "patron",
-//             "name": "someone",
-//             "email": "vicente@example.com"
-//           }
-//         }
-//         """;
-
-//     mockMvc
-//         .perform(post("/patrons").contentType(MediaType.APPLICATION_JSON).content(json))
-//         .andExpect(status().isOk())
-//         .andExpect(jsonPath("$.patron.email").value("vicente@example.com"));
-
-//     Set<LibraryGuest> patrons =
-//         library.getPatrons();
-//     assertThat(patrons).hasSize(1);
-//     var patron = patrons.iterator().next();
-//     assertThat(patron.getEmail()).isEqualTo("vicente@example.com");
-//   }
-// }

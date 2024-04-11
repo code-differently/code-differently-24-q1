@@ -46,12 +46,11 @@ public class PatronsController {
   }
 
   @PostMapping("/patrons")
-  public CreatePatronsResponse postItem(@Valid @RequestBody CreatePatronsRequest request) {
+  public CreatePatronsResponse postPatron(@Valid @RequestBody CreatePatronsRequest request) {
     LibraryGuest patron = PatronsRequest.asLibraryGuest(request.getPatron());
     library.addLibraryGuest(patron);
     return CreatePatronsResponse.builder().patron(PatronsResponse.from(patron)).build();
   }
 
-  // @PostMapping
   // @DeleteMapping("/{id}")
 }
