@@ -41,18 +41,16 @@ public class MediaItemsController {
   }
 
   @GetMapping("/items/:id")
-  public GetMediaItemsResponse getMediaItem(@PathVariable String id) {
-    Set<MediaItem> items = library.search(SearchCriteria.builder().id(id).build());
+  public ResponseEntity<MediaItemResponse> getMediaItem(@PathVariable String id) {
+    SearchCriteria criteria = SearchCriteria.builder().id(id.toString()).build();
+    Set<MediaItem> items = library.search(criteria);
 
     if (items.isEmpty()) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Media item not found");
-    } else {
-      List<MediaItemResponse> responseItems = items.stream().map(MediaItemResponse::from).toList();
-      var response = GetMediaItemsResponse.builder().items(responseItems).build();
-      return response;
+    }else{
+      return ResponseStatusException(HttpStatus.OK, "Media found");
     }
   }
-
   @DeleteMapping("/items/{id}")
   public ResponseEntity<Void> deleteItem(@PathVariable("id") UUID id) {
     try {
