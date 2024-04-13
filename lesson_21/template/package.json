@@ -20,7 +20,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run lint"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +50,9 @@
   "devDependencies": {
     "@types/node-sass": "^4.11.7",
     "node-sass": "^9.0.0",
-    "sass": "^1.75.0"
+    "sass": "^1.75.0",
+    "gts": "^5.3.0",
+    "typescript": "~5.4.3",
+    "@types/node": "20.11.5"
   }
 }
