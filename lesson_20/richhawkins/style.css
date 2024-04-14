@@ -95,7 +95,6 @@ body {
     z-index: 3;
     font-family: Poppins;
     line-height: 1.2;
-    margin-right: 50rem;
     padding-bottom: 6rem;
 }
 
@@ -113,7 +112,7 @@ body {
     display: inline-block;
 }
 
-.highlight::after{
+.hero-title .highlight::after{
     content: " ";
     position: absolute;
     display: flex;
@@ -153,7 +152,6 @@ body {
     font-family: Montserrat;
     font-size: 3.4rem;
     font-weight: bolder;
-    padding-right: 50rem;
     padding-bottom: 8rem;
     padding-top: 20rem;
 }
@@ -204,19 +202,94 @@ body {
     box-shadow: inset 0 20px 20px rgba(0, 0, 0, 0.1);
 
 }
+@media (min-width: 1440px){
+   .hero-content{
+    margin-right: 50rem;
+   } 
+}
 
-@media (max-width: 450px){
+@media (max-width: 1080px){
     .hero-content{
         margin-right: 0;
     }
     .hero-title{
         padding-left: 0;
         text-align: center;
-        margin: 0 2rem;
-        color: yellow;
+        margin: 0 auto;
+        font-size: 3.78rem;
+        width: 80%;
     }
 
     .hero-section{
-        background-image: none;!important
+        background-size: contain;
+        height: 45rem;
+    }
+    .hero-title .highlight::after{
+        padding-left: 16.3rem;
+        height: 1rem;
+    }
+
+    .hero-text{
+       max-width: 100%;
+       text-align: left;
+       padding: 2rem 4rem 2rem 0rem;
+    }
+
+    .programs-section h2{
+        font-size: 2.7rem;
+        padding: 4rem 0rem 2rem 0rem;
+    }
+
+    .programs-section{
+        margin: 0 8rem;
+    }
+    .programs{
+        flex-direction: column;
+    }
+    .program h3{
+        font-size: 1.76rem;
+        font-weight: 400;
+    }
+    .program{
+        width: 100%;
+    }
+    .programs-section em::after{
+       padding-left: 6.9rem;
+    }
+}
+@media(max-width: 675px){
+       .header-top-menu{
+        display: none;
+       }
+    }
+
+@media (max-width: 480px){
+    .header{
+        padding: 1rem;
+    }
+    .header-logo img{
+        height: 5rem;
+    }
+    .header-top-menu{
+        display: none;
+    }
+    .hero-section{
+       height: 70vh;
+       background-size: cover;
+       background-position: top right;
+    }
+    .hero-content{
+        padding-bottom: 0;
+    }
+    .hero-title{
+        font-size: 3.2rem; 
+        width: 100%;
+    }
+    .hero-text{
+        height: fit-content;
+        padding: 2rem 2rem 2rem 1rem;
+    }
+    .programs-section{
+        margin: 0 2rem;
     }
 }
