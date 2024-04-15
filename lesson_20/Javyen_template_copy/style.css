@@ -7,8 +7,6 @@ html, body{
     /* size weight and color  */
 }
 
-
-
 a {
 
 }
@@ -17,23 +15,24 @@ p {
 
 }
 
-body {
+
+
+.header-top-menu {
     display: flex;
     flex-direction: column;
-}
-
-.header {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
     align-items: center;
-    position: sticky;
-}  
-
-.header-logo {
-    width: 1px;
-    height: 1px;
 }
+
+.header-logo img{
+    width: 350px;
+    height: auto;
+    margin-left: 40;
+    margin-top: 40;
+}
+
+
+
+
 
 footer {
     text-align: center;
