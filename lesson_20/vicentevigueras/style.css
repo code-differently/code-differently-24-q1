@@ -1,0 +1,14 @@
+img {
+    width: 227px;
+    height: 75px;
+}
+.header {
+    display: flex;
+}
+.header-top-menu {
+    list-style: none;
+}
+.header-top-menu li a {
+    text-decoration: none;
+    color: inherit;
+}
