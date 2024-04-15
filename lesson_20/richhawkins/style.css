@@ -206,6 +206,9 @@ body {
    .hero-content{
     margin-right: 50rem;
    } 
+   .hero-text{
+    padding: 3rem 5em 3rem 5rem;
+   }
 }
 
 @media (max-width: 1080px){
