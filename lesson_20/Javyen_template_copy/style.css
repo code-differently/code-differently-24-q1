@@ -7,6 +7,8 @@ html, body{
     /* size weight and color  */
 }
 
+
+
 a {
 
 }
@@ -33,3 +35,6 @@ body {
     height: 1px;
 }
 
+footer {
+    text-align: center;
+}
