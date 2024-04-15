@@ -8,7 +8,7 @@
 
 :root {
     
-    font-size: 62.5%; /* 10px for easier rem calculations */
+    font-size: 62.5%; 
     --font-main: 'Poppins', sans-serif;
     --font-alt: 'Montserrat', sans-serif;
     
@@ -157,7 +157,7 @@ body {
     color: var(--color-primary);
 }
 
-/* Programs Section */
+
 .programs-section {
     display: flex;
     flex-wrap: wrap;
