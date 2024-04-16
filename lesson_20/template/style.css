@@ -25,7 +25,7 @@ body, html {
 .header li {
     list-style: none;
     display: inline-block;
-    padding-left: 10px;
+    padding-left: 30px;
 
 }
 .header-top-menu a {
@@ -54,18 +54,17 @@ This code was taken from https://codepen.io/thelittleblacksmith/pen/zXNVvY
     content: "";
     display: block;
     position: relative;
-    width: 100%;
+    width: 0%;
     height: 2px;
     bottom: -25px;
     background-color: #f47d26;
     transform-origin: left; 
-    transform: scale(0);
-    transition: 0.2s linear;  
+    transition: 0.2s ease-out;  
 }
 
 
 .header-top-menu a:hover:before {
-    transform: scale(1);
+    width: 100%;
   }
 /* ---------------------------------------------Taken code ends here------------------------------------------------ */
 .hero-section {
