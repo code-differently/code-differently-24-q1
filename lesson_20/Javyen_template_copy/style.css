@@ -1,28 +1,56 @@
-html, body{
+* {
+    box-sizing: border-box;
     margin: 0;
-    padding: 0;     
+    padding: 0;
+    border: 0;
     font-family: Poppins, sans-serif;
 }
 
-
-
 .header-top-menu {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    gap: 2rem;
+    position: fixed; 
+    top: 75; 
+    left: 28%; 
+    font-size:  40px;
+    transform: translateX(-50%); /* Adjust to center it properly  (from chatgpt)*/ 
+    padding: 10px; /* Optional: Add padding for better appearance */
+    list-style-type: none; /* Remove default list styles */
+    background-color: white; /* Add white background */
+    padding: 10px 20px; /* Add padding for better appearance */
+  }
+
+  .sign-up-button {
+    position: fixed;
+    top: 40px; /* Adjust the distance from the top as needed */
+    right: 10px; /* Adjust the distance from the right as needed */
+    font-size: 40px;
+    background-color: white; /* Add white background */
+    padding: 10px 20px; /* Add padding for better appearance */
+  }
 
 .header-logo img{
-    width: 350px;
+    position: fiex;
+    width: 300px;
     height: auto;
-    margin-left: 40;
-    margin-top: 40;
+    margin-left: 50;
+    margin-top: 50;
+    background-color: white; /* Add white background */
+    padding: 10px 20px; /* Add padding for better appearance */
 }
 
+ h2 {
+    text-align: left;
+ }
 
+.programs-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-bottom: var(--spacing-large);
+    margin: 0 10rem;
+}
 
-
-
-footer {
+.footer {
     text-align: center;
 }
