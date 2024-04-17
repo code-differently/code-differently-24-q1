@@ -23,7 +23,8 @@
     /* Path aliases */
     "baseUrl": ".",
     "paths": {
-      "@code-differently/types": ["../types"]
+      "@code-differently/types": ["../types"],
+      "@/*": ["src/*"]
     }
   },
   "include": ["src"],
