@@ -1,3 +1,7 @@
+/* 
+    * selects all html elements on the page
+*/
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,6 +10,11 @@
     font-family: Poppins, sans-serif;
 }
 
+/* 
+    ------------------------------------------
+    the code below was referenced from chatgpt     
+    -------------------------------------------
+*/
 .header-top-menu {
     display: flex;
     gap: 2rem;
@@ -13,17 +22,18 @@
     top: 75; 
     left: 28%; 
     font-size:  40px;
-    transform: translateX(-50%); /* Adjust to center it properly  (from chatgpt)*/ 
-    padding: 10px; /* Optional: Add padding for better appearance */
-    list-style-type: none; /* Remove default list styles */
-    background-color: white; /* Add white background */
-    padding: 10px 20px; /* Add padding for better appearance */
+    /* 5 lines below from chatgpt */
+    transform: translateX(-50%); 
+    padding: 10px; /* Optional: 
+    list-style-type: none; 
+    background-color: white; 
+    padding: 10px 20px; 
   }
 
   .sign-up-button {
     position: fixed;
-    top: 40px; /* Adjust the distance from the top as needed */
-    right: 10px; /* Adjust the distance from the right as needed */
+    top: 40px; 
+    right: 10px;
     font-size: 40px;
     background-color: white; /* Add white background */
     padding: 10px 20px; /* Add padding for better appearance */
@@ -35,22 +45,81 @@
     height: auto;
     margin-left: 50;
     margin-top: 50;
-    background-color: white; /* Add white background */
-    padding: 10px 20px; /* Add padding for better appearance */
+    background-color: white; 
+    padding: 10px 20px; 
 }
 
- h2 {
-    text-align: left;
- }
+ .hero-section {
+    display: flex;
+    height: 700px;
+    background-image: url("hero.jpg");
+    color: white;
+    background-size: cover;
+    background-attachment: fixed;    
+}
+
+.hero-content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    height: 90%;
+    padding-right: 40vw;
+    z-index: 3;
+    font-size: x-large;
+    color: white;
+    margin-left: 150;
+}
+
+ .header li {
+    list-style: none;
+    display: inline-block;
+    padding-left: 30px;
+}
 
 .programs-section {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     padding-bottom: var(--spacing-large);
-    margin: 0 10rem;
+    margin: 100 10%;
+}
+
+.h2 {
+    text-align: left;
+    font-size: 50%;
+ }
+
+.programs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.program {
+    display: flex;
+    justify-content: center;
+    width: 10vw;
+    padding-left: 4.8vw;
+    padding-right: 2vw;
+    width: 30vw;
+    flex-direction: column;
+}
+
+h1, h3, h4, h5, h6 {
+    font-weight: 800;
+    font-family: Montserrat;
+    color: #444444;
 }
 
 .footer {
-    text-align: center;
+    position: sticky;
+    display: flex;
+    color: #000000;
+    height: 7vw;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    padding-bottom: 0px;
 }
