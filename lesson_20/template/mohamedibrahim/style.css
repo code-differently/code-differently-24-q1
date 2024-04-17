@@ -1,0 +1,222 @@
+body, html {
+    font-family: Poppins;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+.header-logo img {
+    max-height: 75px;
+    padding-left: 10px;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+    height: 100px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+.header li {
+    list-style: none;
+    display: inline-block;
+    padding-left: 30px;
+
+}
+.header-top-menu a {
+    color: #3c3c3c;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;  
+}
+.header-top-menu{
+    margin-left: 0;
+    margin-right: auto; 
+    padding-left: 10;
+    padding-right: 0;
+    content: "";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 
+---------------------------------------------------------------------------------------------------------------------->
+This code was taken from https://codepen.io/thelittleblacksmith/pen/zXNVvY
+<---------------------------------------------------------------------------------------------------------------------- 
+*/
+
+.header-top-menu a::before {
+    content: "";
+    display: block;
+    position: relative;
+    width: 0%;
+    height: 2px;
+    bottom: -25px;
+    background-color: #f47d26;
+    transform-origin: left; 
+    transition: 0.2s ease-out;  
+}
+
+
+.header-top-menu a:hover:before {
+    width: 100%;
+  }
+/* ---------------------------------------------Taken code ends here------------------------------------------------ */
+.hero-section {
+    display: flex;
+    background-image: url("hero.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100vw;
+    height: 650px;
+    color: white;
+    background-size: cover;
+    padding-left: 0;
+    z-index: 1;
+}
+.hero-overlay {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+.hero-content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding-right: 38vw;
+    z-index: 3;
+}
+.hero-title {
+    font-size: 50px;
+    flex-wrap: wrap;
+    font-weight: 800;
+    line-height: 1.2;
+    padding-left: 7vw; 
+    color: white;
+}
+.hero-text {
+    font-size: 24px;
+    font-weight: 200;
+    line-height: 1.5;
+    padding-left: 7vw;
+    background-color: rgb(42, 60,138);
+}
+.header-cta {
+    padding-right: 40px;
+}
+.sign-up-button {
+    display: inline-block;
+    background-color: #f47d26;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 0px;
+}
+
+
+.highlight{
+    font-style: normal;
+    position: relative;
+    display: inline-block;
+}
+.hero-title .highlight::after {
+    content: " ";
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    background-color: #f47d26;
+    margin-top: -17px;
+    z-index: -1;
+}
+span {
+    color: #f47d26;
+}
+.programs-section {
+    padding-left: 7vw;
+    padding-top: 50px;
+    position: relative;
+    z-index: 200;
+    background-color: rgb(251, 251, 251);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+}
+.programs-section  h2{
+    padding-left: 7vw;
+    padding-top: 50px;
+    position: relative;
+    flex-wrap: wrap;
+    z-index: 200;
+}
+.programs-section .highlight::after {
+    content: " ";
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 7px;
+    background-color: #f47d26;
+    margin-top: -8px;
+    z-index: -1;
+
+}
+.programs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.program {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 4.3vw;
+    padding-right: 7vw;
+    width: 30vw;
+}
+.program p {
+    color: #676767;
+
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+    font-family: Montserrat;
+    color: #444444;
+}
+.footer {
+    position: sticky;
+    display: flex;
+    color: #676767;
+    text-align: center;
+    height: 7vw;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    font-size: 15px;
+    padding-bottom: 5px;
+    bottom: 0;
+}
+
+
+@media (max-width: 1080px) {
+    .hero-content {
+        padding-right: 7vw !important;
+    }
+    .program{
+        padding-top: 12px;
+        width: 80vw !important;
+    }
+}
