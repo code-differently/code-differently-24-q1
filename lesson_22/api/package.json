@@ -4,9 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "npx tsc",
-    "start": "node dist/server.js",
-    "dev": "nodemon src/server.ts --quiet"
+    "build:deps": "cd ../types && npm install && npm run build",
+    "build": "npm run build:deps && npx tsc",
+    "start": "npm run build:deps && node dist/server.js",
+    "dev": "npm run build:deps && nodemon src/server.ts --quiet"
   },
   "author": "",
   "license": "ISC",
