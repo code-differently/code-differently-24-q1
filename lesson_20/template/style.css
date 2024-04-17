@@ -217,6 +217,7 @@ body {
     .hero-content {
        /* Blue-box */
         margin-right: 50rem;
+        width: 100%;
     }
 
     .hero-text {
