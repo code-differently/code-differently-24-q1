@@ -3,7 +3,7 @@
 ## Lecture Resources
 
 * Review [Lesson 21](/lesson_21/) resources.
-# TODO(anthonydmays): Add more
+* TODO(anthonydmays): Add more
 
 ## Homework
 
