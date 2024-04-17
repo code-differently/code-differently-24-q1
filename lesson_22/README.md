@@ -1,6 +1,13 @@
 # Lesson 22
 
+## Lecture Resources
+
+* Review [Lesson 21](/lesson_21/) resources.
+# TODO(anthonydmays): Add more
+
 ## Homework
+
+* Complete the [Introduction to React](#introduction-to-react) assignment.
 
 ## Introduction to React
 
