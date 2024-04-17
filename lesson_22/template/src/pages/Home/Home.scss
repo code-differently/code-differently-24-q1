@@ -1,12 +1,11 @@
 .hero-section {
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
   position: relative;
   background-image: url(hero.jpg);
   background-attachment: fixed;
   background-size: cover;
   padding: 100px 0;
-  max-height: calc(100vh - 130px);
 
   .hero-overlay {
     position: absolute;
