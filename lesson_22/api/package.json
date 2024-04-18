@@ -23,7 +23,6 @@
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.5",
     "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "@code-differently/types": "*"
+    "express": "^4.19.2"
   }
 }
