@@ -3,6 +3,7 @@ import {Outlet} from 'react-router-dom';
 
 import {Footer} from './components/footer';
 import {Header} from './components/header';
+import {ProgramList} from './components/programlist';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className="main">
         <div className="content">
           <Outlet />
+          <ProgramList />
         </div>
       </div>
       <Footer />
