@@ -3,7 +3,7 @@
 ## Lecture Resources
 
 * [Writing Markup with JSX (react.dev)](https://react.dev/learn/writing-markup-with-jsx)
-* Guides for [React Query](react-query-link), [React Router](react-router-link).
+* Guides for [React Query][react-query-link], [React Router][react-router-link].
 * [Javascript Promises vs Async Await EXPLAINED (in 5 minutes)](https://www.youtube.com/watch?v=li7FzDHYZpc) - YouTube
 * _[Optional]_ Creating a new website using [Vite](https://vitejs.dev/guide/).
 
@@ -13,7 +13,7 @@
 * Complete the [Introduction to React](#introduction-to-react) assignment.
 
 ## Introduction to React
-This exercise will give you hands-on experience with the React framework and supporting tools to enhance a dynamic front-end application that communicates with a backend API. We will need to leverage [React Query](react-query-link), [React Router](react-router-link), and [Vite](vite-link) tie everything together.
+This exercise will give you hands-on experience with the React framework and supporting tools to enhance a dynamic front-end application that communicates with a backend API. We will need to leverage [React Query][react-query-link], [React Router][react-router-link], and [Vite][vite-link] tie everything together.
 
 ### Starting the servers
 
