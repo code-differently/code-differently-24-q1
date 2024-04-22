@@ -4,7 +4,7 @@
 
 ### Anthony D. Mays (@anthonydmays)
 
-Anthony is a software engineer with over 23 years of experience across finance, ecommerce, enterprise consulting, and data visualization & analysis. Before becoming a full-time entrepreneur via his firm Morgan Latimer Consulting, he spent 8 years at Google where he became a Senior Software Engineer.
+Anthony is a software engineer with over 23 years of experience across finance, e-commerce, enterprise consulting, and data visualization & analysis. Before becoming a full-time entrepreneur via his firm Morgan Latimer Consulting, he spent 8 years at Google where he became a Senior Software Engineer.
 
 [![Website][website-badge]][instructor-website]
 [![Github][github-badge]][instructor-github]
@@ -47,7 +47,7 @@ The course will feature required reading from the following selection of books. 
 | Abbreviation | Title                                                                                      |
 | ------------ | ------------------------------------------------------------------------------------------ |
 | CC           | Code Complete (2nd Edition, Microsoft Press)                                               |
-| CODE         | Code: The Hidden Language of Computer Hardward and Software (2nd Edition, Microsoft Press) |
+| CODE         | Code: The Hidden Language of Computer Hardware and Software (2nd Edition, Microsoft Press) |
 | HF           | Head First Design Patterns (2nd Edition, O'Reilly)                                         |
 | PIE          | Programming Interviews Exposed (4th Edition, Wrox)                                         |
 | SEG          | The Software Engineer's Guidebook                                                          |
@@ -70,9 +70,8 @@ Throughout the course, we will use the following tools for most assignments unle
 Regular course work and homework assignments will be provided throughout lessons. Though varied, the assignments will generally consist of:
 
 1. Reading assigned chapters from course books.
-2. Submitting reading notes for assigned online articles and videos
-3. Completing one or more coding exercises to be submitted on Github or by email to instructor.
-4. Completing pop quizzes and tests
+2. Completing one or more coding exercises to be submitted on Github or by email to instructor.
+3. Completing pop quizzes and tests
 
 ## Course schedule
 
@@ -172,10 +171,40 @@ Regular course work and homework assignments will be provided throughout lessons
             <td>
                 <b>Building application systems</b>
                 <ul>
-                    <li>Software Development Life Cycle</li>
+                    <li>Collaborative software engineering</li>
                     <li>Tools of the trade</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="vertical-align: top">09</td>
+            <td>
+                <b>Capstone project (Week 1)</b>
+                <ul>
+                    <li>Collaborative software engineering</li>
+                    <li>Applying principles learned throughout the course</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="vertical-align: top">10</td>
+            <td>
+                <b>Capstone project (Week 2)</b>
+                <ul>
+                    <li>Collaborative software engineering</li>
+                    <li>Applying principles learned throughout the course</li>
                 </ul>
             </td>
         </tr>
     </tbody>
 </table>
+
+## Academic Integrity
+
+Students are absolutely encouraged to leverage learning resources outside of official course materials to enhance understanding and complete assignments. This includes use of tools like forums, search engines, or Large Language Models (LLM) such as Open AI ChatGPT, Google Gemini, and GitHub Copilot for example.
+
+Generally speaking and unless otherwise stated by the instructor, students are also allowed to work together to collaboratively problem solve and come up with solutions.
+
+That said, all students must credit provide credit for anything they did not generate themselves. This includes code, documentation, quotes, multimedia items used for presentations, and etc.
+
+Any use of materials without providing proper credit will be considered cheating and will result in disciplinary action.
