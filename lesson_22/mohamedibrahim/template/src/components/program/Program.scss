@@ -1,0 +1,15 @@
+.program {
+  display: flex;
+  flex-direction: column;
+  max-width: 48%;
+}
+.program-description {
+  margin-left: 11px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1080px) {
+  .program {
+    min-width: 100%;
+  }
+}

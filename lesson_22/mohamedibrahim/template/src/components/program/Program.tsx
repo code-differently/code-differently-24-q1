@@ -16,7 +16,7 @@ export const Program: React.FC = () => {
             {query.data?.map((p:ProgramType) => (
                 <li className="program">
                     <h3>{p.title}</h3>
-                    <p>{p.description}</p>
+                    <p className="program-description">{p.description}</p>
                 </li>)
             )}
         </>
