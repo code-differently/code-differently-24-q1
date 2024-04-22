@@ -9,7 +9,7 @@ export const AddProgram: React.FC = () => {
       <h3>Program Name</h3>
       <input className="add-program-input-name" type="text" placeholder="Enter Program Name" id ="programname"></input>
       <h3>Program Discription</h3>
-      <input className="add-program-input-discription" type="text" placeholder="Enter Program Discription" id ="programdiscription"></input>
+      <textarea className="add-program-input-discription" placeholder="Enter Program Discription" id ="programdiscription"></textarea>
       <button className="add-program-button" onClick={() => {
         const programName = (document.getElementById('programname') as HTMLInputElement).value;
         const programDiscription = (document.getElementById('programdiscription') as HTMLInputElement).value;
