@@ -1,0 +1,35 @@
+.add-program-section {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding-bottom: 30px;
+}
+
+.add-program-form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  padding: 30px;
+}
+
+.add-program-title-input {
+  width: 100%;
+  padding-bottom: 50px;
+}
+.add-program-description-input {
+  width: 100%;
+  resize: none;
+  height: 30vh;
+}
+
+.add-program-button {
+  width: 50%;
+  height: 50px;
+  margin: 15px auto;
+}
+
+.add-program-title {
+  padding-left: 30px;
+}
