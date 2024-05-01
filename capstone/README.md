@@ -86,6 +86,20 @@ Here are some links to tools and templates that can help you work together effec
 * [GitHub Flow (GitHub.com)](https://docs.github.com/en/get-started/using-github/github-flow)
 * The Software Engineer's Guidebook, Chapter 10, "Tools of the Productive Software Engineer."
 
+### Presentation Guidelines
+
+For your presentation, you will be given up to 20 minutes to feature your project. Each person on the team should have a speaking role. Here's what your presentation will contain:
+
+1. Up to four slides of content, then a live demo walkthrough.
+2. Your presentation should cover the following items, in order:
+   - [ ]  Introduce team members and their roles
+   - [ ]  State the problem your attempting to solve
+   - [ ]  State how your app is designed to solve the problem
+   - [ ]  Show your demo
+   - [ ]  Discuss how you'd like to enhance in the future
+   - [ ]  Lastly, talk through technical challenges and features.
+3. You will be given 5 minutes for Q&A and take questions from the audience.
+
 ### Academic Integrity
 
 Please refer to the [Academic Integrity][academic-integrity-link] section of the syllabus regarding the use of third-party code and resources that you have used for your project. Give credit to where credit is due!
