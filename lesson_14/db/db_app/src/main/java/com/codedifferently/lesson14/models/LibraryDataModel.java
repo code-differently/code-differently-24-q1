@@ -16,6 +16,7 @@ import java.util.Map;
 public class LibraryDataModel {
   public List<MediaItemModel> mediaItems;
   public List<LibraryGuestModel> guests;
+  public List<LibraryUserModel> users;
 
   public List<MediaItem> getMediaItems() {
     List<MediaItem> results = new ArrayList<>();
