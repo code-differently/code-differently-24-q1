@@ -24,7 +24,7 @@ import org.springframework.test.context.ContextConfiguration;
 @ExtendWith(SoftAssertionsExtension.class)
 class Lesson2Test {
 
-  @Autowired private QuizAnswers quizAnswers;
+  @Autowired private QuizConfig quizConfig;
 
   private List<QuizQuestion> quizQuestions;
 
@@ -79,9 +79,7 @@ class Lesson2Test {
 
   @Test
   void checkQuestions_answeredCorrectly() {
-    assertThat(quizAnswers.size("default"))
-        .as("Check # of answers")
-        .isEqualTo(quizQuestions.size());
+    assertThat(quizConfig.size("default")).as("Check # of answers").isEqualTo(quizQuestions.size());
 
     for (QuizQuestion question : quizQuestions) {
       String actualAnswer = question.getAnswer();
@@ -94,8 +92,7 @@ class Lesson2Test {
 
       // Check that the answer is correct.
       softly
-          .assertThat(
-              quizAnswers.checkAnswer("default", question.getQuestionNumber(), actualAnswer))
+          .assertThat(quizConfig.checkAnswer("default", question.getQuestionNumber(), actualAnswer))
           .as("Checking answer matches correct answer: " + question.getQuestionPrompt())
           .isTrue();
     }
